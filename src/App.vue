@@ -1,11 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ElConfigProvider } from "element-plus";
+import zhCn from "element-plus/es/locale/lang/zh-cn";
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <ElConfigProvider :locale="zhCn">
+    <RouterView v-slot="{ Component }">
+      <Transition name="el-zoom-in-center" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
+  </ElConfigProvider>
 </template>
 
 <style scoped></style>
