@@ -4,6 +4,7 @@ import Layout from "@/layout/IndexView.vue";
 import HTML from "./modules/HTML";
 import CSS from "./modules/CSS";
 import WebAPI from "./modules/WebAPI";
+import NpmUtils from "./modules/NpmUtils";
 
 export const routes = [
   {
@@ -62,6 +63,9 @@ export const routes = [
 
       // webapi
       WebAPI,
+
+      // npm utils
+      NpmUtils,
     ],
   },
   {

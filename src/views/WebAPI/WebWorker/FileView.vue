@@ -4,7 +4,8 @@ const CHUNK_SIZE = 1024; // 每块1kb
 
 // 文件选择器改变事件
 const fileChange = (e: Event) => {
-  const file = e?.target?.files[0];
+  const target = e.target as HTMLInputElement;
+  const file = target?.files?.[0] as File;
 
   const chunklength = Math.ceil(file.size / CHUNK_SIZE);
   const rusule = [];

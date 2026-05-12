@@ -1,9 +1,9 @@
-import { fileURLToPath, URL } from 'node:url'
-
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import vueDevTools from 'vite-plugin-vue-devtools'
+import { fileURLToPath, URL } from "node:url";
+import AutoImport from "unplugin-auto-import/vite";
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import vueDevTools from "vite-plugin-vue-devtools";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,10 +11,14 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vueDevTools(),
+    AutoImport({
+      imports: ["vue", "vue-router"],
+      dts: "src/types/auto-imports.d.ts", //自定义生成 auto-imports.d.ts 路径丢失的问题
+    }),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-})
+});
