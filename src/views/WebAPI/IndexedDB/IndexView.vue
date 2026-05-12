@@ -9,7 +9,7 @@ import {
   cursorGetDataByIndex,
   cursorGetDataByIndexAndPage,
 } from "./db";
-import type { TRow } from "./types";
+// import type { TRow } from "./types";
 
 let dbVal: IDBDatabase;
 
@@ -43,50 +43,50 @@ onMounted(() => {
 // 添加数据
 const onAdd = () => {
   const arr = [
-    // {
-    //   name: "张三",
-    //   email: "张三@qq.com",
-    // },
-    // {
-    //   name: "李四",
-    //   email: "李四@qq.com",
-    // },
-    // {
-    //   name: "王五",
-    //   email: "王五@qq.com",
-    // },
-    // {
-    //   name: "老六",
-    //   email: "老六@qq.com",
-    // },
-    // {
-    //   name: "刘德华",
-    //   email: "刘德华@qq.com",
-    // },
-    // {
-    //   name: "张学友",
-    //   email: "张学友@qq.com",
-    // },
-    // {
-    //   name: "郭富城",
-    //   email: "郭富城@qq.com",
-    // },
-    // {
-    //   name: "黎明",
-    //   email: "黎明@qq.com",
-    // },
-    // {
-    //   name: "小刚刚",
-    //   email: "小刚刚@qq.com",
-    // },
-    // {
-    //   name: "小花",
-    //   email: "小花@qq.com",
-    // },
-    // {
-    //   name: "小花",
-    //   email: "小花2@qq.com",
-    // },
+    {
+      name: "张三",
+      email: "张三@qq.com",
+    },
+    {
+      name: "李四",
+      email: "李四@qq.com",
+    },
+    {
+      name: "王五",
+      email: "王五@qq.com",
+    },
+    {
+      name: "老六",
+      email: "老六@qq.com",
+    },
+    {
+      name: "刘德华",
+      email: "刘德华@qq.com",
+    },
+    {
+      name: "张学友",
+      email: "张学友@qq.com",
+    },
+    {
+      name: "郭富城",
+      email: "郭富城@qq.com",
+    },
+    {
+      name: "黎明",
+      email: "黎明@qq.com",
+    },
+    {
+      name: "小刚刚",
+      email: "小刚刚@qq.com",
+    },
+    {
+      name: "小花",
+      email: "小花@qq.com",
+    },
+    {
+      name: "小花",
+      email: "小花2@qq.com",
+    },
   ];
 
   arr.forEach((item) => {

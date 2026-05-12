@@ -17,16 +17,7 @@
     ></el-progress>
     <p style="margin-top: 20px">
       <span>成功数量{{ +successNum }}</span>
-      <span style="margin-left: 100px"
-        >失败数量{{ failNum }}
-        <!-- <el-button
-          type="primary"
-          size="small"
-          v-if="failedIds.length > 0"
-          @click="handleDownloadFailData"
-          >{{ t("Download") }}</el-button
-        > -->
-      </span>
+      <span style="margin-left: 100px">失败数量{{ failNum }} </span>
     </p>
 
     <div class="but">
@@ -63,10 +54,10 @@ import PQueue from "p-queue";
 //   exportTrackingNum,
 // } from "/@/api/backend/finance/fazendaSpIcms";
 // import { goResourceExportList } from "/@/utils/goExportList";
-import { ElMessage, ElNotification, ElMessageBox } from "element-plus";
-import { asyncApiRes, asyncApiRej } from "@/utils/async";
+// import { asyncApiRes, asyncApiRej } from "@/utils/async";
+import { ElMessageBox } from "element-plus";
 
-const props = defineProps({});
+// const props = defineProps({});
 
 const isHistory = ref(false);
 
@@ -75,7 +66,7 @@ const isHistory = ref(false);
 const doneNum = ref(0); // 完成的数量
 const successNum = ref(0); // 成功数量
 const failNum = ref(0); // 失败数量
-const idList = shallowRef<any[]>([]); // id集合
+const idList = shallowRef<number[]>([]); // id集合
 
 const dialogVisible = ref(false);
 const isSecond = ref(true); // 确定 是否可以点击
@@ -84,9 +75,9 @@ const isStart = ref(false); // 开始 是否可以点击
 const isCancel = ref(true); // 取消 是否可以点击
 
 // 定义一个响应式变量来存储失败的 id
-const failedIds = ref<number[]>([]);
+// const failedIds = ref<number[]>([]);
 
-const loading = ref(false);
+// const loading = ref(false);
 
 // 标题
 const title = computed(() => {
@@ -109,12 +100,12 @@ const progress = computed(() => {
   return Math.floor((doneNum.value / bankFlowNum.value) * 100);
 });
 
-let queue = new PQueue({
+const queue = new PQueue({
   concurrency: 2, // 同时执行的任务数，默认为1
 });
 
 // 完成了一个任务时（触发多次）
-queue.on("active", a => {
+queue.on("active", (a) => {
   // console.log(`Working on item #${++count}.  Size: ${queue.size}  Pending: ${queue.pending}`);
   console.log(a);
 
@@ -124,7 +115,7 @@ queue.on("active", a => {
 });
 
 // 存在错误时
-queue.on("error", error => {
+queue.on("error", (error) => {
   console.error(error);
   failNum.value += 1;
 });
@@ -154,17 +145,15 @@ const onPause = () => {
 };
 
 // 获取请求 数据
-const asyncGetBankFlowNum = (isHistoryVal: boolean, query: any) => {
-  const a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
-  idList.value = a.map(item => {
-    if (Math.random() > 0.5) {
-      return () => asyncApiRes(2000);
-    } else {
-      return () => asyncApiRej(1000);
-    }
-  });
-
+const asyncGetBankFlowNum = () => {
+  // const a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  // idList.value = a.map(() => {
+  //   if (Math.random() > 0.5) {
+  //     return () => asyncApiRes(2000);
+  //   } else {
+  //     return () => asyncApiRej(1000);
+  //   }
+  // });
   // idList.value = [
   //   () => Promise.resolve(1),
   //   () => Promise.resolve(2),
@@ -215,9 +204,9 @@ const ifGenerateBankFlow = () => {
       // });
 
       // 开始执行
-      idList.value.forEach(res => {
+      idList.value.forEach((res) => {
         // apiBankFlow({ id });
-        queue.add(() => res());
+        queue.add(() => Promise.resolve(res));
       });
 
       console.log("队列状态:", {
@@ -256,7 +245,7 @@ const ifGenerateBankFlow = () => {
  * @param {boolean} isHistoryVal 是否历史
  * @param {anyObj} query 查询参数
  */
-const open = (isHistoryVal: boolean, query: any) => {
+const open = (isHistoryVal: boolean) => {
   isHistory.value = isHistoryVal;
 
   // progress.value = 0; // 进度
@@ -274,7 +263,8 @@ const open = (isHistoryVal: boolean, query: any) => {
 
   queue.clear();
 
-  asyncGetBankFlowNum(isHistoryVal, query);
+  // asyncGetBankFlowNum(isHistoryVal, query);
+  asyncGetBankFlowNum();
 };
 
 onMounted(() => {

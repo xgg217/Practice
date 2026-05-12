@@ -8,7 +8,7 @@ type callbackfn = () => void;
 
 const runTask = (task: callbackfn) => {
   return new Promise((res) => {
-    _runTask(task, res);
+    _runTask(task, () => res(undefined));
   });
 };
 

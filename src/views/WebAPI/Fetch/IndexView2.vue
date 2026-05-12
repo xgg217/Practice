@@ -23,7 +23,7 @@ const index = ref(0);
 const open = () => {
   index.value++;
   setTimeout(() => {
-    daiRef.value?.open(false, {});
+    daiRef.value?.open(false);
   }, 10);
 };
 </script>
