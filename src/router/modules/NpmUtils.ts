@@ -40,39 +40,59 @@ const ROW: RouteRecordRaw = {
 
     {
       path: "PQueue",
-      name: "PQueue",
-      component: () => import("@/views/NpmUtils/PQueue/IndexView.vue"),
+      // name: "PQueue",
+      // component: () => import("@/views/NpmUtils/PQueue/IndexView.vue"),
       meta: {
         title: "请求队列 PQueue",
       },
+
+      children: [
+        {
+          path: "PQueue1",
+          name: "PQueue1",
+          component: () => import("@/views/NpmUtils/PQueue/IndexView.vue"),
+          meta: {
+            title: "请求队列 PQueue",
+          },
+        },
+
+        {
+          path: "PQueue2",
+          name: "PQueue2",
+          component: () => import("@/views/NpmUtils/PQueue/IndexView2.vue"),
+          meta: {
+            title: "PQueue 与 下载+压缩",
+          },
+        },
+
+        {
+          path: "PQueue3",
+          name: "PQueue3",
+          component: () => import("@/views/NpmUtils/PQueue/IndexView3.vue"),
+          meta: {
+            title: "PQueue 任务队列模仿",
+          },
+        },
+
+        {
+          path: "PQueue4",
+          name: "PQueue4",
+          component: () => import("@/views/NpmUtils/PQueue/IndexView4.vue"),
+          meta: {
+            title: "PQueue 任务队列 自定义",
+          },
+        },
+      ],
     },
 
-    {
-      path: "PQueue2",
-      name: "PQueue2",
-      component: () => import("@/views/NpmUtils/PQueue/IndexView2.vue"),
-      meta: {
-        title: "PQueue 与 下载+压缩",
-      },
-    },
-
-    {
-      path: "PQueue3",
-      name: "PQueue3",
-      component: () => import("@/views/NpmUtils/PQueue/IndexView3.vue"),
-      meta: {
-        title: "PQueue 任务队列模仿",
-      },
-    },
-
-    {
-      path: "PQueue4",
-      name: "PQueue4",
-      component: () => import("@/views/NpmUtils/PQueue/IndexView4.vue"),
-      meta: {
-        title: "PQueue 任务队列 自定义",
-      },
-    },
+    // {
+    //   path: "PQueue",
+    //   name: "PQueue",
+    //   component: () => import("@/views/NpmUtils/PQueue/IndexView.vue"),
+    //   meta: {
+    //     title: "请求队列 PQueue",
+    //   },
+    // },
 
     {
       path: "PLimit",
