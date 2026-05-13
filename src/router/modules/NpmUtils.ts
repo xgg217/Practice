@@ -38,6 +38,7 @@ const ROW: RouteRecordRaw = {
       },
     },
 
+    // #region PQueue 队列
     {
       path: "PQueue",
       // name: "PQueue",
@@ -111,6 +112,104 @@ const ROW: RouteRecordRaw = {
         title: "并发任务控制 p-limit模拟",
       },
     },
+    // #endregion PQueue 队列
+
+    // #region ECharts
+    {
+      path: "ECharts",
+      // name: "PQueue",
+      // component: () => import("@/views/NpmUtils/PQueue/IndexView.vue"),
+      meta: {
+        title: "ECharts",
+      },
+
+      children: [
+        {
+          path: "EChartsIndex",
+          name: "EChartsIndex",
+          component: () => import("@/views/NpmUtils/ECharts/IndexView.vue"),
+          meta: {
+            title: "ECharts 首页",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "EChartsSetOption",
+          name: "EChartsSetOption",
+          component: () => import("@/views/NpmUtils/ECharts/SetOption/IndexView.vue"),
+          meta: {
+            title: "setOption 示例",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "EChartsSetOptionAxis",
+          name: "EChartsSetOptionAxis",
+          component: () => import("@/views/NpmUtils/ECharts/SetOptionAxis/IndexView.vue"),
+          meta: {
+            title: "setOption 轴体",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "EChartsSetOptionDataZoom",
+          name: "EChartsSetOptionDataZoom",
+          component: () => import("@/views/NpmUtils/ECharts/SetOptionDataZoom/IndexView.vue"),
+          meta: {
+            title: "DataZoom 区域缩放",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "EChartsSetOptionTooltiop",
+          name: "EChartsSetOptionTooltiop",
+          component: () => import("@/views/NpmUtils/ECharts/SetOptionTooltiop/IndexView.vue"),
+          meta: {
+            title: "tooltiop 提示框",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "EChartsDataset",
+          name: "EChartsDataset",
+          component: () => import("@/views/NpmUtils/ECharts/Dataset/IndexView.vue"),
+          meta: {
+            title: "dataset 数据集",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "EChartsVisualMap",
+          name: "EChartsVisualMap",
+          component: () => import("@/views/NpmUtils/ECharts/visualMap/IndexView.vue"),
+          meta: {
+            title: "视觉映射组件",
+            imgSrc: "",
+          },
+        },
+        {
+          path: "EChartsLine",
+          name: "EChartsLine",
+          component: () => import("@/views/NpmUtils/ECharts/line/IndexView.vue"),
+          meta: {
+            title: "折线图",
+            imgSrc: "",
+          },
+        },
+      ],
+    },
+    // #endregion ECharts
+
+    // #region RXJS
+    {
+      path: "RXJS",
+      name: "RXJS",
+      component: () => import("@/views/NpmUtils/RXJS/IndexView.vue"),
+      meta: {
+        title: "RXJS",
+      },
+    },
+    // #endregion RXJS
   ],
 };
 

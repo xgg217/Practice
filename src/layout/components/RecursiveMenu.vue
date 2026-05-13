@@ -15,7 +15,7 @@ defineProps<{
 
     <el-sub-menu v-else :index="item.path">
       <template #title>
-        <el-icon><location /></el-icon>
+        <el-icon><Menu /></el-icon>
         <span>{{ item.title }}</span>
       </template>
 

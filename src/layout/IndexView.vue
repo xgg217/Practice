@@ -47,4 +47,12 @@ nav {
   /* border: 1px solid red; */
   border-right: 1px solid #999;
 }
+
+aside {
+  flex: 1;
+  border: 1px solid #000;
+  height: 100vh;
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
 </style>
