@@ -202,12 +202,49 @@ const ROW: RouteRecordRaw = {
 
     // #region RXJS
     {
-      path: "RXJS",
-      name: "RXJS",
-      component: () => import("@/views/NpmUtils/RXJS/IndexView.vue"),
+      path: "RxJS",
+      // name: "RXJS",
+      // component: () => import("@/views/NpmUtils/RXJS/IndexView.vue"),
       meta: {
-        title: "RXJS",
+        title: "RxJS",
       },
+      children: [
+        {
+          path: "RxJS1",
+          name: "RxJS1",
+          component: () => import("@/views/NpmUtils/RXJS/IndexView.vue"),
+          meta: {
+            title: "RxJS 首页",
+          },
+        },
+
+        {
+          path: "RxJSCreation",
+          name: "RxJSCreation",
+          component: () => import("@/views/NpmUtils/RXJS/CreationView.vue"),
+          meta: {
+            title: "RxJS 创建 Creation",
+          },
+        },
+
+        {
+          path: "RxJSTransformation",
+          name: "RxJSTransformation",
+          component: () => import("@/views/NpmUtils/RXJS/TransformationView.vue"),
+          meta: {
+            title: "RxJS 转换 Transformation.md",
+          },
+        },
+
+        {
+          path: "RxJSFiltering",
+          name: "RxJSFiltering",
+          component: () => import("@/views/NpmUtils/RXJS/FilteringView.vue"),
+          meta: {
+            title: "RxJS 过滤 Filtering",
+          },
+        },
+      ],
     },
     // #endregion RXJS
   ],

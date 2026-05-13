@@ -8,6 +8,7 @@ export type TRoute = {
   children: TRoute[]; // 子路由
 };
 
+// 递归获取路由菜单
 const getItem = (arr: RouteRecordRaw[], path: string) => {
   return arr.map((item) => {
     const obj: TRoute = {
@@ -35,7 +36,7 @@ export const getAllMenuRoutes = (): TRoute[] => {
   })[0]!.children!;
 
   const list = getItem(arr, "");
-  console.log(list);
+  // console.log(list);
 
   return list;
 };
