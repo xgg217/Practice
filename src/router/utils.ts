@@ -9,20 +9,25 @@ export type TRoute = {
 };
 
 const getItem = (arr: RouteRecordRaw[], path: string) => {
-  return arr.map((item) => {
-    const obj: TRoute = {
-      path: path + "/" + item.path,
-      name: item.name as string,
-      title: (item.meta?.title as string) || "",
-      children: [],
-    };
+  return arr
+    .filter((item) => {
+      // 过滤不需要显示的路由
+      return item.meta?.isShow !== false;
+    })
+    .map((item) => {
+      const obj: TRoute = {
+        path: path + "/" + item.path,
+        name: item.name as string,
+        title: (item.meta?.title as string) || "",
+        children: [],
+      };
 
-    // 二级路由
-    if (item.children) {
-      obj.children = getItem(item.children, obj.path);
-    }
-    return obj;
-  });
+      // 二级路由
+      if (item.children) {
+        obj.children = getItem(item.children, obj.path);
+      }
+      return obj;
+    });
 };
 
 // 获取全部菜单
