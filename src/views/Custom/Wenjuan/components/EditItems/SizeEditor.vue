@@ -1,8 +1,8 @@
 <template>
   <div class="position">
     <p>{{ props.editName }}</p>
-    <el-radio-group v-model="radio" @change="changeSize">
-      <el-radio-button :value="item" v-for="item of props.status">
+    <el-radio-group v-model="radio" @change="(val) => changeSize(val as string)">
+      <el-radio-button :value="item" v-for="item of props.status" :key="item">
         {{ item }}
       </el-radio-button>
     </el-radio-group>
@@ -59,7 +59,7 @@ const updateStatus = inject<UpdateStatus>("updateStatus");
 const changeSize = (val: string) => {
   // if (updateStatus) updateStatus(props.configKey, size);
   if (updateStatus) {
-    const index = props.status.findIndex(item => item === val);
+    const index = props.status.findIndex((item) => item === val);
     if (index !== -1) {
       updateStatus(props.configKey, index);
     }

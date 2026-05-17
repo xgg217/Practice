@@ -39,4 +39,8 @@ import Layout from "@/views/Custom/Wenjuan/MaterialsView/Layout.vue";
 </template>
 
 <style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>
-<style scoped></style>
+<style scoped>
+.m5 {
+  margin: 5px;
+}
+</style>

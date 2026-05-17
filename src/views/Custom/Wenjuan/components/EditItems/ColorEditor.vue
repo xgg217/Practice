@@ -3,7 +3,7 @@
   <div class="position">
     <p>{{ props.editName }}</p>
 
-    <el-color-picker v-model="color1" @change="changePosition" />
+    <el-color-picker v-model="color1" @change="(val) => changePosition(val!)" />
   </div>
 </template>
 

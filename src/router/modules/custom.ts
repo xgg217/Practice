@@ -45,7 +45,7 @@ const ROW: RouteRecordRaw = {
     // #region 问卷调查
     {
       path: "Wenjuan",
-      name: "CustomWenjuan",
+      name: "Wenjuan",
       component: () => import("@/views/Custom/Wenjuan/IndexView.vue"),
       meta: {
         title: "问卷调查",
@@ -53,9 +53,9 @@ const ROW: RouteRecordRaw = {
       },
     },
     {
-      path: "EditorView",
-      name: "CustomWenjuanEditorView",
-      component: () => import("@/views/Custom/Wenjuan/EditorView/index.vue"),
+      path: "WenjuanEditorView",
+      name: "WenjuanEditorView",
+      component: () => import("@/views/Custom/Wenjuan/EditorView/IndexView.vue"),
       meta: {
         title: "问卷调查之编辑器",
         imgSrc: "",
@@ -63,9 +63,9 @@ const ROW: RouteRecordRaw = {
       },
     },
     {
-      path: "materials",
-      name: "materials",
-      component: () => import("@/views/Custom/Wenjuan/MaterialsView/index.vue"),
+      path: "WenjuanMaterials",
+      name: "WenjuanMaterials",
+      component: () => import("@/views/Custom/Wenjuan/MaterialsView/IndexView.vue"),
       meta: {
         title: "问卷调查之组件市场",
         imgSrc: "",
@@ -78,7 +78,8 @@ const ROW: RouteRecordRaw = {
         {
           path: "select-group",
           name: "select-group",
-          component: () => import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/index.vue"),
+          component: () =>
+            import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/IndexView.vue"),
           redirect: {
             name: "single-select",
           },
@@ -92,7 +93,7 @@ const ROW: RouteRecordRaw = {
               path: "single-select",
               name: "single-select",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/index.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/IndexView.vue"),
               meta: {
                 title: "单选",
               },
@@ -101,7 +102,7 @@ const ROW: RouteRecordRaw = {
               path: "multi-select",
               name: "multi-select",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/index.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/IndexView.vue"),
               meta: {
                 title: "多选",
               },
@@ -110,7 +111,7 @@ const ROW: RouteRecordRaw = {
               path: "option-select",
               name: "option-select",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/index.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/IndexView.vue"),
               meta: {
                 title: "下拉选择",
               },
@@ -119,7 +120,7 @@ const ROW: RouteRecordRaw = {
               path: "single-pic-select",
               name: "single-pic-select",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/index.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/IndexView.vue"),
               meta: {
                 title: "图片单选题",
               },
@@ -128,7 +129,7 @@ const ROW: RouteRecordRaw = {
               path: "multi-pic-select",
               name: "multi-pic-select",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/index.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/IndexView.vue"),
               meta: {
                 title: "图片多选题",
               },
@@ -138,7 +139,8 @@ const ROW: RouteRecordRaw = {
         {
           path: "input-group",
           name: "input-group",
-          component: () => import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/index.vue"),
+          component: () =>
+            import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/IndexView.vue"),
           meta: {
             title: "问卷调查之文本输入",
             imgSrc: "",
@@ -163,7 +165,7 @@ const ROW: RouteRecordRaw = {
           path: "advanced-group",
           name: "advanced-group",
           component: () =>
-            import("@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/index.vue"),
+            import("@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/IndexView.vue"),
           meta: {
             title: "问卷调查之高级题型",
             imgSrc: "",
@@ -187,7 +189,8 @@ const ROW: RouteRecordRaw = {
         {
           path: "note-group",
           name: "note-group",
-          component: () => import("@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/index.vue"),
+          component: () =>
+            import("@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/IndexView.vue"),
           meta: {
             title: "问卷调查之备注说明",
             imgSrc: "",
@@ -213,7 +216,7 @@ const ROW: RouteRecordRaw = {
           path: "personal-info-group",
           name: "personal-info-group",
           component: () =>
-            import("@/views/Custom/Wenjuan/MaterialsView/PersonalInfoGroupView/index.vue"),
+            import("@/views/Custom/Wenjuan/MaterialsView/PersonalInfoGroupView/IndexView.vue"),
           meta: {
             title: "问卷调查之个人信息",
             imgSrc: "",
@@ -247,7 +250,7 @@ const ROW: RouteRecordRaw = {
           path: "contact-group",
           name: "contact-group",
           component: () =>
-            import("@/views/Custom/Wenjuan/MaterialsView/ContactGroupView/index.vue"),
+            import("@/views/Custom/Wenjuan/MaterialsView/ContactGroupView/IndexView.vue"),
           meta: {
             title: "问卷调查之联系方式",
             imgSrc: "",
@@ -271,6 +274,35 @@ const ROW: RouteRecordRaw = {
       ],
     },
     // #endregion 问卷调查
+
+    {
+      path: "Watermark",
+      name: "Watermark",
+      component: () => import("@/views/Custom/Watermark/IndexView.vue"),
+      meta: {
+        title: "全局水印 + 局部水印",
+        imgSrc: "",
+      },
+    },
+    {
+      path: "FullScreen",
+      name: "FullScreen",
+      component: () => import("@/views/Custom/FullScreen/IndexView.vue"),
+      meta: {
+        title: "全屏",
+        imgSrc: "",
+      },
+    },
+
+    {
+      path: "FullScreen",
+      name: "FullScreen",
+      component: () => import("@/views/Custom/FullScreen/IndexView.vue"),
+      meta: {
+        title: "文件下载",
+        imgSrc: "",
+      },
+    },
   ],
 };
 

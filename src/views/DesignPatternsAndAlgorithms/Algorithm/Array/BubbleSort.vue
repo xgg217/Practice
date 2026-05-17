@@ -1,6 +1,6 @@
 <script setup lang="ts">
 function bubbleSort(arr: number[]) {
-  let n = arr.length;
+  const n = arr.length;
   let swapped = false; // 记录是否发生了交换
 
   // 外层 for 循环控制的是冒泡的次数
@@ -8,10 +8,12 @@ function bubbleSort(arr: number[]) {
     // 内层循环控制的是比较的次数
     // 因为比较是从第一个数字开始
     for (let j = 0; j < n - 1 - i; j++) {
+      // @ts-expect-error 测试1
       if (arr[j] > arr[j + 1]) {
-        // 进行交换
-        let temp = arr[j];
+        const temp = arr[j];
+        // @ts-expect-error 测试1
         arr[j] = arr[j + 1];
+        // @ts-expect-error 测试1
         arr[j + 1] = temp;
         // 发生了交换，置 swapped 为 true
         swapped = true;
@@ -25,7 +27,7 @@ function bubbleSort(arr: number[]) {
   }
 }
 
-let arr = [5, 3, 8, 4, 2];
+const arr = [5, 3, 8, 4, 2];
 bubbleSort(arr);
 console.log(arr);
 </script>

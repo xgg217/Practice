@@ -10,7 +10,7 @@ async function getImageFromLocal(e: Event) {
   const inputEl = e.target as HTMLInputElement;
   if (!inputEl) return;
   if (!inputEl.files?.length) return;
-  const image = inputEl.files[0];
+  const image = inputEl.files[0]!;
   const url = URL.createObjectURL(image);
   src.value = url;
 
@@ -38,7 +38,7 @@ async function getImageFromLocal(e: Event) {
 }
 
 function draw() {
-  resultMap.forEach((rect, link) => {
+  resultMap.forEach((rect) => {
     if (!imgWrapper.value) return;
     const dom = document.createElement("div");
     const { x, y, width, height } = rect;

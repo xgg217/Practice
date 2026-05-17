@@ -14,6 +14,7 @@ const binarySearch = function binarySearch(arr: number[], target: number) {
     if (arr[mid] === target) {
       // 说明找到了
       return mid;
+      // @ts-expect-error 测试1
     } else if (arr[mid] < target) {
       // 目标值在右半部分区域，更新 left
       left = mid + 1;

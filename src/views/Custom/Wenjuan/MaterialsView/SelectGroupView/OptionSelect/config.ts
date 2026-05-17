@@ -1,7 +1,7 @@
 // 下拉 JSON-Schema 配置
 
 // 业务组件
-import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/index.vue";
+import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/IndexView.vue";
 
 // 编辑组件
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";

@@ -8,14 +8,14 @@ const tableData = shallowRef([]);
 // 跳转编辑器
 const onEditorView = () => {
   router.push({
-    name: "CustomWenjuanEditorView",
+    name: "WenjuanEditorView",
   });
 };
 
 // 跳转组件市场
 const onMaterialsView = () => {
   router.push({
-    name: "materials",
+    name: "WenjuanMaterials",
   });
 };
 </script>

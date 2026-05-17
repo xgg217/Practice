@@ -1,7 +1,7 @@
 // 图片单选的 JSON-Schema 配置
 
 // 业务组件
-import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/index.vue";
+import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/IndexView.vue";
 
 // 编辑组件
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";

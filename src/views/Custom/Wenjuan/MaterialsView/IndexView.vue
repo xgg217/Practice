@@ -3,38 +3,41 @@ const route = useRoute();
 
 const arr = [
   {
-    path: "/Custom/materials/select-group",
+    path: "/Custom/WenjuanMaterials/select-group",
     name: "选择",
   },
   {
-    path: "/Custom/materials/input-group",
+    path: "/Custom/WenjuanMaterials/input-group",
     name: "文本输入",
   },
   {
-    path: "/Custom/materials/advanced-group",
+    path: "/Custom/WenjuanMaterials/advanced-group",
     name: "高级题型",
   },
   {
-    path: "/Custom/materials/note-group",
+    path: "/Custom/WenjuanMaterials/note-group",
     name: "备注说明",
   },
   {
-    path: "/Custom/materials/personal-info-group",
+    path: "/Custom/WenjuanMaterials/personal-info-group",
     name: "个人信息",
   },
   {
-    path: "/Custom/materials/contact-group",
+    path: "/Custom/WenjuanMaterials/contact-group",
     name: "联系方式",
   },
 ] as const;
 
 const activeIndex = ref<string>(arr[0].path);
 
-const handleSelect = (key: string, keyPath: string[]) => {};
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log(key);
+  console.log(keyPath);
+};
 
 onMounted(() => {
   // console.log(route.path);
-  const row = arr.find(item => {
+  const row = arr.find((item) => {
     return route.path.startsWith(item.path);
   });
 

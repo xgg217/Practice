@@ -4,7 +4,6 @@ import MaterialsHeaderCmp from "@/views/Custom/Wenjuan/components/MaterialsHeade
 import type { OptionsStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import {
   getTextStatus,
-  getStringStatus,
   getCurrentStatus,
   getStringStatusByCurrentStatus,
   getValueStatus,
@@ -64,16 +63,11 @@ const emitAnswer = () => {
       :descColor="computedState.descColor"
     />
     <div class="flex wrap">
-      <el-radio-group
-        v-model="radioValue"
-        @click.stop
-        class="flex wrap"
-        @change="emitAnswer"
-      >
+      <el-radio-group v-model="radioValue" @click.stop class="flex wrap" @change="emitAnswer">
         <el-radio
           v-for="(item, index) in computedState.options"
           class="picOption flex mb-15"
-          :value="item"
+          :value="item.value"
           :key="index"
         >
           <ImageSelectCmp />

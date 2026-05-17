@@ -1,7 +1,7 @@
 // 图片多选 JSON-Schema 配置
 
 // 业务组件
-import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/index.vue";
+import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/IndexView.vue";
 
 // 编辑组件
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";

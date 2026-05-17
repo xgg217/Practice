@@ -36,7 +36,7 @@ const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
       console.warn("No file selected");
       return;
     }
-    const file = target.files[0];
+    const file = target.files[0]!;
 
     // 校验
     {
