@@ -1,17 +1,17 @@
 <!-- 高级题型 -->
 <script setup lang="ts">
-import Layout from "@/views/Custom/Wenjuan/MaterialsView/Layout.vue";
+import LayoutView from "@/views/Custom/Wenjuan/MaterialsView/LayoutView.vue";
 </script>
 
 <template>
-  <Layout>
+  <LayoutView>
     <Router-link
       class="link-item mb-15"
       exact-active-class="link-item-active"
-      to="/Custom/materials/advanced-group/advanced"
+      to="/Custom/WenjuanMaterials/advanced-group/advanced"
       >高级题型</Router-link
     >
-  </Layout>
+  </LayoutView>
 </template>
 
 <style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>

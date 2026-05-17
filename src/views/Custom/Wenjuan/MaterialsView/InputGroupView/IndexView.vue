@@ -1,17 +1,17 @@
 <!-- 文本输入 -->
 <script setup lang="ts">
-import Layout from "@/views/Custom/Wenjuan/MaterialsView/Layout.vue";
+import LayoutView from "@/views/Custom/Wenjuan/MaterialsView/LayoutView.vue";
 </script>
 
 <template>
-  <Layout>
+  <LayoutView>
     <Router-link
       class="link-item mb-15"
       exact-active-class="link-item-active"
-      to="/Custom/materials/input-group/text-input"
+      to="/Custom/WenjuanMaterials/input-group/text-input"
       >文本输入</Router-link
     >
-  </Layout>
+  </LayoutView>
 </template>
 
 <style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>

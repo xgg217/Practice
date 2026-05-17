@@ -11,3 +11,31 @@ main {
   width: 100%;
   box-sizing: border-box;
 }
+
+.flex {
+  display: flex;
+}
+
+.self-start {
+  align-items: self-start;
+}
+
+.self-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}

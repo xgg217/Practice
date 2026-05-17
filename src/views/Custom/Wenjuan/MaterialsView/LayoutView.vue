@@ -42,20 +42,17 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
       if (typeof value !== "string") {
         console.error("类型错误，要求类型为 string");
       } else {
-        // @ts-ignore
+        // @ts-expect-error 测试1
         store.setTextStatus(status[key], value);
       }
       break;
     case "options":
-      // @ts-ignore
+      // @ts-expect-error 测试1
       if (IsOptionsStatus(status)) {
         console.log(1);
 
         // 删除
         if (typeof value === "number") {
-          console.log(111);
-
-          // @ts-ignore
           const iBool = store.removeOption(status[key], value);
           if (!iBool) {
             ElMessage.error("至少保留两个选项");

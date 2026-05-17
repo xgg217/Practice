@@ -66,7 +66,12 @@ onMounted(() => {
 
       <!-- 路由出口 -->
       <div class="coms">
-        <RouterView />
+        <!-- <RouterView /> -->
+        <RouterView v-slot="{ Component }">
+          <Transition name="el-fade-in-linear" mode="out-in">
+            <component :is="Component" :key="$route.path" />
+          </Transition>
+        </RouterView>
       </div>
     </div>
   </div>

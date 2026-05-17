@@ -35,32 +35,32 @@ const props = withDefaults(
       <h2
         class="title font-weight-100"
         :style="{
-          fontSize: `${titleSize}px`,
-          color: titleColor,
+          fontSize: `${props.titleSize}px`,
+          color: props.titleColor,
         }"
       >
-        <span class="mr-10">{{ serialNum }}.</span>
+        <span class="mr-10">{{ props.serialNum }}.</span>
         <span
           :class="{
-            'font-bold': !titleWeight,
-            'font-italic': !titleItalic,
+            'font-bold': !props.titleWeight,
+            'font-italic': !props.titleItalic,
           }"
-          >{{ title }}</span
+          >{{ props.title }}</span
         >
       </h2>
       <!-- 描述 -->
       <div
         class="desc"
         :class="{
-          'font-bold': !descWeight,
-          'font-italic': !descItalic,
+          'font-bold': !props.descWeight,
+          'font-italic': !props.descItalic,
         }"
         :style="{
-          fontSize: `${descSize}px`,
-          color: descColor,
+          fontSize: `${props.descSize}px`,
+          color: props.descColor,
         }"
       >
-        {{ desc }}
+        {{ props.desc }}
       </div>
     </div>
   </div>
