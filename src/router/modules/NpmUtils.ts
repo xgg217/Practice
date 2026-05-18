@@ -244,6 +244,14 @@ const ROW: RouteRecordRaw = {
             title: "RxJS 过滤 Filtering",
           },
         },
+        {
+          path: "HigherOrderAndFlattening",
+          name: "HigherOrderAndFlattening",
+          component: () => import("@/views/NpmUtils/RXJS/HigherOrderAndFlattening/IndexView.vue"),
+          meta: {
+            title: "高阶操作符",
+          },
+        },
       ],
     },
     // #endregion RXJS

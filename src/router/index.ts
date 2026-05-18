@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import Layout from "@/layout/IndexView.vue";
-import HTML from "./modules/HTMLS";
-import CSS from "./modules/CSSS";
+import HTML from "./modules/HTMLCmp";
+import CSS from "./modules/CSSCmp";
 import WebAPI from "./modules/WebAPI";
 import NpmUtils from "./modules/NpmUtils";
 
