@@ -10,6 +10,7 @@
         <component :is="Component" :status="currentCom.status" :serialNum="1" />
       </Router-View>
     </div>
+
     <!-- 编辑面板 -->
     <div class="right">
       <EditPannel :com="currentCom" />

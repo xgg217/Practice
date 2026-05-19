@@ -1,12 +1,6 @@
 // 组件市场里面所有组件状态的仓库
 import { defineStore } from "pinia";
-import {
-  setTextStatus,
-  removeOption,
-  addOption,
-  setPosition,
-  setCurrentStatus,
-} from "./actions";
+import { setTextStatus, removeOption, addOption, setPosition, setCurrentStatus } from "./actions";
 import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
 import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/config";
 import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/config";
@@ -44,7 +38,9 @@ export const useMaterialStore = defineStore("materialStore", {
     // 编辑器状态更新
     setCurrentMatrialCom(comName: string) {
       // this.currentMaterialCom = comName;
-      // @ts-ignore
+      console.log(comName);
+
+      // @ts-expect-error 测试中
       if (this.coms[comName]) {
         this.currentMaterialCom = comName;
       }
