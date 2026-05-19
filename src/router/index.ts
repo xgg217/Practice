@@ -3,6 +3,8 @@ import HomeView from "@/views/HomeView.vue";
 import Layout from "@/layout/IndexView.vue";
 import HTML from "./modules/HTMLCmp";
 import CSS from "./modules/CSSCmp";
+import DesignPatternsAndAlgorithms from "./modules/DesignPatternsAndAlgorithms";
+import custom from "./modules/custom";
 import WebAPI from "./modules/WebAPI";
 import NpmUtils from "./modules/NpmUtils";
 
@@ -64,8 +66,14 @@ export const routes = [
       // webapi
       WebAPI,
 
-      // npm utils
+      // 设计模式、算法、数据结构
+      DesignPatternsAndAlgorithms,
+
+      // 第三方库使用
       NpmUtils,
+
+      // 自定义项目
+      custom,
     ],
   },
   {

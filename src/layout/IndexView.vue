@@ -23,9 +23,9 @@ onMounted(() => {
 
     <aside>
       <RouterView v-slot="{ Component }">
-        <Transition name="el-zoom-in-center" mode="out-in">
-          <component :is="Component" :key="$route.path" />
-        </Transition>
+        <!-- <Transition name="el-zoom-in-center" mode="out-in"> -->
+        <component :is="Component" :key="$route.path" />
+        <!-- </Transition> -->
       </RouterView>
     </aside>
   </main>
