@@ -13,7 +13,7 @@ import { interval, Subject, takeUntil } from "rxjs";
 
   // 4. 5秒后发送停止信号
   setTimeout(() => {
-    stop$.next(); // 发信号 → 立即停止订阅！
+    stop$.next(undefined); // 发信号 → 立即停止订阅！
   }, 5000);
 }
 </script>
