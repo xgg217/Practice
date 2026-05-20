@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { Upload, ZoomIn, Delete } from "@element-plus/icons-vue";
+import { ElMessage } from "element-plus";
 
 // 图片上传
 const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
   const inputRef = ref<HTMLInputElement>();
-  const MAX_SIZE = 5 * 1024 * 1024;
+  const fize = 5;
+  const MAX_SIZE = fize * 1024 * 1024;
   const IMAGE_TYPE = Object.freeze([".png", ".gif", ".jpeg", ".jpg"]);
   const acceptStr = computed(() => {
     return IMAGE_TYPE.join(",");
@@ -14,12 +16,14 @@ const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
   const check = (file: File) => {
     // 添加文件验证逻辑
     if (!IMAGE_TYPE.includes("." + file.name.split(".").pop()?.toLowerCase())) {
-      console.error("Invalid file type");
+      console.error("文件格式错误");
+      ElMessage.error("文件格式错误");
       return false;
     }
 
     if (file.size > MAX_SIZE) {
       console.error("File size exceeds limit");
+      ElMessage.error(`请选择图片小于 ${fize}M 的图片`);
       return false;
     }
     return true;
@@ -42,6 +46,8 @@ const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
     {
       const isBool = check(file);
       if (!isBool) {
+        // @ts-expect-error 清空数据
+        inputRef.value.value = null;
         return;
       }
     }

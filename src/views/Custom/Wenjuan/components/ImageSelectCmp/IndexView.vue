@@ -1,5 +1,20 @@
 <script setup lang="ts">
 import UploadImgCmp from "./UploadImgCmp.vue";
+
+const props = withDefaults(
+  defineProps<{
+    picTitle?: string;
+    picDesc?: string;
+    value?: string;
+    index?: number;
+  }>(),
+  {
+    picTitle: "",
+    picDesc: "",
+    value: "",
+    index: 0,
+  },
+);
 </script>
 
 <template>
@@ -8,8 +23,10 @@ import UploadImgCmp from "./UploadImgCmp.vue";
       <UploadImgCmp />
     </div>
     <div class="text">
-      <p>啊大师风范地方 第三方 士大夫第三方</p>
-      <p>备注说明</p>
+      <p>{{ props.picTitle }}</p>
+
+      <!-- 备注说明 -->
+      <p>{{ props.picDesc }}</p>
     </div>
   </div>
 </template>

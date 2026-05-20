@@ -9,7 +9,7 @@ import {
   getValueStatus,
 } from "@/views/Custom/Wenjuan/utils/index";
 import type { PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-import ImageSelectCmp from "@/views/Custom/Wenjuan/components/ImageSelectCmp/index.vue";
+import ImageSelectCmp from "@/views/Custom/Wenjuan/components/ImageSelectCmp/IndexView.vue";
 
 const props = defineProps<{
   serialNum: number;
@@ -67,10 +67,10 @@ const emitAnswer = () => {
         <el-radio
           v-for="(item, index) in computedState.options"
           class="picOption flex mb-15"
-          :value="item.value"
+          :value="item.picTitle"
           :key="index"
         >
-          <ImageSelectCmp />
+          <ImageSelectCmp :key="index" v-bind="{ ...item, index }" />
         </el-radio>
       </el-radio-group>
     </div>
