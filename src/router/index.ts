@@ -28,7 +28,7 @@ export const routes = [
         name: "Test",
         component: () => import("@/views/TestView.vue"),
         meta: {
-          title: "测试",
+          title: "测试菜单",
         },
       },
       {
