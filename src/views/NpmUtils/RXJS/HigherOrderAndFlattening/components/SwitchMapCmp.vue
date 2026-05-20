@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {
-  fromEvent,
-  map,
-  filter,
-  debounceTime,
-  distinctUntilChanged,
-  switchMap,
-  from,
-  catchError,
-  of,
+  // fromEvent,
+  // map,
+  // filter,
+  // debounceTime,
+  // distinctUntilChanged,
+  // switchMap,
+  // from,
+  // catchError,
+  // of,
   Subject,
   tap,
 } from "rxjs";
@@ -17,7 +17,7 @@ const keyword = ref("");
 
 const inputRef = useTemplateRef("inputRef");
 
-const search$ = new Subject<string>();
+// const search$ = new Subject<string>();
 // .pipe(
 //   map((e: Event) => (e.target as HTMLInputElement).value.trim()), // 取值并去除两端空白
 //   filter((text) => text.length > 0), // 过滤空输入
