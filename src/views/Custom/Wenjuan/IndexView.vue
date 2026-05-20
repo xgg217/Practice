@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Plus, House } from "@element-plus/icons-vue";
 import type { TItem } from "./types";
+// import { ROUTE_NAME_EDITOR, ROUTE_NAME_MATERIALS, setStorage } from "./utils/index";
 
 const router = useRouter();
 
@@ -11,6 +12,8 @@ const onEditorView = () => {
   router.push({
     name: "WenjuanEditorView",
   });
+
+  // setStorage(ROUTE_NAME_EDITOR);
 };
 
 // 跳转组件市场
@@ -18,6 +21,8 @@ const onMaterialsView = () => {
   router.push({
     name: "WenjuanMaterials",
   });
+
+  // setStorage(ROUTE_NAME_MATERIALS);
 };
 
 // 详情

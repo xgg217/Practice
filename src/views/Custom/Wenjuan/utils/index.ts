@@ -135,3 +135,21 @@ export function getValueStatus(props: OptionsProps) {
 //     }
 //   });
 // };
+
+export const { ROUTE_NAME_EDITOR, ROUTE_NAME_MATERIALS, setStorage } = (() => {
+  const activeView = "activeView";
+
+  const ROUTE_NAME_EDITOR = "route_editor"; // 问卷-编辑器
+  const ROUTE_NAME_MATERIALS = "route_materials"; // 问卷-组件市场
+
+  // 存储当前激活的路由
+  const setStorage = (name: string) => {
+    localStorage.setItem(activeView, name);
+  };
+
+  return {
+    ROUTE_NAME_EDITOR,
+    ROUTE_NAME_MATERIALS,
+    setStorage,
+  };
+})();

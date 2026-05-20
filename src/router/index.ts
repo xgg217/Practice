@@ -7,6 +7,7 @@ import DesignPatternsAndAlgorithms from "./modules/DesignPatternsAndAlgorithms";
 import custom from "./modules/custom";
 import WebAPI from "./modules/WebAPI";
 import NpmUtils from "./modules/NpmUtils";
+import emitter from "@/mitt";
 
 export const routes = [
   {
@@ -88,6 +89,23 @@ export const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  // 设置标题
+  document.title = to.meta.title as string;
+
+  console.log(to);
+  {
+    // 只有问卷调查-组件市场才需要
+    // 根据路由切换组件
+    if (to.path.includes("/Custom/WenjuanMaterials") && to.name) {
+      // 在仓库中处理
+      emitter.emit("VIEW:custom_WenjuanMaterials", to.name as string);
+    }
+  }
+
+  next();
 });
 
 export default router;

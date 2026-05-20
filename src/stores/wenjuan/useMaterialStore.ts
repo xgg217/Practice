@@ -1,11 +1,20 @@
 // 组件市场里面所有组件状态的仓库
 import { defineStore } from "pinia";
-import { setTextStatus, removeOption, addOption, setPosition, setCurrentStatus } from "./actions";
+import {
+  setTextStatus,
+  removeOption,
+  addOption,
+  setPosition,
+  setCurrentStatus,
+  setPicLinkByIndex,
+} from "./actions";
 import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
 import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/config";
 import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/config";
 import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/config";
 import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/config";
+import emitter from "@/mitt";
+import { ElMessage } from "element-plus";
 
 export const useMaterialStore = defineStore("materialStore", {
   state: () => ({
@@ -45,5 +54,20 @@ export const useMaterialStore = defineStore("materialStore", {
         this.currentMaterialCom = comName;
       }
     },
+
+    setPicLinkByIndex,
   },
+});
+
+const store = useMaterialStore();
+
+// 接受事件总线派发的事件
+emitter.on("VIEW:custom_WenjuanMaterials", (name: string) => {
+  if (!Object.hasOwn(store.coms, name)) {
+    console.error("当前路由不在 业务组件内，无法匹配");
+    ElMessage.error("当前路由不在 业务组件内，无法匹配");
+    return;
+  }
+
+  store.setCurrentMatrialCom(name);
 });

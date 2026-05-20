@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
-import { useMaterialStore } from "@/stores/wenjuan/materialStore";
+import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 import EditPannel from "@/views/Custom/Wenjuan/components/EditItems/EditPannel.vue";
 import { IsOptionsStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import { ElMessage } from "element-plus";
@@ -64,7 +64,6 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
         }
 
         // 新增
-
         store.addOption(status[key]);
       }
       break;
