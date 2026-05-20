@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Plus, House } from "@element-plus/icons-vue";
+import type { TItem } from "./types";
 
 const router = useRouter();
 
-const tableData = shallowRef([]);
+const tableData = shallowRef<TItem[]>([]);
 
 // 跳转编辑器
 const onEditorView = () => {
@@ -17,6 +18,11 @@ const onMaterialsView = () => {
   router.push({
     name: "WenjuanMaterials",
   });
+};
+
+// 详情
+const onInfo = (row: TItem) => {
+  console.log(row);
 };
 </script>
 
@@ -35,8 +41,8 @@ const onMaterialsView = () => {
       <el-table-column prop="createDate" label="创建日期" width="170" align="center" />
       <el-table-column prop="Date" label="更新时间" width="170" align="center" />
       <el-table-column label="操作" fixed="right" width="180" align="center">
-        <template #default="scope">
-          <el-button size="small">查看</el-button>
+        <template #default="{ row }">
+          <el-button size="small" @click="onInfo(row)">查看</el-button>
           <el-button size="small" type="danger">编辑</el-button>
           <el-button size="small" type="danger">删除</el-button>
         </template>
