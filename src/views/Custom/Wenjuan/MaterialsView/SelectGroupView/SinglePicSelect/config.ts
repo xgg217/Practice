@@ -41,12 +41,12 @@ export default function () {
         status: [
           {
             picTitle: "图片标题1",
-            picDesc: "图片描述1",
+            picDesc: "说明(选填，限24字)",
             value: "",
           },
           {
             picTitle: "图片标题2",
-            picDesc: "图片描述2",
+            picDesc: "说明(选填，限24字)",
             value: "",
           },
         ],

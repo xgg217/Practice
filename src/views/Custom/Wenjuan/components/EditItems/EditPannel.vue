@@ -18,8 +18,4 @@ const props = defineProps<{
   padding: 30px;
   background-color: var(--bg-color);
 }
-
-.mb-20 {
-  margin-bottom: 20px;
-}
 </style>
