@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useTemplateRef, onMounted } from "vue";
-
 const cloudRef = useTemplateRef("cloudRef");
 
 // let animate: Animation;
@@ -56,7 +54,7 @@ const run = () => {
       duration: getRandom(1600, 3000),
       easing: "linear",
       fill: "forwards",
-    }
+    },
   );
 
   animate.onfinish = function () {
@@ -150,7 +148,9 @@ onMounted(() => {
 
   text-transform: uppercase;
   color: var(--primary-color);
-  text-shadow: 0 0 5px var(--primary-color), 0 0 15px var(--primary-color),
+  text-shadow:
+    0 0 5px var(--primary-color),
+    0 0 15px var(--primary-color),
     0 0 30px var(--primary-color);
   transform-origin: bottom;
 }

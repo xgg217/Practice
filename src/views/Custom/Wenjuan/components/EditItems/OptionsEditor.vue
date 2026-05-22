@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from "vue";
 import { Plus, Minus } from "@element-plus/icons-vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";

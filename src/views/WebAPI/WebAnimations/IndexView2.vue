@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useTemplateRef, onMounted, ref } from "vue";
-
 const cardRef = useTemplateRef("cardRef");
 
 let animate: Animation;
 
-const val = ref(0);
+// const val = ref(0);
 
 // 开始
 const onStart = () => {
@@ -48,7 +46,7 @@ onMounted(() => {
     {
       duration: 3000,
       fill: "forwards",
-    }
+    },
   );
 });
 </script>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useTemplateRef, onMounted, ref } from "vue";
-
 const cardRef = useTemplateRef("cardRef");
 
 let animate: Animation;
@@ -17,7 +15,7 @@ onMounted(() => {
     ],
     {
       duration: 2000,
-    }
+    },
   );
 });
 

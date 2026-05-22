@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from "vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 const props = defineProps<{

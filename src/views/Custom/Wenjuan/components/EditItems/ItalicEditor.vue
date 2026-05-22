@@ -1,5 +1,5 @@
 <template>
-  <!-- <div>字体倾斜编辑组件</div> -->
+  <!-- 字体倾斜编辑组件 -->
   <div class="position">
     <p>{{ props.editName }}</p>
     <el-radio-group v-model="radio" @change="(val) => changePosition(val as string)">
