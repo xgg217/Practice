@@ -13,7 +13,6 @@ import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/Mu
 import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/config";
 import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/config";
 import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/config";
-import emitter from "@/mitt";
 import { ElMessage } from "element-plus";
 
 export const useMaterialStore = defineStore("materialStore", {
@@ -44,14 +43,13 @@ export const useMaterialStore = defineStore("materialStore", {
 
     setCurrentStatus,
 
-    // 编辑器状态更新
+    // 编辑器 显示 状态更新
     setCurrentMatrialCom(comName: string) {
-      // this.currentMaterialCom = comName;
-      console.log(comName);
-
-      // @ts-expect-error 测试中
-      if (this.coms[comName]) {
+      if (Object.hasOwn(this.coms, comName)) {
         this.currentMaterialCom = comName;
+      } else {
+        console.error("当前路由不在 业务组件内，无法匹配");
+        ElMessage.error("当前路由不在 业务组件内，无法匹配");
       }
     },
 

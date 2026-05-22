@@ -7,8 +7,9 @@ import DesignPatternsAndAlgorithms from "./modules/DesignPatternsAndAlgorithms";
 import custom from "./modules/custom";
 import WebAPI from "./modules/WebAPI";
 import NpmUtils from "./modules/NpmUtils";
-import emitter from "@/mitt";
+import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 
+// #region 路由
 export const routes = [
   {
     path: "/",

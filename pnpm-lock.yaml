@@ -50,9 +50,6 @@ importers:
       jszip:
         specifier: ^3.10.1
         version: 3.10.1
-      mitt:
-        specifier: ^3.0.1
-        version: 3.0.1
       p-limit:
         specifier: ^7.3.0
         version: 7.3.0
