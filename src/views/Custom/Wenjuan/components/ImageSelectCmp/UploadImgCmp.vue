@@ -52,6 +52,8 @@ const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
       }
     }
     imgUrl.value = window.URL.createObjectURL(file);
+    // @ts-expect-error 清空数据
+    inputRef.value.value = null;
   };
 
   return { inputRef, acceptStr, onImgUploadClick, onImgUploadChange };

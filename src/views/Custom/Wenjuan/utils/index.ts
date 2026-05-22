@@ -44,6 +44,7 @@ export function getStringStatus(props: OptionsProps) {
   if (props && isStringArray(props.status)) {
     return props.status;
   }
+  return [];
 }
 
 // export function getPicTitleDescStatusArr(props: OptionsProps) {
