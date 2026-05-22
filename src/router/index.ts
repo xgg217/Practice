@@ -14,6 +14,9 @@ export const routes = [
     path: "/",
     // name: "Home",
     component: Layout,
+    redirect: {
+      name: "Home",
+    },
 
     children: [
       {
