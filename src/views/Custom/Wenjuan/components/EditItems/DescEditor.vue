@@ -1,5 +1,5 @@
 <template>
-  <div key="id">
+  <div :key="props.id">
     <div class="mb-10">描述内容</div>
     <el-input
       :rows="5"

@@ -56,16 +56,3 @@ export const useMaterialStore = defineStore("materialStore", {
     setPicLinkByIndex,
   },
 });
-
-const store = useMaterialStore();
-
-// 接受事件总线派发的事件
-emitter.on("VIEW:custom_WenjuanMaterials", (name: string) => {
-  if (!Object.hasOwn(store.coms, name)) {
-    console.error("当前路由不在 业务组件内，无法匹配");
-    ElMessage.error("当前路由不在 业务组件内，无法匹配");
-    return;
-  }
-
-  store.setCurrentMatrialCom(name);
-});

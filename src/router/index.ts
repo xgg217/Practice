@@ -89,27 +89,30 @@ export const routes = [
     },
   },
 ];
+// #endregion 路由
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   // 设置标题
   document.title = to.meta.title as string;
 
-  console.log(to);
   {
     // 只有问卷调查-组件市场才需要
     // 根据路由切换组件
     if (to.path.includes("/Custom/WenjuanMaterials") && to.name) {
+      // 文件调查仓库
+      const store = useMaterialStore();
+
       // 在仓库中处理
-      emitter.emit("VIEW:custom_WenjuanMaterials", to.name as string);
+      store.setCurrentMatrialCom(to.name as string);
     }
   }
 
-  next();
+  return true;
 });
 
 export default router;
