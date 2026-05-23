@@ -18,7 +18,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <div class="img-box" @click.stop>
+  <div class="img-box mb-5" @click.stop>
     <div class="img">
       <UploadImgCmp />
     </div>
@@ -51,7 +51,7 @@ const props = withDefaults(
 }
 
 .text {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   flex-grow: 1;
   display: flex;
   flex-direction: column;

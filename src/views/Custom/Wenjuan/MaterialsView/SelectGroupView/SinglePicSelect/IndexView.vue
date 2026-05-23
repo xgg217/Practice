@@ -7,6 +7,7 @@ import {
   getCurrentStatus,
   getStringStatusByCurrentStatus,
   getValueStatus,
+  getPicTitleDescStatusArr,
 } from "@/views/Custom/Wenjuan/utils/index";
 import type { PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
 import ImageSelectCmp from "@/views/Custom/Wenjuan/components/ImageSelectCmp/IndexView.vue";
@@ -20,7 +21,7 @@ const computedState = computed(() => ({
   title: getTextStatus(props.status.title),
   desc: getTextStatus(props.status.desc),
   options: getValueStatus(props.status.options) as PicTitleDescStatusArr,
-  position: getCurrentStatus(props.status.position),
+  position: getPicTitleDescStatusArr(props.status.position),
   titleSize: getStringStatusByCurrentStatus(props.status.titleSize),
   descSize: getStringStatusByCurrentStatus(props.status.descSize),
   titleWeight: getCurrentStatus(props.status.titleWeight),

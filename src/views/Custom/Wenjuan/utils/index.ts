@@ -25,6 +25,7 @@ import {
   isOptionsProps,
   isValueStatusArray,
   isPicTitleDescArray,
+  isPicTitleDescStatusArr,
 } from "@/views/Custom/Wenjuan/types/editProps";
 
 import type { Status } from "@/views/Custom/Wenjuan/types/common";
@@ -47,11 +48,12 @@ export function getStringStatus(props: OptionsProps) {
   return [];
 }
 
-// export function getPicTitleDescStatusArr(props: OptionsProps) {
-//   if (props && isPicTitleDescStatusArr(props.status)) {
-//     return props.status;
-//   }
-// }
+export function getPicTitleDescStatusArr(props: OptionsProps) {
+  if (props && isPicTitleDescStatusArr(props.status)) {
+    return props.status;
+  }
+  return [];
+}
 
 export function getCurrentStatus(props: OptionsProps) {
   return props.currentStatus;
