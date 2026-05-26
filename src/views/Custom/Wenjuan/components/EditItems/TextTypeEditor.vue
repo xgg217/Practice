@@ -33,6 +33,7 @@ const props = defineProps<{
   editCom: VueComType;
 }>();
 const updateStatus = inject<UpdateStatus>("updateStatus");
+
 const changeType = (type: number) => {
   if (updateStatus) updateStatus(props.configKey, type);
 };

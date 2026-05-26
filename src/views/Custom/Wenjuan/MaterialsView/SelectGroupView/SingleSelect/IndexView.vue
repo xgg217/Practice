@@ -62,12 +62,9 @@ const emitAnswer = () => {
     />
     <div class="radio-group">
       <el-radio-group v-model="radioValue" @click.stop @change="emitAnswer">
-        <el-radio
-          v-for="(item, index) in computedState.options"
-          :value="item"
-          :key="index"
-          >{{ item }}</el-radio
-        >
+        <el-radio v-for="(item, index) in computedState.options" :value="item" :key="index">{{
+          item
+        }}</el-radio>
       </el-radio-group>
     </div>
   </div>

@@ -4,6 +4,7 @@
     <div class="left">
       <slot />
     </div>
+
     <!-- 显示对应的业务组件 -->
     <div class="center">
       <Router-View v-slot="{ Component }">
@@ -22,9 +23,10 @@
 import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
 import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 import EditPannel from "@/views/Custom/Wenjuan/components/EditItems/EditPannel.vue";
-import { IsOptionsStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import { IsOptionsStatus, type BaseStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import { ElMessage } from "element-plus";
 import type { OptionsProps, TextProps } from "@/views/Custom/Wenjuan/types/editProps";
+import { GET_LINK, type ImgProps } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
 
 // 数据仓库
 const store = useMaterialStore() as unknown as MaterialStore;
@@ -36,78 +38,176 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
   // console.log(key, value);
   const status = currentCom.value.status;
 
-  // store.setTextStatus
-  switch (key) {
-    case "title":
-    case "desc":
+  const setType = {
+    // 标题
+    title: () => {
       if (typeof value !== "string") {
         console.error("类型错误，要求类型为 string");
       } else {
         // @ts-expect-error 测试1
         store.setTextStatus(status[key], value);
       }
-      break;
-    case "options":
-      // @ts-expect-error 测试1
-      if (IsOptionsStatus(status)) {
-        console.log(1);
+    },
 
+    // 描述内容
+    desc: () => setType["title"](),
+
+    // 选项
+    options: () => {
+      if (IsOptionsStatus(status as unknown as BaseStatus)) {
         // 删除
         if (typeof value === "number") {
-          const iBool = store.removeOption(status[key], value);
+          const iBool = store.removeOption(status[key] as OptionsProps, value);
           if (!iBool) {
             ElMessage.error("至少保留两个选项");
           } else {
             ElMessage.success("删除成功");
           }
-          break;
+          return;
         }
 
         // 新增
-        store.addOption(status[key]);
+        store.addOption(status[key] as OptionsProps);
       }
-      break;
-    case "position":
+    },
+
+    // 选项位置
+    position: () => {
       if (typeof value !== "number") {
         console.error("类型错误，要求类型为 number");
         return;
       }
       store.setPosition(status[key] as OptionsProps, value);
-      break;
-    case "titleSize":
-    case "descSize":
+    },
+
+    // 标题大小
+    titleSize: () => {
       if (typeof value !== "number") {
         console.error("类型错误，要求类型为 number");
         return;
       }
       store.setCurrentStatus(status[key] as OptionsProps, value);
-      break;
-    case "titleWeight":
-    case "descWeight":
-      if (typeof value === "number") {
-        store.setCurrentStatus(status[key] as OptionsProps, value);
-        break;
-      }
-      break;
+    },
 
-    case "titleItalic":
-    case "descItalic":
+    // 描述内容大小
+    descSize: () => setType["titleSize"](),
+
+    titleWeight: () => {
       if (typeof value === "number") {
         store.setCurrentStatus(status[key] as OptionsProps, value);
-        break;
       }
-      break;
-    case "titleColor":
-    case "descColor":
+    },
+
+    // 描述内容粗细
+    descWeight: () => setType["titleWeight"](),
+
+    // 标题斜体
+    titleItalic: () => {
+      if (typeof value === "number") {
+        store.setCurrentStatus(status[key] as OptionsProps, value);
+      }
+    },
+
+    // 描述内容斜体
+    descItalic: () => setType["titleItalic"](),
+
+    // 标题颜色
+    titleColor: () => {
       if (typeof value === "string") {
         store.setTextStatus(status[key] as TextProps, value);
-        break;
       }
-      break;
+    },
+
+    // 描述内容颜色
+    descColor: () => setType["titleColor"](),
+
+    // 默认值
+    defaultValue: () => {
+      console.error("未适配");
+    },
+  };
+
+  if (Object.hasOwn(setType, key)) {
+    setType[key as keyof typeof setType]();
+  } else {
+    setType["defaultValue"]();
   }
+
+  // store.setTextStatus
+  // switch (key) {
+  //   case "title":
+  //   case "desc":
+  //     if (typeof value !== "string") {
+  //       console.error("类型错误，要求类型为 string");
+  //     } else {
+  //       // @ts-expect-error 测试1
+  //       store.setTextStatus(status[key], value);
+  //     }
+  //     break;
+  //   case "options":
+  //     // @ts-expect-error 测试1
+  //     if (IsOptionsStatus(status)) {
+  //       // 删除
+  //       if (typeof value === "number") {
+  //         const iBool = store.removeOption(status[key], value);
+  //         if (!iBool) {
+  //           ElMessage.error("至少保留两个选项");
+  //         } else {
+  //           ElMessage.success("删除成功");
+  //         }
+  //         break;
+  //       }
+
+  //       // 新增
+  //       store.addOption(status[key]);
+  //     }
+  //     break;
+  //   case "position":
+  //     if (typeof value !== "number") {
+  //       console.error("类型错误，要求类型为 number");
+  //       break;
+  //     }
+  //     store.setPosition(status[key] as OptionsProps, value);
+  //     break;
+  //   case "titleSize":
+  //   case "descSize":
+  //     if (typeof value !== "number") {
+  //       console.error("类型错误，要求类型为 number");
+  //       break;
+  //     }
+  //     store.setCurrentStatus(status[key] as OptionsProps, value);
+  //     break;
+  //   case "titleWeight":
+  //   case "descWeight":
+  //     if (typeof value === "number") {
+  //       store.setCurrentStatus(status[key] as OptionsProps, value);
+  //       break;
+  //     }
+  //     break;
+
+  //   case "titleItalic":
+  //   case "descItalic":
+  //     if (typeof value === "number") {
+  //       store.setCurrentStatus(status[key] as OptionsProps, value);
+  //       break;
+  //     }
+  //     break;
+  //   case "titleColor":
+  //   case "descColor":
+  //     if (typeof value === "string") {
+  //       store.setTextStatus(status[key] as TextProps, value);
+  //       break;
+  //     }
+  //     break;
+  // }
+};
+
+const getLink = (row: ImgProps) => {
+  console.log("getLink", row);
 };
 
 provide("updateStatus", updateStatus);
+provide(GET_LINK, getLink);
 </script>
 
 <style scoped>

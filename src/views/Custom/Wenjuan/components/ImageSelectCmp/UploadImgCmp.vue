@@ -2,9 +2,21 @@
 import { Upload, ZoomIn, Delete } from "@element-plus/icons-vue";
 import { ElMessage } from "element-plus";
 
+const props = defineProps<{
+  value: string;
+}>();
+
+const emit = defineEmits<{
+  change: [newVal: string];
+}>();
+
+// const model = defineModel<string>({
+//   required: true,
+// }); // 图片地址
+
 // 图片上传
 const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
-  const inputRef = ref<HTMLInputElement>();
+  const inputRef = useTemplateRef<HTMLInputElement>("inputRef");
   const fize = 5;
   const MAX_SIZE = fize * 1024 * 1024;
   const IMAGE_TYPE = Object.freeze([".png", ".gif", ".jpeg", ".jpg"]);
@@ -51,9 +63,36 @@ const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
         return;
       }
     }
-    imgUrl.value = window.URL.createObjectURL(file);
-    // @ts-expect-error 清空数据
-    inputRef.value.value = null;
+    console.log(inputRef.value);
+
+    // 转成 Base64
+    {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const result = reader.result as string;
+        // console.log("result", result);
+        imgUrl.value = result;
+        emit("change", result);
+      };
+
+      reader.onerror = (error) => {
+        console.error("Error reading file:", error);
+        ElMessage.error("读取文件失败");
+      };
+
+      reader.onloadend = () => {
+        // inputRef.value.value = null;
+        if (inputRef.value && inputRef.value.value) {
+          inputRef.value.value = "";
+        }
+      };
+    }
+
+    // imgUrl.value = window.URL.createObjectURL(file);
+    // emit("change", imgUrl.value);
+    // // @ts-expect-error 清空数据
+    // inputRef.value.value = null;
   };
 
   return { inputRef, acceptStr, onImgUploadClick, onImgUploadChange };
@@ -61,7 +100,7 @@ const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
 
 // 图片查看 图片删除
 const { imgUrl, srcList, isPreview, onImgInfo, onImgDel } = (() => {
-  const imgUrl = ref("");
+  const imgUrl = ref(props.value);
   const srcList = ref<string[]>([]);
   const isPreview = ref(false);
 
@@ -75,11 +114,12 @@ const { imgUrl, srcList, isPreview, onImgInfo, onImgDel } = (() => {
   // 删除
   const onImgDel = () => {
     imgUrl.value = "";
+    emit("change", "");
   };
 
   return {
-    srcList,
     imgUrl,
+    srcList,
     isPreview,
     onImgInfo,
     onImgDel,

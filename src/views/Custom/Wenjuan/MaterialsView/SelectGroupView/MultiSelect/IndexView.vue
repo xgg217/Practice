@@ -1,4 +1,4 @@
-<!-- 多选 -->
+<!-- 多选题 -->
 <script setup lang="ts">
 import MaterialsHeaderCmp from "@/views/Custom/Wenjuan/components/MaterialsHeaderCmp.vue";
 import type { OptionsStatus } from "@/views/Custom/Wenjuan/types/editProps";
@@ -62,12 +62,9 @@ const emitAnswer = () => {
     />
     <div class="radio-group">
       <el-checkbox-group v-model="radioValue" @click.stop @change="emitAnswer">
-        <el-checkbox
-          v-for="(item, index) in computedState.options"
-          :value="item"
-          :key="index"
-          >{{ item }}</el-checkbox
-        >
+        <el-checkbox v-for="(item, index) in computedState.options" :value="item" :key="index">{{
+          item
+        }}</el-checkbox>
       </el-checkbox-group>
     </div>
   </div>

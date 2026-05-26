@@ -32,6 +32,7 @@ const props = defineProps<{
 
 const textArr = ref(props.status);
 const updateStatus = inject<UpdateStatus>("updateStatus");
+
 const addOptionHandle = () => {
   if (updateStatus) {
     updateStatus(props.configKey);

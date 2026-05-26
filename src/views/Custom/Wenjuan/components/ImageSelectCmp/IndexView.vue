@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import UploadImgCmp from "./UploadImgCmp.vue";
+// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
 
 const props = withDefaults(
   defineProps<{
@@ -15,12 +17,31 @@ const props = withDefaults(
     index: 0,
   },
 );
+
+const getLink = inject(GET_LINK);
+
+// const updateStatus = inject<UpdateStatus>("updateStatus");
+
+const url = ref(props.value);
+
+const onChange = (newVal: string) => {
+  // console.log("newVal", newVal);
+
+  url.value = newVal;
+
+  if (getLink) {
+    getLink({
+      index: props.index,
+      url: newVal,
+    });
+  }
+};
 </script>
 
 <template>
   <div class="img-box mb-5" @click.stop>
     <div class="img">
-      <UploadImgCmp />
+      <UploadImgCmp :value="url" @change="onChange" />
     </div>
     <div class="text">
       <p>{{ props.picTitle }}</p>
