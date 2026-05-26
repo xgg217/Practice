@@ -4,17 +4,35 @@
   <div>
     <h1>Home</h1>
 
-    <el-card style="max-width: 480px">
-      <template #header>
-        <div class="card-header">
-          <span>需要解决的问题、优化、bug等</span>
-        </div>
-      </template>
-      <ul>
-        <li>问卷调查-组件市场-右侧选项调整</li>
-      </ul>
-    </el-card>
+    <div class="card-row">
+      <el-card style="width: 49%">
+        <template #header>
+          <div class="card-header">
+            <h2>待完成的任务</h2>
+          </div>
+        </template>
+        <ul>
+          <li>问卷调查-组件市场-右侧选项调整</li>
+        </ul>
+      </el-card>
+
+      <el-card style="width: 49%">
+        <template #header>
+          <div class="card-header">
+            <h2>bug、优化等</h2>
+          </div>
+        </template>
+        <ul>
+          <li>问卷调查-组件市场-右侧选项调整</li>
+        </ul>
+      </el-card>
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card-row {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
