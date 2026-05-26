@@ -88,7 +88,9 @@ export function isPicTitleDescStatusArr(status: OptionsStatusArr): status is Pic
   );
 }
 
+// 图片组件参数传递 （上传图片的值）
 export type PicLink = { link: string; index: number };
+
 export function isPicLink(obj: object): obj is PicLink {
   return "link" in obj && "index" in obj;
 }

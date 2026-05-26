@@ -25,8 +25,9 @@ import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 import EditPannel from "@/views/Custom/Wenjuan/components/EditItems/EditPannel.vue";
 import { IsOptionsStatus, type BaseStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import { ElMessage } from "element-plus";
-import type { OptionsProps, TextProps } from "@/views/Custom/Wenjuan/types/editProps";
-import { GET_LINK, type ImgProps } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
+import type { OptionsProps, TextProps, PicLink } from "@/views/Custom/Wenjuan/types/editProps";
+import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
+import { isPlainObject } from "es-toolkit";
 
 // 数据仓库
 const store = useMaterialStore() as unknown as MaterialStore;
@@ -63,6 +64,16 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
           } else {
             ElMessage.success("删除成功");
           }
+          return;
+        }
+
+        // 上传图片
+        if (
+          isPlainObject(value) &&
+          Object.hasOwn(value, "link") &&
+          typeof value.link === "string"
+        ) {
+          // store.addOption(status[key] as OptionsProps, value);
           return;
         }
 
@@ -202,8 +213,11 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
   // }
 };
 
-const getLink = (row: ImgProps) => {
+// 图片选择（获取上传图片的值）
+const getLink = (row: PicLink) => {
   console.log("getLink", row);
+
+  updateStatus("options", row);
 };
 
 provide("updateStatus", updateStatus);

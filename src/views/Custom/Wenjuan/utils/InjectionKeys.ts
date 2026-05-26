@@ -1,8 +1,4 @@
-// 图片组件传参
-export interface ImgProps {
-  index: number;
-  url: string;
-}
+import type { PicLink } from "@/views/Custom/Wenjuan/types/editProps";
 
 // 图片选择组件
-export const GET_LINK = Symbol() as InjectionKey<(row: ImgProps) => void>;
+export const GET_LINK = Symbol() as InjectionKey<(row: PicLink) => void>;

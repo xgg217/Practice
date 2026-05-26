@@ -32,7 +32,7 @@ const onChange = (newVal: string) => {
   if (getLink) {
     getLink({
       index: props.index,
-      url: newVal,
+      link: newVal,
     });
   }
 };
