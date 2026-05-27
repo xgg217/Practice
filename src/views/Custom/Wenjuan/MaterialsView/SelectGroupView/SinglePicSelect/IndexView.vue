@@ -21,7 +21,7 @@ const computedState = computed(() => ({
   title: getTextStatus(props.status.title),
   desc: getTextStatus(props.status.desc),
   options: getValueStatus(props.status.options) as PicTitleDescStatusArr,
-  position: getPicTitleDescStatusArr(props.status.position),
+  position: getCurrentStatus(props.status.position),
   titleSize: getStringStatusByCurrentStatus(props.status.titleSize),
   descSize: getStringStatusByCurrentStatus(props.status.descSize),
   titleWeight: getCurrentStatus(props.status.titleWeight),
