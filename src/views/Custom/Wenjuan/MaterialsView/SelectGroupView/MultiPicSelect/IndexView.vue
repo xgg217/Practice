@@ -4,10 +4,12 @@ import MaterialsHeaderCmp from "@/views/Custom/Wenjuan/components/MaterialsHeade
 import type { OptionsStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import {
   getTextStatus,
-  getStringStatus,
   getCurrentStatus,
+  getValueStatus,
   getStringStatusByCurrentStatus,
 } from "@/views/Custom/Wenjuan/utils/index";
+import type { PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
+import ImageSelectCmp from "@/views/Custom/Wenjuan/components/ImageSelectCmp/IndexView.vue";
 
 const props = defineProps<{
   serialNum: number;
@@ -17,7 +19,7 @@ const props = defineProps<{
 const computedState = computed(() => ({
   title: getTextStatus(props.status.title),
   desc: getTextStatus(props.status.desc),
-  options: getStringStatus(props.status.options),
+  options: getValueStatus(props.status.options) as PicTitleDescStatusArr,
   position: getCurrentStatus(props.status.position),
   titleSize: getStringStatusByCurrentStatus(props.status.titleSize),
   descSize: getStringStatusByCurrentStatus(props.status.descSize),
@@ -29,7 +31,7 @@ const computedState = computed(() => ({
   descColor: getTextStatus(props.status.descColor),
 }));
 
-const radioValue = ref("");
+const radioValue = ref<string[]>([]);
 
 // 回头父组件需要传递一个updateAnswer过来
 // 通过触发父组件的这个自定义事件将答案传递给父组件
@@ -61,17 +63,24 @@ const emitAnswer = () => {
       :descColor="computedState.descColor"
     />
     <div class="radio-group">
-      <el-radio-group v-model="radioValue" @click.stop @change="emitAnswer">
-        <el-radio
+      <el-checkbox-group v-model="radioValue" @click.stop class="flex wrap" @change="emitAnswer">
+        <el-checkbox
           v-for="(item, index) in computedState.options"
-          :value="item"
+          class="picOption flex mb-15"
+          :value="item.picTitle"
           :key="index"
-          >{{ item }}</el-radio
         >
-      </el-radio-group>
+          <ImageSelectCmp :key="index" v-bind="{ ...item, index }" />
+        </el-checkbox>
+      </el-checkbox-group>
     </div>
   </div>
 </template>
 
 <style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>
-<style scoped></style>
+<style scoped>
+.picOption {
+  height: auto;
+  flex-direction: column-reverse;
+}
+</style>
