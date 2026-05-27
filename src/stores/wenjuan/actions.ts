@@ -40,6 +40,11 @@ export function setCurrentStatus(optionProps: OptionsProps, index: number) {
   optionProps.currentStatus = index;
 }
 
+// 设置 currentStatus 属性
+export function setSize(optionProps: OptionsProps, index: number) {
+  optionProps.currentStatus = index;
+}
+
 export function setPicLinkByIndex(optionProps: OptionsProps, payload: PicLink) {
   if (isPicTitleDescStatusArr(optionProps.status)) {
     optionProps.status[payload.index]!.value = payload.link;

@@ -23,9 +23,14 @@
 import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
 import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 import EditPannel from "@/views/Custom/Wenjuan/components/EditItems/EditPannel.vue";
-import { IsOptionsStatus, type BaseStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import { IsOptionsStatus, isPicLink } from "@/views/Custom/Wenjuan/types/editProps";
 import { ElMessage } from "element-plus";
-import type { OptionsProps, TextProps, PicLink } from "@/views/Custom/Wenjuan/types/editProps";
+import type {
+  OptionsProps,
+  TextProps,
+  PicLink,
+  BaseStatus,
+} from "@/views/Custom/Wenjuan/types/editProps";
 import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
 import { isPlainObject } from "es-toolkit";
 
@@ -67,13 +72,10 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
           return;
         }
 
-        // 上传图片
-        if (
-          isPlainObject(value) &&
-          Object.hasOwn(value, "link") &&
-          typeof value.link === "string"
-        ) {
-          // store.addOption(status[key] as OptionsProps, value);
+        // 上传图片 - 设置图片链接
+        if (isPlainObject(value) && isPicLink(value)) {
+          // 设图片链接
+          store.setPicLinkByIndex(status[key] as OptionsProps, value);
           return;
         }
 
@@ -97,7 +99,8 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
         console.error("类型错误，要求类型为 number");
         return;
       }
-      store.setCurrentStatus(status[key] as OptionsProps, value);
+
+      store.setSize(status[key] as OptionsProps, value);
     },
 
     // 描述内容大小

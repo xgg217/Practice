@@ -125,6 +125,16 @@ const { imgUrl, srcList, isPreview, onImgInfo, onImgDel } = (() => {
     onImgDel,
   };
 })();
+
+watch(
+  () => props.value,
+  (val) => {
+    imgUrl.value = val || "";
+  },
+  {
+    immediate: true,
+  },
+);
 </script>
 
 <template>

@@ -66,6 +66,8 @@ const deletePic = (index: number) => {
     .then(() => {
       // 确认删除
       if (updateStatus) {
+        console.log(props.configKey);
+
         updateStatus(props.configKey, {
           link: "",
           index,

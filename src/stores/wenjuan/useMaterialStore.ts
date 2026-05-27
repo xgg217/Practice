@@ -7,6 +7,7 @@ import {
   setPosition,
   setCurrentStatus,
   setPicLinkByIndex,
+  setSize,
 } from "./actions";
 import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
 import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/config";
@@ -29,6 +30,16 @@ export const useMaterialStore = defineStore("materialStore", {
     },
   }),
   actions: {
+    // 编辑器 显示 状态更新
+    setCurrentMatrialCom(comName: string) {
+      if (Object.hasOwn(this.coms, comName)) {
+        this.currentMaterialCom = comName;
+      } else {
+        console.error("当前路由不在 业务组件内，无法匹配");
+        ElMessage.error("当前路由不在 业务组件内，无法匹配");
+      }
+    },
+
     // 修改文本
     setTextStatus,
 
@@ -43,15 +54,7 @@ export const useMaterialStore = defineStore("materialStore", {
 
     setCurrentStatus,
 
-    // 编辑器 显示 状态更新
-    setCurrentMatrialCom(comName: string) {
-      if (Object.hasOwn(this.coms, comName)) {
-        this.currentMaterialCom = comName;
-      } else {
-        console.error("当前路由不在 业务组件内，无法匹配");
-        ElMessage.error("当前路由不在 业务组件内，无法匹配");
-      }
-    },
+    setSize,
 
     setPicLinkByIndex,
   },

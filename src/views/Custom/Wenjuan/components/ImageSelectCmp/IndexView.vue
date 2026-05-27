@@ -36,6 +36,16 @@ const onChange = (newVal: string) => {
     });
   }
 };
+
+watch(
+  () => props.value,
+  (val) => {
+    url.value = val || "";
+  },
+  {
+    immediate: true,
+  },
+);
 </script>
 
 <template>
