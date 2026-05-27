@@ -16,6 +16,12 @@ export default defineConfig({
       dts: "src/types/auto-imports.d.ts", //自定义生成 auto-imports.d.ts 路径丢失的问题
     }),
   ],
+  server: {
+    // host: "0.0.0.0",
+    // port: VITE_PORT,
+    open: false,
+    // https: false,
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
