@@ -52,11 +52,15 @@ const updateStatus = inject<UpdateStatus>("updateStatus");
 const addOptionHandle = () => {
   if (updateStatus) updateStatus(props.configKey);
 };
+
+// 删除选项
 const removeOptionHandle = (index: number) => {
   if (updateStatus) {
     updateStatus(props.configKey, index);
   }
 };
+
+// 删除图片
 const deletePic = (index: number) => {
   ElMessageBox.confirm("是否确认删除已上传的图片？", "警告", {
     confirmButtonText: "确认",
@@ -66,7 +70,7 @@ const deletePic = (index: number) => {
     .then(() => {
       // 确认删除
       if (updateStatus) {
-        console.log(props.configKey);
+        // console.log(props.configKey);
 
         updateStatus(props.configKey, {
           link: "",

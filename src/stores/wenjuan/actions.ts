@@ -27,6 +27,8 @@ export const addOption = (optionProps: OptionsProps) => {
     optionProps.status.push("新选项");
   } else if (isPicTitleDescStatusArr(optionProps.status)) {
     optionProps.status.push({ picTitle: "图片标题", picDesc: "图片描述", value: "" });
+  } else {
+    console.error("存在新类型");
   }
 };
 
