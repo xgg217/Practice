@@ -1,25 +1,24 @@
-<!-- 图片单选 -->
 <script setup lang="ts">
-import MaterialsHeaderCmp from "@/views/Custom/Wenjuan/components/MaterialsHeaderCmp.vue";
-import type { OptionsStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import {
   getTextStatus,
   getCurrentStatus,
   getStringStatusByCurrentStatus,
-  getValueStatus,
 } from "@/views/Custom/Wenjuan/utils/index";
-import type { PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-import ImageSelectCmp from "@/views/Custom/Wenjuan/components/ImageSelectCmp/IndexView.vue";
+import MaterialsHeaderCmp from "@/views/Custom/Wenjuan/components/MaterialsHeaderCmp.vue";
+// 类型
+import type { TypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 const props = defineProps<{
+  status: TypeStatus;
   serialNum: number;
-  status: OptionsStatus;
 }>();
 
+const inputValue = ref<string>("");
+
 const computedState = computed(() => ({
+  type: getCurrentStatus(props.status.type),
   title: getTextStatus(props.status.title),
   desc: getTextStatus(props.status.desc),
-  options: getValueStatus(props.status.options) as PicTitleDescStatusArr,
   position: getCurrentStatus(props.status.position),
   titleSize: getStringStatusByCurrentStatus(props.status.titleSize),
   descSize: getStringStatusByCurrentStatus(props.status.descSize),
@@ -62,25 +61,22 @@ const emitAnswer = () => {
       :titleColor="computedState.titleColor"
       :descColor="computedState.descColor"
     />
-    <div class="flex wrap">
-      <el-radio-group v-model="radioValue" @click.stop class="flex wrap" @change="emitAnswer">
-        <el-radio
-          v-for="(item, index) in computedState.options"
-          class="picOption flex mb-15"
-          :value="item.picTitle"
-          :key="index"
-        >
-          <ImageSelectCmp :key="index" v-bind="{ ...item, index }" />
-        </el-radio>
-      </el-radio-group>
-    </div>
+    <el-input
+      v-if="computedState.type === 0"
+      v-model="inputValue"
+      @click.stop
+      @input="emitAnswer"
+    />
+    <el-input
+      v-else
+      :rows="5"
+      type="textarea"
+      v-model="inputValue"
+      @click.stop
+      @input="emitAnswer"
+    />
   </div>
 </template>
 
 <style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>
-<style scoped>
-.picOption {
-  height: auto;
-  flex-direction: column-reverse;
-}
-</style>
+<style scoped></style>

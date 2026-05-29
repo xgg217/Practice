@@ -20,3 +20,11 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 app.mount("#app");
+
+const fun = () => {
+  const obj = {
+    a: () => {
+      //  类型系统中自动确定 key 为 a
+    },
+  };
+};

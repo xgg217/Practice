@@ -18,3 +18,7 @@
   background-color: var(--info-color);
   color: var(--white);
 }
+
+.m5 {
+  margin: 5px;
+}

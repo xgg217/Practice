@@ -45,6 +45,18 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
   const status = currentCom.value.status;
 
   const setType = {
+    type: () => {
+      // if (hasType(status)) {
+      // if (typeof payload === 'number') {
+      //   // 说明是切换类型
+      //   if (isShowChange) {
+      //     setType(status, payload)
+      //   }
+      //   store.setTextType(status[configKey], payload)
+      // }
+      // }
+    },
+
     // 标题
     title: () => {
       if (typeof value !== "string") {
@@ -139,9 +151,9 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
     defaultValue: () => {
       console.error("未适配");
     },
-  };
+  } satisfies Record<string, () => void>;
 
-  if (Object.hasOwn(setType, key)) {
+  if (key in setType) {
     setType[key as keyof typeof setType]();
   } else {
     setType["defaultValue"]();

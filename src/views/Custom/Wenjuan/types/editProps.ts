@@ -128,3 +128,8 @@ export function isPicTitleDescArray(status: StatusArray): status is PicTitleDesc
     "picDesc" in status[0]
   );
 }
+
+// 类型保护函数：检查是否有 type 属性
+export function hasType(status: BaseStatus): status is TypeStatus {
+  return (status as TypeStatus).type !== undefined;
+}

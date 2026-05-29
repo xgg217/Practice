@@ -154,7 +154,7 @@ const ROW: RouteRecordRaw = {
               path: "text-input",
               name: "text-input",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/IndexView.vue"),
               meta: {
                 title: "文本输入",
               },

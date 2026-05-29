@@ -6,7 +6,7 @@ import LayoutView from "@/views/Custom/Wenjuan/MaterialsView/LayoutView.vue";
 <template>
   <LayoutView>
     <Router-link
-      class="link-item mb-15"
+      class="link-item m5"
       exact-active-class="link-item-active"
       to="/Custom/WenjuanMaterials/input-group/text-input"
       >文本输入</Router-link

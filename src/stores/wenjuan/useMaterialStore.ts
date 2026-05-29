@@ -1,5 +1,6 @@
 // 组件市场里面所有组件状态的仓库
 import { defineStore } from "pinia";
+import { ElMessage } from "element-plus";
 import {
   setTextStatus,
   removeOption,
@@ -14,7 +15,7 @@ import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/Mu
 import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/config";
 import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/config";
 import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/config";
-import { ElMessage } from "element-plus";
+import TextInputView from "@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/config";
 
 export const useMaterialStore = defineStore("materialStore", {
   state: () => ({
@@ -22,11 +23,12 @@ export const useMaterialStore = defineStore("materialStore", {
 
     // 记录所有的业务组件
     coms: {
-      "single-select": SingleSelect(), // 单选题
-      "multi-select": MultiSelect(), // 多选题
-      "option-select": OptionSelect(), // 下拉
-      "single-pic-select": SinglePicSelect(), // 图片单选题
-      "multi-pic-select": MultiPicSelect(), // 图片多选题
+      "single-select": SingleSelect(), // 选择-单选题
+      "multi-select": MultiSelect(), // 选择-多选题
+      "option-select": OptionSelect(), // 选择-下拉
+      "single-pic-select": SinglePicSelect(), // 选择-图片单选题
+      "multi-pic-select": MultiPicSelect(), // 选择-图片多选题
+      "text-input": TextInputView(), // 文本输入-文本输入框
     },
   }),
   actions: {
