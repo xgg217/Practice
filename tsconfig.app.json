@@ -19,5 +19,8 @@
 
     // 严格模式
     "strict": true,
+
+    // TypeScript 会区分文件名大小写
+    "forceConsistentCasingInFileNames": true,
   }
 }
