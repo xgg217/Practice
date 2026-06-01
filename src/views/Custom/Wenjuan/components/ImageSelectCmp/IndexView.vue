@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import UploadImgCmp from "./UploadImgCmp.vue";
-// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import type { GetLink } from "@/views/Custom/Wenjuan/types/editProps";
 import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
 
 const props = withDefaults(
@@ -18,7 +18,7 @@ const props = withDefaults(
   },
 );
 
-const getLink = inject(GET_LINK);
+const getLink = inject<GetLink>(GET_LINK);
 
 // const updateStatus = inject<UpdateStatus>("updateStatus");
 

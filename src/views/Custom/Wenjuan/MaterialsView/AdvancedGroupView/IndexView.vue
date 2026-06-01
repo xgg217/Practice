@@ -6,10 +6,17 @@ import LayoutView from "@/views/Custom/Wenjuan/MaterialsView/LayoutView.vue";
 <template>
   <LayoutView>
     <Router-link
-      class="link-item mb-15"
+      class="link-item m5"
       exact-active-class="link-item-active"
-      to="/Custom/WenjuanMaterials/advanced-group/advanced"
-      >高级题型</Router-link
+      to="/Custom/WenjuanMaterials/advanced-group/rate-score"
+      >评分/打分</Router-link
+    >
+
+    <Router-link
+      class="link-item m5"
+      exact-active-class="link-item-active"
+      to="/Custom/WenjuanMaterials/advanced-group/date-time"
+      >日期/时间</Router-link
     >
   </LayoutView>
 </template>

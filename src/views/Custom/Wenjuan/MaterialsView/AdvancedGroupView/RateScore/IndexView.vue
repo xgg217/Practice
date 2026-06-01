@@ -13,10 +13,7 @@ const props = defineProps<{
   serialNum: number;
 }>();
 
-const inputValue = ref<string>("");
-
 const computedState = computed(() => ({
-  type: getCurrentStatus(props.status.type),
   title: getTextStatus(props.status.title),
   desc: getTextStatus(props.status.desc),
   position: getCurrentStatus(props.status.position),
@@ -30,12 +27,14 @@ const computedState = computed(() => ({
   descColor: getTextStatus(props.status.descColor),
 }));
 
+const radioValue = ref(0);
+
 // 回头父组件需要传递一个updateAnswer过来
 // 通过触发父组件的这个自定义事件将答案传递给父组件
 const emits = defineEmits(["updateAnswer"]);
 
 const emitAnswer = () => {
-  emits("updateAnswer", inputValue.value);
+  emits("updateAnswer", radioValue.value);
 };
 </script>
 
@@ -59,20 +58,7 @@ const emitAnswer = () => {
       :titleColor="computedState.titleColor"
       :descColor="computedState.descColor"
     />
-    <el-input
-      v-if="computedState.type === 0"
-      v-model="inputValue"
-      @click.stop
-      @input="emitAnswer"
-    />
-    <el-input
-      v-else
-      :rows="5"
-      type="textarea"
-      v-model="inputValue"
-      @click.stop
-      @input="emitAnswer"
-    />
+    <el-rate v-model="radioValue" />
   </div>
 </template>
 

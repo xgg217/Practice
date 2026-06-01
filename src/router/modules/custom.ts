@@ -172,16 +172,25 @@ const ROW: RouteRecordRaw = {
             isShow: false, // 不显示
           },
           redirect: {
-            name: "advanced",
+            name: "rate-score",
           },
           children: [
             {
-              path: "advanced",
-              name: "advanced",
+              path: "rate-score",
+              name: "rate-score",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/AdvancedView.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/RateScore/IndexView.vue"),
               meta: {
-                title: "备注说明",
+                title: "评分/打分",
+              },
+            },
+            {
+              path: "date-time",
+              name: "date-time",
+              component: () =>
+                import("@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/IndexView.vue"),
+              meta: {
+                title: "日期/时间",
               },
             },
           ],
@@ -198,14 +207,14 @@ const ROW: RouteRecordRaw = {
           },
 
           redirect: {
-            name: "note",
+            name: "text-note",
           },
           children: [
             {
-              path: "note",
-              name: "note",
+              path: "text-note",
+              name: "text-note",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/NoteView.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/TextNote/IndexView.vue"),
               meta: {
                 title: "备注说明",
               },

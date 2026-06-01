@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>高级题型</div>
+  <div>日期/时间</div>
 </template>
 
 <style scoped></style>

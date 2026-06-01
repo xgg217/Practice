@@ -6,9 +6,9 @@ import LayoutView from "@/views/Custom/Wenjuan/MaterialsView/LayoutView.vue";
 <template>
   <LayoutView>
     <Router-link
-      class="link-item mb-15"
+      class="link-item m5"
       exact-active-class="link-item-active"
-      to="/Custom/WenjuanMaterials/note-group/note"
+      to="/Custom/WenjuanMaterials/note-group/text-note"
       >备注说明</Router-link
     >
   </LayoutView>

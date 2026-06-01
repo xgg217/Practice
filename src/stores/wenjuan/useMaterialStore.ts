@@ -16,6 +16,8 @@ import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/O
 import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/config";
 import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/config";
 import TextInputView from "@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/config";
+import RateScore from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/RateScore/config";
+import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/config";
 
 export const useMaterialStore = defineStore("materialStore", {
   state: () => ({
@@ -29,6 +31,8 @@ export const useMaterialStore = defineStore("materialStore", {
       "single-pic-select": SinglePicSelect(), // 选择-图片单选题
       "multi-pic-select": MultiPicSelect(), // 选择-图片多选题
       "text-input": TextInputView(), // 文本输入-文本输入框
+      "rate-score": RateScore(), // 高级题型-评分打分
+      "date-time": DateTime(), // 高级题型-时间日期
     },
   }),
   actions: {

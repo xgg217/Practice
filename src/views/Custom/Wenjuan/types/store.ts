@@ -30,6 +30,7 @@ export type ComponentMap = {
   [key in ComponentName]: VueComType;
 };
 
+// 仓库操作方法
 export interface Actions {
   setTextStatus: (textProps: TextProps, text: string) => void;
   addOption: (optionProps: OptionsProps) => void;
