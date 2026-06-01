@@ -43,7 +43,7 @@ function switchChangeHandle(val: boolean) {
 }
 function inputHandle(val: string, index: number) {
   if (updateStatus) {
-    updateStatus(props.configKey, { val, index });
+    updateStatus(props.configKey, { link: val, index });
   }
 }
 </script>

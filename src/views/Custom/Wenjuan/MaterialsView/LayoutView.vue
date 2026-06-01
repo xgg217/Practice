@@ -23,16 +23,18 @@
 import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
 import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 import EditPannel from "@/views/Custom/Wenjuan/components/EditItems/EditPannel.vue";
-import { IsOptionsStatus, isPicLink } from "@/views/Custom/Wenjuan/types/editProps";
+import { IsOptionsStatus, isPicLink, IsTypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import { ElMessage } from "element-plus";
 import type {
   OptionsProps,
   TextProps,
   PicLink,
   BaseStatus,
+  TypeStatus,
 } from "@/views/Custom/Wenjuan/types/editProps";
 import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
 import { isPlainObject } from "es-toolkit";
+import { changeEditorIsShowStatus } from "@/views/Custom/Wenjuan/utils/index";
 
 // 数据仓库
 const store = useMaterialStore() as unknown as MaterialStore;
@@ -46,15 +48,11 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
 
   const setType = {
     type: () => {
-      // if (hasType(status)) {
-      // if (typeof payload === 'number') {
-      //   // 说明是切换类型
-      //   if (isShowChange) {
-      //     setType(status, payload)
-      //   }
-      //   store.setTextType(status[configKey], payload)
-      // }
-      // }
+      if (typeof value === "number" && IsTypeStatus(status as unknown as BaseStatus)) {
+        // 切换其他编辑器的显示状态
+        changeEditorIsShowStatus(status as unknown as TypeStatus, value);
+        store.setCurrentStatus(status[key] as OptionsProps, value);
+      }
     },
 
     // 标题
@@ -154,6 +152,8 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
   } satisfies Record<string, () => void>;
 
   if (key in setType) {
+    console.log("1");
+
     setType[key as keyof typeof setType]();
   } else {
     setType["defaultValue"]();

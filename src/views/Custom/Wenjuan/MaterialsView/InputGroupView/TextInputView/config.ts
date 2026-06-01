@@ -7,7 +7,6 @@ import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/S
 // 编辑组件
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";
 import DescEditor from "@/views/Custom/Wenjuan/components/EditItems/DescEditor.vue";
-import OptionsEditor from "@/views/Custom/Wenjuan/components/EditItems/OptionsEditor.vue";
 import PositionEditor from "@/views/Custom/Wenjuan/components/EditItems/PositionEditor.vue";
 import SizeEditor from "@/views/Custom/Wenjuan/components/EditItems/SizeEditor.vue";
 import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEditor.vue";
@@ -25,9 +24,10 @@ export default function () {
       // 文本类型
       type: {
         id: crypto.randomUUID(),
-        currentStatus: 0,
         status: ["单行文本", "多行文本"],
+        currentStatus: 0,
         isShow: true,
+        editName: "文本类型",
         name: "text-input-type-editor",
         editCom: markRaw(TextInputTypeEditor),
       },

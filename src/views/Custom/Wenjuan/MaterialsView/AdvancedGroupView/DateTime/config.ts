@@ -2,7 +2,7 @@
 import { markRaw } from "vue";
 
 // 业务组件
-import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/IndexView.vue";
+import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/IndexView.vue";
 
 // 编辑组件
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";
@@ -17,8 +17,8 @@ import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/Tex
 
 export default function () {
   return {
-    type: markRaw(SingleSelect),
-    name: "single-select",
+    type: markRaw(DateTime),
+    name: "date-time",
     id: crypto.randomUUID(),
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {

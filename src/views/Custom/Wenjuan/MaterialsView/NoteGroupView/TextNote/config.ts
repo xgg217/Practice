@@ -1,8 +1,8 @@
-// 评分打分 JSON-Schema 配置
+// 备注说明 JSON-Schema 配置
 import { markRaw } from "vue";
 
 // 业务组件
-import RateScore from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/RateScore/IndexView.vue";
+import TextNote from "@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/TextNote/IndexView.vue";
 
 // 编辑组件
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";
@@ -12,20 +12,31 @@ import SizeEditor from "@/views/Custom/Wenjuan/components/EditItems/SizeEditor.v
 import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEditor.vue";
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
-import RateTextEditor from "@/views/Custom/Wenjuan/components/EditItems/RateTextEditor.vue";
+import TextTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextTypeEditor.vue";
 
 export default function () {
   return {
-    type: markRaw(RateScore),
-    name: "rate-score",
+    type: markRaw(TextNote),
+    name: "text-note",
     id: crypto.randomUUID(),
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
+      // 类型
+      type: {
+        id: crypto.randomUUID(),
+        status: ["标题", "描述"],
+        currentStatus: 1,
+        isShow: true,
+        name: "text-type-editor",
+        editName: "类型",
+        editCom: markRaw(TextTypeEditor),
+      },
+
       // 标题
       title: {
         id: crypto.randomUUID(),
-        status: "默认评价/打分题目标题",
-        isShow: true,
+        status: "备注说明标题",
+        isShow: false,
         name: "title-editor",
         editName: "标题内容",
         editCom: markRaw(TitleEditor),
@@ -34,21 +45,11 @@ export default function () {
       // 描述
       desc: {
         id: crypto.randomUUID(),
-        status: "打分题目标题描述",
+        status: "备注说明描述",
         isShow: true,
         name: "desc-editor",
         editName: "描述内容",
         editCom: markRaw(DescEditor),
-      },
-
-      options: {
-        id: crypto.randomUUID(),
-        currentStatus: 0,
-        status: ["非常不满意", "不满意", "一般", "满意", "非常满意"],
-        isShow: true,
-        isUse: false,
-        name: "rate-text-editor",
-        editCom: markRaw(RateTextEditor),
       },
 
       // 对齐方式
@@ -67,7 +68,7 @@ export default function () {
         id: crypto.randomUUID(),
         currentStatus: 0,
         status: ["22", "20", "18"],
-        isShow: true,
+        isShow: false,
         name: "size-editor",
         editName: "标题字体大小",
         editCom: markRaw(SizeEditor),
@@ -89,7 +90,7 @@ export default function () {
         id: crypto.randomUUID(),
         currentStatus: 1,
         status: ["加粗", "正常"],
-        isShow: true,
+        isShow: false,
         name: "weight-editor",
         editName: "标题字体加粗",
         editCom: markRaw(WeightEditor),
@@ -111,7 +112,7 @@ export default function () {
         id: crypto.randomUUID(),
         currentStatus: 1,
         status: ["斜体", "正常"],
-        isShow: true,
+        isShow: false,
         name: "italic-editor",
         editName: "标题字体斜体",
         editCom: markRaw(ItalicEditor),
@@ -132,7 +133,7 @@ export default function () {
       titleColor: {
         id: crypto.randomUUID(),
         status: "#000",
-        isShow: true,
+        isShow: false,
         name: "color-editor",
         editName: "标题字体颜色",
         editCom: markRaw(ColorEditor),

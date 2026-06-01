@@ -33,10 +33,5 @@ const changePosition = (color: string) => {
 };
 </script>
 
-<style scoped>
-.position {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>
+<style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>
+<style scoped></style>

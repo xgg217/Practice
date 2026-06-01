@@ -1,42 +1,36 @@
 <template>
-  <ButtonGroup title="说明类型" :status="status[currentStatus]">
-    <el-button-group>
-      <el-button
-        :class="{
-          select: currentStatus === 0,
-        }"
-        @click="changeType(0)"
-      >
-        <font-awesome-icon icon="heading" />
-      </el-button>
-      <el-button
-        :class="{
-          select: currentStatus === 1,
-        }"
-        @click="changeType(1)"
-      >
-        <font-awesome-icon icon="paragraph" />
-      </el-button>
-    </el-button-group>
-  </ButtonGroup>
+  <div class="position">
+    <p>{{ props.editName }}</p>
+    <el-radio-group v-model="radio" @change="(val) => changeType(val as number)">
+      <el-radio-button :value="index" v-for="(item, index) of props.status" :key="item">
+        {{ item }}
+      </el-radio-button>
+    </el-radio-group>
+  </div>
 </template>
 
 <script setup lang="ts">
-import ButtonGroup from "./ButtonGroup.vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+
 const props = defineProps<{
   currentStatus: number;
   status: string[];
   isShow: boolean;
   configKey: string;
+  editName: string; // editName
   editCom: VueComType;
 }>();
 const updateStatus = inject<UpdateStatus>("updateStatus");
 
+const radio = ref(props.currentStatus);
+
 const changeType = (type: number) => {
+  console.log("props.configKey", props.configKey, type);
+
   if (updateStatus) updateStatus(props.configKey, type);
 };
 </script>
 
+<style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>
 <style scoped></style>

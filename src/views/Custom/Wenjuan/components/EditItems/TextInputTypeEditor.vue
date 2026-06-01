@@ -1,32 +1,19 @@
 <!-- 文本类型 -->
 <template>
-  <ButtonGroup title="文本类型" :status="status[currentStatus]">
-    <el-button-group>
-      <el-button
-        :class="{
-          select: currentStatus === 0,
-        }"
-        :icon="DocumentRemove"
-        @click="changeType(0)"
-      >
-      </el-button>
-      <el-button
-        :class="{
-          select: currentStatus === 1,
-        }"
-        :icon="Document"
-        @click="changeType(1)"
-      >
-      </el-button>
-    </el-button-group>
-  </ButtonGroup>
+  <div class="position">
+    <p>{{ props.editName }}</p>
+    <el-radio-group v-model="radio" @change="(val) => changeType(val as number)">
+      <el-radio-button :value="index" v-for="(item, index) of props.status" :key="item">
+        {{ item }}
+      </el-radio-button>
+    </el-radio-group>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { Document, DocumentRemove } from "@element-plus/icons-vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-import ButtonGroup from "./ButtonGroup.vue";
+
 const updateStatus = inject<UpdateStatus>("updateStatus");
 
 const props = defineProps<{
@@ -34,15 +21,20 @@ const props = defineProps<{
   status: string[];
   isShow: boolean;
   configKey: string;
+  editName: string;
   editCom: VueComType;
 }>();
+
+const radio = ref(props.currentStatus);
+
 function changeType(pos: number) {
   if (updateStatus) {
     updateStatus(props.configKey, pos);
   } else {
-    console.warn("updateStatus is not provided");
+    console.warn("类型错误");
   }
 }
 </script>
 
+<style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>
 <style scoped></style>

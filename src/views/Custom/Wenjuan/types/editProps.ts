@@ -5,6 +5,7 @@ export interface BaseProps {
   isShow: boolean; // 是否显示
   name: string; // 组件名称
   editName: string; // 编辑组件名称
+  isUse?: boolean;
   editCom: VueComType; // 组件
 }
 
@@ -48,6 +49,7 @@ export interface OptionsStatus extends BaseStatus {
   options: OptionsProps;
 }
 
+// 类型
 export interface TypeStatus extends BaseStatus {
   type: OptionsProps;
 }

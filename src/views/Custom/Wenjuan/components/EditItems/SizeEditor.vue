@@ -1,3 +1,4 @@
+<!-- 字体大小编辑器 -->
 <template>
   <div class="position">
     <p>{{ props.editName }}</p>
@@ -7,37 +8,6 @@
       </el-radio-button>
     </el-radio-group>
   </div>
-  <!-- <ButtonGroup
-    :title="`${configKey === 'titleSize' ? '标题' : '描述'}尺寸`"
-    :status="`${status[currentStatus]}px`"
-  >
-    <el-button-group>
-      <el-button
-        :class="{
-          select: currentStatus === 0,
-        }"
-        @click="changeSize(0)"
-      >
-        <font-awesome-icon icon="font" size="lg" />
-      </el-button>
-      <el-button
-        :class="{
-          select: currentStatus === 1,
-        }"
-        @click="changeSize(1)"
-      >
-        <font-awesome-icon icon="font" size="sm" />
-      </el-button>
-      <el-button
-        :class="{
-          select: currentStatus === 2,
-        }"
-        @click="changeSize(2)"
-      >
-        <font-awesome-icon icon="font" size="xs" />
-      </el-button>
-    </el-button-group>
-  </ButtonGroup> -->
 </template>
 
 <script setup lang="ts">
@@ -66,10 +36,5 @@ const changeSize = (val: string) => {
 };
 </script>
 
-<style scoped>
-.position {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-</style>
+<style scoped src="@/views/Custom/Wenjuan/MaterialsView/style.css"></style>
+<style scoped></style>

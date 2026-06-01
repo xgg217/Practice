@@ -22,3 +22,8 @@
 .m5 {
   margin: 5px;
 }
+.position {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -18,6 +18,7 @@ import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView
 import TextInputView from "@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/config";
 import RateScore from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/RateScore/config";
 import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/config";
+import TextNote from "@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/TextNote/config";
 
 export const useMaterialStore = defineStore("materialStore", {
   state: () => ({
@@ -33,6 +34,7 @@ export const useMaterialStore = defineStore("materialStore", {
       "text-input": TextInputView(), // 文本输入-文本输入框
       "rate-score": RateScore(), // 高级题型-评分打分
       "date-time": DateTime(), // 高级题型-时间日期
+      "text-note": TextNote(), // 备注说明-备注说明
     },
   }),
   actions: {

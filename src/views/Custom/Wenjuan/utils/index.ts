@@ -75,21 +75,21 @@ export function getValueStatus(props: OptionsProps) {
   }
 }
 
-// export function changeEditorIsShowStatus(status: TypeStatus, type: number) {
-//   if (type !== status.type.currentStatus) {
-//     status.title.isShow = !status.title.isShow;
-//     status.desc.isShow = !status.desc.isShow;
-//     status.position.isShow = !status.position.isShow;
-//     status.titleSize.isShow = !status.titleSize.isShow;
-//     status.descSize.isShow = !status.descSize.isShow;
-//     status.titleWeight.isShow = !status.titleWeight.isShow;
-//     status.descWeight.isShow = !status.descWeight.isShow;
-//     status.titleItalic.isShow = !status.titleItalic.isShow;
-//     status.descItalic.isShow = !status.descItalic.isShow;
-//     status.titleColor.isShow = !status.titleColor.isShow;
-//     status.descColor.isShow = !status.descColor.isShow;
-//   }
-// }
+export function changeEditorIsShowStatus(status: TypeStatus, type: number) {
+  if (type !== status.type.currentStatus) {
+    status.title.isShow = !status.title.isShow;
+    status.desc.isShow = !status.desc.isShow;
+    status.position.isShow = !status.position.isShow;
+    status.titleSize.isShow = !status.titleSize.isShow;
+    status.descSize.isShow = !status.descSize.isShow;
+    status.titleWeight.isShow = !status.titleWeight.isShow;
+    status.descWeight.isShow = !status.descWeight.isShow;
+    status.titleItalic.isShow = !status.titleItalic.isShow;
+    status.descItalic.isShow = !status.descItalic.isShow;
+    status.titleColor.isShow = !status.titleColor.isShow;
+    status.descColor.isShow = !status.descColor.isShow;
+  }
+}
 
 // export function updateInitStatusBeforeAdd(comStatus: Status, newMaterialName: Material) {
 //   switch (newMaterialName) {
