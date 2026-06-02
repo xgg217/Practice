@@ -39,6 +39,7 @@ export interface Actions {
   setCurrentStatus: (optionProps: OptionsProps, index: number) => void;
   setPicLinkByIndex: (optionProps: OptionsProps, payload: PicLink) => void;
   setSize: (optionProps: OptionsProps, size: number) => void;
+  setUse: (optionsProps: OptionsProps, isUse: boolean) => void;
 }
 
 // 仓库状态

@@ -7,7 +7,8 @@ import DesignPatternsAndAlgorithms from "./modules/DesignPatternsAndAlgorithms";
 import custom from "./modules/custom";
 import WebAPI from "./modules/WebAPI";
 import NpmUtils from "./modules/NpmUtils";
-import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
+import Vue3 from "./modules/Vue3";
+import { setRouteMaterialCom } from "@/stores/wenjuan/useMaterialStore";
 
 // #region 路由
 export const routes = [
@@ -68,6 +69,8 @@ export const routes = [
       // css
       CSS,
 
+      Vue3,
+
       // webapi
       WebAPI,
 
@@ -100,15 +103,12 @@ router.beforeEach((to, from) => {
   // 设置标题
   document.title = to.meta.title as string;
 
+  // 只有问卷调查-组件市场才需要
   {
-    // 只有问卷调查-组件市场才需要
     // 根据路由切换组件
     if (to.path.includes("/Custom/WenjuanMaterials") && to.name) {
-      // 文件调查仓库
-      const store = useMaterialStore();
-
       // 在仓库中处理
-      store.setCurrentMatrialCom(to.name as string);
+      setRouteMaterialCom(to.name as string);
     }
   }
 

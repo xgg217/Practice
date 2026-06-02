@@ -7,7 +7,9 @@
 
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
-import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
+
 const props = defineProps<{
   id: string;
   status: string;
@@ -18,11 +20,12 @@ const props = defineProps<{
 }>();
 
 const text = ref(props.status);
-const updateStatus = inject<UpdateStatus>("updateStatus");
+// const updateStatus = inject<UpdateStatus>("updateStatus");
 
 function inputHandle(newVal: string) {
-  if (updateStatus) {
-    updateStatus(props.configKey, newVal);
-  }
+  emitter.emit("UPDATE:TITLE", { name: props.configKey, value: newVal });
+  // if (updateStatus) {
+  //   updateStatus(props.configKey, newVal);
+  // }
 }
 </script>

@@ -9,7 +9,8 @@
 
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
-import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 
 const props = defineProps<{
   status: string;
@@ -21,14 +22,27 @@ const props = defineProps<{
 
 const color1 = ref(props.status);
 
-const updateStatus = inject<UpdateStatus>("updateStatus");
+// const updateStatus = inject<UpdateStatus>("updateStatus");
 const changePosition = (color: string) => {
-  if (updateStatus) {
-    updateStatus(props.configKey, color);
-    // const index = props.status.findIndex(item => item === pos);
-    // if (index !== -1) {
-    //   updateStatus(props.configKey, index);
-    // }
+  // if (updateStatus) {
+  //   updateStatus(props.configKey, color);
+  //   // const index = props.status.findIndex(item => item === pos);
+  //   // if (index !== -1) {
+  //   //   updateStatus(props.configKey, index);
+  //   // }
+  // }
+
+  const obj = {
+    name: props.configKey,
+    value: color,
+  } as Events["UPDATE:TITLE_COLOR"];
+
+  if (props.configKey === "titleColor") {
+    emitter.emit("UPDATE:TITLE_COLOR", obj);
+  } else if (props.configKey === "descColor") {
+    emitter.emit("UPDATE:DESC_COLOR", obj);
+  } else {
+    console.error("类型错误，要求类型为 titleColor 或 descColor");
   }
 };
 </script>

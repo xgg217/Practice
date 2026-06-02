@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import UploadImgCmp from "./UploadImgCmp.vue";
-import type { GetLink } from "@/views/Custom/Wenjuan/types/editProps";
-import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
+// import type { GetLink } from "@/views/Custom/Wenjuan/types/editProps";
+// import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 
 const props = withDefaults(
   defineProps<{
@@ -18,7 +19,7 @@ const props = withDefaults(
   },
 );
 
-const getLink = inject<GetLink>(GET_LINK);
+// const getLink = inject<GetLink>(GET_LINK);
 
 // const updateStatus = inject<UpdateStatus>("updateStatus");
 
@@ -29,12 +30,14 @@ const onChange = (newVal: string) => {
 
   url.value = newVal;
 
-  if (getLink) {
-    getLink({
-      index: props.index,
-      link: newVal,
-    });
-  }
+  // if (getLink) {
+  //   getLink({
+  //     index: props.index,
+  //     link: newVal,
+  //   });
+  // }
+
+  emitter.emit("UPDATE:PIC:URL", { name: "options", value: { link: newVal, index: props.index } });
 };
 
 watch(

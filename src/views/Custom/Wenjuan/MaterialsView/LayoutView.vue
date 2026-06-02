@@ -32,9 +32,10 @@ import type {
   BaseStatus,
   TypeStatus,
 } from "@/views/Custom/Wenjuan/types/editProps";
-import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
-import { isPlainObject } from "es-toolkit";
+// import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
+// import { isPlainObject } from "es-toolkit";
 import { changeEditorIsShowStatus } from "@/views/Custom/Wenjuan/utils/index";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 
 // 数据仓库
 const store = useMaterialStore() as unknown as MaterialStore;
@@ -47,103 +48,103 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
   const status = currentCom.value.status;
 
   const setType = {
-    type: () => {
-      if (typeof value === "number" && IsTypeStatus(status as unknown as BaseStatus)) {
-        // 切换其他编辑器的显示状态
-        changeEditorIsShowStatus(status as unknown as TypeStatus, value);
-        store.setCurrentStatus(status[key] as OptionsProps, value);
-      }
-    },
+    // type: () => {
+    //   if (typeof value === "number" && IsTypeStatus(status as unknown as BaseStatus)) {
+    //     // 切换其他编辑器的显示状态
+    //     changeEditorIsShowStatus(status as unknown as TypeStatus, value);
+    //     store.setCurrentStatus(status[key] as OptionsProps, value);
+    //   }
+    // },
 
     // 标题
-    title: () => {
-      if (typeof value !== "string") {
-        console.error("类型错误，要求类型为 string");
-      } else {
-        // @ts-expect-error 测试1
-        store.setTextStatus(status[key], value);
-      }
-    },
+    // title: () => {
+    //   if (typeof value !== "string") {
+    //     console.error("类型错误，要求类型为 string");
+    //   } else {
+    //     // @ts-expect-error 测试1
+    //     store.setTextStatus(status[key], value);
+    //   }
+    // },
 
-    // 描述内容
-    desc: () => setType["title"](),
+    // // 描述内容
+    // desc: () => setType["title"](),
 
     // 选项
-    options: () => {
-      if (IsOptionsStatus(status as unknown as BaseStatus)) {
-        // 删除
-        if (typeof value === "number") {
-          const iBool = store.removeOption(status[key] as OptionsProps, value);
-          if (!iBool) {
-            ElMessage.error("至少保留两个选项");
-          } else {
-            ElMessage.success("删除成功");
-          }
-          return;
-        }
+    // options: () => {
+    //   if (IsOptionsStatus(status as unknown as BaseStatus)) {
+    //     // 删除
+    //     if (typeof value === "number") {
+    //       const iBool = store.removeOption(status[key] as OptionsProps, value);
+    //       if (!iBool) {
+    //         ElMessage.error("至少保留两个选项");
+    //       } else {
+    //         ElMessage.success("删除成功");
+    //       }
+    //       return;
+    //     }
 
-        // 上传图片 - 设置图片链接
-        if (isPlainObject(value) && isPicLink(value)) {
-          // 设图片链接
-          store.setPicLinkByIndex(status[key] as OptionsProps, value);
-          return;
-        }
+    //     // 上传图片 - 设置图片链接
+    //     if (isPlainObject(value) && isPicLink(value)) {
+    //       // 设图片链接
+    //       store.setPicLinkByIndex(status[key] as OptionsProps, value);
+    //       return;
+    //     }
 
-        // 新增
-        store.addOption(status[key] as OptionsProps);
-      }
-    },
+    //     // 新增
+    //     store.addOption(status[key] as OptionsProps);
+    //   }
+    // },
 
     // 选项位置
-    position: () => {
-      if (typeof value !== "number") {
-        console.error("类型错误，要求类型为 number");
-        return;
-      }
-      store.setPosition(status[key] as OptionsProps, value);
-    },
+    // position: () => {
+    //   if (typeof value !== "number") {
+    //     console.error("类型错误，要求类型为 number");
+    //     return;
+    //   }
+    //   store.setPosition(status[key] as OptionsProps, value);
+    // },
 
-    // 标题大小
-    titleSize: () => {
-      if (typeof value !== "number") {
-        console.error("类型错误，要求类型为 number");
-        return;
-      }
+    // // 标题大小
+    // titleSize: () => {
+    //   if (typeof value !== "number") {
+    //     console.error("类型错误，要求类型为 number");
+    //     return;
+    //   }
 
-      store.setSize(status[key] as OptionsProps, value);
-    },
+    //   store.setSize(status[key] as OptionsProps, value);
+    // },
 
-    // 描述内容大小
-    descSize: () => setType["titleSize"](),
+    // // 描述内容大小
+    // descSize: () => setType["titleSize"](),
 
-    titleWeight: () => {
-      if (typeof value === "number") {
-        store.setCurrentStatus(status[key] as OptionsProps, value);
-      }
-    },
+    // titleWeight: () => {
+    //   if (typeof value === "number") {
+    //     store.setCurrentStatus(status[key] as OptionsProps, value);
+    //   }
+    // },
 
-    // 描述内容粗细
-    descWeight: () => setType["titleWeight"](),
+    // // 描述内容粗细
+    // descWeight: () => setType["titleWeight"](),
 
-    // 标题斜体
-    titleItalic: () => {
-      if (typeof value === "number") {
-        store.setCurrentStatus(status[key] as OptionsProps, value);
-      }
-    },
+    // // 标题斜体
+    // titleItalic: () => {
+    //   if (typeof value === "number") {
+    //     store.setCurrentStatus(status[key] as OptionsProps, value);
+    //   }
+    // },
 
-    // 描述内容斜体
-    descItalic: () => setType["titleItalic"](),
+    // // 描述内容斜体
+    // descItalic: () => setType["titleItalic"](),
 
-    // 标题颜色
-    titleColor: () => {
-      if (typeof value === "string") {
-        store.setTextStatus(status[key] as TextProps, value);
-      }
-    },
+    // // 标题颜色
+    // titleColor: () => {
+    //   if (typeof value === "string") {
+    //     store.setTextStatus(status[key] as TextProps, value);
+    //   }
+    // },
 
-    // 描述内容颜色
-    descColor: () => setType["titleColor"](),
+    // // 描述内容颜色
+    // descColor: () => setType["titleColor"](),
 
     // 默认值
     defaultValue: () => {
@@ -158,85 +159,165 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
   } else {
     setType["defaultValue"]();
   }
-
-  // store.setTextStatus
-  // switch (key) {
-  //   case "title":
-  //   case "desc":
-  //     if (typeof value !== "string") {
-  //       console.error("类型错误，要求类型为 string");
-  //     } else {
-  //       // @ts-expect-error 测试1
-  //       store.setTextStatus(status[key], value);
-  //     }
-  //     break;
-  //   case "options":
-  //     // @ts-expect-error 测试1
-  //     if (IsOptionsStatus(status)) {
-  //       // 删除
-  //       if (typeof value === "number") {
-  //         const iBool = store.removeOption(status[key], value);
-  //         if (!iBool) {
-  //           ElMessage.error("至少保留两个选项");
-  //         } else {
-  //           ElMessage.success("删除成功");
-  //         }
-  //         break;
-  //       }
-
-  //       // 新增
-  //       store.addOption(status[key]);
-  //     }
-  //     break;
-  //   case "position":
-  //     if (typeof value !== "number") {
-  //       console.error("类型错误，要求类型为 number");
-  //       break;
-  //     }
-  //     store.setPosition(status[key] as OptionsProps, value);
-  //     break;
-  //   case "titleSize":
-  //   case "descSize":
-  //     if (typeof value !== "number") {
-  //       console.error("类型错误，要求类型为 number");
-  //       break;
-  //     }
-  //     store.setCurrentStatus(status[key] as OptionsProps, value);
-  //     break;
-  //   case "titleWeight":
-  //   case "descWeight":
-  //     if (typeof value === "number") {
-  //       store.setCurrentStatus(status[key] as OptionsProps, value);
-  //       break;
-  //     }
-  //     break;
-
-  //   case "titleItalic":
-  //   case "descItalic":
-  //     if (typeof value === "number") {
-  //       store.setCurrentStatus(status[key] as OptionsProps, value);
-  //       break;
-  //     }
-  //     break;
-  //   case "titleColor":
-  //   case "descColor":
-  //     if (typeof value === "string") {
-  //       store.setTextStatus(status[key] as TextProps, value);
-  //       break;
-  //     }
-  //     break;
-  // }
 };
+
+// 右侧编辑器 更新监听
+{
+  const status = currentCom.value.status;
+
+  // 文本类型
+  emitter.on("UPDATE:TYPE", (row) => {
+    const { name, value } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    changeEditorIsShowStatus(status as unknown as TypeStatus, value);
+    store.setCurrentStatus(status[name] as OptionsProps, value);
+  });
+
+  // 更新标题
+  emitter.on("UPDATE:TITLE", (row) => {
+    const { name, value } = row;
+    store.setTextStatus(status[name] as TextProps, value);
+  });
+
+  // 更新描述
+  emitter.on("UPDATE:DESC", (row) => {
+    const { name, value } = row;
+    store.setTextStatus(status[name] as TextProps, value);
+  });
+
+  // 选项-图片-添加选项
+  emitter.on("ADD:OPTION:PIC", (row) => {
+    const { name } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    store.addOption(status[name] as OptionsProps);
+  });
+
+  // 选项-图片-删除选项
+  emitter.on("DELETE:OPTION:PIC", (row) => {
+    const { name, value } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    // store.addOption(status[name] as OptionsProps);
+    const iBool = store.removeOption(status[name] as OptionsProps, value);
+    if (!iBool) {
+      ElMessage.error("至少保留两个选项");
+    } else {
+      ElMessage.success("删除成功");
+    }
+  });
+
+  // 选项-图片-删除图片
+  emitter.on("DELETE:PIC:URL", (row) => {
+    const { name, value } = row;
+    store.setPicLinkByIndex(status[name] as OptionsProps, {
+      link: "",
+      index: value,
+    });
+  });
+
+  // 选项-图片-更新图片链接
+  emitter.on("UPDATE:PIC:URL", (row) => {
+    const { name, value } = row;
+    store.setPicLinkByIndex(status[name] as OptionsProps, {
+      link: value.link,
+      index: value.index,
+    });
+  });
+
+  // 选项-辅助文字-切换
+  emitter.on("UPDATE:OPTION:USE", (row) => {
+    const { name, value } = row;
+    store.setUse(status[name] as OptionsProps, value);
+  });
+
+  // 选项-辅助文字-修改
+  emitter.on("UPDATE:OPTION:USE:TEXT", (row) => {
+    const { name, value } = row;
+    console.log(row);
+
+    // store.setUse(status[name] as OptionsProps, value);
+    store.setPicLinkByIndex(status[name] as OptionsProps, {
+      link: value.link,
+      index: value.index,
+    });
+  });
+
+  // 对齐方式
+  emitter.on("UPDATE:POSITION", (row) => {
+    const { name, value } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    // store.setSize(status[name] as OptionsProps, value);
+    store.setPosition(status[name] as OptionsProps, value);
+  });
+
+  // 标题字体大小
+  emitter.on("UPDATE:TITLE_SIZE", (row) => {
+    const { name, value } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    store.setSize(status[name] as OptionsProps, value);
+  });
+
+  // 描述字体大小
+  emitter.on("UPDATE:DESC_SIZE", (row) => {
+    const { name, value } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    store.setSize(status[name] as OptionsProps, value);
+  });
+
+  // 标题字体加粗
+  emitter.on("UPDATE:TITLE_WEIGHT", (row) => {
+    const { name, value } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    // store.setSize(status[name] as OptionsProps, value);
+    store.setCurrentStatus(status[name] as OptionsProps, value);
+  });
+
+  // 描述字体加粗
+  emitter.on("UPDATE:DESC_WEIGHT", (row) => {
+    const { name, value } = row;
+    // store.setTextStatus(status[name] as TextProps, value);
+    // store.setSize(status[name] as OptionsProps, value);
+    store.setCurrentStatus(status[name] as OptionsProps, value);
+  });
+
+  // 标题字体斜体
+  emitter.on("UPDATE:TITLE_ITALIC", (row) => {
+    const { name, value } = row;
+    store.setCurrentStatus(status[name] as OptionsProps, value);
+  });
+
+  // 描述字体斜体
+  emitter.on("UPDATE:DESC_ITALIC", (row) => {
+    const { name, value } = row;
+    store.setCurrentStatus(status[name] as OptionsProps, value);
+  });
+
+  // 更新 标题字体颜色
+  emitter.on("UPDATE:TITLE_COLOR", (row) => {
+    const { name, value } = row;
+    store.setTextStatus(status[name] as TextProps, value);
+  });
+
+  // 更新 描述字体颜色
+  emitter.on("UPDATE:DESC_COLOR", (row) => {
+    const { name, value } = row;
+    store.setTextStatus(status[name] as TextProps, value);
+  });
+}
 
 // 图片选择（获取上传图片的值）
-const getLink = (row: PicLink) => {
-  console.log("getLink", row);
+// const getLink = (row: PicLink) => {
+//   console.log("getLink", row);
 
-  updateStatus("options", row);
-};
+//   updateStatus("options", row);
+// };
 
 provide("updateStatus", updateStatus);
-provide(GET_LINK, getLink);
+// provide(GET_LINK, getLink);
+
+onBeforeUnmount(() => {
+  // 移除所有监听
+  emitter.all.clear();
+});
 </script>
 
 <style scoped>
@@ -272,7 +353,7 @@ provide(GET_LINK, getLink);
 }
 .right {
   /* width: 350px; */
-  min-width: 350px;
+  width: 350px;
   height: 100%;
   overflow-y: scroll;
   border-left: 1px solid var(--border-color);

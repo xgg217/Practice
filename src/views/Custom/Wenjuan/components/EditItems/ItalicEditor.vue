@@ -12,7 +12,8 @@
 
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
-import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 
 const props = defineProps<{
   currentStatus: number;
@@ -25,13 +26,26 @@ const props = defineProps<{
 
 const radio = ref(props.status[props.currentStatus]);
 
-const updateStatus = inject<UpdateStatus>("updateStatus");
+// const updateStatus = inject<UpdateStatus>("updateStatus");
 const changePosition = (pos: string) => {
-  if (updateStatus) {
-    const index = props.status.findIndex((item) => item === pos);
-    if (index !== -1) {
-      updateStatus(props.configKey, index);
-    }
+  // if (updateStatus) {
+  const index = props.status.findIndex((item) => item === pos);
+  //   if (index !== -1) {
+  //     updateStatus(props.configKey, index);
+  //   }
+  // }
+
+  const obj = {
+    name: props.configKey,
+    value: index,
+  } as Events["UPDATE:TITLE_ITALIC"];
+
+  if (props.configKey === "titleItalic") {
+    emitter.emit("UPDATE:TITLE_ITALIC", obj);
+  } else if (props.configKey === "descItalic") {
+    emitter.emit("UPDATE:DESC_ITALIC", obj);
+  } else {
+    console.error("类型错误，要求类型为 titleItalic 或 descItalic");
   }
 };
 </script>

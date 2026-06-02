@@ -52,3 +52,7 @@ export function setPicLinkByIndex(optionProps: OptionsProps, payload: PicLink) {
     optionProps.status[payload.index]!.value = payload.link;
   }
 }
+
+export function setUse(optionsProps: OptionsProps, isUse: boolean) {
+  optionsProps.isUse = isUse;
+}

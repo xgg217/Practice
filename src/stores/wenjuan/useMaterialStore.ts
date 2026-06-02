@@ -9,6 +9,7 @@ import {
   setCurrentStatus,
   setPicLinkByIndex,
   setSize,
+  setUse,
 } from "./actions";
 import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
 import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/config";
@@ -62,8 +63,21 @@ export const useMaterialStore = defineStore("materialStore", {
 
     setCurrentStatus,
 
+    // 设置字体大小
     setSize,
+
+    // 选项-辅助文字-切换
+    setUse,
 
     setPicLinkByIndex,
   },
 });
+
+// 路由切换 到问卷调查 组件的后续处理
+export const setRouteMaterialCom = (comName: string) => {
+  // 问卷调查仓库
+  const store = useMaterialStore();
+
+  // 在仓库中处理
+  store.setCurrentMatrialCom(comName as string);
+};
