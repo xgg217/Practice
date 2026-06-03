@@ -1,6 +1,6 @@
 <!-- 图片选项编辑器 -->
 <template>
-  <div>
+  <div :key="props.id">
     <div class="flex align-items-center">
       <div class="mr-10">题目选项</div>
       <el-button size="small" :icon="Plus" circle @click="addOptionHandle" />

@@ -91,6 +91,16 @@ export function changeEditorIsShowStatus(status: TypeStatus, type: number) {
   }
 }
 
+export function getValueStatusByCurrentStatus(props: OptionsProps) {
+  if (
+    props &&
+    isOptionsProps(props) &&
+    (isValueStatusArray(props.status) || isPicTitleDescArray(props.status))
+  ) {
+    return props.status[props.currentStatus];
+  }
+}
+
 // export function updateInitStatusBeforeAdd(comStatus: Status, newMaterialName: Material) {
 //   switch (newMaterialName) {
 //     case "personal-info-gender": {

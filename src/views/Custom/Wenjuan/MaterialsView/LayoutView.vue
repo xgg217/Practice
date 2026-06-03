@@ -241,6 +241,12 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
     });
   });
 
+  // 选项-日期类型-切换
+  emitter.on("UPDATE:OPTION:DATE_TIME", (row) => {
+    const { name, value } = row;
+    store.setCurrentStatus(status[name] as OptionsProps, value);
+  });
+
   // 对齐方式
   emitter.on("UPDATE:POSITION", (row) => {
     const { name, value } = row;

@@ -1,6 +1,6 @@
 <template>
   <!-- <div>颜色编辑组件</div> -->
-  <div class="position">
+  <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
 
     <el-color-picker v-model="color1" @change="(val) => changePosition(val!)" />
@@ -13,6 +13,7 @@ import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 
 const props = defineProps<{
+  id: string;
   status: string;
   isShow: boolean;
   configKey: string;

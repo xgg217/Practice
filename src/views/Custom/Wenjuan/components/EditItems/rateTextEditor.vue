@@ -1,5 +1,5 @@
 <template>
-  <div key="id">
+  <div :key="id">
     <div class="flex align-items-center mb-10">
       <div class="mr-10">辅助文字</div>
       <el-switch :model-value="isUse" @change="(val) => switchChangeHandle(val as boolean)" />

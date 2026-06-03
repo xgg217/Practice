@@ -13,7 +13,7 @@ import SizeEditor from "@/views/Custom/Wenjuan/components/EditItems/SizeEditor.v
 import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEditor.vue";
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
-import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextInputTypeEditor.vue";
+import DateTimeTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/DateTimeTypeEditor.vue";
 
 export default function () {
   return {
@@ -22,16 +22,6 @@ export default function () {
     id: crypto.randomUUID(),
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
-      // 文本类型
-      type: {
-        id: crypto.randomUUID(),
-        currentStatus: 0,
-        status: ["单行文本", "多行文本"],
-        isShow: true,
-        name: "text-input-type-editor",
-        editCom: markRaw(TextInputTypeEditor),
-      },
-
       // 标题
       title: {
         id: crypto.randomUUID(),
@@ -50,6 +40,34 @@ export default function () {
         name: "desc-editor",
         editName: "描述内容",
         editCom: markRaw(DescEditor),
+      },
+
+      // 日期
+      type: {
+        id: crypto.randomUUID(),
+        currentStatus: 3,
+        status: [
+          {
+            value: "week",
+            status: "周",
+          },
+          {
+            value: "year",
+            status: "年",
+          },
+          {
+            value: "month",
+            status: "月",
+          },
+          {
+            value: "date",
+            status: "日期",
+          },
+        ],
+        isShow: true,
+        editName: "日期类型",
+        name: "date-time-type-editor",
+        editCom: markRaw(DateTimeTypeEditor),
       },
 
       // 对齐方式

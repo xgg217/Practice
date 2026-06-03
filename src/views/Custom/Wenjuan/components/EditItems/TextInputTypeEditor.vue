@@ -1,6 +1,6 @@
 <!-- 文本类型 -->
 <template>
-  <div class="position">
+  <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
     <el-radio-group v-model="radio" @change="(val) => changeType(val as number)">
       <el-radio-button :value="index" v-for="(item, index) of props.status" :key="item">
@@ -24,6 +24,7 @@ const props = defineProps<{
   configKey: string;
   editName: string;
   editCom: VueComType;
+  id: string;
 }>();
 
 const radio = ref(props.currentStatus);

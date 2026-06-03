@@ -1,5 +1,5 @@
 <template>
-  <div key="id">
+  <div :key="id">
     <div class="mb-10">{{ props.editName }}</div>
     <el-input placeholder="请输入题目标题" v-model="text" @update:modelValue="inputHandle" />
   </div>

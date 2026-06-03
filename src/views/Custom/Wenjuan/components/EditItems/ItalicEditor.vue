@@ -1,6 +1,6 @@
 <template>
   <!-- 字体倾斜编辑组件 -->
-  <div class="position">
+  <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
     <el-radio-group v-model="radio" @change="(val) => changePosition(val as string)">
       <el-radio-button :value="item" v-for="item of props.status" :key="item">
@@ -16,6 +16,7 @@ import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 
 const props = defineProps<{
+  id: string;
   currentStatus: number;
   status: string[];
   isShow: boolean;

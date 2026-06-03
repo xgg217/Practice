@@ -28,6 +28,9 @@ export type Events = {
   // 选项-辅助文字-修改
   "UPDATE:OPTION:USE:TEXT": { name: string; value: { link: string; index: number } };
 
+  // 选项-日期时间类型
+  "UPDATE:OPTION:DATE_TIME": { name: string; value: number };
+
   // 更新对齐方式
   "UPDATE:POSITION": { name: string; value: number }; // value 是索引
 

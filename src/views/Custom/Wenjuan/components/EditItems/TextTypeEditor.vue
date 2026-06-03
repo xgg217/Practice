@@ -1,5 +1,5 @@
 <template>
-  <div class="position">
+  <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
     <el-radio-group v-model="radio" @change="(val) => changeType(val as number)">
       <el-radio-button :value="index" v-for="(item, index) of props.status" :key="item">
@@ -21,6 +21,7 @@ const props = defineProps<{
   configKey: string;
   editName: string; // editName
   editCom: VueComType;
+  id: string;
 }>();
 const updateStatus = inject<UpdateStatus>("updateStatus");
 

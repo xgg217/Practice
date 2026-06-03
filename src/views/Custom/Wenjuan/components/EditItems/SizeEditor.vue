@@ -1,6 +1,6 @@
 <!-- 字体大小编辑器 -->
 <template>
-  <div class="position">
+  <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
     <el-radio-group v-model="radio" @change="(val) => changeSize(val as string)">
       <el-radio-button :value="item" v-for="item of props.status" :key="item">
@@ -22,6 +22,7 @@ const props = defineProps<{
   configKey: string;
   editName: string; // editName
   editCom: VueComType;
+  id: string;
 }>();
 
 const radio = ref(props.status[props.currentStatus]);

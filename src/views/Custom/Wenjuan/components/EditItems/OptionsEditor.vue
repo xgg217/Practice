@@ -1,5 +1,5 @@
 <template>
-  <div key="id">
+  <div :key="id">
     <div class="flex align-items-center mb-10">
       <div class="mr-10">选项</div>
       <el-button size="small" circle :icon="Plus" @click="addOptionHandle" />
