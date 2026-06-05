@@ -13,7 +13,39 @@ import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEdit
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 
-export default function () {
+import type {
+  TComponentStatus,
+  TTitle,
+  TDesc,
+  TPicOptionsEdito,
+  TPosition,
+  TFontSizeSize,
+  TFontWeight,
+  TFontItalic,
+  TFontColor,
+} from "@/views/Custom/Wenjuan/types/config";
+
+export type TSingleSelectStatus = {
+  type: TComponentStatus;
+  name: "single-pic-select";
+  id: string;
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TPicOptionsEdito;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+export default function (): TSingleSelectStatus {
   return {
     type: markRaw(SinglePicSelect),
     name: "single-pic-select",

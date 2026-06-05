@@ -235,24 +235,125 @@ const ROW: RouteRecordRaw = {
             name: "personal-info-gender",
           },
           children: [
+            // {
+            //   path: "personal-info-name",
+            //   name: "personal-info-name",
+            //   component: () => import("@/components/SurveyComs/Materials/InputComs/TextInput.vue"),
+            //   meta: {
+            //     title: "姓名",
+            //   },
+            // },
+            // {
+            //   path: "/personal-info-id",
+            //   name: "personal-info-id",
+            //   component: () => import("@/components/SurveyComs/Materials/InputComs/TextInput.vue"),
+            //   meta: {
+            //     title: "身份证号",
+            //   },
+            // },
+            // {
+            //   path: "/personal-info-birth",
+            //   name: "personal-info-birth",
+            //   component: () =>
+            //     import("@/components/SurveyComs/Materials/AdvancedComs/DateTime.vue"),
+            //   meta: {
+            //     title: "出生日期",
+            //   },
+            // },
             {
               path: "personal-info-gender",
               name: "personal-info-gender",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/PersonalInfoGroupView/PersonalInfoGenderView.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/IndexView.vue"),
               meta: {
                 title: "性别",
               },
             },
+            // {
+            //   path: "/personal-info-age",
+            //   name: "personal-info-age",
+            //   component: () =>
+            //     import("@/components/SurveyComs/Materials/SelectComs/SingleSelect.vue"),
+            //   meta: {
+            //     title: "年龄",
+            //   },
+            // },
             {
               path: "personal-info-education",
               name: "personal-info-education",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/PersonalInfoGroupView/PersonalInfoEducationView.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/IndexView.vue"),
               meta: {
                 title: "学历",
               },
             },
+            // {
+            //   path: "/personal-info-collage",
+            //   name: "personal-info-collage",
+            //   component: () => import("@/components/SurveyComs/Materials/InputComs/TextInput.vue"),
+            //   meta: {
+            //     title: "大学",
+            //   },
+            // },
+            // {
+            //   path: "/personal-info-major",
+            //   name: "personal-info-major",
+            //   component: () => import("@/components/SurveyComs/Materials/InputComs/TextInput.vue"),
+            //   meta: {
+            //     title: "专业",
+            //   },
+            // },
+            // {
+            //   path: "/personal-info-industry",
+            //   name: "personal-info-industry",
+            //   component: () => import("@/components/SurveyComs/Materials/InputComs/TextInput.vue"),
+            //   meta: {
+            //     title: "行业",
+            //   },
+            // },
+            // {
+            //   path: "/personal-info-career",
+            //   name: "personal-info-career",
+            //   component: () =>
+            //     import("@/components/SurveyComs/Materials/SelectComs/SingleSelect.vue"),
+            //   meta: {
+            //     title: "职业",
+            //   },
+            // },
+            // {
+            //   path: "/personal-info-company",
+            //   name: "personal-info-company",
+            //   component: () => import("@/components/SurveyComs/Materials/InputComs/TextInput.vue"),
+            //   meta: {
+            //     title: "公司",
+            //   },
+            // },
+            // {
+            //   path: "/personal-info-position",
+            //   name: "personal-info-position",
+            //   component: () => import("@/components/SurveyComs/Materials/InputComs/TextInput.vue"),
+            //   meta: {
+            //     title: "职位",
+            //   },
+            // },
+            // {
+            //   path: "personal-info-gender",
+            //   name: "personal-info-gender",
+            //   component: () =>
+            //     import("@/views/Custom/Wenjuan/MaterialsView/PersonalInfoGroupView/PersonalInfoGenderView.vue"),
+            //   meta: {
+            //     title: "性别",
+            //   },
+            // },
+            // {
+            //   path: "personal-info-education",
+            //   name: "personal-info-education",
+            //   component: () =>
+            //     import("@/views/Custom/Wenjuan/MaterialsView/PersonalInfoGroupView/PersonalInfoEducationView.vue"),
+            //   meta: {
+            //     title: "学历",
+            //   },
+            // },
           ],
         },
         {

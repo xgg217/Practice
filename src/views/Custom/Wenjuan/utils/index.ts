@@ -26,8 +26,9 @@ import {
   isValueStatusArray,
   isPicTitleDescArray,
   isPicTitleDescStatusArr,
+  IsOptionsStatus,
 } from "@/views/Custom/Wenjuan/types/editProps";
-
+import { OPTIONS_STATUS_ENUM } from "@/views/Custom/Wenjuan/consts";
 import type { Status } from "@/views/Custom/Wenjuan/types/common";
 import type { SurveyDBData } from "@/views/Custom/Wenjuan/types/db";
 import type { Material, EditComName } from "@/views/Custom/Wenjuan/types/store";
@@ -75,7 +76,11 @@ export function getValueStatus(props: OptionsProps) {
   }
 }
 
+// 文本类型切换
 export function changeEditorIsShowStatus(status: TypeStatus, type: number) {
+  // console.log(type);
+  // console.log(status.type.currentStatus);
+
   if (type !== status.type.currentStatus) {
     status.title.isShow = !status.title.isShow;
     status.desc.isShow = !status.desc.isShow;
@@ -91,6 +96,26 @@ export function changeEditorIsShowStatus(status: TypeStatus, type: number) {
   }
 }
 
+// 备注说明切换
+export function changeEditorIsShowStatusCommentType(status: TypeStatus) {
+  // console.log(type);
+  // console.log(status.type.currentStatus);
+
+  // if (type !== status.type.currentStatus) {
+  status.title.isShow = !status.title.isShow;
+  status.desc.isShow = !status.desc.isShow;
+  // status.position.isShow = !status.position.isShow;
+  status.titleSize.isShow = !status.titleSize.isShow;
+  status.descSize.isShow = !status.descSize.isShow;
+  status.titleWeight.isShow = !status.titleWeight.isShow;
+  status.descWeight.isShow = !status.descWeight.isShow;
+  status.titleItalic.isShow = !status.titleItalic.isShow;
+  status.descItalic.isShow = !status.descItalic.isShow;
+  status.titleColor.isShow = !status.titleColor.isShow;
+  status.descColor.isShow = !status.descColor.isShow;
+  // }
+}
+
 export function getValueStatusByCurrentStatus(props: OptionsProps) {
   if (
     props &&
@@ -100,25 +125,6 @@ export function getValueStatusByCurrentStatus(props: OptionsProps) {
     return props.status[props.currentStatus];
   }
 }
-
-// export function updateInitStatusBeforeAdd(comStatus: Status, newMaterialName: Material) {
-//   switch (newMaterialName) {
-//     case "personal-info-gender": {
-//       comStatus.name = "personal-info-gender";
-//       comStatus.status.title.status = "您的性别是？";
-//       if (IsOptionsStatus(comStatus.status as unknown as BaseStatus))
-//         comStatus.status.options.status = genderStatus();
-//       break;
-//     }
-//     case "personal-info-education": {
-//       comStatus.name = "personal-info-education";
-//       comStatus.status.title.status = "到目前为止，您的最高学历是？";
-//       if (IsOptionsStatus(comStatus.status as unknown as BaseStatus))
-//         comStatus.status.options.status = educationStatus();
-//       break;
-//     }
-//   }
-// }
 
 // // 处理日期格式的辅助方法
 // export function formatDate(

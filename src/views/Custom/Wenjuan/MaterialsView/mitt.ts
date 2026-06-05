@@ -5,6 +5,9 @@ export type Events = {
   // 文本类型
   "UPDATE:TYPE": { name: string; value: number };
 
+  // 备注说明类型
+  "UPDATE:COMMENT_TYPE": { name: string; value: number };
+
   // 更新标题
   "UPDATE:TITLE": { name: string; value: string };
   // 更新描述

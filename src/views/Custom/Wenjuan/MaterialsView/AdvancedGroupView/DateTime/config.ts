@@ -15,7 +15,39 @@ import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEdit
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 import DateTimeTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/DateTimeTypeEditor.vue";
 
-export default function () {
+import type {
+  TComponentStatus,
+  TTitle,
+  TDesc,
+  TOptionsDateTimeTypeEditor,
+  TPosition,
+  TFontSizeSize,
+  TFontWeight,
+  TFontItalic,
+  TFontColor,
+} from "@/views/Custom/Wenjuan/types/config";
+
+export type TSingleSelectStatus = {
+  type: TComponentStatus;
+  name: "date-time";
+  id: string;
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TOptionsDateTimeTypeEditor;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+export default function (): TSingleSelectStatus {
   return {
     type: markRaw(DateTime),
     name: "date-time",

@@ -14,7 +14,39 @@ import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEdit
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 import RateTextEditor from "@/views/Custom/Wenjuan/components/EditItems/RateTextEditor.vue";
 
-export default function () {
+import type {
+  TComponentStatus,
+  TTitle,
+  TDesc,
+  TOptionsRateTextEditor,
+  TPosition,
+  TFontSizeSize,
+  TFontWeight,
+  TFontItalic,
+  TFontColor,
+} from "@/views/Custom/Wenjuan/types/config";
+
+export type TSingleSelectStatus = {
+  type: TComponentStatus;
+  name: "rate-score";
+  id: string;
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TOptionsRateTextEditor;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+export default function (): TSingleSelectStatus {
   return {
     type: markRaw(RateScore),
     name: "rate-score",
@@ -48,6 +80,7 @@ export default function () {
         isShow: true,
         isUse: false,
         name: "rate-text-editor",
+        editName: "评分/打分",
         editCom: markRaw(RateTextEditor),
       },
 

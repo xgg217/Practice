@@ -11,15 +11,9 @@ import {
   setSize,
   setUse,
 } from "./actions";
-import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
-import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/config";
-import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/config";
-import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/config";
-import MultiPicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiPicSelect/config";
-import TextInputView from "@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/config";
-import RateScore from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/RateScore/config";
-import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/config";
-import TextNote from "@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/TextNote/config";
+import { COM_MAP } from "./config";
+
+// 需要初始化的组件
 
 export const useMaterialStore = defineStore("materialStore", {
   state: () => ({
@@ -27,15 +21,17 @@ export const useMaterialStore = defineStore("materialStore", {
 
     // 记录所有的业务组件
     coms: {
-      "single-select": SingleSelect(), // 选择-单选题
-      "multi-select": MultiSelect(), // 选择-多选题
-      "option-select": OptionSelect(), // 选择-下拉
-      "single-pic-select": SinglePicSelect(), // 选择-图片单选题
-      "multi-pic-select": MultiPicSelect(), // 选择-图片多选题
-      "text-input": TextInputView(), // 文本输入-文本输入框
-      "rate-score": RateScore(), // 高级题型-评分打分
-      "date-time": DateTime(), // 高级题型-时间日期
-      "text-note": TextNote(), // 备注说明-备注说明
+      "single-select": COM_MAP["single-select"](), // 选择-单选题
+      "multi-select": COM_MAP["multi-select"](), // 选择-多选题
+      "option-select": COM_MAP["option-select"](), // 选择-下拉选择
+      "single-pic-select": COM_MAP["single-pic-select"](), // 选择-图片单选题
+      "multi-pic-select": COM_MAP["multi-pic-select"](), // 选择-图片多选题
+      "text-input": COM_MAP["text-input"](), // 文本输入-文本输入框
+      "rate-score": COM_MAP["rate-score"](), // 高级题型-评分打分
+      "date-time": COM_MAP["date-time"](), // 高级题型-时间日期
+      "text-note": COM_MAP["text-note"](), // 备注说明-备注说明
+      "personal-info-gender": COM_MAP["personal-info-gender"](), // 个人信息-性别(单选题)
+      "personal-info-education": COM_MAP["personal-info-education"](), // 个人信息-学历(单选题)
     },
   }),
   actions: {

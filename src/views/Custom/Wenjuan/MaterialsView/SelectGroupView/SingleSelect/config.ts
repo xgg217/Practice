@@ -14,7 +14,39 @@ import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEdit
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 
-export default function () {
+import type {
+  TComponentStatus,
+  TTitle,
+  TDesc,
+  TOptions,
+  TPosition,
+  TFontSizeSize,
+  TFontWeight,
+  TFontItalic,
+  TFontColor,
+} from "@/views/Custom/Wenjuan/types/config";
+
+export type TSingleSelectStatus = {
+  type: TComponentStatus;
+  name: "single-select";
+  id: string;
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TOptions;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+export default function (): TSingleSelectStatus {
   return {
     type: markRaw(SingleSelect),
     name: "single-select",
@@ -44,8 +76,8 @@ export default function () {
       // 选项
       options: {
         id: crypto.randomUUID(),
-        status: ["默认选项1", "默认选项2"],
         currentStatus: 0,
+        status: ["默认选项1", "默认选项2"],
         isShow: true,
         name: "options-editor",
         editName: "选项",

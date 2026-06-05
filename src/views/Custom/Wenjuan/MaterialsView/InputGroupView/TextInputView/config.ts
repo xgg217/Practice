@@ -14,10 +14,42 @@ import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEdit
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextInputTypeEditor.vue";
 
-export default function () {
+import type {
+  TComponentStatus,
+  TTextType,
+  TTitle,
+  TDesc,
+  TPosition,
+  TFontSizeSize,
+  TFontWeight,
+  TFontItalic,
+  TFontColor,
+} from "@/views/Custom/Wenjuan/types/config";
+
+export type TSingleSelectStatus = {
+  type: TComponentStatus;
+  name: "text-input";
+  id: string;
+  status: {
+    type: TTextType<"text-input-type-editor">;
+    title: TTitle;
+    desc: TDesc;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+export default function (): TSingleSelectStatus {
   return {
     type: markRaw(SingleSelect),
-    name: "single-select",
+    name: "text-input",
     id: crypto.randomUUID(),
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {

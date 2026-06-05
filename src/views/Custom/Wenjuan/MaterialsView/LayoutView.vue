@@ -34,7 +34,10 @@ import type {
 } from "@/views/Custom/Wenjuan/types/editProps";
 // import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
 // import { isPlainObject } from "es-toolkit";
-import { changeEditorIsShowStatus } from "@/views/Custom/Wenjuan/utils/index";
+import {
+  changeEditorIsShowStatus,
+  changeEditorIsShowStatusCommentType,
+} from "@/views/Custom/Wenjuan/utils/index";
 import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 
 // 数据仓库
@@ -170,6 +173,13 @@ const updateStatus = (key: string, value?: number | string | boolean | object) =
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     changeEditorIsShowStatus(status as unknown as TypeStatus, value);
+    store.setCurrentStatus(status[name] as OptionsProps, value);
+  });
+
+  // 备注说明类型
+  emitter.on("UPDATE:COMMENT_TYPE", (row) => {
+    const { name, value } = row;
+    changeEditorIsShowStatusCommentType(status as unknown as TypeStatus);
     store.setCurrentStatus(status[name] as OptionsProps, value);
   });
 
