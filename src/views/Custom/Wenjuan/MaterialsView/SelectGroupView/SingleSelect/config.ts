@@ -26,9 +26,9 @@ import type {
   TFontColor,
 } from "@/views/Custom/Wenjuan/types/config";
 
-export type TSingleSelectStatus = {
+export type TSingleSelectStatus<T = "single-select"> = {
   type: TComponentStatus;
-  name: "single-select";
+  name: T;
   id: string;
   status: {
     title: TTitle;

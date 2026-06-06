@@ -19,7 +19,7 @@ import type {
   TComponentStatus,
   TTitle,
   TDesc,
-  TOptionsDateTimeTypeEditor,
+  TDateTimeType,
   TPosition,
   TFontSizeSize,
   TFontWeight,
@@ -34,7 +34,8 @@ export type TSingleSelectStatus = {
   status: {
     title: TTitle;
     desc: TDesc;
-    options: TOptionsDateTimeTypeEditor;
+    type: TDateTimeType;
+    // options: TOptionsDateTimeTypeEditor;
     position: TPosition;
     titleSize: TFontSizeSize;
     descSize: TFontSizeSize;
