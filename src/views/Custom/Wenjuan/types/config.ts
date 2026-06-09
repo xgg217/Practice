@@ -57,7 +57,7 @@ export type TOptionsRateTextEditor = {
 };
 
 // 选项 - 高级题型 - 评分/打分
-export type TOptionsDateTimeTypeEditor = {
+export type TTypeDateTimeTypeEditor = {
   id: string; // 组件id
   currentStatus: number; // 当前状态
   status: {

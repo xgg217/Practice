@@ -28,8 +28,8 @@ import { ElMessage } from "element-plus";
 import type {
   OptionsProps,
   TextProps,
-  PicLink,
-  BaseStatus,
+  // PicLink,
+  // BaseStatus,
   TypeStatus,
 } from "@/views/Custom/Wenjuan/types/editProps";
 // import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
