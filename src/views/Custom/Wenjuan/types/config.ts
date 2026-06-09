@@ -2,13 +2,27 @@ import type { Raw } from "vue";
 
 export type TComponentStatus = Raw<Component>;
 
-// 备注说明 类型
+//  类型 备注说明
 export type TTextType<T = "text-type-editor"> = {
   id: string; // 组件id
   status: string[]; // ["标题", "描述"]
   currentStatus: number; // 当前状态
   isShow: boolean; // 是否显示
   name: T; // 组件名称
+  editName: string; // 编辑组件名称
+  editCom: TComponentStatus; // 编辑组件
+};
+
+// 类型 日期/时间
+export type TDateTimeType = {
+  id: string; // 组件id
+  currentStatus: number; // 当前状态
+  status: {
+    value: string;
+    status: string;
+  }[];
+  isShow: boolean; // 是否显示
+  name: "date-time-type-editor"; // 组件名称
   editName: string; // 编辑组件名称
   editCom: TComponentStatus; // 编辑组件
 };
