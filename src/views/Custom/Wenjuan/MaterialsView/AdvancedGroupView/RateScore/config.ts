@@ -1,5 +1,4 @@
 // 评分打分 JSON-Schema 配置
-import { markRaw } from "vue";
 
 // 业务组件
 import RateScore from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/RateScore/IndexView.vue";
@@ -15,7 +14,6 @@ import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor
 import RateTextEditor from "@/views/Custom/Wenjuan/components/EditItems/RateTextEditor.vue";
 
 import type {
-  TComponentStatus,
   TTitle,
   TDesc,
   TOptionsRateTextEditor,
@@ -25,9 +23,10 @@ import type {
   TFontItalic,
   TFontColor,
 } from "@/views/Custom/Wenjuan/types/config";
+import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 
 export type TSingleSelectStatus = {
-  type: TComponentStatus;
+  type: VueComType;
   name: "rate-score";
   id: string;
   status: {

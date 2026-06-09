@@ -14,7 +14,6 @@ import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEdit
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 
 import type {
-  TComponentStatus,
   TTitle,
   TDesc,
   TPicOptionsEdito,
@@ -24,9 +23,10 @@ import type {
   TFontItalic,
   TFontColor,
 } from "@/views/Custom/Wenjuan/types/config";
+import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 
 export type TSingleSelectStatus = {
-  type: TComponentStatus;
+  type: VueComType;
   name: "multi-pic-select";
   id: string;
   status: {

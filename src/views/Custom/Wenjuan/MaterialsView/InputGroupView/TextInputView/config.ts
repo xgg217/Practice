@@ -1,5 +1,4 @@
 // 单选题的 JSON-Schema 配置
-import { markRaw } from "vue";
 
 // 业务组件
 import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/IndexView.vue";
@@ -15,7 +14,6 @@ import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor
 import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextInputTypeEditor.vue";
 
 import type {
-  TComponentStatus,
   TTextType,
   TTitle,
   TDesc,
@@ -25,9 +23,10 @@ import type {
   TFontItalic,
   TFontColor,
 } from "@/views/Custom/Wenjuan/types/config";
+import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 
 export type TSingleSelectStatus = {
-  type: TComponentStatus;
+  type: VueComType;
   name: "text-input";
   id: string;
   status: {

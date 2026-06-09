@@ -1,4 +1,3 @@
-import type { defineComponent } from "vue";
 import type { TextProps, OptionsProps } from "./editProps";
 import type { Material } from "./store";
 

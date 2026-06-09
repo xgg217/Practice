@@ -1,4 +1,6 @@
-import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
+import SingleSelect, {
+  type TSingleSelectStatus,
+} from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
 import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/config";
 import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/config";
 import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/config";
@@ -13,9 +15,9 @@ import { OPTIONS_STATUS_ENUM } from "@/views/Custom/Wenjuan/consts";
 
 // 个人信息-性别(单选题)
 const getGenderStatus = () => {
-  const defaultStatus = SingleSelect() as Status;
+  const defaultStatus = SingleSelect();
 
-  updateInitStatusBeforeAdd(defaultStatus, "personal-info-gender");
+  // updateInitStatusBeforeAdd(defaultStatus, "personal-info-gender");
 };
 
 // 个人信息-学历(单选题)
@@ -34,9 +36,9 @@ export const COM_MAP = {
 
   // 个人信息-性别(单选题)
   "personal-info-gender": () => {
-    const defaultStatus = SingleSelect() as Status;
+    const defaultStatus = SingleSelect();
     defaultStatus.name = "personal-info-gender";
-    // @ts-expect-error 个人信息-性别(单选题) 标题
+    // 个人信息-性别(单选题) 标题
     defaultStatus.status.title.status = "您的性别是？";
     // @ts-expect-error 个人信息-性别(单选题) 选项
     defaultStatus.status.options.status = OPTIONS_STATUS_ENUM["personal-info-gender"];
@@ -46,9 +48,9 @@ export const COM_MAP = {
 
   // 个人信息-学历(单选题)
   "personal-info-education": () => {
-    const defaultStatus = SingleSelect() as Status;
+    const defaultStatus = SingleSelect();
     defaultStatus.name = "personal-info-education";
-    // @ts-expect-error 个人信息-性别(单选题) 标题
+    // 个人信息-性别(单选题) 标题
     defaultStatus.status.title.status = "到目前为止，您的最高学历是？";
     // @ts-expect-error 个人信息-性别(单选题) 选项
     defaultStatus.status.options.status = OPTIONS_STATUS_ENUM["personal-info-education"];

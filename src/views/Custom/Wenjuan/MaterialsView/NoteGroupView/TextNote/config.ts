@@ -1,5 +1,4 @@
 // 备注说明 JSON-Schema 配置
-import { markRaw } from "vue";
 
 // 业务组件
 import TextNote from "@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/TextNote/IndexView.vue";
@@ -15,7 +14,6 @@ import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor
 import TextTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextTypeEditor.vue";
 
 import type {
-  TComponentStatus,
   TTextType,
   TTitle,
   TDesc,
@@ -25,9 +23,10 @@ import type {
   TFontItalic,
   TFontColor,
 } from "@/views/Custom/Wenjuan/types/config";
+import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 
 export type TSingleSelectStatus = {
-  type: TComponentStatus;
+  type: VueComType;
   name: "text-note";
   id: string;
   status: {

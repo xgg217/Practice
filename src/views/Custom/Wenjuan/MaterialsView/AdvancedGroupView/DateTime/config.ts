@@ -1,5 +1,4 @@
 // 时间 / 日期 JSON-Schema 配置
-import { markRaw } from "vue";
 
 // 业务组件
 import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/IndexView.vue";
@@ -7,7 +6,6 @@ import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/Dat
 // 编辑组件
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";
 import DescEditor from "@/views/Custom/Wenjuan/components/EditItems/DescEditor.vue";
-import OptionsEditor from "@/views/Custom/Wenjuan/components/EditItems/OptionsEditor.vue";
 import PositionEditor from "@/views/Custom/Wenjuan/components/EditItems/PositionEditor.vue";
 import SizeEditor from "@/views/Custom/Wenjuan/components/EditItems/SizeEditor.vue";
 import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEditor.vue";
@@ -16,7 +14,6 @@ import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor
 import DateTimeTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/DateTimeTypeEditor.vue";
 
 import type {
-  TComponentStatus,
   TTitle,
   TDesc,
   TDateTimeType,
@@ -26,9 +23,10 @@ import type {
   TFontItalic,
   TFontColor,
 } from "@/views/Custom/Wenjuan/types/config";
+import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 
 export type TSingleSelectStatus = {
-  type: TComponentStatus;
+  type: VueComType;
   name: "date-time";
   id: string;
   status: {

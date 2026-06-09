@@ -23,7 +23,7 @@
 import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
 import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 import EditPannel from "@/views/Custom/Wenjuan/components/EditItems/EditPannel.vue";
-import { IsOptionsStatus, isPicLink, IsTypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
+// import { IsOptionsStatus, isPicLink, IsTypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import { ElMessage } from "element-plus";
 import type {
   OptionsProps,
@@ -46,9 +46,10 @@ const store = useMaterialStore() as unknown as MaterialStore;
 // 获取当前选中组件的状态数据
 const currentCom = computed(() => store.coms[store.currentMaterialCom]);
 
-const updateStatus = (key: string, value?: number | string | boolean | object) => {
+// const updateStatus = (key: string, value?: number | string | boolean | object) => {
+const updateStatus = (key: string) => {
   // console.log(key, value);
-  const status = currentCom.value.status;
+  // const status = currentCom.value.status;
 
   const setType = {
     // type: () => {

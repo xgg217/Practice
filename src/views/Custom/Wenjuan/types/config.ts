@@ -1,6 +1,4 @@
-import type { Raw } from "vue";
-
-export type TComponentStatus = Raw<Component>;
+import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 
 //  类型 备注说明
 export type TTextType<T = "text-type-editor"> = {
@@ -10,7 +8,7 @@ export type TTextType<T = "text-type-editor"> = {
   isShow: boolean; // 是否显示
   name: T; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 类型 日期/时间
@@ -24,7 +22,7 @@ export type TDateTimeType = {
   isShow: boolean; // 是否显示
   name: "date-time-type-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 标题
@@ -34,7 +32,7 @@ export type TTitle = {
   isShow: boolean; // 是否显示
   name: "title-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 描述
@@ -44,7 +42,7 @@ export type TDesc = {
   isShow: boolean; // 是否显示
   name: "desc-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 选项
@@ -55,7 +53,7 @@ export type TOptions = {
   isShow: boolean; // 是否显示
   name: "options-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 选项 - 高级题型 - 评分/打分
@@ -67,7 +65,7 @@ export type TOptionsRateTextEditor = {
   isUse: boolean; // 是否显示 文字
   name: "rate-text-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 选项 - 高级题型 - 评分/打分
@@ -81,7 +79,7 @@ export type TTypeDateTimeTypeEditor = {
   isShow: boolean; // 是否显示
   name: "date-time-type-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 图片
@@ -96,7 +94,7 @@ export type TPicOptionsEdito = {
   isShow: boolean; // 是否显示
   name: "pic-options-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 对齐方式
@@ -107,7 +105,7 @@ export type TPosition = {
   isShow: boolean; // 是否显示
   name: "position-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 字体大小
@@ -118,7 +116,7 @@ export type TFontSizeSize = {
   isShow: boolean; // 是否显示
   name: "size-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 字体加粗
@@ -129,7 +127,7 @@ export type TFontWeight = {
   isShow: boolean; // 是否显示
   name: "weight-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 字体斜体
@@ -140,7 +138,7 @@ export type TFontItalic = {
   isShow: boolean; // 是否显示
   name: "italic-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };
 
 // 字体颜色
@@ -150,5 +148,5 @@ export type TFontColor = {
   isShow: boolean; // 是否显示
   name: "color-editor"; // 组件名称
   editName: string; // 编辑组件名称
-  editCom: TComponentStatus; // 编辑组件
+  editCom: VueComType; // 编辑组件
 };

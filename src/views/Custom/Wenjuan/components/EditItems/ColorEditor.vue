@@ -3,7 +3,7 @@
   <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
 
-    <el-color-picker v-model="color1" @change="(val) => changePosition(val!)" />
+    <el-color-picker v-model="color1" @change="(val: string) => changePosition(val)" />
   </div>
 </template>
 
@@ -11,15 +11,18 @@
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
+import type { TFontColor } from "@/views/Custom/Wenjuan/types/config";
 
-const props = defineProps<{
-  id: string;
-  status: string;
-  isShow: boolean;
-  configKey: string;
-  editName: string;
-  editCom: VueComType;
-}>();
+const props = defineProps<
+  TFontColor & {
+    // id: string;
+    // status: string;
+    // isShow: boolean;
+    configKey: string;
+    // editName: string;
+    // editCom: VueComType;
+  }
+>();
 
 const color1 = ref(props.status);
 
