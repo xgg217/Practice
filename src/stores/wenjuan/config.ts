@@ -11,28 +11,8 @@ import RateScore from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/Ra
 import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/config";
 import TextNote from "@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/TextNote/config";
 
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import { OPTIONS_STATUS_ENUM } from "@/views/Custom/Wenjuan/consts";
-import type {
-  SelectComName,
-  TextInputComName,
-  AdvancedComName,
-  NoteComName,
-  PersonalInfoComName,
-  ExerciseComName,
-} from "@/views/Custom/Wenjuan/types/store";
-
-export type ComponentName =
-  | SelectComName
-  | TextInputComName
-  | AdvancedComName
-  | NoteComName
-  | PersonalInfoComName
-  | ExerciseComName;
-
-export type ComponentMap = {
-  [key in ComponentName]: VueComType;
-};
+import type { ComponentMap } from "@/views/Custom/Wenjuan/types/store";
 
 // 配置映射
 export const COM_MAP: ComponentMap = {

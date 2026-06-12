@@ -5,7 +5,7 @@ const activeMenu = computed(() => route.path);
 </script>
 
 <template>
-  <div class="box">
+  <div class="boxs">
     <!-- 题型 -->
     <!-- 大纲 -->
 
@@ -28,21 +28,24 @@ const activeMenu = computed(() => route.path);
   </div>
 </template>
 
+<style scoped src="@/views/Custom/Wenjuan/EditorView/styles.css"></style>
 <style scoped>
-.box {
+.boxs {
   /* border: 1px solid red; */
-  height: 100%;
+  /* height: 100%; */
   display: flex;
+  /* border-right: 1px solid var(--el-border-color); */
+  background-color: #fff;
 }
 
 .menu-box {
   height: 100%;
   width: 70px;
-  /* border: 1px solid red; */
+  border-right: 1px solid var(--el-border-color);
 }
 
 .content-box {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   flex: 1;
 }
 </style>

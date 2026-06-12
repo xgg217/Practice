@@ -1,12 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="box">右</div>
+  <div class="boxs">右</div>
 </template>
 
-<style scoped>
-.box {
-  border: 1px solid red;
-  height: 100%;
-}
-</style>
+<style scoped src="@/views/Custom/Wenjuan/EditorView/styles.css"></style>
+<style scoped></style>

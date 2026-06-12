@@ -24,6 +24,15 @@ export type PersonalInfoComName = "personal-info-gender" | "personal-info-educat
 // 练习方式
 export type ExerciseComName = "phone";
 
+// 所有的业务组件类型
+export type ComponentName =
+  | SelectComName
+  | TextInputComName
+  | AdvancedComName
+  | NoteComName
+  | PersonalInfoComName
+  | ExerciseComName;
+
 // 题目类型
 export type SurveyComName =
   | "single-select" // 选择-单选题
@@ -53,12 +62,12 @@ export type EditComName =
   | "options-editor";
 
 // 所有的组件类型：业务组件类型 + 编辑组件类型
-export type ComponentName =
-  | SelectComName
-  | TextInputComName
-  | AdvancedComName
-  | NoteComName
-  | PersonalInfoComName;
+// export type ComponentName =
+//   | SelectComName
+//   | TextInputComName
+//   | AdvancedComName
+//   | NoteComName
+//   | PersonalInfoComName;
 
 export type ComponentMap = {
   [key in ComponentName]: VueComType;

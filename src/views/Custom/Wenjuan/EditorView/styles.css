@@ -1,0 +1,6 @@
+.boxs {
+  /* border: 1px solid red; */
+  height: 100%;
+  /* border-left: 1px solid var(--el-border-color); */
+  background-color: #fff;
+}

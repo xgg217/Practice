@@ -108,7 +108,7 @@ const ROW: RouteRecordRaw = {
             name: "single-select",
           },
           meta: {
-            title: "问卷调查之选择",
+            title: "选择",
             imgSrc: "",
             isShow: false, // 不显示
           },
@@ -166,7 +166,7 @@ const ROW: RouteRecordRaw = {
           component: () =>
             import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/IndexView.vue"),
           meta: {
-            title: "问卷调查之文本输入",
+            title: "文本输入",
             imgSrc: "",
             isShow: false, // 不显示
           },
@@ -200,7 +200,7 @@ const ROW: RouteRecordRaw = {
           component: () =>
             import("@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/IndexView.vue"),
           meta: {
-            title: "问卷调查之高级题型",
+            title: "高级题型",
             imgSrc: "",
             isShow: false, // 不显示
           },
@@ -234,7 +234,7 @@ const ROW: RouteRecordRaw = {
           component: () =>
             import("@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/IndexView.vue"),
           meta: {
-            title: "问卷调查之备注说明",
+            title: "备注说明",
             imgSrc: "",
             isShow: false, // 不显示
           },
@@ -260,7 +260,7 @@ const ROW: RouteRecordRaw = {
           component: () =>
             import("@/views/Custom/Wenjuan/MaterialsView/PersonalInfoGroupView/IndexView.vue"),
           meta: {
-            title: "问卷调查之个人信息",
+            title: "个人信息",
             imgSrc: "",
             isShow: false, // 不显示
           },
@@ -395,7 +395,7 @@ const ROW: RouteRecordRaw = {
           component: () =>
             import("@/views/Custom/Wenjuan/MaterialsView/ContactGroupView/IndexView.vue"),
           meta: {
-            title: "问卷调查之联系方式",
+            title: "联系方式",
             imgSrc: "",
             isShow: false, // 不显示
           },

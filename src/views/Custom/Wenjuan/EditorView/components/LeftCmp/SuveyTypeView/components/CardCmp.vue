@@ -1,25 +1,36 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { SureyCom } from "../config";
+
+const props = defineProps<{
+  row: SureyCom;
+}>();
+</script>
 
 <template>
   <div class="card">
-    <p class="title">标题</p>
+    <p class="title">
+      <el-icon>
+        <component :is="props.row.icon" />
+      </el-icon>
+      {{ props.row.title }}
+    </p>
     <ul>
-      <li>选项1</li>
-      <li>选项2</li>
-      <li>选项3</li>
-      <li>选项4</li>
-      <li>选项5</li>
+      <li v-for="item of props.row.list" :key="item.materialName">{{ item.title }}</li>
     </ul>
   </div>
 </template>
 
 <style scoped>
+/* .card {
+  border: 1px solid var(--el-border-color);
+} */
+
 .title {
   height: 40px;
   font-size: 14px;
   line-height: 40px;
   font-weight: 500;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 ul {

@@ -11,13 +11,13 @@ import {
   setSize,
   setUse,
 } from "./actions";
-import { COM_MAP, type ComponentMap, type ComponentName } from "./config";
+import { COM_MAP } from "./config";
+import type { ComponentName } from "@/views/Custom/Wenjuan/types/store";
+import { cloneDeep } from "es-toolkit";
 
+// 获取组件
 const getCom = () => {
-  const obj: ComponentMap = {
-    ...COM_MAP,
-  };
-
+  const obj = cloneDeep(COM_MAP);
   Object.keys(obj).forEach((key) => {
     const name = key as ComponentName;
 

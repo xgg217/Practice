@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import CardCmp from "./components/CardCmp.vue";
+import { SureyComsList } from "./config";
 </script>
 
 <template>
   <div class="box">
-    <CardCmp />
+    <template v-for="item in SureyComsList" :key="item.title">
+      <CardCmp :row="item" />
 
-    <el-divider />
-
-    <CardCmp />
+      <el-divider />
+    </template>
   </div>
 </template>
 
 <style scoped>
 .box {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100%;
   display: flex;
   flex-direction: column;

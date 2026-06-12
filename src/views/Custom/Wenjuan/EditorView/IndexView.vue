@@ -21,7 +21,14 @@ import RightCmp from "./components/RightCmp.vue";
 .position {
   display: grid;
   grid-template-columns: 300px 2fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 15px;
   height: 100%;
+
+  background-color: #f5f7fa;
+}
+
+.divider {
+  /* background-color: var(--el-border-color); */
+  /* background-color: red; */
 }
 </style>
