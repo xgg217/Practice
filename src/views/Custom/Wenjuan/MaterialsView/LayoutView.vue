@@ -157,8 +157,6 @@ const updateStatus = (key: string) => {
   } satisfies Record<string, () => void>;
 
   if (key in setType) {
-    console.log("1");
-
     setType[key as keyof typeof setType]();
   } else {
     setType["defaultValue"]();
@@ -243,7 +241,6 @@ const updateStatus = (key: string) => {
   // 选项-辅助文字-修改
   emitter.on("UPDATE:OPTION:USE:TEXT", (row) => {
     const { name, value } = row;
-    console.log(row);
 
     // store.setUse(status[name] as OptionsProps, value);
     store.setPicLinkByIndex(status[name] as OptionsProps, {

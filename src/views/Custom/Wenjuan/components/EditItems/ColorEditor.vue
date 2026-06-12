@@ -3,12 +3,15 @@
   <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
 
-    <el-color-picker v-model="color1" @change="(val: string) => changePosition(val)" />
+    <el-color-picker
+      v-model="color1"
+      @change="(val: string | null) => changePosition(val as string)"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
+// import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
 import type { TFontColor } from "@/views/Custom/Wenjuan/types/config";

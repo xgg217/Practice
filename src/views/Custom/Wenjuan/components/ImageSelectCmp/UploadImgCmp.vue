@@ -63,7 +63,6 @@ const { inputRef, acceptStr, onImgUploadClick, onImgUploadChange } = (() => {
         return;
       }
     }
-    console.log(inputRef.value);
 
     // 转成 Base64
     {
@@ -106,7 +105,6 @@ const { imgUrl, srcList, isPreview, onImgInfo, onImgDel } = (() => {
 
   // 详情
   const onImgInfo = () => {
-    console.log("详情");
     srcList.value = [imgUrl.value];
     isPreview.value = true;
   };

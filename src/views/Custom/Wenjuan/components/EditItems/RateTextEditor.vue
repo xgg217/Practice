@@ -47,7 +47,6 @@ function switchChangeHandle(val: boolean) {
 function inputHandle(val: string, index: number) {
   // if (updateStatus) {
   //   updateStatus(props.configKey, { link: val, index });
-  console.log(val);
 
   // }
   emitter.emit("UPDATE:OPTION:USE:TEXT", { name: props.configKey, value: { link: val, index } });

@@ -255,6 +255,15 @@ const ROW: RouteRecordRaw = {
       ],
     },
     // #endregion RXJS
+
+    {
+      path: "PDF",
+      name: "PDF",
+      component: () => import("@/views/NpmUtils/PDF/IndexView.vue"),
+      meta: {
+        title: "PDF",
+      },
+    },
   ],
 };
 

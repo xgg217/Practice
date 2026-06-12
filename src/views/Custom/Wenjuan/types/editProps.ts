@@ -55,7 +55,7 @@ export interface TypeStatus extends BaseStatus {
 }
 
 export function IsOptionsStatus(status: BaseStatus): status is OptionsStatus {
-  console.log(status);
+  // console.log(status);
 
   return "options" in status;
 }

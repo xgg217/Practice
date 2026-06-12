@@ -27,9 +27,7 @@ const props = defineProps<{
 
 const radio = ref(props.currentStatus);
 
-const changeType = (type: number) => {
-  console.log(type);
-
+const changeType = () => {
   // console.log("props.configKey", props.configKey, type);
   // if (updateStatus) updateStatus(props.configKey, type);
   emitter.emit("UPDATE:COMMENT_TYPE", { name: props.configKey, value: radio.value });
