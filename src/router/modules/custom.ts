@@ -61,6 +61,30 @@ const ROW: RouteRecordRaw = {
         imgSrc: "",
         isShow: false, // 不显示
       },
+      redirect: {
+        name: "suvey-type",
+      },
+
+      children: [
+        {
+          path: "suvey-type",
+          name: "suvey-type",
+          component: () =>
+            import("@/views/Custom/Wenjuan/EditorView/components/LeftCmp/SuveyTypeView/IndexView.vue"),
+          meta: {
+            title: "题型",
+          },
+        },
+        {
+          path: "outline",
+          name: "outline",
+          component: () =>
+            import("@/views/Custom/Wenjuan/EditorView/components/LeftCmp/OutlineView.vue"),
+          meta: {
+            title: "大纲",
+          },
+        },
+      ],
     },
     {
       path: "WenjuanMaterials",
@@ -156,7 +180,16 @@ const ROW: RouteRecordRaw = {
               component: () =>
                 import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/IndexView.vue"),
               meta: {
-                title: "文本输入",
+                title: "单行文本",
+              },
+            },
+            {
+              path: "textarea-input",
+              name: "textarea-input",
+              component: () =>
+                import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextareaInput/IndexView.vue"),
+              meta: {
+                title: "多行文本输入",
               },
             },
           ],
@@ -367,16 +400,16 @@ const ROW: RouteRecordRaw = {
             isShow: false, // 不显示
           },
           redirect: {
-            name: "contact",
+            name: "phone",
           },
           children: [
             {
-              path: "contact",
-              name: "contact",
+              path: "phone",
+              name: "phone",
               component: () =>
-                import("@/views/Custom/Wenjuan/MaterialsView/ContactGroupView/ContactView.vue"),
+                import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/IndexView.vue"),
               meta: {
-                title: "备注说明",
+                title: "手机号",
               },
             },
           ],

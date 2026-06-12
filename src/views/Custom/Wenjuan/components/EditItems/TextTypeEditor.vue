@@ -1,7 +1,7 @@
 <template>
   <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
-    <el-radio-group v-model="radio" @change="(val) => changeType(val as number)">
+    <el-radio-group v-model="radio" @change="() => changeType()">
       <el-radio-button :value="index" v-for="(item, index) of props.status" :key="item">
         {{ item }}
       </el-radio-button>

@@ -6,10 +6,10 @@ import LayoutView from "@/views/Custom/Wenjuan/MaterialsView/LayoutView.vue";
 <template>
   <LayoutView>
     <Router-link
-      class="link-item mb-15"
+      class="link-item m5"
       exact-active-class="link-item-active"
-      to="/Custom/WenjuanMaterials/contact-group/contact"
-      >联系方式</Router-link
+      to="/Custom/WenjuanMaterials/contact-group/phone"
+      >手机号</Router-link
     >
   </LayoutView>
 </template>

@@ -14,7 +14,6 @@ import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor
 // import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextInputTypeEditor.vue";
 
 import type {
-  TTextType,
   TTitle,
   TDesc,
   TPosition,
@@ -27,7 +26,7 @@ import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 
 export type TSingleSelectStatus = {
   type: VueComType;
-  name: string;
+  name: "textarea-input";
   id: string;
   status: {
     // type: TTextType<"text-input-type-editor">;
@@ -48,7 +47,7 @@ export type TSingleSelectStatus = {
 export default function (): TSingleSelectStatus {
   return {
     type: markRaw(SingleSelect),
-    name: "text-input",
+    name: "textarea-input",
     id: crypto.randomUUID(),
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {

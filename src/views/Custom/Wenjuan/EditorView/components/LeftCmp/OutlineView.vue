@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>字体粗细编辑组件</div>
+  <div class="box">大纲</div>
 </template>
 
 <style scoped></style>

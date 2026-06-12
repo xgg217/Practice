@@ -11,7 +11,21 @@ import {
   setSize,
   setUse,
 } from "./actions";
-import { COM_MAP } from "./config";
+import { COM_MAP, type ComponentMap, type ComponentName } from "./config";
+
+const getCom = () => {
+  const obj: ComponentMap = {
+    ...COM_MAP,
+  };
+
+  Object.keys(obj).forEach((key) => {
+    const name = key as ComponentName;
+
+    // 初始化组件
+    obj[name] = obj[name]();
+  });
+  return obj;
+};
 
 // 需要初始化的组件
 
@@ -20,19 +34,7 @@ export const useMaterialStore = defineStore("materialStore", {
     currentMaterialCom: "single-select", // 当前选中的组件
 
     // 记录所有的业务组件
-    coms: {
-      "single-select": COM_MAP["single-select"](), // 选择-单选题
-      "multi-select": COM_MAP["multi-select"](), // 选择-多选题
-      "option-select": COM_MAP["option-select"](), // 选择-下拉选择
-      "single-pic-select": COM_MAP["single-pic-select"](), // 选择-图片单选题
-      "multi-pic-select": COM_MAP["multi-pic-select"](), // 选择-图片多选题
-      "text-input": COM_MAP["text-input"](), // 文本输入-文本输入框
-      "rate-score": COM_MAP["rate-score"](), // 高级题型-评分打分
-      "date-time": COM_MAP["date-time"](), // 高级题型-时间日期
-      "text-note": COM_MAP["text-note"](), // 备注说明-备注说明
-      "personal-info-gender": COM_MAP["personal-info-gender"](), // 个人信息-性别(单选题)
-      "personal-info-education": COM_MAP["personal-info-education"](), // 个人信息-学历(单选题)
-    },
+    coms: getCom(),
   }),
   actions: {
     // 编辑器 显示 状态更新

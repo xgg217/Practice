@@ -59,15 +59,7 @@ const emitAnswer = () => {
       :titleColor="computedState.titleColor"
       :descColor="computedState.descColor"
     />
-    <el-input v-model="inputValue" @click.stop @input="emitAnswer" />
-    <!-- <el-input
-      v-else
-      :rows="5"
-      type="textarea"
-      v-model="inputValue"
-      @click.stop
-      @input="emitAnswer"
-    /> -->
+    <el-input :rows="5" type="textarea" v-model="inputValue" @click.stop @input="emitAnswer" />
   </div>
 </template>
 

@@ -1,14 +1,16 @@
 import type { Material } from "@/views/Custom/Wenjuan/types/store";
 
 export const OPTIONS_STATUS_ENUM = {
-  // 性别
+  // 性别 单选框
   "personal-info-gender": ["男", "女", "保密"],
 
-  // 年龄
+  // 年龄 单选框
   // "personal-info-age": ["18岁以下", "25～30岁", "31～40岁", "41～50岁", "51～60岁", "61岁及以上"],
 
-  // 学历
+  // 学历 单选框
   "personal-info-education": ["初中及以下", "高中/中专/技校", "大学专科", "大学本科", "硕士及以上"],
+
+  // 大学 多级联动
 
   // 职业
   // "personal-info-career": [
