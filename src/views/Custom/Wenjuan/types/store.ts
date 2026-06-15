@@ -33,7 +33,7 @@ export type NoteComName = "text-note";
 // 个人信息
 export type PersonalInfoComName = "personal-info-gender" | "personal-info-education";
 
-// 练习方式
+// 联系方式
 export type ExerciseComName = "phone";
 
 // 所有的业务组件类型

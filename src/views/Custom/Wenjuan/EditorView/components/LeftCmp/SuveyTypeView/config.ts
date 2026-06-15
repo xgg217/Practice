@@ -133,4 +133,19 @@ export const SureyComsList: SureyCom[] = [
     //   },
     // ],
   },
+  {
+    title: "联系方式",
+    icon: Message,
+    list: getItem("contact-group"),
+    // list: [
+    //   {
+    //     materialName: "personal-info-gender",
+    //     title: "性别",
+    //   },
+    //   {
+    //     materialName: "personal-info-education",
+    //     title: "学历",
+    //   },
+    // ],
+  },
 ];

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import LeftCmp from "./components/LeftCmp/IndexView.vue";
-import CenterCmp from "./components/CenterCmp.vue";
+import CenterCmp from "./components/CenterCmp/IndexView.vue";
 import RightCmp from "./components/RightCmp.vue";
 </script>
 
@@ -25,10 +25,5 @@ import RightCmp from "./components/RightCmp.vue";
   height: 100%;
 
   background-color: #f5f7fa;
-}
-
-.divider {
-  /* background-color: var(--el-border-color); */
-  /* background-color: red; */
 }
 </style>

@@ -13,10 +13,13 @@ import {
 } from "./actions";
 import { COM_MAP } from "./config";
 import { ElMessage } from "element-plus";
-import type { ComponentMap } from "@/views/Custom/Wenjuan/types/store";
+import type { ComponentMap, NoteComName } from "@/views/Custom/Wenjuan/types/store";
 
 // 获取 COM_MAP 中的 value 值 类型
 export type ComponentStatus = ReturnType<ComponentMap[keyof ComponentMap]>;
+
+// 当前是否为非题目类型(《备注说明》)
+const isExercise: [NoteComName] = ["text-note"];
 
 export const useEditorStore = defineStore("editorStore", {
   state: () => ({
@@ -32,12 +35,18 @@ export const useEditorStore = defineStore("editorStore", {
         ElMessage.error("组件不存在");
         return;
       }
-      // console.log(COM_MAP[item]());
+
+      console.log(item);
 
       const com = COM_MAP[item]();
+      console.log(com);
 
       this.coms.push(com);
-      // this.surveyCount++;
+
+      // 当前是否为非题目类型(《备注说明》)
+      if (!isExercise.includes(item as NoteComName)) {
+        this.surveyCount++;
+      }
     },
 
     // 修改文本
