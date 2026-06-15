@@ -13,43 +13,14 @@ import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEdit
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 import TextTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextTypeEditor.vue";
 
-import type {
-  TTextType,
-  TTitle,
-  TDesc,
-  TPosition,
-  TFontSizeSize,
-  TFontWeight,
-  TFontItalic,
-  TFontColor,
-} from "@/views/Custom/Wenjuan/types/config";
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
+import type { TTextNoteStatus } from "@/views/Custom/Wenjuan/types/config";
 
-export type TSingleSelectStatus = {
-  type: VueComType;
-  name: "text-note";
-  id: string;
-  status: {
-    type: TTextType;
-    title: TTitle;
-    desc: TDesc;
-    position: TPosition;
-    titleSize: TFontSizeSize;
-    descSize: TFontSizeSize;
-    titleWeight: TFontWeight;
-    descWeight: TFontWeight;
-    titleItalic: TFontItalic;
-    descItalic: TFontItalic;
-    titleColor: TFontColor;
-    descColor: TFontColor;
-  };
-};
-
-export default function (): TSingleSelectStatus {
+export default function () {
   return {
     type: markRaw(TextNote),
     name: "text-note",
     id: crypto.randomUUID(),
+    title: "备注说明",
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
       // 类型
@@ -180,5 +151,5 @@ export default function (): TSingleSelectStatus {
         editCom: markRaw(ColorEditor),
       },
     },
-  };
+  } as TTextNoteStatus;
 }

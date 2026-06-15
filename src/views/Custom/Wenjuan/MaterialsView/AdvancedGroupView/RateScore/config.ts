@@ -13,43 +13,14 @@ import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEdit
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 import RateTextEditor from "@/views/Custom/Wenjuan/components/EditItems/RateTextEditor.vue";
 
-import type {
-  TTitle,
-  TDesc,
-  TOptionsRateTextEditor,
-  TPosition,
-  TFontSizeSize,
-  TFontWeight,
-  TFontItalic,
-  TFontColor,
-} from "@/views/Custom/Wenjuan/types/config";
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
+import type { TRateScoreStatus } from "@/views/Custom/Wenjuan/types/config";
 
-export type TSingleSelectStatus = {
-  type: VueComType;
-  name: "rate-score";
-  id: string;
-  status: {
-    title: TTitle;
-    desc: TDesc;
-    options: TOptionsRateTextEditor;
-    position: TPosition;
-    titleSize: TFontSizeSize;
-    descSize: TFontSizeSize;
-    titleWeight: TFontWeight;
-    descWeight: TFontWeight;
-    titleItalic: TFontItalic;
-    descItalic: TFontItalic;
-    titleColor: TFontColor;
-    descColor: TFontColor;
-  };
-};
-
-export default function (): TSingleSelectStatus {
+export default function () {
   return {
     type: markRaw(RateScore),
     name: "rate-score",
     id: crypto.randomUUID(),
+    title: "评价/打分",
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
       // 标题
@@ -180,5 +151,5 @@ export default function (): TSingleSelectStatus {
         editCom: markRaw(ColorEditor),
       },
     },
-  };
+  } as TRateScoreStatus;
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Plus, House } from "@element-plus/icons-vue";
 import type { TItem } from "./types";
-// import { ROUTE_NAME_EDITOR, ROUTE_NAME_MATERIALS, setStorage } from "./utils/index";
+import QuestionFilledCmp from "@/views/Custom/Wenjuan/components/QuestionFilledCmp.vue";
 
 const router = useRouter();
 
@@ -12,8 +12,6 @@ const onEditorView = () => {
   router.push({
     name: "WenjuanEditorView",
   });
-
-  // setStorage(ROUTE_NAME_EDITOR);
 };
 
 // 跳转组件市场
@@ -33,7 +31,14 @@ const onInfo = (row: TItem) => {
 
 <template>
   <div>
-    <h2 class="font-weight-100 text-center">问卷调查系统</h2>
+    <h2 class="font-weight-100 text-center">
+      问卷调查系统
+      <QuestionFilledCmp
+        title="参考《腾讯问卷》 https://wj.qq.com/workspace/60061836234/survey/recent"
+        placement="bottom"
+      />
+    </h2>
+
     <div class="mb-15">
       <el-button type="primary" :icon="Plus" @click="onEditorView">创建问卷</el-button>
       <el-button type="success" :icon="House" @click="onMaterialsView">组件市场</el-button>

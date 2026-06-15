@@ -13,42 +13,13 @@ import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEdit
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 // import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextInputTypeEditor.vue";
 
-import type {
-  TTextType,
-  TTitle,
-  TDesc,
-  TPosition,
-  TFontSizeSize,
-  TFontWeight,
-  TFontItalic,
-  TFontColor,
-} from "@/views/Custom/Wenjuan/types/config";
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
+import type { TTextInputStatus } from "@/views/Custom/Wenjuan/types/config";
 
-export type TSingleSelectStatus = {
-  type: VueComType;
-  name: string;
-  id: string;
-  status: {
-    // type: TTextType<"text-input-type-editor">;
-    title: TTitle;
-    desc: TDesc;
-    position: TPosition;
-    titleSize: TFontSizeSize;
-    descSize: TFontSizeSize;
-    titleWeight: TFontWeight;
-    descWeight: TFontWeight;
-    titleItalic: TFontItalic;
-    descItalic: TFontItalic;
-    titleColor: TFontColor;
-    descColor: TFontColor;
-  };
-};
-
-export default function (): TSingleSelectStatus {
+export default function () {
   return {
     type: markRaw(SingleSelect),
     name: "text-input",
+    title: "单行文本输入框",
     id: crypto.randomUUID(),
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
@@ -180,5 +151,5 @@ export default function (): TSingleSelectStatus {
         editCom: markRaw(ColorEditor),
       },
     },
-  };
+  } as TTextInputStatus;
 }

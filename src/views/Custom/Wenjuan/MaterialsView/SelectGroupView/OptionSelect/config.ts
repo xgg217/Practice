@@ -13,39 +13,9 @@ import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEdit
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 
-import type {
-  TTitle,
-  TDesc,
-  TOptions,
-  TPosition,
-  TFontSizeSize,
-  TFontWeight,
-  TFontItalic,
-  TFontColor,
-} from "@/views/Custom/Wenjuan/types/config";
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
+import type { TOptionSelectStatus } from "@/views/Custom/Wenjuan/types/config";
 
-export type TSingleSelectStatus = {
-  type: VueComType;
-  name: "option-select";
-  id: string;
-  status: {
-    title: TTitle;
-    desc: TDesc;
-    options: TOptions;
-    position: TPosition;
-    titleSize: TFontSizeSize;
-    descSize: TFontSizeSize;
-    titleWeight: TFontWeight;
-    descWeight: TFontWeight;
-    titleItalic: TFontItalic;
-    descItalic: TFontItalic;
-    titleColor: TFontColor;
-    descColor: TFontColor;
-  };
-};
-
-export default function (): TSingleSelectStatus {
+export default function () {
   return {
     type: markRaw(OptionSelect),
     name: "option-select",
@@ -157,5 +127,5 @@ export default function (): TSingleSelectStatus {
         editCom: markRaw(ColorEditor),
       },
     },
-  };
+  } as TOptionSelectStatus;
 }

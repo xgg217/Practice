@@ -189,7 +189,7 @@ const ROW: RouteRecordRaw = {
               component: () =>
                 import("@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextareaInput/IndexView.vue"),
               meta: {
-                title: "多行文本输入",
+                title: "多行文本",
               },
             },
           ],

@@ -13,43 +13,14 @@ import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEdit
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 
-import type {
-  TTitle,
-  TDesc,
-  TPicOptionsEdito,
-  TPosition,
-  TFontSizeSize,
-  TFontWeight,
-  TFontItalic,
-  TFontColor,
-} from "@/views/Custom/Wenjuan/types/config";
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
+import type { TSinglePicSelectStatus } from "@/views/Custom/Wenjuan/types/config";
 
-export type TSingleSelectStatus = {
-  type: VueComType;
-  name: "single-pic-select";
-  id: string;
-  status: {
-    title: TTitle;
-    desc: TDesc;
-    options: TPicOptionsEdito;
-    position: TPosition;
-    titleSize: TFontSizeSize;
-    descSize: TFontSizeSize;
-    titleWeight: TFontWeight;
-    descWeight: TFontWeight;
-    titleItalic: TFontItalic;
-    descItalic: TFontItalic;
-    titleColor: TFontColor;
-    descColor: TFontColor;
-  };
-};
-
-export default function (): TSingleSelectStatus {
+export default function () {
   return {
     type: markRaw(SinglePicSelect),
     name: "single-pic-select",
     id: crypto.randomUUID(),
+    title: "图片单选",
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
       title: {
@@ -168,5 +139,5 @@ export default function (): TSingleSelectStatus {
         editCom: markRaw(ColorEditor),
       },
     },
-  };
+  } as TSinglePicSelectStatus;
 }

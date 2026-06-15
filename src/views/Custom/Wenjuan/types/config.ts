@@ -150,3 +150,224 @@ export type TFontColor = {
   editName: string; // 编辑组件名称
   editCom: VueComType; // 编辑组件
 };
+
+// 选择之 单选题
+export type TSingleSelectStatus = {
+  type: VueComType;
+  name: string;
+  id: string;
+  title: "单选题";
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TOptions;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+// 选择之 多选
+export type TMultiSelectStatus = {
+  type: VueComType;
+  name: "multi-select";
+  id: string;
+  title: "多选";
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TOptions;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+// 选择之 下拉选择题
+export type TOptionSelectStatus = {
+  type: VueComType;
+  name: "option-select";
+  id: string;
+  title: "下拉选择题";
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TOptions;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+// 选择之 图片单选
+export type TSinglePicSelectStatus = {
+  type: VueComType;
+  name: "single-pic-select";
+  id: string;
+  title: "图片单选";
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TPicOptionsEdito;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+// 选择之 图片多选
+export type TMultiPicSelectStatus = {
+  type: VueComType;
+  name: "multi-pic-select";
+  id: string;
+  title: "图片多选";
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TPicOptionsEdito;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+// 文本输入之 单行文本输入框
+export type TTextInputStatus = {
+  type: VueComType;
+  name: string;
+  id: string;
+  title: "单行文本输入框";
+  status: {
+    // type: TTextType<"text-input-type-editor">;
+    title: TTitle;
+    desc: TDesc;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+//  文本输入之 多行文本输入框
+export type TTextareaInputStatus = {
+  type: VueComType;
+  name: "textarea-input";
+  title: "多行文本输入框";
+  id: string;
+  status: {
+    // type: TTextType<"text-input-type-editor">;
+    title: TTitle;
+    desc: TDesc;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+// 高级题型之 评价/打分
+export type TRateScoreStatus = {
+  type: VueComType;
+  name: "rate-score";
+  id: string;
+  title: "评价/打分";
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    options: TOptionsRateTextEditor;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+//高级题型之 日期 / 时间
+export type DateTimeStatus = {
+  type: VueComType;
+  name: "date-time";
+  id: string;
+  title: "日期 / 时间";
+  status: {
+    title: TTitle;
+    desc: TDesc;
+    type: TDateTimeType;
+    // options: TOptionsDateTimeTypeEditor;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};
+
+// 备注说明之 备注说明
+export type TTextNoteStatus = {
+  type: VueComType;
+  name: "text-note";
+  id: string;
+  title: "备注说明";
+  status: {
+    type: TTextType;
+    title: TTitle;
+    desc: TDesc;
+    position: TPosition;
+    titleSize: TFontSizeSize;
+    descSize: TFontSizeSize;
+    titleWeight: TFontWeight;
+    descWeight: TFontWeight;
+    titleItalic: TFontItalic;
+    descItalic: TFontItalic;
+    titleColor: TFontColor;
+    descColor: TFontColor;
+  };
+};

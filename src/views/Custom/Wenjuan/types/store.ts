@@ -1,5 +1,17 @@
 import type { TextProps, OptionsProps, PicLink } from "./editProps";
 import type { Status, VueComType } from "./common";
+import type {
+  TSingleSelectStatus,
+  TMultiSelectStatus,
+  TOptionSelectStatus,
+  TSinglePicSelectStatus,
+  TMultiPicSelectStatus,
+  TTextInputStatus,
+  TTextareaInputStatus,
+  TRateScoreStatus,
+  DateTimeStatus,
+  TTextNoteStatus,
+} from "@/views/Custom/Wenjuan/types/config";
 
 // 选择
 export type SelectComName =
@@ -69,8 +81,26 @@ export type EditComName =
 //   | NoteComName
 //   | PersonalInfoComName;
 
+// 所有的组件类型映射
 export type ComponentMap = {
-  [key in ComponentName]: VueComType;
+  // [key in ComponentName]: VueComType;
+  "single-select": () => TSingleSelectStatus; // 选择-单选题
+  "multi-select": () => TMultiSelectStatus; // 选择-多选题
+  "option-select": () => TOptionSelectStatus; // 选择-下拉选择
+  "single-pic-select": () => TSinglePicSelectStatus; // 选择-图片单选题
+  "multi-pic-select": () => TMultiPicSelectStatus; // 选择-图片多选题
+
+  "text-input": () => TTextInputStatus; // 文本输入-单行文本
+  "textarea-input": () => TTextareaInputStatus; // 文本输入-多行文本
+
+  "rate-score": () => TRateScoreStatus; // 高级题型-评分打分
+  "date-time": () => DateTimeStatus; // 高级题型-时间日期
+
+  "text-note": () => TTextNoteStatus; // 备注说明-备注说明
+
+  "personal-info-gender": () => TSingleSelectStatus; // 个人信息-性别
+  "personal-info-education": () => TSingleSelectStatus; // 个人信息-学历
+  phone: () => TTextInputStatus; // 练习方式-手机号
 };
 
 // 仓库操作方法

@@ -1,6 +1,4 @@
-import SingleSelect, {
-  type TSingleSelectStatus,
-} from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
+import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/config";
 import MultiSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/MultiSelect/config";
 import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/config";
 import SinglePicSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SinglePicSelect/config";

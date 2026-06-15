@@ -1,9 +1,25 @@
 <script setup lang="ts">
-import type { SureyCom } from "../config";
+import type { SureyCom, SureyComItem } from "../config";
+import { ElMessage } from "element-plus";
+import { useEditorStore } from "@/stores/wenjuan/useEditor";
 
 const props = defineProps<{
   row: SureyCom;
 }>();
+
+const editorStore = useEditorStore();
+
+// 向仓库添加组件
+const onAdd = (materialName: SureyComItem["materialName"]) => {
+  // console.log("添加", materialName);
+
+  if (!materialName) {
+    ElMessage.error("请选择组件");
+    return;
+  }
+
+  editorStore.addComponent(materialName);
+};
 </script>
 
 <template>
@@ -15,16 +31,14 @@ const props = defineProps<{
       {{ props.row.title }}
     </p>
     <ul>
-      <li v-for="item of props.row.list" :key="item.materialName">{{ item.title }}</li>
+      <li v-for="item of props.row.list" :key="item.materialName" @click="onAdd(item.materialName)">
+        {{ item.title }}
+      </li>
     </ul>
   </div>
 </template>
 
 <style scoped>
-/* .card {
-  border: 1px solid var(--el-border-color);
-} */
-
 .title {
   height: 40px;
   font-size: 14px;

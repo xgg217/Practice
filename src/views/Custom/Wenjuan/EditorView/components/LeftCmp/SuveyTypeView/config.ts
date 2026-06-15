@@ -8,9 +8,10 @@ import {
 } from "@element-plus/icons-vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import customRouter from "@/router/modules/custom";
+import type { ComponentMap } from "@/views/Custom/Wenjuan/types/store";
 
-type SureyComItem = {
-  materialName: string;
+export type SureyComItem = {
+  materialName: keyof ComponentMap;
   title: string;
 };
 
@@ -21,11 +22,6 @@ export type SureyCom = {
 };
 
 const getItem = (comName: string) => {
-  // 找到调查问卷
-  //  customRouter['Custom'].find(item => {
-  //   return item.name === "WenjuanMaterials"
-  //  })
-
   // 找到 问卷调查 组件
   const WenjuanMaterials = customRouter.children!.find((item) => {
     return item.name === "WenjuanMaterials";
@@ -49,7 +45,7 @@ const getItem = (comName: string) => {
 
   return com.children!.map((item) => {
     const obj: SureyComItem = {
-      materialName: item.name as string,
+      materialName: item.name as keyof ComponentMap,
       title: item.meta!.title as string,
     };
     return obj;
@@ -138,5 +134,3 @@ export const SureyComsList: SureyCom[] = [
     // ],
   },
 ];
-
-console.log(SureyComsList);

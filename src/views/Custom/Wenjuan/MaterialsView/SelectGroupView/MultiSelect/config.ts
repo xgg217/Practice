@@ -13,43 +13,14 @@ import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEdit
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
 
-import type {
-  TTitle,
-  TDesc,
-  TOptions,
-  TPosition,
-  TFontSizeSize,
-  TFontWeight,
-  TFontItalic,
-  TFontColor,
-} from "@/views/Custom/Wenjuan/types/config";
-import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
+import type { TMultiSelectStatus } from "@/views/Custom/Wenjuan/types/config";
 
-export type TSingleSelectStatus = {
-  type: VueComType;
-  name: "multi-select";
-  id: string;
-  status: {
-    title: TTitle;
-    desc: TDesc;
-    options: TOptions;
-    position: TPosition;
-    titleSize: TFontSizeSize;
-    descSize: TFontSizeSize;
-    titleWeight: TFontWeight;
-    descWeight: TFontWeight;
-    titleItalic: TFontItalic;
-    descItalic: TFontItalic;
-    titleColor: TFontColor;
-    descColor: TFontColor;
-  };
-};
-
-export default function (): TSingleSelectStatus {
+export default function () {
   return {
     type: markRaw(MultiSelect),
     name: "multi-select",
     id: crypto.randomUUID(),
+    title: "多选",
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
       // 标题
@@ -180,5 +151,5 @@ export default function (): TSingleSelectStatus {
         editCom: markRaw(ColorEditor),
       },
     },
-  };
+  } as TMultiSelectStatus;
 }
