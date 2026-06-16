@@ -21,7 +21,7 @@
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { StringStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
 // import { inject, ref } from "vue";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = defineProps<{
   currentStatus: number;

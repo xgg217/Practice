@@ -38,7 +38,7 @@ import {
   changeEditorIsShowStatus,
   changeEditorIsShowStatusCommentType,
 } from "@/views/Custom/Wenjuan/utils/index";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 // 数据仓库
 const store = useMaterialStore() as unknown as MaterialStore;

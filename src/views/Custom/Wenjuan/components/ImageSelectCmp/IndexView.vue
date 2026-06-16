@@ -2,7 +2,7 @@
 import UploadImgCmp from "./UploadImgCmp.vue";
 // import type { GetLink } from "@/views/Custom/Wenjuan/types/editProps";
 // import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = withDefaults(
   defineProps<{

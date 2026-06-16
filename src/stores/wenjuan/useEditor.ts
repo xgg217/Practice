@@ -28,6 +28,26 @@ export const useEditorStore = defineStore("editorStore", {
     coms: [] as ComponentStatus[], // 所有的组件实例
   }),
 
+  getters: {
+    // 获取当前选中的组件实例
+    getComsList: (state) => {
+      let ind = 0;
+      return state.coms.map((item) => {
+        const obj = {
+          index: 0,
+          ...item,
+        };
+
+        // @ts-expect-error 类型剔除
+        if (!isExercise.includes(item.name)) {
+          ind = ind + 1;
+          obj.index = ind;
+        }
+        return obj;
+      });
+    },
+  },
+
   actions: {
     // 添加组件
     addComponent(item: keyof ComponentMap) {
@@ -36,10 +56,10 @@ export const useEditorStore = defineStore("editorStore", {
         return;
       }
 
-      console.log(item);
+      // console.log(item);
 
       const com = COM_MAP[item]();
-      console.log(com);
+      // console.log(com);
 
       this.coms.push(com);
 
@@ -47,6 +67,26 @@ export const useEditorStore = defineStore("editorStore", {
       if (!isExercise.includes(item as NoteComName)) {
         this.surveyCount++;
       }
+    },
+
+    setCurrentComponentIndex(index: number) {
+      this.currentComponentIndex = index;
+    },
+
+    // 删除组件
+    removeCom(index: number) {
+      // 删除的时候要看删除的是不是问卷题目
+      if (!Object.hasOwn(COM_MAP, this.coms[index]!.name)) {
+        ElMessage.error("组件不存在");
+        return;
+      }
+      this.surveyCount--;
+      this.coms.splice(index, 1);
+
+      // if (isSurveyComName(this.coms[index].name)) {
+      //   this.surveyCount--;
+      // }
+      // this.coms.splice(index, 1);
     },
 
     // 修改文本

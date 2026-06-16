@@ -38,7 +38,7 @@
 import { Plus, Minus } from "@element-plus/icons-vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { UpdateStatus, PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 import { ElMessage, ElMessageBox } from "element-plus";
 const props = defineProps<{

@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { ValueStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/mitt";
+import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 // import { inject } from "vue";
 // import ButtonGroup from "./ButtonGroup.vue";
 
