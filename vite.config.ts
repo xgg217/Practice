@@ -13,7 +13,7 @@ export default defineConfig({
     vueDevTools(),
     AutoImport({
       imports: ["vue", "vue-router"],
-      dts: "src/types/auto-imports.d.ts", //自定义生成 auto-imports.d.ts 路径丢失的问题
+      dts: "types/auto-imports.d.ts", //自定义生成 auto-imports.d.ts 路径丢失的问题
     }),
   ],
   server: {

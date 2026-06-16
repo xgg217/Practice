@@ -1,6 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/types/global.d.ts",],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "types/global.d.ts",
+    "types/auto-imports.d.ts"
+  ],
   "exclude": ["src/**/__tests__/*", "node_modules", "dist"],
   "compilerOptions": {
     // Extra safety for array and object lookups, but may have false positives.
@@ -21,6 +27,6 @@
     "strict": true,
 
     // TypeScript 会区分文件名大小写
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
