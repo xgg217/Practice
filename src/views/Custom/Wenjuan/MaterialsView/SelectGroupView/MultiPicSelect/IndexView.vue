@@ -62,7 +62,7 @@ const emitAnswer = () => {
       :titleColor="computedState.titleColor"
       :descColor="computedState.descColor"
     />
-    <div class="radio-group">
+    <div class="flex wrap">
       <el-checkbox-group v-model="radioValue" @click.stop class="flex wrap" @change="emitAnswer">
         <el-checkbox
           v-for="(item, index) in computedState.options"

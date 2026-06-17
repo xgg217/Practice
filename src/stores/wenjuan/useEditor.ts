@@ -30,8 +30,8 @@ export const useEditorStore = defineStore("editorStore", {
   }),
 
   getters: {
-    // 获取当前选中的组件实例
-    getComsList: (state) => {
+    // 获取所有组件实例
+    getAllComsList: (state) => {
       let ind = 0;
       return state.coms.map((item) => {
         const obj = {
@@ -46,6 +46,11 @@ export const useEditorStore = defineStore("editorStore", {
         }
         return obj;
       });
+    },
+
+    // 获取当前选中的组件实例
+    getCurrentComponent: (state) => {
+      return state.coms[state.currentComponentIndex];
     },
   },
 

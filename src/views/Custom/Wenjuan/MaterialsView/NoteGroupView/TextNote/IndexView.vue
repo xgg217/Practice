@@ -30,7 +30,7 @@ const computedState = computed(() => ({
 
 <template>
   <!-- {{ computedState }} -->
-  <h1
+  <h3
     v-if="computedState.type === 0"
     class="pt-10 pb-10 text-center font-weight-200"
     :class="{
@@ -43,7 +43,7 @@ const computedState = computed(() => ({
     }"
   >
     {{ computedState.title }}
-  </h1>
+  </h3>
   <p
     v-else
     :class="{

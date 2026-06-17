@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useEditorStore } from "@/stores/wenjuan/useEditor";
-import { Close } from "@element-plus/icons-vue";
+import CardCmp from "./components/CardCmp.vue";
 import { ElMessage, ElMessageBox } from "element-plus";
 import EventBus from "@/views/Custom/Wenjuan/EditorView/eventBus";
 
@@ -27,10 +27,21 @@ const removeCom = (index: number) => {
     });
 };
 
-// 滚动到最底部
-const scrollToBottom = () => {
-  console.log(1);
+// 点击组件
+const clickHandle = (index: number) => {
+  // 点击当前组件，取消激活
+  if (editorStore.currentComponentIndex === index) {
+    editorStore.setCurrentComponentIndex(-1);
+  } else {
+    editorStore.setCurrentComponentIndex(index);
+    // EventBus.emit('scrollToCenter', index);
+    scrollToCenter(index);
+  }
+  // editorStore.setCurrentComponentIndex(index);
+};
 
+// 将滚动条滚动到最底部，用于显示最新的组件
+const scrollToBottom = () => {
   nextTick(() => {
     const container = boxsRef.value!; // 获取容器的dom元素
 
@@ -44,18 +55,19 @@ const scrollToBottom = () => {
 };
 
 // 滚动到 指定到组件
-// const scrollToCenter = (index: number) => {
-//   nextTick(() => {
-//     const element = componentsRefs.value[index]; // 获取当前题目的dom元素
-//     // 判断当前元素是否是HTMLElement
-//     if (element instanceof HTMLElement) {
-//       element.scrollIntoView({
-//         behavior: "smooth",
-//         block: "center",
-//       });
-//     }
-//   });
-// };
+const scrollToCenter = (index: number) => {
+  console.log(1);
+  nextTick(() => {
+    const element = componentsRefs.value[index]; // 获取当前题目的dom元素
+    // 判断当前元素是否是HTMLElement
+    if (element instanceof HTMLElement) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  });
+};
 
 // 监听事件总线 滚动到最底部
 EventBus.on("scrollToBottom", scrollToBottom);
@@ -63,32 +75,18 @@ EventBus.on("scrollToBottom", scrollToBottom);
 
 <template>
   <div class="boxs" ref="boxsRef">
-    <div
-      v-for="(item, index) in editorStore.getComsList"
+    <CardCmp
+      v-for="(item, index) in editorStore.getAllComsList"
       :key="item.id"
-      class="box mb-10 relative"
-      :class="{
-        active: editorStore.currentComponentIndex === index,
-      }"
+      :isActive="editorStore.currentComponentIndex === index"
+      :row="item"
       :ref="(el) => (componentsRefs[index] = el)"
-    >
-      <component :is="item.type" :status="item.status" :serialNum="item.index" />
-
-      <!-- 删除按钮 -->
-      <div class="absolute delete-btn" v-show="editorStore.currentComponentIndex === index">
-        <el-button
-          type="danger"
-          class="ml-10"
-          size="small"
-          :icon="Close"
-          circle
-          @click.stop="removeCom(index)"
-        />
-      </div>
-    </div>
+      @click="clickHandle(index)"
+      @del="removeCom(index)"
+    />
 
     <!-- 当没有添加的时候展示的内容 -->
-    <el-empty v-if="editorStore.getComsList.length === 0" description="请添加" />
+    <el-empty v-if="editorStore.getAllComsList.length === 0" description="请添加" />
   </div>
 </template>
 
@@ -102,27 +100,5 @@ EventBus.on("scrollToBottom", scrollToBottom);
   /* border: 1px solid blue; */
   min-height: 99vh;
   box-sizing: border-box;
-}
-
-.box {
-  cursor: pointer;
-  padding: 10px;
-  background-color: var(--white);
-  border-radius: var(--border-radius-sm);
-  /* border: 1px solid red; */
-
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.01);
-    transition: 0.5s;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  &.active {
-    transform: scale(1.01);
-    transition: 0.5s;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
 }
 </style>

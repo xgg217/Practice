@@ -1,34 +1,4 @@
 <!-- 日期/时间 -->
-<template>
-  <div
-    :class="{
-      'text-center': computedState.position,
-    }"
-  >
-    <MaterialsHeaderCmp
-      :serialNum="serialNum"
-      :title="computedState.title"
-      :titleSize="computedState.titleSize"
-      :titleWeight="computedState.titleWeight"
-      :titleItalic="computedState.titleItalic"
-      :titleColor="computedState.titleColor"
-      :desc="computedState.desc"
-      :descSize="computedState.descSize"
-      :descWeight="computedState.descWeight"
-      :descItalic="computedState.descItalic"
-      :descColor="computedState.descColor"
-    />
-
-    <!-- @vue-ignore -->
-    <el-date-picker
-      v-model="datetimeValue"
-      :type="typeVal"
-      placeholder="请选择日期"
-      @click.stop
-      @change="emitAnswer"
-    />
-  </div>
-</template>
 
 <script setup lang="ts">
 import {
@@ -75,5 +45,36 @@ const emitAnswer = () => {
   emits("updateAnswer", datetimeValue.value);
 };
 </script>
+
+<template>
+  <div
+    :class="{
+      'text-center': computedState.position,
+    }"
+  >
+    <MaterialsHeaderCmp
+      :serialNum="serialNum"
+      :title="computedState.title"
+      :titleSize="computedState.titleSize"
+      :titleWeight="computedState.titleWeight"
+      :titleItalic="computedState.titleItalic"
+      :titleColor="computedState.titleColor"
+      :desc="computedState.desc"
+      :descSize="computedState.descSize"
+      :descWeight="computedState.descWeight"
+      :descItalic="computedState.descItalic"
+      :descColor="computedState.descColor"
+    />
+
+    <!-- @vue-ignore -->
+    <el-date-picker
+      v-model="datetimeValue"
+      :type="typeVal"
+      placeholder="请选择日期"
+      @click.stop
+      @change="emitAnswer"
+    />
+  </div>
+</template>
 
 <style scoped lang="scss"></style>
