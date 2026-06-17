@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = defineProps<{
   currentStatus: number;
@@ -30,7 +30,7 @@ const radio = ref(props.currentStatus);
 const changeType = () => {
   // console.log("props.configKey", props.configKey, type);
   // if (updateStatus) updateStatus(props.configKey, type);
-  emitter.emit("UPDATE:COMMENT_TYPE", { name: props.configKey, value: radio.value });
+  EventBus.emit("UPDATE:COMMENT_TYPE", { name: props.configKey, value: radio.value });
 };
 </script>
 

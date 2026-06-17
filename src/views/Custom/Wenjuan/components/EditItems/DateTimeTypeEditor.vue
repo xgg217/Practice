@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { ValueStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 // import { inject } from "vue";
 // import ButtonGroup from "./ButtonGroup.vue";
 
@@ -52,7 +52,7 @@ function changeType(newVal: string) {
   const index = typeArr.indexOf(newVal);
   if (index !== -1) {
     // text.value = typeArr[index];
-    emitter.emit("UPDATE:OPTION:DATE_TIME", {
+    EventBus.emit("UPDATE:OPTION:DATE_TIME", {
       name: props.configKey,
       value: index,
     });

@@ -6,9 +6,6 @@ const activeMenu = computed(() => route.path);
 
 <template>
   <div class="boxs">
-    <!-- 题型 -->
-    <!-- 大纲 -->
-
     <div class="menu-box">
       <el-menu :default-active="activeMenu" class="el-menu-vertical-demo" router>
         <el-menu-item index="/Custom/WenjuanEditorView/suvey-type">
@@ -28,14 +25,12 @@ const activeMenu = computed(() => route.path);
   </div>
 </template>
 
-<style scoped src="@/views/Custom/Wenjuan/EditorView/styles.css"></style>
 <style scoped>
 .boxs {
-  /* border: 1px solid red; */
-  /* height: 100%; */
+  /* min-height: 100%; */
   display: flex;
   /* border-right: 1px solid var(--el-border-color); */
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .menu-box {

@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus, { type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = defineProps<{
   currentStatus: number;
@@ -43,9 +43,9 @@ const changeSize = (val: string) => {
   } as Events["UPDATE:DESC_SIZE"];
 
   if (props.configKey === "titleSize") {
-    emitter.emit("UPDATE:TITLE_SIZE", obj);
+    EventBus.emit("UPDATE:TITLE_SIZE", obj);
   } else if (props.configKey === "descSize") {
-    emitter.emit("UPDATE:DESC_SIZE", obj);
+    EventBus.emit("UPDATE:DESC_SIZE", obj);
   } else {
     console.error("类型错误，要求类型为 titleSize 或 descSize");
   }

@@ -1,4 +1,5 @@
 <template>
+  /views/Custom/Wenjuan/MaterialsView/eventBus
   <!-- <div>字体粗细编辑组件</div> -->
   <div class="position" :key="props.id">
     <p>{{ props.editName }}</p>
@@ -13,7 +14,7 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus, { type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = defineProps<{
   currentStatus: number;
@@ -42,9 +43,9 @@ const changePosition = (pos: string) => {
   } as Events["UPDATE:TITLE_WEIGHT"];
 
   if (props.configKey === "titleWeight") {
-    emitter.emit("UPDATE:TITLE_WEIGHT", obj);
+    EventBus.emit("UPDATE:TITLE_WEIGHT", obj);
   } else if (props.configKey === "descWeight") {
-    emitter.emit("UPDATE:DESC_WEIGHT", obj);
+    EventBus.emit("UPDATE:DESC_WEIGHT", obj);
   } else {
     console.error("类型错误，要求类型为 titleItalic 或 descItalic");
   }

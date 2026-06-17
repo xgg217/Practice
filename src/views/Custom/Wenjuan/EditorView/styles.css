@@ -1,8 +1,0 @@
-.boxs {
-  /* border: 1px solid red; */
-  height: 99vh;
-  /* border-left: 1px solid var(--el-border-color); */
-  background-color: #fff;
-  overflow-y: auto;
-  box-sizing: border-box;
-}

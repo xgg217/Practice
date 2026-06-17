@@ -1,4 +1,4 @@
-import mitt, { type Emitter } from "mitt";
+import mitt from "mitt";
 
 // 事件名称 使用语义化命名（如 USER:LOGIN），避免冲突
 export type Events = {
@@ -62,4 +62,8 @@ export type Events = {
   "UPDATE:DESC_COLOR": { name: string; value: string }; // value 颜色
 };
 
-export const emitter: Emitter<Events> = mitt<Events>();
+const emitter = mitt<Events>();
+
+export default emitter;
+
+// export const emitter: Emitter<Events> = mitt<Events>();

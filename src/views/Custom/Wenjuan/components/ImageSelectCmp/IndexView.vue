@@ -2,7 +2,7 @@
 import UploadImgCmp from "./UploadImgCmp.vue";
 // import type { GetLink } from "@/views/Custom/Wenjuan/types/editProps";
 // import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = withDefaults(
   defineProps<{
@@ -37,7 +37,7 @@ const onChange = (newVal: string) => {
   //   });
   // }
 
-  emitter.emit("UPDATE:PIC:URL", { name: "options", value: { link: newVal, index: props.index } });
+  EventBus.emit("UPDATE:PIC:URL", { name: "options", value: { link: newVal, index: props.index } });
 };
 
 watch(

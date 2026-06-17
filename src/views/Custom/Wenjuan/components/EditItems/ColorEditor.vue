@@ -13,7 +13,7 @@
 <script setup lang="ts">
 // import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus, { type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 import type { TFontColor } from "@/views/Custom/Wenjuan/types/config";
 
 const props = defineProps<
@@ -45,9 +45,9 @@ const changePosition = (color: string) => {
   } as Events["UPDATE:TITLE_COLOR"];
 
   if (props.configKey === "titleColor") {
-    emitter.emit("UPDATE:TITLE_COLOR", obj);
+    EventBus.emit("UPDATE:TITLE_COLOR", obj);
   } else if (props.configKey === "descColor") {
-    emitter.emit("UPDATE:DESC_COLOR", obj);
+    EventBus.emit("UPDATE:DESC_COLOR", obj);
   } else {
     console.error("类型错误，要求类型为 titleColor 或 descColor");
   }

@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = defineProps<{
   id: string;
@@ -23,7 +23,7 @@ const text = ref(props.status);
 // const updateStatus = inject<UpdateStatus>("updateStatus");
 
 function inputHandle(newVal: string) {
-  emitter.emit("UPDATE:TITLE", { name: props.configKey, value: newVal });
+  EventBus.emit("UPDATE:TITLE", { name: props.configKey, value: newVal });
   // if (updateStatus) {
   //   updateStatus(props.configKey, newVal);
   // }

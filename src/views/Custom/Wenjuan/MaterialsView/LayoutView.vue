@@ -38,7 +38,7 @@ import {
   changeEditorIsShowStatus,
   changeEditorIsShowStatusCommentType,
 } from "@/views/Custom/Wenjuan/utils/index";
-import { emitter } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 // 数据仓库
 const store = useMaterialStore() as unknown as MaterialStore;
@@ -168,7 +168,7 @@ const updateStatus = (key: string) => {
   const status = currentCom.value.status;
 
   // 文本类型
-  emitter.on("UPDATE:TYPE", (row) => {
+  EventBus.on("UPDATE:TYPE", (row) => {
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     changeEditorIsShowStatus(status as unknown as TypeStatus, value);
@@ -176,33 +176,33 @@ const updateStatus = (key: string) => {
   });
 
   // 备注说明类型
-  emitter.on("UPDATE:COMMENT_TYPE", (row) => {
+  EventBus.on("UPDATE:COMMENT_TYPE", (row) => {
     const { name, value } = row;
     changeEditorIsShowStatusCommentType(status as unknown as TypeStatus);
     store.setCurrentStatus(status[name] as OptionsProps, value);
   });
 
   // 更新标题
-  emitter.on("UPDATE:TITLE", (row) => {
+  EventBus.on("UPDATE:TITLE", (row) => {
     const { name, value } = row;
     store.setTextStatus(status[name] as TextProps, value);
   });
 
   // 更新描述
-  emitter.on("UPDATE:DESC", (row) => {
+  EventBus.on("UPDATE:DESC", (row) => {
     const { name, value } = row;
     store.setTextStatus(status[name] as TextProps, value);
   });
 
   // 选项-图片-添加选项
-  emitter.on("ADD:OPTION:PIC", (row) => {
+  EventBus.on("ADD:OPTION:PIC", (row) => {
     const { name } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     store.addOption(status[name] as OptionsProps);
   });
 
   // 选项-图片-删除选项
-  emitter.on("DELETE:OPTION:PIC", (row) => {
+  EventBus.on("DELETE:OPTION:PIC", (row) => {
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     // store.addOption(status[name] as OptionsProps);
@@ -215,7 +215,7 @@ const updateStatus = (key: string) => {
   });
 
   // 选项-图片-删除图片
-  emitter.on("DELETE:PIC:URL", (row) => {
+  EventBus.on("DELETE:PIC:URL", (row) => {
     const { name, value } = row;
     store.setPicLinkByIndex(status[name] as OptionsProps, {
       link: "",
@@ -224,7 +224,7 @@ const updateStatus = (key: string) => {
   });
 
   // 选项-图片-更新图片链接
-  emitter.on("UPDATE:PIC:URL", (row) => {
+  EventBus.on("UPDATE:PIC:URL", (row) => {
     const { name, value } = row;
     store.setPicLinkByIndex(status[name] as OptionsProps, {
       link: value.link,
@@ -233,13 +233,13 @@ const updateStatus = (key: string) => {
   });
 
   // 选项-辅助文字-切换
-  emitter.on("UPDATE:OPTION:USE", (row) => {
+  EventBus.on("UPDATE:OPTION:USE", (row) => {
     const { name, value } = row;
     store.setUse(status[name] as OptionsProps, value);
   });
 
   // 选项-辅助文字-修改
-  emitter.on("UPDATE:OPTION:USE:TEXT", (row) => {
+  EventBus.on("UPDATE:OPTION:USE:TEXT", (row) => {
     const { name, value } = row;
 
     // store.setUse(status[name] as OptionsProps, value);
@@ -250,13 +250,13 @@ const updateStatus = (key: string) => {
   });
 
   // 选项-日期类型-切换
-  emitter.on("UPDATE:OPTION:DATE_TIME", (row) => {
+  EventBus.on("UPDATE:OPTION:DATE_TIME", (row) => {
     const { name, value } = row;
     store.setCurrentStatus(status[name] as OptionsProps, value);
   });
 
   // 对齐方式
-  emitter.on("UPDATE:POSITION", (row) => {
+  EventBus.on("UPDATE:POSITION", (row) => {
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     // store.setSize(status[name] as OptionsProps, value);
@@ -264,21 +264,21 @@ const updateStatus = (key: string) => {
   });
 
   // 标题字体大小
-  emitter.on("UPDATE:TITLE_SIZE", (row) => {
+  EventBus.on("UPDATE:TITLE_SIZE", (row) => {
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     store.setSize(status[name] as OptionsProps, value);
   });
 
   // 描述字体大小
-  emitter.on("UPDATE:DESC_SIZE", (row) => {
+  EventBus.on("UPDATE:DESC_SIZE", (row) => {
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     store.setSize(status[name] as OptionsProps, value);
   });
 
   // 标题字体加粗
-  emitter.on("UPDATE:TITLE_WEIGHT", (row) => {
+  EventBus.on("UPDATE:TITLE_WEIGHT", (row) => {
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     // store.setSize(status[name] as OptionsProps, value);
@@ -286,7 +286,7 @@ const updateStatus = (key: string) => {
   });
 
   // 描述字体加粗
-  emitter.on("UPDATE:DESC_WEIGHT", (row) => {
+  EventBus.on("UPDATE:DESC_WEIGHT", (row) => {
     const { name, value } = row;
     // store.setTextStatus(status[name] as TextProps, value);
     // store.setSize(status[name] as OptionsProps, value);
@@ -294,25 +294,25 @@ const updateStatus = (key: string) => {
   });
 
   // 标题字体斜体
-  emitter.on("UPDATE:TITLE_ITALIC", (row) => {
+  EventBus.on("UPDATE:TITLE_ITALIC", (row) => {
     const { name, value } = row;
     store.setCurrentStatus(status[name] as OptionsProps, value);
   });
 
   // 描述字体斜体
-  emitter.on("UPDATE:DESC_ITALIC", (row) => {
+  EventBus.on("UPDATE:DESC_ITALIC", (row) => {
     const { name, value } = row;
     store.setCurrentStatus(status[name] as OptionsProps, value);
   });
 
   // 更新 标题字体颜色
-  emitter.on("UPDATE:TITLE_COLOR", (row) => {
+  EventBus.on("UPDATE:TITLE_COLOR", (row) => {
     const { name, value } = row;
     store.setTextStatus(status[name] as TextProps, value);
   });
 
   // 更新 描述字体颜色
-  emitter.on("UPDATE:DESC_COLOR", (row) => {
+  EventBus.on("UPDATE:DESC_COLOR", (row) => {
     const { name, value } = row;
     store.setTextStatus(status[name] as TextProps, value);
   });
@@ -330,7 +330,7 @@ provide("updateStatus", updateStatus);
 
 onBeforeUnmount(() => {
   // 移除所有监听
-  emitter.all.clear();
+  EventBus.all.clear();
 });
 </script>
 

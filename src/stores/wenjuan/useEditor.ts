@@ -14,6 +14,7 @@ import {
 import { COM_MAP } from "./config";
 import { ElMessage } from "element-plus";
 import type { ComponentMap, NoteComName } from "@/views/Custom/Wenjuan/types/store";
+import EventBus from "@/views/Custom/Wenjuan/EditorView/eventBus";
 
 // 获取 COM_MAP 中的 value 值 类型
 export type ComponentStatus = ReturnType<ComponentMap[keyof ComponentMap]>;
@@ -56,10 +57,7 @@ export const useEditorStore = defineStore("editorStore", {
         return;
       }
 
-      // console.log(item);
-
       const com = COM_MAP[item]();
-      // console.log(com);
 
       this.coms.push(com);
 
@@ -67,6 +65,8 @@ export const useEditorStore = defineStore("editorStore", {
       if (!isExercise.includes(item as NoteComName)) {
         this.surveyCount++;
       }
+
+      EventBus.emit("scrollToBottom");
     },
 
     setCurrentComponentIndex(index: number) {

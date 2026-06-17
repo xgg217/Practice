@@ -2,10 +2,12 @@
 import { useEditorStore } from "@/stores/wenjuan/useEditor";
 import { Close } from "@element-plus/icons-vue";
 import { ElMessage, ElMessageBox } from "element-plus";
+import EventBus from "@/views/Custom/Wenjuan/EditorView/eventBus";
 
 const editorStore = useEditorStore();
 
-const componentsRefs = ref<(Element | ComponentPublicInstance | null)[]>([]);
+const boxsRef = useTemplateRef("boxsRef"); // 最外层元素
+const componentsRefs = ref<(Element | ComponentPublicInstance | null)[]>([]); // 组件的dom元素
 
 // 删除组件
 const removeCom = (index: number) => {
@@ -25,23 +27,42 @@ const removeCom = (index: number) => {
     });
 };
 
-// 滚动到 指定到组件
-const scrollToCenter = (index: number) => {
+// 滚动到最底部
+const scrollToBottom = () => {
+  console.log(1);
+
   nextTick(() => {
-    const element = componentsRefs.value[index]; // 获取当前题目的dom元素
-    // 判断当前元素是否是HTMLElement
-    if (element instanceof HTMLElement) {
-      element.scrollIntoView({
+    const container = boxsRef.value!; // 获取容器的dom元素
+
+    if (container) {
+      container.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "end",
       });
     }
   });
 };
+
+// 滚动到 指定到组件
+// const scrollToCenter = (index: number) => {
+//   nextTick(() => {
+//     const element = componentsRefs.value[index]; // 获取当前题目的dom元素
+//     // 判断当前元素是否是HTMLElement
+//     if (element instanceof HTMLElement) {
+//       element.scrollIntoView({
+//         behavior: "smooth",
+//         block: "center",
+//       });
+//     }
+//   });
+// };
+
+// 监听事件总线 滚动到最底部
+EventBus.on("scrollToBottom", scrollToBottom);
 </script>
 
 <template>
-  <div class="boxs">
+  <div class="boxs" ref="boxsRef">
     <div
       v-for="(item, index) in editorStore.getComsList"
       :key="item.id"
@@ -65,18 +86,22 @@ const scrollToCenter = (index: number) => {
         />
       </div>
     </div>
+
+    <!-- 当没有添加的时候展示的内容 -->
+    <el-empty v-if="editorStore.getComsList.length === 0" description="请添加" />
   </div>
 </template>
 
-<style scoped src="@/views/Custom/Wenjuan/EditorView/styles.css"></style>
 <style scoped>
 .boxs {
-  /* border: 1px solid red; */
-  padding: 30px 15px 60px 15px;
+  padding: 15px 30px 60px 15px;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   background: var(--white);
   position: relative;
+  /* border: 1px solid blue; */
+  min-height: 99vh;
+  box-sizing: border-box;
 }
 
 .box {
@@ -85,6 +110,9 @@ const scrollToCenter = (index: number) => {
   background-color: var(--white);
   border-radius: var(--border-radius-sm);
   /* border: 1px solid red; */
+
+  transition: all 0.3s ease-in-out;
+
   &:hover {
     transform: scale(1.01);
     transition: 0.5s;

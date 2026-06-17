@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 // import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-import { emitter, type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import EventBus, { type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = defineProps<{
   id: string;
@@ -42,9 +42,9 @@ const changePosition = (pos: string) => {
   } as Events["UPDATE:TITLE_ITALIC"];
 
   if (props.configKey === "titleItalic") {
-    emitter.emit("UPDATE:TITLE_ITALIC", obj);
+    EventBus.emit("UPDATE:TITLE_ITALIC", obj);
   } else if (props.configKey === "descItalic") {
-    emitter.emit("UPDATE:DESC_ITALIC", obj);
+    EventBus.emit("UPDATE:DESC_ITALIC", obj);
   } else {
     console.error("类型错误，要求类型为 titleItalic 或 descItalic");
   }

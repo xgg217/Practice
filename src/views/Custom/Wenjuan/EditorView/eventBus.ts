@@ -1,10 +1,10 @@
-import mitt, { type Emitter } from "mitt";
+import mitt from "mitt";
 
-export type EventBus = {
-  scrollToBottom: void;
+export type Events = {
+  scrollToBottom: void; // 滚动到最底部
   scrollToCenter: number;
 };
 
-const emitter = mitt<EventBus>();
+const emitter = mitt<Events>();
 
 export default emitter;
