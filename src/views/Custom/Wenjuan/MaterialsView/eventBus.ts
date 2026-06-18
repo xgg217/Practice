@@ -13,6 +13,12 @@ export type Events = {
   // 更新描述
   "UPDATE:DESC": { name: string; value: string };
 
+  // 选项-添加
+  "ADD:OPTION": { name: string };
+
+  // 选项-删除
+  "DELETE:OPTION": { name: string; value: number };
+
   // 选项-图片-删除选项
   "DELETE:OPTION:PIC": { name: string; value: number };
 

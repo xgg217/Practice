@@ -25,12 +25,8 @@ const props = defineProps<{
 }>();
 
 const text = ref(props.status);
-// const updateStatus = inject<UpdateStatus>("updateStatus");
 
 function inputHandle(newVal: string) {
   EventBus.emit("UPDATE:DESC", { name: props.configKey, value: newVal });
-  // if (updateStatus) {
-  //   updateStatus(props.configKey, newVal);
-  // }
 }
 </script>

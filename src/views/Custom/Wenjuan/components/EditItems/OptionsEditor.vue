@@ -21,7 +21,9 @@
 <script setup lang="ts">
 import { Plus, Minus } from "@element-plus/icons-vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
-import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+
 const props = defineProps<{
   status: string[];
   isShow: boolean;
@@ -31,18 +33,22 @@ const props = defineProps<{
 }>();
 
 const textArr = ref(props.status);
-const updateStatus = inject<UpdateStatus>("updateStatus");
+// const updateStatus = inject<UpdateStatus>("updateStatus");
 
+// 添加选项
 const addOptionHandle = () => {
-  if (updateStatus) {
-    updateStatus(props.configKey);
-  }
+  // if (updateStatus) {
+  //   updateStatus(props.configKey);
+  // }
+  EventBus.emit("ADD:OPTION", { name: props.configKey });
 };
 
+// 删除选项
 const removeOption = (index: number) => {
-  if (updateStatus) {
-    updateStatus(props.configKey, index);
-  }
+  EventBus.emit("DELETE:OPTION", { name: props.configKey, value: index });
+  // if (updateStatus) {
+  //   updateStatus(props.configKey, index);
+  // }
 };
 </script>
 

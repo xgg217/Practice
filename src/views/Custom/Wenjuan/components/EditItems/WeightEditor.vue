@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
-// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import EventBus, { type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 
 const props = defineProps<{
@@ -27,14 +26,8 @@ const props = defineProps<{
 
 const radio = ref(props.status[props.currentStatus]);
 
-// const updateStatus = inject<UpdateStatus>("updateStatus");
 const changePosition = (pos: string) => {
-  // if (updateStatus) {
   const index = props.status.findIndex((item) => item === pos);
-  //   if (index !== -1) {
-  //     updateStatus(props.configKey, index);
-  //   }
-  // }
 
   const obj = {
     name: props.configKey,

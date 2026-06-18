@@ -28,10 +28,7 @@
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { ValueStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
 import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
-// import { inject } from "vue";
-// import ButtonGroup from "./ButtonGroup.vue";
 
-// const updateStatus = inject<UpdateStatus>("updateStatus");
 const props = defineProps<{
   id: string;
   currentStatus: number;
@@ -46,9 +43,6 @@ const text = ref(props.status[props.currentStatus]!.status);
 
 const typeArr = props.status.map((item) => item.value);
 function changeType(newVal: string) {
-  // console.log(newVal);
-  // console.log(typeArr);
-
   const index = typeArr.indexOf(newVal);
   if (index !== -1) {
     // text.value = typeArr[index];
@@ -57,18 +51,6 @@ function changeType(newVal: string) {
       value: index,
     });
   }
-
-  // if (updateStatus) {
-  //   const payload = typeArr.indexOf(newVal);
-  //   updateStatus(props.configKey, payload);
-  // } else {
-  //   console.warn("updateStatus is not provided");
-  // }
-
-  // emitter.emit("UPDATE:OPTION:DATE_TIME", {
-  //   name: props.configKey,
-  //   value: typeArr.indexOf(newVal),
-  // });
 }
 </script>
 

@@ -13,6 +13,8 @@ export const setTextStatus = (textProps: TextProps, value: string) => {
 
 // 删除
 export const removeOption = (optionProps: OptionsProps, index: number) => {
+  console.log(optionProps);
+
   if (optionProps.status.length === 2) {
     return false;
   }

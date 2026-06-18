@@ -27,15 +27,8 @@ const props = defineProps<{
 
 const radio = ref(props.status[props.currentStatus]);
 
-// const updateStatus = inject<UpdateStatus>("updateStatus");
 const changeSize = (val: string) => {
-  // if (updateStatus) updateStatus(props.configKey, size);
-  // if (updateStatus) {
   const index = props.status.findIndex((item) => item === val);
-  //   if (index !== -1) {
-  //     updateStatus(props.configKey, index);
-  //   }
-  // }
 
   const obj = {
     name: props.configKey,

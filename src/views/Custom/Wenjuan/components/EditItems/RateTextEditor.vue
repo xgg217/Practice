@@ -33,22 +33,12 @@ const props = defineProps<{
   id: string;
 }>();
 
-// 注入 updateStatus
-// const updateStatus = inject<UpdateStatus>("updateStatus");
-
 const textArr = ref(props.status);
 
 function switchChangeHandle(val: boolean) {
-  // if (updateStatus) {
-  //   updateStatus(props.configKey, val);
-  // }
   EventBus.emit("UPDATE:OPTION:USE", { name: props.configKey, value: val });
 }
 function inputHandle(val: string, index: number) {
-  // if (updateStatus) {
-  //   updateStatus(props.configKey, { link: val, index });
-
-  // }
   EventBus.emit("UPDATE:OPTION:USE:TEXT", { name: props.configKey, value: { link: val, index } });
 }
 </script>

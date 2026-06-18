@@ -19,10 +19,6 @@ const props = withDefaults(
   },
 );
 
-// const getLink = inject<GetLink>(GET_LINK);
-
-// const updateStatus = inject<UpdateStatus>("updateStatus");
-
 const url = ref(props.value);
 
 const onChange = (newVal: string) => {

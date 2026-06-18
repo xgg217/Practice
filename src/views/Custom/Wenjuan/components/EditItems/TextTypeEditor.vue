@@ -23,13 +23,10 @@ const props = defineProps<{
   editCom: VueComType;
   id: string;
 }>();
-// const updateStatus = inject<UpdateStatus>("updateStatus");
 
 const radio = ref(props.currentStatus);
 
 const changeType = () => {
-  // console.log("props.configKey", props.configKey, type);
-  // if (updateStatus) updateStatus(props.configKey, type);
   EventBus.emit("UPDATE:COMMENT_TYPE", { name: props.configKey, value: radio.value });
 };
 </script>
