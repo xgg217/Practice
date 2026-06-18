@@ -10,14 +10,19 @@ import type {
   TextProps,
   // PicLink,
   // BaseStatus,
+  OptionsStatus,
   TypeStatus,
 } from "@/views/Custom/Wenjuan/types/editProps";
+import type { EditorStore } from "@/views/Custom/Wenjuan/types/store";
 
-export const useDispatchStatusHook = (store: MaterialStore) => {
+export const useDispatchStatusHook = (
+  store: MaterialStore | EditorStore,
+  status: TypeStatus | OptionsStatus,
+) => {
   // 获取当前选中组件的状态数据
-  const currentCom = computed(() => store.coms[store.currentMaterialCom]);
+  // const currentCom = computed(() => store.coms[store.currentMaterialCom]);
 
-  const status = currentCom.value.status;
+  // const status = currentCom.value.status;
 
   // 文本类型
   EventBus.on("UPDATE:TYPE", (row) => {

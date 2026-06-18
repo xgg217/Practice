@@ -24,127 +24,135 @@ import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
 import { useMaterialStore } from "@/stores/wenjuan/useMaterialStore";
 import EditPannel from "@/views/Custom/Wenjuan/components/EditItems/EditPannel.vue";
 import { useDispatchStatusHook } from "@/views/Custom/Wenjuan/utils/dispatchStatus";
+import type {
+  // PicLink,
+  // BaseStatus,
+  OptionsStatus,
+  TypeStatus,
+} from "@/views/Custom/Wenjuan/types/editProps";
 
 // 数据仓库
 const store = useMaterialStore() as unknown as MaterialStore;
 
-useDispatchStatusHook(store);
-
 // 获取当前选中组件的状态数据
 const currentCom = computed(() => store.coms[store.currentMaterialCom]);
 
-const updateStatus = (key: string) => {
-  const setType = {
-    // type: () => {
-    //   if (typeof value === "number" && IsTypeStatus(status as unknown as BaseStatus)) {
-    //     // 切换其他编辑器的显示状态
-    //     changeEditorIsShowStatus(status as unknown as TypeStatus, value);
-    //     store.setCurrentStatus(status[key] as OptionsProps, value);
-    //   }
-    // },
+const status = currentCom.value.status as unknown as TypeStatus | OptionsStatus;
 
-    // 标题
-    // title: () => {
-    //   if (typeof value !== "string") {
-    //     console.error("类型错误，要求类型为 string");
-    //   } else {
-    //     // @ts-expect-error 测试1
-    //     store.setTextStatus(status[key], value);
-    //   }
-    // },
+useDispatchStatusHook(store, status);
 
-    // // 描述内容
-    // desc: () => setType["title"](),
+// const updateStatus = (key: string) => {
+//   const setType = {
+//     // type: () => {
+//     //   if (typeof value === "number" && IsTypeStatus(status as unknown as BaseStatus)) {
+//     //     // 切换其他编辑器的显示状态
+//     //     changeEditorIsShowStatus(status as unknown as TypeStatus, value);
+//     //     store.setCurrentStatus(status[key] as OptionsProps, value);
+//     //   }
+//     // },
 
-    // 选项
-    // options: () => {
-    //   if (IsOptionsStatus(status as unknown as BaseStatus)) {
-    //     // 删除
-    //     if (typeof value === "number") {
-    //       const iBool = store.removeOption(status[key] as OptionsProps, value);
-    //       if (!iBool) {
-    //         ElMessage.error("至少保留两个选项");
-    //       } else {
-    //         ElMessage.success("删除成功");
-    //       }
-    //       return;
-    //     }
+//     // 标题
+//     // title: () => {
+//     //   if (typeof value !== "string") {
+//     //     console.error("类型错误，要求类型为 string");
+//     //   } else {
+//     //     // @ts-expect-error 测试1
+//     //     store.setTextStatus(status[key], value);
+//     //   }
+//     // },
 
-    //     // 上传图片 - 设置图片链接
-    //     if (isPlainObject(value) && isPicLink(value)) {
-    //       // 设图片链接
-    //       store.setPicLinkByIndex(status[key] as OptionsProps, value);
-    //       return;
-    //     }
+//     // // 描述内容
+//     // desc: () => setType["title"](),
 
-    //     // 新增
-    //     store.addOption(status[key] as OptionsProps);
-    //   }
-    // },
+//     // 选项
+//     // options: () => {
+//     //   if (IsOptionsStatus(status as unknown as BaseStatus)) {
+//     //     // 删除
+//     //     if (typeof value === "number") {
+//     //       const iBool = store.removeOption(status[key] as OptionsProps, value);
+//     //       if (!iBool) {
+//     //         ElMessage.error("至少保留两个选项");
+//     //       } else {
+//     //         ElMessage.success("删除成功");
+//     //       }
+//     //       return;
+//     //     }
 
-    // 选项位置
-    // position: () => {
-    //   if (typeof value !== "number") {
-    //     console.error("类型错误，要求类型为 number");
-    //     return;
-    //   }
-    //   store.setPosition(status[key] as OptionsProps, value);
-    // },
+//     //     // 上传图片 - 设置图片链接
+//     //     if (isPlainObject(value) && isPicLink(value)) {
+//     //       // 设图片链接
+//     //       store.setPicLinkByIndex(status[key] as OptionsProps, value);
+//     //       return;
+//     //     }
 
-    // // 标题大小
-    // titleSize: () => {
-    //   if (typeof value !== "number") {
-    //     console.error("类型错误，要求类型为 number");
-    //     return;
-    //   }
+//     //     // 新增
+//     //     store.addOption(status[key] as OptionsProps);
+//     //   }
+//     // },
 
-    //   store.setSize(status[key] as OptionsProps, value);
-    // },
+//     // 选项位置
+//     // position: () => {
+//     //   if (typeof value !== "number") {
+//     //     console.error("类型错误，要求类型为 number");
+//     //     return;
+//     //   }
+//     //   store.setPosition(status[key] as OptionsProps, value);
+//     // },
 
-    // // 描述内容大小
-    // descSize: () => setType["titleSize"](),
+//     // // 标题大小
+//     // titleSize: () => {
+//     //   if (typeof value !== "number") {
+//     //     console.error("类型错误，要求类型为 number");
+//     //     return;
+//     //   }
 
-    // titleWeight: () => {
-    //   if (typeof value === "number") {
-    //     store.setCurrentStatus(status[key] as OptionsProps, value);
-    //   }
-    // },
+//     //   store.setSize(status[key] as OptionsProps, value);
+//     // },
 
-    // // 描述内容粗细
-    // descWeight: () => setType["titleWeight"](),
+//     // // 描述内容大小
+//     // descSize: () => setType["titleSize"](),
 
-    // // 标题斜体
-    // titleItalic: () => {
-    //   if (typeof value === "number") {
-    //     store.setCurrentStatus(status[key] as OptionsProps, value);
-    //   }
-    // },
+//     // titleWeight: () => {
+//     //   if (typeof value === "number") {
+//     //     store.setCurrentStatus(status[key] as OptionsProps, value);
+//     //   }
+//     // },
 
-    // // 描述内容斜体
-    // descItalic: () => setType["titleItalic"](),
+//     // // 描述内容粗细
+//     // descWeight: () => setType["titleWeight"](),
 
-    // // 标题颜色
-    // titleColor: () => {
-    //   if (typeof value === "string") {
-    //     store.setTextStatus(status[key] as TextProps, value);
-    //   }
-    // },
+//     // // 标题斜体
+//     // titleItalic: () => {
+//     //   if (typeof value === "number") {
+//     //     store.setCurrentStatus(status[key] as OptionsProps, value);
+//     //   }
+//     // },
 
-    // // 描述内容颜色
-    // descColor: () => setType["titleColor"](),
+//     // // 描述内容斜体
+//     // descItalic: () => setType["titleItalic"](),
 
-    // 默认值
-    defaultValue: () => {
-      console.error("未适配");
-    },
-  } satisfies Record<string, () => void>;
+//     // // 标题颜色
+//     // titleColor: () => {
+//     //   if (typeof value === "string") {
+//     //     store.setTextStatus(status[key] as TextProps, value);
+//     //   }
+//     // },
 
-  if (key in setType) {
-    setType[key as keyof typeof setType]();
-  } else {
-    setType["defaultValue"]();
-  }
-};
+//     // // 描述内容颜色
+//     // descColor: () => setType["titleColor"](),
+
+//     // 默认值
+//     defaultValue: () => {
+//       console.error("未适配");
+//     },
+//   } satisfies Record<string, () => void>;
+
+//   if (key in setType) {
+//     setType[key as keyof typeof setType]();
+//   } else {
+//     setType["defaultValue"]();
+//   }
+// };
 
 // 右侧编辑器 更新监听
 {
@@ -157,7 +165,7 @@ const updateStatus = (key: string) => {
 //   updateStatus("options", row);
 // };
 
-provide("updateStatus", updateStatus);
+// provide("updateStatus", updateStatus);
 // provide(GET_LINK, getLink);
 </script>
 

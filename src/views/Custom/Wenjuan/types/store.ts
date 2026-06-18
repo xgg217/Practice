@@ -12,6 +12,7 @@ import type {
   DateTimeStatus,
   TTextNoteStatus,
 } from "@/views/Custom/Wenjuan/types/config";
+import type { SurveyDBData } from "@/views/Custom/Wenjuan/types/db";
 
 // 选择
 export type SelectComName =
@@ -120,6 +121,18 @@ export interface MaterialStore extends Actions {
   currentMaterialCom: Material;
   coms: Record<Material, Status>;
   setCurrentSurveyCom: (com: Material) => void;
+}
+
+export interface EditorStore extends Actions {
+  currentComponentIndex: number;
+  surveyCount: number;
+  coms: Status[];
+  setCurrentComponentIndex: (index: number) => void;
+  addCom: (coms: Status[], newCom: Status) => void;
+  setStore: (storeStatus: SurveyDBData) => void;
+  initStore: () => void;
+  removeCom: (index: number) => void;
+  resetComs: () => void;
 }
 
 // 记录题目类型的数组
