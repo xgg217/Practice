@@ -10,6 +10,7 @@ import {
 } from "@/views/Custom/Wenjuan/utils/index";
 import type { PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
 import ImageSelectCmp from "@/views/Custom/Wenjuan/components/ImageSelectCmp/IndexView.vue";
+import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 const props = defineProps<{
   serialNum: number;
@@ -33,12 +34,19 @@ const computedState = computed(() => ({
 
 const radioValue = ref("");
 
+const updateStatus = inject<UpdateStatus>("updateStatus")!;
+
 // 回头父组件需要传递一个updateAnswer过来
 // 通过触发父组件的这个自定义事件将答案传递给父组件
 const emits = defineEmits(["updateAnswer"]);
 
 const emitAnswer = () => {
   emits("updateAnswer", radioValue.value);
+};
+
+// 上传图片后，更新图片链接
+const onChange = (url: string, index: number) => {
+  updateStatus("UPDATE:PIC:URL", { name: "options", value: { link: url, index } });
 };
 </script>
 
@@ -70,7 +78,7 @@ const emitAnswer = () => {
           :value="item.picTitle"
           :key="index"
         >
-          <ImageSelectCmp :key="index" v-bind="{ ...item, index }" />
+          <ImageSelectCmp :key="index" v-bind="{ ...item, index }" @change="onChange" />
         </el-radio>
       </el-radio-group>
     </div>

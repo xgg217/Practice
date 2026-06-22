@@ -38,7 +38,9 @@
 import { Plus, Minus } from "@element-plus/icons-vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+// import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+// import type { Events } from "@/views/Custom/Wenjuan/types/eventBus";
+import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 import { ElMessage, ElMessageBox } from "element-plus";
 const props = defineProps<{
@@ -49,15 +51,20 @@ const props = defineProps<{
   editCom: VueComType;
   id: string;
 }>();
+
+const updateStatus = inject<UpdateStatus>("updateStatus")!;
+
 const textArr = ref(props.status);
 
 const addOptionHandle = () => {
-  EventBus.emit("ADD:OPTION:PIC", { name: props.configKey });
+  // EventBus.emit("ADD:OPTION:PIC", { name: props.configKey });
+  updateStatus("ADD:OPTION:PIC", { name: props.configKey });
 };
 
 // 删除选项
 const removeOptionHandle = (index: number) => {
-  EventBus.emit("DELETE:OPTION:PIC", { name: props.configKey, value: index });
+  // EventBus.emit("DELETE:OPTION:PIC", { name: props.configKey, value: index });
+  updateStatus("DELETE:OPTION:PIC", { name: props.configKey, value: index });
 };
 
 // 删除图片
@@ -69,7 +76,8 @@ const deletePic = (index: number) => {
   })
     .then(() => {
       // 确认删除
-      EventBus.emit("DELETE:PIC:URL", { name: props.configKey, value: index });
+      // EventBus.emit("DELETE:PIC:URL", { name: props.configKey, value: index });
+      updateStatus("DELETE:PIC:URL", { name: props.configKey, value: index });
     })
     .catch(() => {
       // 取消删除

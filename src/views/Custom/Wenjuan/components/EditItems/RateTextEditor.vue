@@ -21,7 +21,8 @@
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { StringStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
 // import { inject, ref } from "vue";
-import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+// import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 const props = defineProps<{
   currentStatus: number;
@@ -33,13 +34,17 @@ const props = defineProps<{
   id: string;
 }>();
 
+const updateStatus = inject<UpdateStatus>("updateStatus")!;
+
 const textArr = ref(props.status);
 
 function switchChangeHandle(val: boolean) {
-  EventBus.emit("UPDATE:OPTION:USE", { name: props.configKey, value: val });
+  // EventBus.emit("UPDATE:OPTION:USE", { name: props.configKey, value: val });
+  updateStatus("UPDATE:OPTION:USE", { name: props.configKey, value: val });
 }
 function inputHandle(val: string, index: number) {
-  EventBus.emit("UPDATE:OPTION:USE:TEXT", { name: props.configKey, value: { link: val, index } });
+  // EventBus.emit("UPDATE:OPTION:USE:TEXT", { name: props.configKey, value: { link: val, index } });
+  updateStatus("UPDATE:OPTION:USE:TEXT", { name: props.configKey, value: { link: val, index } });
 }
 </script>
 

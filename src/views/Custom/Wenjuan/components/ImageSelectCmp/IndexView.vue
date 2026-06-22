@@ -2,7 +2,8 @@
 import UploadImgCmp from "./UploadImgCmp.vue";
 // import type { GetLink } from "@/views/Custom/Wenjuan/types/editProps";
 // import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
-import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+// import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
+// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 const props = withDefaults(
   defineProps<{
@@ -19,6 +20,12 @@ const props = withDefaults(
   },
 );
 
+const emit = defineEmits<{
+  change: [url: string, index: number];
+}>();
+
+// const updateStatus = inject<UpdateStatus>("updateStatus")!;
+
 const url = ref(props.value);
 
 const onChange = (newVal: string) => {
@@ -33,7 +40,11 @@ const onChange = (newVal: string) => {
   //   });
   // }
 
-  EventBus.emit("UPDATE:PIC:URL", { name: "options", value: { link: newVal, index: props.index } });
+  // EventBus.emit("UPDATE:PIC:URL", { name: "options", value: { link: newVal, index: props.index } });
+
+  // updateStatus("UPDATE:PIC:URL", { name: "options", value: { link: newVal, index: props.index } });
+
+  emit("change", newVal, props.index);
 };
 
 watch(

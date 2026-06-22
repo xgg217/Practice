@@ -3,13 +3,30 @@ import LeftCmp from "./components/LeftCmp/IndexView.vue";
 import CenterCmp from "./components/CenterCmp/IndexView.vue";
 import RightCmp from "./components/RightCmp.vue";
 import { useEditorStore } from "@/stores/wenjuan/useEditor";
-import { useDispatchStatusHook } from "@/views/Custom/Wenjuan/utils/dispatchStatus";
+import { dispatchStatus } from "@/stores/wenjuan/dispatchStatus.ts";
 import type { EditorStore } from "@/views/Custom/Wenjuan/types/store";
 
 // 数据仓库
 const store = useEditorStore() as unknown as EditorStore;
 
-useDispatchStatusHook(store);
+// 获取当前选中组件的状态数据
+// const currentCom = computed(() => store.coms[store.currentComponentIndex]);
+const status = computed(() => {
+  const { coms, currentComponentIndex } = store;
+  return coms[currentComponentIndex]?.status;
+});
+
+// useDispatchStatusHook(store);
+
+const updateStatus = (name: string, row: anyObj) => {
+  if (!status.value) {
+    return;
+  }
+
+  dispatchStatus(store, status.value, name, row);
+};
+
+provide("updateStatus", updateStatus);
 </script>
 
 <template>

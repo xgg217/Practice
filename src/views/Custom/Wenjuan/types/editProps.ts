@@ -1,4 +1,5 @@
 import type { VueComType } from "./common";
+import type { Events } from "./eventBus";
 
 export interface BaseProps {
   id: string; // UUID
@@ -98,10 +99,7 @@ export function isPicLink(obj: object): obj is PicLink {
 }
 export type GetLink = (obj: PicLink) => void;
 
-export type UpdateStatus = (
-  configKey: string,
-  payload?: number | string | boolean | PicLink,
-) => void;
+export type UpdateStatus = (configKey: string, payload: Events[keyof Events]) => void;
 
 export type StatusArray = StringStatusArr | ValueStatusArr | PicTitleDescStatusArr;
 
