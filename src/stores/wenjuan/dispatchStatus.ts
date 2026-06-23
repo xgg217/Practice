@@ -36,7 +36,7 @@ export const dispatchStatus = (
     // 备注说明类型
     "UPDATE:COMMENT_TYPE": (row: Events["UPDATE:COMMENT_TYPE"]) => {
       const { name, value } = row;
-      changeEditorIsShowStatusCommentType(status as unknown as TypeStatus, value);
+      changeEditorIsShowStatusCommentType(status as unknown as TypeStatus);
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 

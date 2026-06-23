@@ -79,7 +79,7 @@ const ROW: RouteRecordRaw = {
           path: "outline",
           name: "outline",
           component: () =>
-            import("@/views/Custom/Wenjuan/EditorView/components/LeftCmp/OutlineView.vue"),
+            import("@/views/Custom/Wenjuan/EditorView/components/LeftCmp/OutlineView/IndexView.vue"),
           meta: {
             title: "大纲",
           },

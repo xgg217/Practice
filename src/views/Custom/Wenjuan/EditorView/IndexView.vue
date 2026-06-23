@@ -5,6 +5,7 @@ import RightCmp from "./components/RightCmp.vue";
 import { useEditorStore } from "@/stores/wenjuan/useEditor";
 import { dispatchStatus } from "@/stores/wenjuan/dispatchStatus.ts";
 import type { EditorStore } from "@/views/Custom/Wenjuan/types/store";
+import type { OptionsStatus, TypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 // 数据仓库
 const store = useEditorStore() as unknown as EditorStore;
@@ -16,14 +17,12 @@ const status = computed(() => {
   return coms[currentComponentIndex]?.status;
 });
 
-// useDispatchStatusHook(store);
-
 const updateStatus = (name: string, row: anyObj) => {
   if (!status.value) {
     return;
   }
 
-  dispatchStatus(store, status.value, name, row);
+  dispatchStatus(store, status.value as unknown as TypeStatus | OptionsStatus, name, row);
 };
 
 provide("updateStatus", updateStatus);
