@@ -1,3 +1,5 @@
+// @ts-nocheck 忽略类型检查
+
 import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
 import {
   changeEditorIsShowStatus,
@@ -16,16 +18,11 @@ import type { EditorStore } from "@/views/Custom/Wenjuan/types/store";
 import type { Events } from "@/views/Custom/Wenjuan/types/eventBus";
 
 export const dispatchStatus = (
-  store: MaterialStore | EditorStore,
-  status: TypeStatus | OptionsStatus,
-  name: string,
-  row: anyObj,
+  store: MaterialStore | EditorStore, // 仓库
+  status: TypeStatus | OptionsStatus, // 当前状态
+  name: string, // 事件名称
+  row: anyObj, // 事件参数
 ) => {
-  // 获取当前选中组件的状态数据
-  // const currentCom = computed(() => store.coms[store.currentMaterialCom]);
-
-  console.log(status);
-
   // const status = currentCom.value.status;
   if (!status) return;
 

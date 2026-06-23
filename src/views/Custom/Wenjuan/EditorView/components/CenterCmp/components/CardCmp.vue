@@ -44,21 +44,14 @@ const emit = defineEmits<{
   padding: 10px;
   background-color: var(--white);
   border-radius: var(--border-radius-sm);
+  cursor: move;
   /* border: 1px solid red; */
 
   transition: all 0.5s ease-in-out;
 
-  /* &:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  } */
-
   &:hover,
   &.active {
     transform: scale(1.01);
-    /* transition: 0.5s; */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    /* box-shadow: 0 0 0 1px var(--el-input-focus-border-color) inset; */
     box-shadow: 0 0 0 1px var(--primary-color) inset;
   }
 

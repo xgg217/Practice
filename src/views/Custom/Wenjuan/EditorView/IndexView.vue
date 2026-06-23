@@ -42,7 +42,7 @@ provide("updateStatus", updateStatus);
     </div>
 
     <!-- 右 -->
-    <div class="box">
+    <div class="box right">
       <RightCmp />
     </div>
   </div>
@@ -51,7 +51,7 @@ provide("updateStatus", updateStatus);
 <style scoped>
 .position {
   display: grid;
-  grid-template-columns: 300px 2fr 1fr;
+  grid-template-columns: 300px minmax(600px, 1fr) 350px;
   grid-gap: 15px;
   height: 100%;
   background-color: #f5f7fa;
@@ -64,5 +64,6 @@ provide("updateStatus", updateStatus);
   background-color: #fff;
   overflow-y: auto;
   box-sizing: border-box;
+  /* width: 350px; */
 }
 </style>

@@ -16,7 +16,7 @@ const editorStore = useEditorStore();
     <!-- <component :is="editorStore.getCurrentComponent?.type" :status="row.status" :serialNum="row.index" /> -->
 
     <!-- 当没有添加的时候展示的内容 -->
-    <el-empty v-if="!editorStore.getCurrentComponent" description="暂无" />
+    <el-empty v-if="!editorStore.getCurrentComponent" description="点击题型进行编辑" />
   </div>
 </template>
 

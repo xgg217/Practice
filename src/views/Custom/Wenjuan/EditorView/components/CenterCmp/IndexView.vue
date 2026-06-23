@@ -3,6 +3,7 @@ import { useEditorStore } from "@/stores/wenjuan/useEditor";
 import CardCmp from "./components/CardCmp.vue";
 import { ElMessage, ElMessageBox } from "element-plus";
 import EventBus from "@/views/Custom/Wenjuan/EditorView/eventBus";
+import { VueDraggableNext as Draggable } from "vue-draggable-next";
 
 const editorStore = useEditorStore();
 
@@ -34,10 +35,8 @@ const clickHandle = (index: number) => {
     editorStore.setCurrentComponentIndex(-1);
   } else {
     editorStore.setCurrentComponentIndex(index);
-    // EventBus.emit('scrollToCenter', index);
     scrollToCenter(index);
   }
-  // editorStore.setCurrentComponentIndex(index);
 };
 
 // 将滚动条滚动到最底部，用于显示最新的组件
@@ -69,24 +68,36 @@ const scrollToCenter = (index: number) => {
   });
 };
 
+const dragstart = () => {
+  editorStore.setCurrentComponentIndex(-1);
+  // console.log(2);
+};
+
 // 监听事件总线 滚动到最底部
 EventBus.on("scrollToBottom", scrollToBottom);
 </script>
 
 <template>
   <div class="boxs" ref="boxsRef">
-    <CardCmp
-      v-for="(item, index) in editorStore.getAllComsList"
-      :key="item.id"
-      :isActive="editorStore.currentComponentIndex === index"
-      :row="item"
-      :ref="(el) => (componentsRefs[index] = el)"
-      @click="clickHandle(index)"
-      @del="removeCom(index)"
-    />
+    <el-empty v-if="editorStore.coms.length === 0" description="请添加" />
 
-    <!-- 当没有添加的时候展示的内容 -->
-    <el-empty v-if="editorStore.getAllComsList.length === 0" description="请添加" />
+    <draggable
+      v-else
+      v-model="editorStore.coms"
+      class="drag-container"
+      item-key="id"
+      @start="dragstart"
+    >
+      <CardCmp
+        v-for="(item, index) in editorStore.getAllComsList"
+        :key="item.id"
+        :isActive="editorStore.currentComponentIndex === index"
+        :row="item"
+        :ref="(el) => (componentsRefs[index] = el)"
+        @click="clickHandle(index)"
+        @del="removeCom(index)"
+      />
+    </draggable>
   </div>
 </template>
 
@@ -97,8 +108,15 @@ EventBus.on("scrollToBottom", scrollToBottom);
   border-radius: var(--border-radius-md);
   background: var(--white);
   position: relative;
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   min-height: 99vh;
   box-sizing: border-box;
+}
+
+.drag-item {
+  padding: 10px;
+  margin: 5px 0;
+  background: #f0f0f0;
+  cursor: move; /* 鼠标悬停时显示可移动图标 */
 }
 </style>

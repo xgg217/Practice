@@ -66,7 +66,6 @@ onMounted(() => {
 
       <!-- 路由出口 -->
       <div class="coms">
-        <!-- <RouterView /> -->
         <RouterView v-slot="{ Component }">
           <Transition name="el-fade-in-linear" mode="out-in">
             <component :is="Component" :key="$route.path" />
@@ -81,17 +80,13 @@ onMounted(() => {
 .warpp {
   display: flex;
   height: calc(100vh - 100px);
-  /* border: 1px solid #000; */
 }
 
 .menu {
   width: 120px;
-  /* border: 1px solid #000; */
-  /* color: #ffd04b; */
 }
 
 .coms {
-  /* border: 1px solid red; */
   width: 100%;
 }
 </style>

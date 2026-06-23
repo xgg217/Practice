@@ -51,17 +51,13 @@ provide("updateStatus", updateStatus);
 .layout-container {
   width: 99%;
   height: 100%;
-  /* // Header组件高度50px，h1高度50px，上下margin 20px，最后20px是额外多减去一部分，避免贴底 */
-  /* height: calc(100vh - 100px - 40px - 20px); */
   align-items: flex-start;
   border: 1px solid var(--border-color);
   border-top-right-radius: var(--border-radius-lg);
   border-bottom-left-radius: var(--border-radius-lg);
   border-bottom-right-radius: var(--border-radius-lg);
-  /* border: 1px solid #000; */
 }
 .left {
-  /* width: 190px; */
   width: 210px;
   height: calc(100% - 20px);
   border-right: 1px solid #000;
@@ -79,7 +75,6 @@ provide("updateStatus", updateStatus);
   box-sizing: border-box;
 }
 .right {
-  /* width: 350px; */
   width: 350px;
   height: 100%;
   overflow-y: scroll;

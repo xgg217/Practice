@@ -20,6 +20,7 @@ export default function () {
     type: markRaw(OptionSelect),
     name: "option-select",
     id: crypto.randomUUID(),
+    title: "下拉选择题",
     // 组件的状态：组件的每一个能够修改的状态都应该对应一个编辑组件
     status: {
       title: {
