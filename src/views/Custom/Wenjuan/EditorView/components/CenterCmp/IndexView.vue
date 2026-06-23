@@ -108,7 +108,7 @@ EventBus.on("scrollToBottom", scrollToBottom);
   border-radius: var(--border-radius-md);
   background: var(--white);
   position: relative;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   min-height: 99vh;
   box-sizing: border-box;
 }
@@ -117,6 +117,5 @@ EventBus.on("scrollToBottom", scrollToBottom);
   padding: 10px;
   margin: 5px 0;
   background: #f0f0f0;
-  cursor: move; /* 鼠标悬停时显示可移动图标 */
 }
 </style>
