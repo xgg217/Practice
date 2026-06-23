@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import UploadImgCmp from "./UploadImgCmp.vue";
-// import type { GetLink } from "@/views/Custom/Wenjuan/types/editProps";
-// import { GET_LINK } from "@/views/Custom/Wenjuan/utils/InjectionKeys";
-// import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
-// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 const props = withDefaults(
   defineProps<{

@@ -55,6 +55,7 @@ export function setPicLinkByIndex(optionProps: OptionsProps, payload: PicLink) {
   }
 }
 
+// 设置选项-辅助文字-切换
 export function setUse(optionsProps: OptionsProps, isUse: boolean) {
   optionsProps.isUse = isUse;
 }

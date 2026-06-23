@@ -11,8 +11,6 @@
 
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
-// import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
-// import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 const props = defineProps<{
@@ -30,7 +28,6 @@ const updateStatus = inject<UpdateStatus>("updateStatus")!;
 const radio = ref(props.currentStatus);
 
 const changeType = () => {
-  // EventBus.emit("UPDATE:COMMENT_TYPE", { name: props.configKey, value: radio.value });
   updateStatus("UPDATE:COMMENT_TYPE", { name: props.configKey, value: radio.value });
 };
 </script>

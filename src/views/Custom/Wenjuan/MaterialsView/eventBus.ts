@@ -6,5 +6,3 @@ import type { Events } from "@/views/Custom/Wenjuan/types/eventBus";
 const emitter = mitt<Events>();
 
 export default emitter;
-
-// export const emitter: Emitter<Events> = mitt<Events>();

@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
-// import EventBus, { type Events } from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 import type { Events } from "@/views/Custom/Wenjuan/types/eventBus";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
@@ -39,10 +38,8 @@ const changePosition = (pos: string) => {
   } as Events["UPDATE:TITLE_WEIGHT"];
 
   if (props.configKey === "titleWeight") {
-    // EventBus.emit("UPDATE:TITLE_WEIGHT", obj);
     updateStatus("UPDATE:TITLE_WEIGHT", obj);
   } else if (props.configKey === "descWeight") {
-    // EventBus.emit("UPDATE:DESC_WEIGHT", obj);
     updateStatus("UPDATE:DESC_WEIGHT", obj);
   } else {
     console.error("类型错误，要求类型为 titleItalic 或 descItalic");

@@ -27,7 +27,6 @@
 <script setup lang="ts">
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { ValueStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-// import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 const props = defineProps<{
@@ -48,13 +47,7 @@ const typeArr = props.status.map((item) => item.value);
 function changeType(newVal: string) {
   const index = typeArr.indexOf(newVal);
   if (index !== -1) {
-    // text.value = typeArr[index];
-
     updateStatus("UPDATE:OPTION:DATE_TIME", { name: props.configKey, value: index });
-    // EventBus.emit("UPDATE:OPTION:DATE_TIME", {
-    //   name: props.configKey,
-    //   value: index,
-    // });
   }
 }
 </script>

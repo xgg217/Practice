@@ -1,5 +1,3 @@
-// @ts-nocheck 忽略类型检查
-
 import type { MaterialStore } from "@/views/Custom/Wenjuan/types/store";
 import {
   changeEditorIsShowStatus,

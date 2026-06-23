@@ -74,6 +74,7 @@ export const useEditorStore = defineStore("editorStore", {
       EventBus.emit("scrollToBottom");
     },
 
+    // 设置当前选中的组件索引
     setCurrentComponentIndex(index: number) {
       this.currentComponentIndex = index;
     },
@@ -87,11 +88,6 @@ export const useEditorStore = defineStore("editorStore", {
       }
       this.surveyCount--;
       this.coms.splice(index, 1);
-
-      // if (isSurveyComName(this.coms[index].name)) {
-      //   this.surveyCount--;
-      // }
-      // this.coms.splice(index, 1);
     },
 
     // 修改文本

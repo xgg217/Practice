@@ -38,8 +38,6 @@
 import { Plus, Minus } from "@element-plus/icons-vue";
 import type { VueComType } from "@/views/Custom/Wenjuan/types/common";
 import type { PicTitleDescStatusArr } from "@/views/Custom/Wenjuan/types/editProps";
-// import EventBus from "@/views/Custom/Wenjuan/MaterialsView/eventBus";
-// import type { Events } from "@/views/Custom/Wenjuan/types/eventBus";
 import type { UpdateStatus } from "@/views/Custom/Wenjuan/types/editProps";
 
 import { ElMessage, ElMessageBox } from "element-plus";
@@ -57,13 +55,11 @@ const updateStatus = inject<UpdateStatus>("updateStatus")!;
 const textArr = ref(props.status);
 
 const addOptionHandle = () => {
-  // EventBus.emit("ADD:OPTION:PIC", { name: props.configKey });
   updateStatus("ADD:OPTION:PIC", { name: props.configKey });
 };
 
 // 删除选项
 const removeOptionHandle = (index: number) => {
-  // EventBus.emit("DELETE:OPTION:PIC", { name: props.configKey, value: index });
   updateStatus("DELETE:OPTION:PIC", { name: props.configKey, value: index });
 };
 

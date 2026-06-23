@@ -44,7 +44,6 @@ const updateStatus = (name: string, row: anyObj) => {
 };
 
 provide("updateStatus", updateStatus);
-// provide(GET_LINK, getLink);
 </script>
 
 <style scoped>
