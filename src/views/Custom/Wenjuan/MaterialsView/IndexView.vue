@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import NavCmp from "@/views/Custom/Wenjuan/components/NavCmp.vue";
+
 const route = useRoute();
 
 const arr = [
@@ -49,7 +51,14 @@ onMounted(() => {
 
 <template>
   <div>
-    <h2 class="font-weight-100 text-center">组件市场</h2>
+    <!-- <h2 class="font-weight-100 text-center">组件市场</h2> -->
+    <NavCmp>
+      <template #title>
+        <div>
+          <h2 class="font-weight-100 text-center">组件市场</h2>
+        </div>
+      </template>
+    </NavCmp>
 
     <div class="warpp">
       <el-menu

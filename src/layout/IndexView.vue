@@ -52,7 +52,7 @@ aside {
   flex: 1;
   border: 1px solid #000;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   box-sizing: border-box;
 }
 </style>

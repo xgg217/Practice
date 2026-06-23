@@ -6,6 +6,8 @@ import { useEditorStore } from "@/stores/wenjuan/useEditor";
 import { dispatchStatus } from "@/stores/wenjuan/dispatchStatus.ts";
 import type { EditorStore } from "@/views/Custom/Wenjuan/types/store";
 import type { OptionsStatus, TypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
+import NavCmp from "@/views/Custom/Wenjuan/components/NavCmp.vue";
+import { Db } from "@/views/Custom/Wenjuan/utils/db.ts";
 
 // 数据仓库
 const store = useEditorStore() as unknown as EditorStore;
@@ -25,24 +27,48 @@ const updateStatus = (name: string, row: anyObj) => {
   dispatchStatus(store, status.value as unknown as TypeStatus | OptionsStatus, name, row);
 };
 
+// 保存
+const onSave = () => {
+  console.log(111);
+  const db = new Db();
+  console.log(db);
+};
+
 provide("updateStatus", updateStatus);
 </script>
 
 <template>
-  <div class="position">
-    <!-- 左 -->
-    <div class="box">
-      <LeftCmp />
-    </div>
+  <div>
+    <!-- 导航栏 -->
+    <NavCmp>
+      <template #title>
+        <div>
+          <h2 class="font-weight-100 text-center">问卷编辑</h2>
+        </div>
+      </template>
 
-    <!-- 中 -->
-    <div class="box">
-      <CenterCmp />
-    </div>
+      <template #right>
+        <div>
+          <el-button type="success" size="small" @click="onSave">保存</el-button>
+        </div>
+      </template>
+    </NavCmp>
 
-    <!-- 右 -->
-    <div class="box right">
-      <RightCmp />
+    <div class="position">
+      <!-- 左 -->
+      <div class="box">
+        <LeftCmp />
+      </div>
+
+      <!-- 中 -->
+      <div class="box">
+        <CenterCmp />
+      </div>
+
+      <!-- 右 -->
+      <div class="box right">
+        <RightCmp />
+      </div>
     </div>
   </div>
 </template>
@@ -52,13 +78,13 @@ provide("updateStatus", updateStatus);
   display: grid;
   grid-template-columns: 300px minmax(600px, 1fr) 350px;
   grid-gap: 15px;
-  height: 100%;
+  /* height: 80%; */
   background-color: #f5f7fa;
 }
 
 .box {
   /* border: 1px solid red; */
-  height: 99vh;
+  height: calc(100vh - 55px);
   /* border-left: 1px solid var(--el-border-color); */
   background-color: #fff;
   overflow-y: auto;
