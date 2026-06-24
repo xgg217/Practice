@@ -7,7 +7,12 @@ import { dispatchStatus } from "@/stores/wenjuan/dispatchStatus.ts";
 import type { EditorStore } from "@/views/Custom/Wenjuan/types/store";
 import type { OptionsStatus, TypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import NavCmp from "@/views/Custom/Wenjuan/components/NavCmp.vue";
-import { Db } from "@/views/Custom/Wenjuan/utils/db.ts";
+import { Db, type TRow } from "@/views/Custom/Wenjuan/utils/db.ts";
+import { cloneDeep } from "es-toolkit";
+
+const router = useRouter();
+
+const inputVal = ref("问卷编辑");
 
 // 数据仓库
 const store = useEditorStore() as unknown as EditorStore;
@@ -27,14 +32,58 @@ const updateStatus = (name: string, row: anyObj) => {
   dispatchStatus(store, status.value as unknown as TypeStatus | OptionsStatus, name, row);
 };
 
+const db = new Db();
+db.init();
+
 // 保存
 const onSave = () => {
   console.log(111);
-  const db = new Db();
-  console.log(db);
+
+  // console.log(db);
+
+  const row: TRow = {
+    title: inputVal.value,
+    count: 0,
+    createdAt: Date.now(),
+    updatedAt: Date.now(),
+    detail: "",
+  };
+
+  // 获取数量
+  {
+    const obj = cloneDeep(store.getAllComsList)
+      .reverse()
+      .find((item) => {
+        // @ts-expect-error 类型错误
+        return item.index !== 0;
+      });
+    // @ts-expect-error 类型错误
+    row.count = obj?.index || 0;
+  }
+
+  // 详情
+  row.detail = JSON.stringify(cloneDeep(store.coms));
+
+  // 添加数据
+  db.addData(row)
+    .then((res) => {
+      console.log(res);
+      router.push({ name: "Wenjuan" });
+
+      // 重置数据
+      store.reset();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
 
 provide("updateStatus", updateStatus);
+
+onUnmounted(() => {
+  // 关闭数据库
+  db.closeDB();
+});
 </script>
 
 <template>
@@ -43,7 +92,15 @@ provide("updateStatus", updateStatus);
     <NavCmp>
       <template #title>
         <div>
-          <h2 class="font-weight-100 text-center">问卷编辑</h2>
+          <!-- <h2 class="font-weight-100 text-center">问卷编辑</h2> -->
+          <el-input
+            v-model="inputVal"
+            size="large"
+            show-word-limit
+            maxlength="10"
+            placeholder="请输入标题"
+            style="width: 240px"
+          />
         </div>
       </template>
 

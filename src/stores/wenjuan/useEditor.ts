@@ -111,5 +111,12 @@ export const useEditorStore = defineStore("editorStore", {
     setUse,
 
     setPicLinkByIndex,
+
+    // 重置数据
+    reset() {
+      this.currentComponentIndex = -1;
+      this.surveyCount = 0;
+      this.coms = [];
+    },
   },
 });

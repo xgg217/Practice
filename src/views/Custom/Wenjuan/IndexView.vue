@@ -2,10 +2,14 @@
 import { Plus, House } from "@element-plus/icons-vue";
 import type { TItem } from "./types";
 import QuestionFilledCmp from "@/views/Custom/Wenjuan/components/QuestionFilledCmp.vue";
+import { Db, getList, type TListTime } from "./utils/db";
+import dayjs from "dayjs";
 
 const router = useRouter();
 
-const tableData = shallowRef<TItem[]>([]);
+const db = new Db();
+
+const tableData = shallowRef<TListTime[]>([]);
 
 // 跳转编辑器
 const onEditorView = () => {
@@ -27,6 +31,40 @@ const onMaterialsView = () => {
 const onInfo = (row: TItem) => {
   console.log(row);
 };
+
+onMounted(() => {
+  db.init()
+    .then(() => {
+      return getList(db.db!);
+    })
+    .then((res) => {
+      console.log(res);
+      if (Array.isArray(res)) {
+        tableData.value = res.map((item) => {
+          const { count, createdAt, id, updatedAt, title } = item;
+          const obj: TListTime = {
+            count,
+            createdAt: "",
+            id,
+            updatedAt: "",
+            title,
+          };
+
+          if (createdAt) {
+            obj.createdAt = dayjs(createdAt).format("YYYY-MM-DD HH:mm:ss");
+          }
+          if (updatedAt) {
+            obj.updatedAt = dayjs(updatedAt).format("YYYY-MM-DD HH:mm:ss");
+          }
+
+          return obj;
+        });
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
 </script>
 
 <template>
@@ -48,12 +86,12 @@ const onInfo = (row: TItem) => {
       <el-table-column type="index" width="50" align="center" />
       <el-table-column prop="title" label="问卷标题" align="center" />
       <el-table-column prop="count" label="题目数" width="120" align="center" />
-      <el-table-column prop="createDate" label="创建日期" width="170" align="center" />
-      <el-table-column prop="Date" label="更新时间" width="170" align="center" />
-      <el-table-column label="操作" fixed="right" width="180" align="center">
+      <el-table-column prop="createdAt" label="创建日期" width="170" align="center" />
+      <el-table-column prop="updatedAt" label="更新时间" width="170" align="center" />
+      <el-table-column label="操作" fixed="right" width="200" align="center">
         <template #default="{ row }">
           <el-button size="small" @click="onInfo(row)">查看</el-button>
-          <el-button size="small" type="danger">编辑</el-button>
+          <el-button size="small" type="primary">编辑</el-button>
           <el-button size="small" type="danger">删除</el-button>
         </template>
       </el-table-column>

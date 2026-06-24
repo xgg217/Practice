@@ -61,7 +61,7 @@ function closeDB(db: IDBDatabase) {
  */
 function deleteDBAll(dbName: string) {
   console.log(dbName);
-  let deleteRequest = window.indexedDB.deleteDatabase(dbName);
+  const deleteRequest = window.indexedDB.deleteDatabase(dbName);
 
   deleteRequest.onerror = function (event) {
     console.log("删除失败");
@@ -78,7 +78,7 @@ function deleteDBAll(dbName: string) {
  * @param {TRow} data 数据
  */
 export function addData(db: IDBDatabase, storeName: string, data: {}) {
-  var request = db
+  const request = db
     .transaction([storeName], "readwrite") // 事务对象 指定表格名称和操作模式（"只读"或"读写"）
     .objectStore(storeName) // 打开仓库对象
     .add(data);
@@ -100,11 +100,11 @@ export function addData(db: IDBDatabase, storeName: string, data: {}) {
  */
 export function getDataByKey(db: IDBDatabase, storeName: string, key: number) {
   return new Promise((resolve, reject) => {
-    var transaction = db.transaction([storeName]); // 事务
-    var objectStore = transaction.objectStore(storeName); // 仓库对象
-    var request = objectStore.get(key); // 通过主键获取数据
+    const transaction = db.transaction([storeName]); // 事务
+    const objectStore = transaction.objectStore(storeName); // 仓库对象
+    const request = objectStore.get(key); // 通过主键获取数据
 
-    request.onerror = event => {
+    request.onerror = (event) => {
       console.log("事务失败");
       reject(event);
     };
@@ -123,11 +123,11 @@ export function getDataByKey(db: IDBDatabase, storeName: string, key: number) {
  */
 export function getAllDataByKey(db: IDBDatabase, storeName: string) {
   return new Promise((resolve, reject) => {
-    var transaction = db.transaction([storeName]); // 事务
-    var objectStore = transaction.objectStore(storeName); // 仓库对象
-    var request = objectStore.getAll(); // 通过主键获取数据
+    const transaction = db.transaction([storeName]); // 事务
+    const objectStore = transaction.objectStore(storeName); // 仓库对象
+    const request = objectStore.getAll(); // 通过主键获取数据
 
-    request.onerror = event => {
+    request.onerror = (event) => {
       console.log("事务失败");
       reject(event);
     };
@@ -152,12 +152,12 @@ export function getCursorData(db: IDBDatabase, storeName: string) {
     const objectStore = transaction.objectStore(storeName); // 仓库对象
     const cursorRequest = objectStore.openCursor(); // 打开指针
 
-    cursorRequest.onerror = event => {
+    cursorRequest.onerror = (event) => {
       console.log("事务失败");
       reject(event);
     };
 
-    cursorRequest.onsuccess = event => {
+    cursorRequest.onsuccess = (event) => {
       // console.log("主键查询结果: ", request.result);
       // @ts-ignore
       const cursor = event.target.result;
@@ -218,15 +218,15 @@ export function cursorGetDataByIndex(
   indexValue: string,
 ) {
   return new Promise((resolve, reject) => {
-    let list: any[] = [];
-    var store = db.transaction(storeName, "readwrite").objectStore(storeName); // 仓库对象
-    var request = store
+    const list: any[] = [];
+    const store = db.transaction(storeName, "readwrite").objectStore(storeName); // 仓库对象
+    const request = store
       .index(indexName) // 索引对象
       .openCursor(IDBKeyRange.only(indexValue)); // 指针对象
 
     request.onsuccess = function (e) {
       // @ts-ignore
-      var cursor = e.target.result;
+      const cursor = e.target.result;
       if (cursor) {
         // 必须要检查
         list.push(cursor.value);
@@ -264,11 +264,11 @@ export function cursorGetDataByIndexAndPage(
     let counter = 0; // 计数器
     let isPass = true; // 是否跳过多少条查询
     // var store = db.transaction(storeName, "readwrite").objectStore(storeName); // 仓库对象
-    var request = db.transaction(storeName, "readwrite").objectStore(storeName).openCursor(); // 创建一个指针对象（目前是指向第一条数据）
+    const request = db.transaction(storeName, "readwrite").objectStore(storeName).openCursor(); // 创建一个指针对象（目前是指向第一条数据）
 
     request.onsuccess = function (e) {
       // @ts-ignore
-      var cursor = e.target.result;
+      let cursor = e.target.result;
 
       // 是否要跳过一些数据
       if (page > 1 && isPass) {

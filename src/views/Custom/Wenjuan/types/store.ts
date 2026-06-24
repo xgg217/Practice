@@ -127,12 +127,15 @@ export interface EditorStore extends Actions {
   currentComponentIndex: number;
   surveyCount: number;
   coms: Status[];
+  getAllComsList: Status[];
+  getCurrentComponent: () => Status;
   setCurrentComponentIndex: (index: number) => void;
   addCom: (coms: Status[], newCom: Status) => void;
   setStore: (storeStatus: SurveyDBData) => void;
   initStore: () => void;
   removeCom: (index: number) => void;
   resetComs: () => void;
+  reset: () => void; // 重置数据
 }
 
 // 记录题目类型的数组
