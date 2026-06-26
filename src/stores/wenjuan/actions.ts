@@ -1,10 +1,12 @@
 import type { TextProps, OptionsProps } from "@/views/Custom/Wenjuan/types/editProps";
-
+import { EDIT_COM_MAP, BUSINESS_COM_MAP } from "./config";
 import {
   isStringArray,
   isPicTitleDescStatusArr,
   type PicLink,
 } from "@/views/Custom/Wenjuan/types/editProps";
+import type { Status } from "@/views/Custom/Wenjuan/types/common";
+import type { Material, EditComName } from "@/views/Custom/Wenjuan/types/store";
 
 // 赋值
 export const setTextStatus = (textProps: TextProps, value: string) => {
@@ -59,3 +61,27 @@ export function setPicLinkByIndex(optionProps: OptionsProps, payload: PicLink) {
 export function setUse(optionsProps: OptionsProps, isUse: boolean) {
   optionsProps.isUse = isUse;
 }
+
+/**
+ * 还原组件状态，因为保存的时候丢失了组件的引用
+ * @param coms 题目数组
+ */
+export const restoreComponentStatus = (coms: Status[]) => {
+  // console.log(coms);
+
+  coms.forEach((com) => {
+    console.log(BUSINESS_COM_MAP[com.name]());
+
+    com.type = BUSINESS_COM_MAP[com.name]().type;
+    // console.log(com.status);
+
+    for (const key in com.status) {
+      const name = com.status[key].name as EditComName;
+      // console.log(name);
+      console.log(EDIT_COM_MAP[name]);
+      // console.log(com.status[key]);
+
+      com.status[key].editCom = EDIT_COM_MAP[name];
+    }
+  });
+};

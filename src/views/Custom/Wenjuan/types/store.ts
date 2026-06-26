@@ -12,7 +12,7 @@ import type {
   DateTimeStatus,
   TTextNoteStatus,
 } from "@/views/Custom/Wenjuan/types/config";
-import type { SurveyDBData } from "@/views/Custom/Wenjuan/types/db";
+import type { TRow } from "@/views/Custom/Wenjuan/utils/db";
 
 // 选择
 export type SelectComName =
@@ -128,10 +128,10 @@ export interface EditorStore extends Actions {
   surveyCount: number;
   coms: Status[];
   getAllComsList: Status[];
+  setStore: (storeStatus: TRow) => void;
   getCurrentComponent: () => Status;
   setCurrentComponentIndex: (index: number) => void;
   addCom: (coms: Status[], newCom: Status) => void;
-  setStore: (storeStatus: SurveyDBData) => void;
   initStore: () => void;
   removeCom: (index: number) => void;
   resetComs: () => void;

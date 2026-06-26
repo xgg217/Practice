@@ -1,9 +1,24 @@
 // 评分打分 JSON-Schema 配置
 
+// import {
+//   // 业务组件
+//   RateScore,
+//   // 编辑组件
+//   TitleEditor,
+//   DescEditor,
+//   PositionEditor,
+//   SizeEditor,
+//   WeightEditor,
+//   ItalicEditor,
+//   ColorEditor,
+//   RateTextEditor,
+// } from "@/views/Custom/Wenjuan/MaterialsView/config";
+
 // 业务组件
 import RateScore from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/RateScore/IndexView.vue";
 
 // 编辑组件
+
 import TitleEditor from "@/views/Custom/Wenjuan/components/EditItems/TitleEditor.vue";
 import DescEditor from "@/views/Custom/Wenjuan/components/EditItems/DescEditor.vue";
 import PositionEditor from "@/views/Custom/Wenjuan/components/EditItems/PositionEditor.vue";

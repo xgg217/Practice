@@ -1,4 +1,17 @@
 // 时间 / 日期 JSON-Schema 配置
+// import {
+//   // 业务组件
+//   DateTime,
+//   // 编辑组件
+//   TitleEditor,
+//   DescEditor,
+//   PositionEditor,
+//   SizeEditor,
+//   WeightEditor,
+//   ItalicEditor,
+//   ColorEditor,
+//   DateTimeTypeEditor,
+// } from "@/views/Custom/Wenjuan/MaterialsView/config";
 
 // 业务组件
 import DateTime from "@/views/Custom/Wenjuan/MaterialsView/AdvancedGroupView/DateTime/IndexView.vue";
@@ -11,7 +24,8 @@ import SizeEditor from "@/views/Custom/Wenjuan/components/EditItems/SizeEditor.v
 import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEditor.vue";
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
-import DateTimeTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/DateTimeTypeEditor.vue";
+import DateTimeTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/DateTimeTypeEditor.vue"; // 日期 / 时间类型
+// import RateTextEditor from "@/views/Custom/Wenjuan/components/EditItems/RateTextEditor.vue";
 
 import type { DateTimeStatus } from "@/views/Custom/Wenjuan/types/config";
 

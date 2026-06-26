@@ -1,5 +1,18 @@
 // 单选题的 JSON-Schema 配置
 
+// import {
+//   // 业务组件
+//   SingleSelect,
+//   // 编辑组件
+//   TitleEditor,
+//   DescEditor,
+//   PositionEditor,
+//   SizeEditor,
+//   WeightEditor,
+//   ItalicEditor,
+//   ColorEditor,
+// } from "@/views/Custom/Wenjuan/MaterialsView/config";
+
 // 业务组件
 import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/InputGroupView/TextInputView/IndexView.vue";
 
@@ -11,7 +24,7 @@ import SizeEditor from "@/views/Custom/Wenjuan/components/EditItems/SizeEditor.v
 import WeightEditor from "@/views/Custom/Wenjuan/components/EditItems/WeightEditor.vue";
 import ItalicEditor from "@/views/Custom/Wenjuan/components/EditItems/ItalicEditor.vue";
 import ColorEditor from "@/views/Custom/Wenjuan/components/EditItems/ColorEditor.vue";
-// import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextInputTypeEditor.vue";
+import TextInputTypeEditor from "@/views/Custom/Wenjuan/components/EditItems/TextInputTypeEditor.vue";
 
 import type { TTextInputStatus } from "@/views/Custom/Wenjuan/types/config";
 

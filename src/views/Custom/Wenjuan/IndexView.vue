@@ -12,9 +12,12 @@ const db = new Db();
 const tableData = shallowRef<TListTime[]>([]);
 
 // 跳转编辑器
-const onEditorView = () => {
+const onEditorView = (id?: TListTime["id"]) => {
   router.push({
     name: "WenjuanEditorView",
+    query: {
+      id,
+    },
   });
 };
 
@@ -78,20 +81,20 @@ onMounted(() => {
     </h2>
 
     <div class="mb-15">
-      <el-button type="primary" :icon="Plus" @click="onEditorView">创建问卷</el-button>
+      <el-button type="primary" :icon="Plus" @click="() => onEditorView()">创建问卷</el-button>
       <el-button type="success" :icon="House" @click="onMaterialsView">组件市场</el-button>
     </div>
 
     <el-table :data="tableData" style="width: 100%" border>
       <el-table-column type="index" width="50" align="center" />
       <el-table-column prop="title" label="问卷标题" align="center" />
-      <el-table-column prop="count" label="题目数" width="120" align="center" />
-      <el-table-column prop="createdAt" label="创建日期" width="170" align="center" />
-      <el-table-column prop="updatedAt" label="更新时间" width="170" align="center" />
+      <el-table-column prop="count" label="题目数" align="center" />
+      <el-table-column prop="createdAt" label="创建日期" min-width="170" align="center" />
+      <el-table-column prop="updatedAt" label="更新时间" min-width="170" align="center" />
       <el-table-column label="操作" fixed="right" width="200" align="center">
         <template #default="{ row }">
           <el-button size="small" @click="onInfo(row)">查看</el-button>
-          <el-button size="small" type="primary">编辑</el-button>
+          <el-button size="small" type="primary" @click="onEditorView(row.id)">编辑</el-button>
           <el-button size="small" type="danger">删除</el-button>
         </template>
       </el-table-column>

@@ -1,5 +1,19 @@
 // 下拉 JSON-Schema 配置
 
+// import {
+//   // 业务组件
+//   OptionSelect,
+//   // 编辑组件
+//   TitleEditor,
+//   DescEditor,
+//   PositionEditor,
+//   SizeEditor,
+//   WeightEditor,
+//   ItalicEditor,
+//   ColorEditor,
+//   OptionsEditor,
+// } from "@/views/Custom/Wenjuan/MaterialsView/config";
+
 // 业务组件
 import OptionSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/OptionSelect/IndexView.vue";
 

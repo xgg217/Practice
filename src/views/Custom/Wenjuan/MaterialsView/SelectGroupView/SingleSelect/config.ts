@@ -1,5 +1,19 @@
 // 单选题的 JSON-Schema 配置
 
+// import {
+//   // 业务组件
+//   SingleSelect,
+//   // 编辑组件
+//   TitleEditor,
+//   DescEditor,
+//   PositionEditor,
+//   SizeEditor,
+//   WeightEditor,
+//   ItalicEditor,
+//   ColorEditor,
+//   OptionsEditor,
+// } from "@/views/Custom/Wenjuan/MaterialsView/config";
+
 // 业务组件
 import SingleSelect from "@/views/Custom/Wenjuan/MaterialsView/SelectGroupView/SingleSelect/IndexView.vue";
 

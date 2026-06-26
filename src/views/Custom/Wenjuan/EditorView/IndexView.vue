@@ -7,12 +7,18 @@ import { dispatchStatus } from "@/stores/wenjuan/dispatchStatus.ts";
 import type { EditorStore } from "@/views/Custom/Wenjuan/types/store";
 import type { OptionsStatus, TypeStatus } from "@/views/Custom/Wenjuan/types/editProps";
 import NavCmp from "@/views/Custom/Wenjuan/components/NavCmp.vue";
-import { Db, type TRow } from "@/views/Custom/Wenjuan/utils/db.ts";
+import { Db } from "@/views/Custom/Wenjuan/utils/db.ts";
+import type { TRow, TListTime } from "@/views/Custom/Wenjuan/utils/db.ts";
 import { cloneDeep } from "es-toolkit";
+import { restoreComponentStatus } from "@/stores/wenjuan/actions";
 
 const router = useRouter();
+const route = useRoute();
 
+const ids = ref<TListTime["id"]>(0);
 const inputVal = ref("问卷编辑");
+
+const db = new Db();
 
 // 数据仓库
 const store = useEditorStore() as unknown as EditorStore;
@@ -32,21 +38,14 @@ const updateStatus = (name: string, row: anyObj) => {
   dispatchStatus(store, status.value as unknown as TypeStatus | OptionsStatus, name, row);
 };
 
-const db = new Db();
-db.init();
-
 // 保存
 const onSave = () => {
-  console.log(111);
-
-  // console.log(db);
-
   const row: TRow = {
     title: inputVal.value,
     count: 0,
     createdAt: Date.now(),
     updatedAt: Date.now(),
-    detail: "",
+    detail: [],
   };
 
   // 获取数量
@@ -61,8 +60,8 @@ const onSave = () => {
     row.count = obj?.index || 0;
   }
 
-  // 详情
-  row.detail = JSON.stringify(cloneDeep(store.coms));
+  // @ts-expect-error 详情设置
+  row.detail = cloneDeep(store.coms);
 
   // 添加数据
   db.addData(row)
@@ -79,6 +78,36 @@ const onSave = () => {
 };
 
 provide("updateStatus", updateStatus);
+
+onMounted(async () => {
+  console.log(route.query);
+
+  try {
+    await db.init();
+
+    // 编辑
+    if (route.query.id) {
+      ids.value = Number(route.query.id);
+      const res = await db.getDataById(ids.value);
+      console.log(res);
+      if (res as TListTime) {
+        const row = res as TRow;
+        inputVal.value = row.title;
+        // store.coms = row.detail || [];
+        // @ts-expect-error 详情设置
+        restoreComponentStatus(row.detail || []);
+        // console.log(row.detail);
+
+        store.setStore(row);
+      }
+    } else {
+      // 新增
+      store.reset();
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 onUnmounted(() => {
   // 关闭数据库
@@ -106,7 +135,8 @@ onUnmounted(() => {
 
       <template #right>
         <div>
-          <el-button type="success" size="small" @click="onSave">保存</el-button>
+          <el-button type="success" size="small" v-if="!ids" @click="onSave">保存</el-button>
+          <el-button type="success" size="small" v-else @click="onSave">更新</el-button>
         </div>
       </template>
     </NavCmp>

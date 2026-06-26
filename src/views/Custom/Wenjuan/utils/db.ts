@@ -10,7 +10,7 @@ export type TRow = {
   count: number; // 数量
   createdAt: number; // 创建时间 时间戳
   updatedAt: number; // 更新时间 时间戳
-  detail?: string;
+  detail?: ComponentStatus[];
 };
 
 // 列表数据
@@ -34,6 +34,7 @@ export class Db {
   init() {
     // this.openDB();
 
+    // 初始化数据库
     return openDB()
       .then((db: IDBDatabase | null) => {
         this.db = db;
@@ -41,6 +42,18 @@ export class Db {
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  // 根据id获取数据
+  getDataById(id: number) {
+    return new Promise((resolve, reject) => {
+      if (!this.db) return reject(new Error("数据库未初始化"));
+      const transaction = this.db.transaction(STORE_NAME, "readonly");
+      const store = transaction.objectStore(STORE_NAME);
+      const request = store.get(id);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
   }
 
   // 关闭数据库

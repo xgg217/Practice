@@ -1,5 +1,19 @@
 // 备注说明 JSON-Schema 配置
 
+// import {
+//   // 业务组件
+//   TextNote,
+//   // 编辑组件
+//   TitleEditor,
+//   DescEditor,
+//   PositionEditor,
+//   SizeEditor,
+//   WeightEditor,
+//   ItalicEditor,
+//   ColorEditor,
+//   TextTypeEditor,
+// } from "@/views/Custom/Wenjuan/MaterialsView/config";
+
 // 业务组件
 import TextNote from "@/views/Custom/Wenjuan/MaterialsView/NoteGroupView/TextNote/IndexView.vue";
 

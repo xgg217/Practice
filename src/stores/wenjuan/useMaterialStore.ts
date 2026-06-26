@@ -11,16 +11,18 @@ import {
   setSize,
   setUse,
 } from "./actions";
-import { COM_MAP } from "./config";
+import { BUSINESS_COM_MAP } from "./config";
 import { cloneDeep } from "es-toolkit";
 import type { ComponentMap } from "@/views/Custom/Wenjuan/types/store";
 
 // 获取组件
 const getCom = () => {
-  const obj = cloneDeep(COM_MAP);
+  const obj = cloneDeep(BUSINESS_COM_MAP);
+  console.log(obj);
 
   Object.keys(obj).forEach((item) => {
     const name = item as keyof ComponentMap;
+    console.log(name);
 
     // @ts-expect-error 初始化组件
     obj[name] = obj[name]();

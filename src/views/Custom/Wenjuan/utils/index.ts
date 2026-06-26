@@ -57,7 +57,9 @@ export function getPicTitleDescStatusArr(props: OptionsProps) {
 }
 
 export function getCurrentStatus(props: OptionsProps) {
-  return props.currentStatus;
+  // console.log(props);
+
+  return props?.currentStatus || 0;
 }
 
 export function getStringStatusByCurrentStatus(props: OptionsProps) {
