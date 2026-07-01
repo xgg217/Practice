@@ -34,7 +34,7 @@ export class Index4 {
       this.newIds = this.newIds.slice(0, arrLen);
       this.ind += arrLen;
 
-      const pList = arr.map(item => this.asyncApi(item));
+      const pList = arr.map((item) => this.asyncApi(item));
 
       try {
         await Promise.allSettled(pList);

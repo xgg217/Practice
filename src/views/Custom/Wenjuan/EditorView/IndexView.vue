@@ -18,6 +18,16 @@ const route = useRoute();
 const ids = ref<TListTime["id"]>(0);
 const inputVal = ref("问卷编辑");
 
+// 详情数据
+const info = {
+  id: 0,
+  // title: "",
+  // count: 0,
+  createdAt: 0,
+  // updatedAt: 0,
+  // detail: [],
+};
+
 const db = new Db();
 
 // 数据仓库
@@ -38,8 +48,7 @@ const updateStatus = (name: string, row: anyObj) => {
   dispatchStatus(store, status.value as unknown as TypeStatus | OptionsStatus, name, row);
 };
 
-// 保存
-const onSave = () => {
+const getDate = () => {
   const row: TRow = {
     title: inputVal.value,
     count: 0,
@@ -62,6 +71,12 @@ const onSave = () => {
 
   // @ts-expect-error 详情设置
   row.detail = cloneDeep(store.coms);
+  return row;
+};
+
+// 保存
+const onSave = () => {
+  const row = getDate();
 
   // 添加数据
   db.addData(row)
@@ -77,7 +92,45 @@ const onSave = () => {
     });
 };
 
-provide("updateStatus", updateStatus);
+// 更新
+const onUpdate = () => {
+  const row = getDate();
+
+  const { id, createdAt } = info;
+  const obj: TRow = {
+    id,
+    title: row.title,
+    count: row.count,
+    createdAt,
+    updatedAt: row.updatedAt,
+    detail: row.detail || [],
+  };
+
+  console.log(obj);
+
+  db.updateData(obj)
+    .then((res) => {
+      console.log(res);
+      router.push({ name: "Wenjuan" });
+
+      // 重置数据
+      store.reset();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  // const row: TRow = {
+  //   id: ids.value,
+  //   title: inputVal.value,
+  //   count: 0,
+  //   createdAt: Date.now(),
+  //   updatedAt: Date.now(),
+  //   detail: [],
+  // };
+  // // @ts-expect-error 详情设置
+  // row.detail = cloneDeep(store.coms);
+};
 
 onMounted(async () => {
   console.log(route.query);
@@ -93,6 +146,14 @@ onMounted(async () => {
       if (res as TListTime) {
         const row = res as TRow;
         inputVal.value = row.title;
+
+        info.id = ids.value;
+        // info.title = "";
+        info.createdAt = row.createdAt;
+        // info.updatedAt = row.updatedAt;
+        // info.count = 0;
+        // info.detail = [];
+
         // store.coms = row.detail || [];
         // @ts-expect-error 详情设置
         restoreComponentStatus(row.detail || []);
@@ -113,6 +174,8 @@ onUnmounted(() => {
   // 关闭数据库
   db.closeDB();
 });
+
+provide("updateStatus", updateStatus);
 </script>
 
 <template>
@@ -136,7 +199,7 @@ onUnmounted(() => {
       <template #right>
         <div>
           <el-button type="success" size="small" v-if="!ids" @click="onSave">保存</el-button>
-          <el-button type="success" size="small" v-else @click="onSave">更新</el-button>
+          <el-button type="success" size="small" v-else @click="onUpdate">更新</el-button>
         </div>
       </template>
     </NavCmp>

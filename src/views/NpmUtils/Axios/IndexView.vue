@@ -50,21 +50,21 @@ const asyncAll = async (arr: number[]) => {
     console.log(i, "index");
     console.log(arr);
 
-    const pList = arr.map(item => asyncApi(item));
+    const pList = arr.map((item) => asyncApi(item));
     await Promise.allSettled(pList)
-      .then(res => {
+      .then((res) => {
         console.log(res);
 
         const resArr = res
-          .filter(item => {
+          .filter((item) => {
             // 获取失败的
             return item.status === "rejected";
           })
-          .filter(item => {
+          .filter((item) => {
             // 获取请求被终止的数据
             return item.reason.name === "CanceledError";
           })
-          .map(item => {
+          .map((item) => {
             return JSON.parse(item.reason.config.data).id;
           });
         // 执行到了最后一条了
@@ -75,14 +75,14 @@ const asyncAll = async (arr: number[]) => {
 
           const newList = [...resArr];
           const index = i + 1;
-          chunkList.slice(index).forEach(item => {
+          chunkList.slice(index).forEach((item) => {
             newList.push(...item);
           });
           cancelArr = newList;
         }
         console.log(cancelArr);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
       })
       .finally(() => {});
@@ -97,13 +97,14 @@ const asyncAll = async (arr: number[]) => {
 
 const stop = () => {
   // controller.abort();
-  abortArr.forEach(item => item.abort());
+  abortArr.forEach((item) => item.abort());
   isBool = false;
 };
 
 // 重新请求
 const restart = () => {
-  arr = cloneDeep(cancelArr);
+  // arr = cloneDeep(cancelArr);
+  arr = structuredClone(cancelArr);
   isBool = true;
   asyncAll(arr);
 };

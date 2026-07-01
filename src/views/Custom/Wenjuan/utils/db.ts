@@ -76,6 +76,18 @@ export class Db {
       request.onerror = () => reject(request.error);
     });
   }
+
+  // 更新数据
+  updateData(row: TRow) {
+    return new Promise((resolve, reject) => {
+      if (!this.db) return reject(new Error("数据库未初始化"));
+      const transaction = this.db.transaction(STORE_NAME, "readwrite");
+      const store = transaction.objectStore(STORE_NAME);
+      const request = store.put(row);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
 }
 
 // 打开数据库
