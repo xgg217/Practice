@@ -437,47 +437,15 @@ const ROW: RouteRecordRaw = {
       },
     },
 
-    {
-      path: "FullScreen",
-      name: "FullScreen",
-      component: () => import("@/views/Custom/FullScreen/IndexView.vue"),
-      meta: {
-        title: "文件下载",
-        imgSrc: "",
-      },
-    },
-
-    {
-      path: "BrowserPlugin",
-      name: "BrowserPlugin",
-      component: () => import("@/views/Custom/BrowserPlugin/IndexView.vue"),
-      meta: {
-        title: "浏览器插件",
-        imgSrc: "",
-      },
-
-      redirect: {
-        name: "BrowserPluginIndex",
-      },
-      children: [
-        {
-          path: "index",
-          name: "BrowserPluginIndex",
-          component: () => import("@/views/Custom/BrowserPlugin/IndexView.vue"),
-          meta: {
-            title: "首页",
-          },
-        },
-        {
-          path: "index2",
-          name: "BrowserPluginIndex2",
-          component: () => import("@/views/Custom/BrowserPlugin/IndexView2/IndexView.vue"),
-          meta: {
-            title: "基础开发",
-          },
-        },
-      ],
-    },
+    // {
+    //   path: "FullScreen",
+    //   name: "FullScreen",
+    //   component: () => import("@/views/Custom/FullScreen/IndexView.vue"),
+    //   meta: {
+    //     title: "文件下载",
+    //     imgSrc: "",
+    //   },
+    // },
   ],
 };
 

@@ -8,6 +8,7 @@ import custom from "./modules/custom";
 import WebAPI from "./modules/WebAPI";
 import NpmUtils from "./modules/NpmUtils";
 import Vue3 from "./modules/Vue3";
+import BrowserPlugin from "./modules/BrowserPlugin";
 import { setRouteMaterialCom } from "@/stores/wenjuan/useMaterialStore";
 
 // #region 路由
@@ -82,6 +83,9 @@ export const routes = [
 
       // 自定义项目
       custom,
+
+      // 浏览器插件
+      BrowserPlugin,
     ],
   },
   {
