@@ -23,7 +23,22 @@ chrome.action.onClicked.addListener(async (tab) => {
 
     let val = str === '开' ? '关' : '开'
 
-    await chrome.action.setBadgeText({ text: val });
+    await chrome.action.setBadgeText({ text: val, tabId: tab.id });
+
+    if (val === '开')
+    {
+      await chrome.scripting.insertCSS({
+        files: ['focus-mode.css'],
+        target: { tabId: tab.id }
+      })
+    }
+    else if (val === '关')
+    {
+      await chrome.scripting.removeCSS({
+        files: ['focus-mode.css'],
+        target: { tabId: tab.id }
+      })
+    }
   } catch (error)
   {
     console.error(error);
