@@ -44,6 +44,22 @@ const ROW: RouteRecordRaw = {
         title: "Service Worker",
       },
     },
+    {
+      path: "ServiceWorker2",
+      name: "BrowserPluginServiceWorker2",
+      component: () => import("@/views/BrowserPlugin/ServiceWorker2/IndexView.vue"),
+      meta: {
+        title: "合并窗口",
+      },
+    },
+    {
+      path: "SendMessage",
+      name: "BrowserPluginSendMessage",
+      component: () => import("@/views/BrowserPlugin/SendMessage/IndexView.vue"),
+      meta: {
+        title: "发送消息",
+      },
+    },
   ],
 };
 
