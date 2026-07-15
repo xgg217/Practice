@@ -60,6 +60,14 @@ const ROW: RouteRecordRaw = {
         title: "发送消息",
       },
     },
+    {
+      path: "SendMessageSetColor",
+      name: "BrowserPluginSendMessageSetColor",
+      component: () => import("@/views/BrowserPlugin/SendMessageSetColor/IndexView.vue"),
+      meta: {
+        title: "发送消息-设置浏览器背景颜色",
+      },
+    },
   ],
 };
 
