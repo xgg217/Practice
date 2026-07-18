@@ -27,6 +27,7 @@ const getItem = (arr: RouteRecordRaw[], path: string) => {
       if (item.children) {
         obj.children = getItem(item.children, obj.path);
       }
+
       return obj;
     });
 };
@@ -41,7 +42,7 @@ export const getAllMenuRoutes = (): TRoute[] => {
   })[0]!.children!;
 
   const list = getItem(arr, "");
-  // console.log(list);
+  console.log(list);
 
   return list;
 };

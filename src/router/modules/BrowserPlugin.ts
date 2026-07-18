@@ -68,6 +68,14 @@ const ROW: RouteRecordRaw = {
         title: "发送消息-设置浏览器背景颜色",
       },
     },
+    // {
+    //   path: "Downloads",
+    //   name: "BrowserPluginDownloads",
+    //   component: () => import("@/views/BrowserPlugin/Downloads/IndexView.vue"),
+    //   meta: {
+    //     title: "下载",
+    //   },
+    // },
   ],
 };
 

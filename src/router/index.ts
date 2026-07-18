@@ -9,6 +9,7 @@ import WebAPI from "./modules/WebAPI";
 import NpmUtils from "./modules/NpmUtils";
 import Vue3 from "./modules/Vue3";
 import BrowserPlugin from "./modules/BrowserPlugin";
+import ArchitectTest from "./modules/ArchitectTest";
 import { setRouteMaterialCom } from "@/stores/wenjuan/useMaterialStore";
 
 // #region 路由
@@ -23,7 +24,7 @@ export const routes = [
 
     children: [
       {
-        path: "hone",
+        path: "home",
         name: "Home",
         component: HomeView,
         meta: {
@@ -86,6 +87,9 @@ export const routes = [
 
       // 浏览器插件
       BrowserPlugin,
+
+      // 测试框架
+      ArchitectTest,
     ],
   },
   {
