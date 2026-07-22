@@ -98,6 +98,7 @@ const onUpdate = () => {
 
   const { id, createdAt } = info;
   const obj: TRow = {
+    // @ts-expect-error 类型错误
     id,
     title: row.title,
     count: row.count,
