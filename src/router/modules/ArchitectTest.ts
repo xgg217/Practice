@@ -71,9 +71,9 @@ const ROW: RouteRecordRaw = {
           },
         },
         {
-          path: "MockFun",
-          name: "ArchitectTestJestMockFun",
-          component: () => import("@/views/ArchitectTest/Vitest/MockFun/IndexView.vue"),
+          path: "MockFunctions",
+          name: "ArchitectTestJestMockFunctions",
+          component: () => import("@/views/ArchitectTest/Vitest/MockFunctions/IndexView.vue"),
           meta: {
             title: "模拟函数",
           },

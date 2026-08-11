@@ -1,5 +1,5 @@
 import { expect, test, beforeEach, afterEach, beforeAll, afterAll, describe } from "vitest";
-import { sum, sub, mul, div } from "./tools";
+import { sum, sub, mul, div } from "@/views/ArchitectTest/Vitest/tools";
 
 beforeEach(() => {
   console.log("全局的beforeEach");

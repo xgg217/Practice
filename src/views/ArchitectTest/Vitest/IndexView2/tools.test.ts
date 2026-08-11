@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { sum, sub, mul, div } from "./tools";
+import { sum, sub, mul, div } from "@/views/ArchitectTest/Vitest/tools";
 
 test("测试加法", () => {
   expect(sum(1, 2)).toBe(3);
