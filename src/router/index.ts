@@ -10,6 +10,7 @@ import NpmUtils from "./modules/NpmUtils";
 import Vue3 from "./modules/Vue3";
 import BrowserPlugin from "./modules/BrowserPlugin";
 import ArchitectTest from "./modules/ArchitectTest";
+import WebGIS from "./modules/WebGIS";
 import { setRouteMaterialCom } from "@/stores/wenjuan/useMaterialStore";
 
 // #region 路由
@@ -82,14 +83,17 @@ export const routes = [
       // 第三方库使用
       NpmUtils,
 
-      // 自定义项目
-      custom,
-
       // 浏览器插件
       BrowserPlugin,
 
       // 测试框架
       ArchitectTest,
+
+      // webGis
+      WebGIS,
+
+      // 自定义项目
+      custom,
     ],
   },
   {
