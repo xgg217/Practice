@@ -55,7 +55,7 @@ const scrollToBottom = () => {
 
 // 滚动到 指定到组件
 const scrollToCenter = (index: number) => {
-  console.log(1);
+  // console.log(1);
   nextTick(() => {
     const element = componentsRefs.value[index]; // 获取当前题目的dom元素
     // 判断当前元素是否是HTMLElement

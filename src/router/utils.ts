@@ -34,15 +34,12 @@ const getItem = (arr: RouteRecordRaw[], path: string) => {
 
 // 获取全部菜单
 export const getAllMenuRoutes = (): TRoute[] => {
-  // console.log(routes);
-
   // 暂时只显示 / 菜单下的路由
   const arr = routes.filter((item) => {
     return item.path === "/";
   })[0]!.children!;
 
   const list = getItem(arr, "");
-  console.log(list);
 
   return list;
 };

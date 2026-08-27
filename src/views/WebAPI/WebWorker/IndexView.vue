@@ -4,12 +4,12 @@ const worker = new Worker(new URL("./test.ts", import.meta.url).href, {
   name: "测试",
 });
 
-console.log(worker);
+// console.log(worker);
 
 worker.postMessage(10);
 
-worker.onmessage = e => {
-  console.log(e);
+worker.onmessage = (e) => {
+  // console.log(e);
 };
 </script>
 

@@ -64,7 +64,6 @@ export const useEditorStore = defineStore("editorStore", {
       }
 
       const com = BUSINESS_COM_MAP[item]();
-      console.log(com);
 
       this.coms.push(com);
 

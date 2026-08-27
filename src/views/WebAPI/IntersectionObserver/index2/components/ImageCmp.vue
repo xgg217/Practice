@@ -13,11 +13,9 @@ let IO: IntersectionObserver;
 // const url = props.src;
 
 // @ts-ignore 回调函数
-const IOCallback = entries => {
-  console.log("11");
-
+const IOCallback = (entries) => {
   // @ts-ignore 循环所有观察元素
-  entries.forEach(item => {
+  entries.forEach((item) => {
     // 如果出现在可视区内，则替换 src
     if (item.isIntersecting) {
       // console.info("出现在可视区内");

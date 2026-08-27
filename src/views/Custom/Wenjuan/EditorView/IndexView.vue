@@ -81,7 +81,7 @@ const onSave = () => {
   // 添加数据
   db.addData(row)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       router.push({ name: "Wenjuan" });
 
       // 重置数据
@@ -107,11 +107,11 @@ const onUpdate = () => {
     detail: row.detail || [],
   };
 
-  console.log(obj);
+  // console.log(obj);
 
   db.updateData(obj)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       router.push({ name: "Wenjuan" });
 
       // 重置数据
@@ -134,7 +134,7 @@ const onUpdate = () => {
 };
 
 onMounted(async () => {
-  console.log(route.query);
+  // console.log(route.query);
 
   try {
     await db.init();
@@ -143,7 +143,7 @@ onMounted(async () => {
     if (route.query.id) {
       ids.value = Number(route.query.id);
       const res = await db.getDataById(ids.value);
-      console.log(res);
+      // console.log(res);
       if (res as TListTime) {
         const row = res as TRow;
         inputVal.value = row.title;

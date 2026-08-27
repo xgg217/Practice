@@ -18,11 +18,9 @@ import type { ComponentMap } from "@/views/Custom/Wenjuan/types/store";
 // 获取组件
 const getCom = () => {
   const obj = cloneDeep(BUSINESS_COM_MAP);
-  console.log(obj);
 
   Object.keys(obj).forEach((item) => {
     const name = item as keyof ComponentMap;
-    console.log(name);
 
     // @ts-expect-error 初始化组件
     obj[name] = obj[name]();

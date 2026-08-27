@@ -33,8 +33,8 @@ const arr = [
 const activeIndex = ref<string>(arr[0].path);
 
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key);
-  console.log(keyPath);
+  // console.log(key);
+  // console.log(keyPath);
 };
 
 onMounted(() => {

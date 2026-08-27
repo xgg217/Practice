@@ -32,7 +32,7 @@ const ROW: RouteRecordRaw = {
       children: [
         {
           path: "index",
-          name: "ArchitectTestJestIndex",
+          name: "ArchitectTestIndex",
           component: () => import("@/views/ArchitectTest/Vitest/IndexView.vue"),
           meta: {
             title: "首页",
@@ -40,7 +40,7 @@ const ROW: RouteRecordRaw = {
         },
         {
           path: "index2",
-          name: "ArchitectTestJestIndex2",
+          name: "ArchitectTestIndex2",
           component: () => import("@/views/ArchitectTest/Vitest/IndexView2/IndexView.vue"),
           meta: {
             title: "基本使用",
@@ -48,7 +48,7 @@ const ROW: RouteRecordRaw = {
         },
         {
           path: "index3",
-          name: "ArchitectTestJestIndex3",
+          name: "ArchitectTestIndex3",
           component: () => import("@/views/ArchitectTest/Vitest/IndexView3/IndexView.vue"),
           meta: {
             title: "匹配器",
@@ -56,7 +56,7 @@ const ROW: RouteRecordRaw = {
         },
         {
           path: "index4",
-          name: "ArchitectTestJestIndex4",
+          name: "ArchitectTestIndex4",
           component: () => import("@/views/ArchitectTest/Vitest/IndexView4/IndexView.vue"),
           meta: {
             title: "生命周期",
@@ -64,7 +64,7 @@ const ROW: RouteRecordRaw = {
         },
         {
           path: "index5",
-          name: "ArchitectTestJestIndex5",
+          name: "ArchitectTestIndex5",
           component: () => import("@/views/ArchitectTest/Vitest/IndexView5/IndexView.vue"),
           meta: {
             title: "生命周期之分组",
@@ -72,7 +72,7 @@ const ROW: RouteRecordRaw = {
         },
         {
           path: "MockFunctions",
-          name: "ArchitectTestJestMockFunctions",
+          name: "ArchitectTestMockFunctions",
           component: () => import("@/views/ArchitectTest/Vitest/MockFunctions/IndexView.vue"),
           meta: {
             title: "模拟函数",
@@ -80,10 +80,18 @@ const ROW: RouteRecordRaw = {
         },
         {
           path: "MockModule",
-          name: "ArchitectTestJestMockModule",
+          name: "ArchitectTestMockModule",
           component: () => import("@/views/ArchitectTest/Vitest/MockModule/IndexView.vue"),
           meta: {
             title: "模拟模块",
+          },
+        },
+        {
+          path: "Browser1",
+          name: "ArchitectTestBrowser1",
+          component: () => import("@/views/ArchitectTest/Vitest/Browser1/IndexView.vue"),
+          meta: {
+            title: "浏览器模式",
           },
         },
       ],
