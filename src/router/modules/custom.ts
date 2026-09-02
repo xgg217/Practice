@@ -42,15 +42,46 @@ const ROW: RouteRecordRaw = {
       },
     },
 
+    // #region 动态表单手写
+    {
+      path: "DynamicForm",
+      name: "DynamicForm",
+      // component: () => import("@/views/Custom/DynamicForm/IndexView.vue"),
+      meta: {
+        title: "动态表单 手写",
+        imgSrc: "",
+      },
+      children: [
+        {
+          path: "index",
+          name: "DynamicFormIndex",
+          component: () => import("@/views/Custom/DynamicForm/IndexView.vue"),
+          meta: {
+            title: "首页",
+          },
+        },
+        {
+          path: "Base",
+          name: "DynamicFormBase",
+          component: () => import("@/views/Custom/DynamicForm/Base/IndexView.vue"),
+          meta: {
+            title: "基础开发",
+          },
+        },
+      ],
+    },
+    // #endregion 动态表单手写
+
     // #region 问卷调查
     {
       path: "Wenjuan",
       name: "Wenjuan",
       component: () => import("@/views/Custom/Wenjuan/IndexView.vue"),
       meta: {
-        title: "问卷调查",
+        title: "问卷调查-动态表单",
         imgSrc: "",
       },
+      children: [],
     },
     {
       path: "WenjuanEditorView",
