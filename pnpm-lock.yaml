@@ -29,6 +29,9 @@ importers:
       '@formily/core':
         specifier: ^2.3.7
         version: 2.3.7
+      '@formily/element-plus':
+        specifier: ^1.1.0
+        version: 1.1.0(typescript@6.0.3)(vue@3.6.0-beta.17(typescript@6.0.3))
       '@formily/vue':
         specifier: ^2.3.7
         version: 2.3.7(typescript@6.0.3)(vue@3.6.0-beta.17(typescript@6.0.3))
@@ -329,6 +332,11 @@ packages:
     resolution: {integrity: sha512-kzyuwOAQnXJNLS9PSyrk0CWk35nWJW/zl/6KvnTBMFK65gm7U1/Z5BqjxeapjZCIhQcM/DsrEmcbRwDyXyXK4A==}
     engines: {node: '>=14'}
 
+  '@element-plus/icons-vue@1.1.4':
+    resolution: {integrity: sha512-Iz/nHqdp1sFPmdzRwHkEQQA3lKvoObk8azgABZ81QUOpW9s/lUyQVUSh0tNtEPZXQlKwlSh7SPgoVxzrE0uuVQ==}
+    peerDependencies:
+      vue: ^3.2.0
+
   '@element-plus/icons-vue@2.3.2':
     resolution: {integrity: sha512-OzIuTaIfC8QXEPmJvB4Y4kw34rSXdCJzxcD1kFStBvr8bK6X1zQAYDo0CNMjojnfTqRQCJ0I7prlErcoRiET2A==}
     peerDependencies:
@@ -376,6 +384,18 @@ packages:
   '@formily/core@2.3.7':
     resolution: {integrity: sha512-oqLE6gOoM2xjwlUrfH4cyjscO4kZJNpidtVytZeBvYp9v4OgL9EUm89laPcF4cnpWE2lZIqqzfGluOySxku8WQ==}
     engines: {npm: '>=3.0.0'}
+
+  '@formily/element-plus@1.1.0':
+    resolution: {integrity: sha512-J0UkSSD48RFJ0qFmm8HLE9igxCoxjCSTKUPqVqD7l4pVtkohfxUd/3isCkgmr4r7DU2pks0MNEzPftNz7N7UTw==}
+    engines: {npm: '>=3.0.0'}
+    peerDependencies:
+      vue: ^3.2.24
+
+  '@formily/grid@2.3.7':
+    resolution: {integrity: sha512-QTmmFkNVxcL+nQVvrqhBrUwhRCXDVy5iycTb4IJILqK4puYUKRajbsbm0oudTE0Yyo6ovpM6SD8QtdFU/cwLLw==}
+    engines: {npm: '>=3.0.0'}
+    peerDependencies:
+      typescript: 4.x || 5.x
 
   '@formily/json-schema@2.3.7':
     resolution: {integrity: sha512-YmDmH98sJLOPO5GAq5NJw+NP3i2vCELBoz4Y4w+nhpKI5n8eQHe2GczQKntWDOnTfchXD2dXcgpb0ub6KNeATw==}
@@ -455,6 +475,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@juggle/resize-observer@3.4.0':
+    resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2228,6 +2251,9 @@ packages:
     resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
     engines: {node: '>= 20.19.0'}
 
+  resize-observer-polyfill@1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
+
   reusify@1.1.0:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
@@ -2408,6 +2434,9 @@ packages:
   sirv@3.0.2:
     resolution: {integrity: sha512-2wcC/oGxHis/BoHkkPwldgiPSYcpZK3JU28WoMVv55yHJgcZ8rlXvuG9iZggz+sU1d4bRgIGASwyWqjxu3FM0g==}
     engines: {node: '>=18'}
+
+  sortablejs@1.14.0:
+    resolution: {integrity: sha512-pBXvQCs5/33fdN1/39pPL0NZF20LeRbLQ5jtnheIPN9JQAaufGjKdWduZn4U7wCtVuzKhmRkI0DFYHYRbB2H1w==}
 
   sortablejs@1.15.7:
     resolution: {integrity: sha512-Kk8wLQPlS+yi1ZEf48a4+fzHa4yxjC30M/Sr2AnQu+f/MPwvvX9XjZ6OWejiz8crBsLwSq8GHqaxaET7u6ux0A==}
@@ -2734,6 +2763,11 @@ packages:
       pinia:
         optional: true
 
+  vue-slicksort@1.2.0:
+    resolution: {integrity: sha512-k1324l+AnYy6MrpySN7PYL165z2EkvZmMe+BS7H/EugzS8IrZYRtoqa3QxSSWB34C7cplV1hj3c+7peKpxpYxg==}
+    peerDependencies:
+      vue: '>=2.2.0'
+
   vue-tsc@3.2.8:
     resolution: {integrity: sha512-27vTLJ6Q2370obOd0PFYoYoKnmXJ521uUIedrs3Zhhhg/8YG10VOCMmwt+JQslatpAMTDbnWiitLnoD5VlIvog==}
     hasBin: true
@@ -2747,6 +2781,11 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  vuedraggable@4.1.0:
+    resolution: {integrity: sha512-FU5HCWBmsf20GpP3eudURW3WdWTKIbEIQxh9/8GE806hydR9qZqRRxRE3RjqX7PkuLuMQG/A7n3cfj9rCEchww==}
+    peerDependencies:
+      vue: ^3.0.1
 
   webpack-virtual-modules@0.6.2:
     resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
@@ -3024,6 +3063,10 @@ snapshots:
 
   '@ctrl/tinycolor@4.2.0': {}
 
+  '@element-plus/icons-vue@1.1.4(vue@3.6.0-beta.17(typescript@6.0.3))':
+    dependencies:
+      vue: 3.6.0-beta.17(typescript@6.0.3)
+
   '@element-plus/icons-vue@2.3.2(vue@3.6.0-beta.17(typescript@6.0.3))':
     dependencies:
       vue: 3.6.0-beta.17(typescript@6.0.3)
@@ -3074,6 +3117,31 @@ snapshots:
       '@formily/reactive': 2.3.7
       '@formily/shared': 2.3.7
       '@formily/validator': 2.3.7
+
+  '@formily/element-plus@1.1.0(typescript@6.0.3)(vue@3.6.0-beta.17(typescript@6.0.3))':
+    dependencies:
+      '@element-plus/icons-vue': 1.1.4(vue@3.6.0-beta.17(typescript@6.0.3))
+      '@formily/core': 2.3.7
+      '@formily/grid': 2.3.7(typescript@6.0.3)
+      '@formily/json-schema': 2.3.7(typescript@6.0.3)
+      '@formily/reactive': 2.3.7
+      '@formily/reactive-vue': 2.3.7(vue@3.6.0-beta.17(typescript@6.0.3))
+      '@formily/shared': 2.3.7
+      '@formily/vue': 2.3.7(typescript@6.0.3)(vue@3.6.0-beta.17(typescript@6.0.3))
+      element-plus: 2.14.0(vue@3.6.0-beta.17(typescript@6.0.3))
+      resize-observer-polyfill: 1.5.1
+      vue: 3.6.0-beta.17(typescript@6.0.3)
+      vue-slicksort: 1.2.0(vue@3.6.0-beta.17(typescript@6.0.3))
+      vuedraggable: 4.1.0(vue@3.6.0-beta.17(typescript@6.0.3))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - typescript
+
+  '@formily/grid@2.3.7(typescript@6.0.3)':
+    dependencies:
+      '@formily/reactive': 2.3.7
+      '@juggle/resize-observer': 3.4.0
+      typescript: 6.0.3
 
   '@formily/json-schema@2.3.7(typescript@6.0.3)':
     dependencies:
@@ -3155,6 +3223,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@juggle/resize-observer@3.4.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -4799,6 +4869,8 @@ snapshots:
 
   readdirp@5.0.0: {}
 
+  resize-observer-polyfill@1.5.1: {}
+
   reusify@1.1.0: {}
 
   rfdc@1.4.1: {}
@@ -4955,6 +5027,8 @@ snapshots:
       '@polka/url': 1.0.0-next.29
       mrmime: 2.0.1
       totalist: 3.0.1
+
+  sortablejs@1.14.0: {}
 
   sortablejs@1.15.7: {}
 
@@ -5265,6 +5339,10 @@ snapshots:
     optionalDependencies:
       pinia: 3.0.4(typescript@6.0.3)(vue@3.6.0-beta.17(typescript@6.0.3))
 
+  vue-slicksort@1.2.0(vue@3.6.0-beta.17(typescript@6.0.3)):
+    dependencies:
+      vue: 3.6.0-beta.17(typescript@6.0.3)
+
   vue-tsc@3.2.8(typescript@6.0.3):
     dependencies:
       '@volar/typescript': 2.4.28(typescript@6.0.3)
@@ -5281,6 +5359,11 @@ snapshots:
       '@vue/shared': 3.6.0-beta.17
     optionalDependencies:
       typescript: 6.0.3
+
+  vuedraggable@4.1.0(vue@3.6.0-beta.17(typescript@6.0.3)):
+    dependencies:
+      sortablejs: 1.14.0
+      vue: 3.6.0-beta.17(typescript@6.0.3)
 
   webpack-virtual-modules@0.6.2: {}
 

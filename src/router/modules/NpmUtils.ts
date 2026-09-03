@@ -296,6 +296,7 @@ const ROW: RouteRecordRaw = {
     },
     // #endregion 动态表单手写
 
+    // #region Formily 动态表单
     {
       path: "Formily",
       name: "Formily",
@@ -313,8 +314,17 @@ const ROW: RouteRecordRaw = {
             title: "Formily 首页",
           },
         },
+        {
+          path: "Formily2",
+          name: "Formily2",
+          component: () => import("@/views/NpmUtils/Formily/IndexView2/IndexView.vue"),
+          meta: {
+            title: "Formily 2",
+          },
+        },
       ],
     },
+    // #endregion Formily 动态表单
   ],
 };
 
