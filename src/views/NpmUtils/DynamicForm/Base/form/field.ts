@@ -1,4 +1,16 @@
+import mitt from "mitt";
 import { Form } from "./form";
+
+export type Events = {
+  username: { value: string };
+  type: { value: string };
+  taxID: { value: string };
+  contactType: { value: string };
+  contact: { value: string };
+  reset: { value: boolean }; // 重置事件
+};
+
+type EventKeys = keyof Events; // 获取所有 key
 
 export class Field {
   id: string = crypto.randomUUID(); // 字段唯一标识
@@ -18,6 +30,9 @@ export class Field {
   // 是否正在进行异步校验，比如loading状态(显示“校验中...”)
   validating = false;
 
+  // 订阅者集合
+  emitter = mitt<Events>();
+
   form: Form;
 
   constructor(name: string, form: Form, initialValue: any = "") {
@@ -27,10 +42,11 @@ export class Field {
     this.initialValue = initialValue;
   }
 
-  setValue(value: any) {
+  setValue(value: any, name: EventKeys) {
     this.value = value;
     this.dirty = this.value !== this.initialValue;
     this.touched = true;
+    this.emitter.emit(name, { value });
   }
 
   reset() {
@@ -39,5 +55,7 @@ export class Field {
     this.touched = false;
     this.error = [];
     this.validating = false;
+
+    this.emitter.emit("reset", { value: true });
   }
 }

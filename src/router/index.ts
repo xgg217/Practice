@@ -30,6 +30,7 @@ export const routes = [
         component: HomeView,
         meta: {
           title: "首页",
+          icon: "House",
         },
       },
       {
@@ -38,6 +39,7 @@ export const routes = [
         component: () => import("@/views/TestView.vue"),
         meta: {
           title: "测试菜单",
+          icon: "Reading",
         },
       },
       {

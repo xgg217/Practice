@@ -5,6 +5,7 @@ const ROW: RouteRecordRaw = {
   name: "WebGIS",
   meta: {
     title: "WebGIS",
+    icon: "LocationFilled",
   },
   redirect: {
     name: "WebGISIndex",

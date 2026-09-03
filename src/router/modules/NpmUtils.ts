@@ -6,6 +6,7 @@ const ROW: RouteRecordRaw = {
   // component: () => import("@/views/TestView.vue"),
   meta: {
     title: "npm 工具类",
+    icon: "Tools",
   },
   redirect: {
     name: "NpmUtilsIndexView",
@@ -263,6 +264,56 @@ const ROW: RouteRecordRaw = {
       meta: {
         title: "PDF",
       },
+    },
+
+    // #region 动态表单手写
+    {
+      path: "DynamicForm",
+      name: "DynamicForm",
+      // component: () => import("@/views/Custom/DynamicForm/IndexView.vue"),
+      meta: {
+        title: "动态表单 手写",
+        imgSrc: "",
+      },
+      children: [
+        {
+          path: "index",
+          name: "DynamicFormIndex",
+          component: () => import("@/views/NpmUtils/DynamicForm/IndexView.vue"),
+          meta: {
+            title: "首页",
+          },
+        },
+        {
+          path: "Base",
+          name: "DynamicFormBase",
+          component: () => import("@/views/NpmUtils/DynamicForm/Base/IndexView.vue"),
+          meta: {
+            title: "基础开发",
+          },
+        },
+      ],
+    },
+    // #endregion 动态表单手写
+
+    {
+      path: "Formily",
+      name: "Formily",
+      // component: () => import("@/views/NpmUtils/DynamicForm/Formily/IndexView.vue"),
+      meta: {
+        title: "Formily 动态表单库",
+      },
+
+      children: [
+        {
+          path: "Formily1",
+          name: "Formily1",
+          component: () => import("@/views/NpmUtils/Formily/IndexView.vue"),
+          meta: {
+            title: "Formily 首页",
+          },
+        },
+      ],
     },
   ],
 };

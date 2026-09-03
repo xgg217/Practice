@@ -11,7 +11,10 @@ defineProps<{
     <!-- 无子菜单的项 -->
     <el-tooltip :content="item.title" placement="right" v-if="item.children.length === 0">
       <el-menu-item :index="item.path">
-        <el-icon><setting /></el-icon>
+        <el-icon>
+          <component v-if="item.icon" :is="item.icon" />
+          <!-- <setting /> -->
+        </el-icon>
         <span>{{ item.title }}</span>
       </el-menu-item>
     </el-tooltip>
@@ -19,7 +22,10 @@ defineProps<{
     <!-- 菜单 -->
     <el-sub-menu v-else :index="item.path">
       <template #title>
-        <el-icon><Menu /></el-icon>
+        <el-icon>
+          <component v-if="item.icon" :is="item.icon" />
+          <!-- <Menu /> -->
+        </el-icon>
         <span>{{ item.title }}</span>
       </template>
 

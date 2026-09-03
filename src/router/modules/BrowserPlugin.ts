@@ -6,6 +6,7 @@ const ROW: RouteRecordRaw = {
   // component: () => import("@/views/TestView.vue"),
   meta: {
     title: "浏览器插件",
+    icon: "Ticket",
   },
   redirect: {
     name: "CSSView",

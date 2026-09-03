@@ -14,5 +14,6 @@ declare module "vue-router" {
     pathName?: string; // 路由链接 名称
     imgSrc?: string; // 图片
     isShow?: boolean; // 是否显示
+    icon?: string; // 图标
   }
 }

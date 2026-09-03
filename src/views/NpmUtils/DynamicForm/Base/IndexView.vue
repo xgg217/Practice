@@ -33,24 +33,31 @@ const f = computed(() => {
   return JSON.stringify(obj, null, 2);
 });
 
+// 重置
+const onReset = () => {
+  form.value.reset();
+};
+
 onMounted(() => {});
 </script>
 
 <template>
   <el-form :model="form" label-width="auto" style="max-width: 600px">
-    <!-- @vue-expect-error -->
-    <FieldRenderer
-      v-for="item in schema"
-      :key="item.id"
-      :form="form"
-      v-model="form.fields[item.name].value"
-      :field="form.fields[item.name]"
-      :schema="item"
-    ></FieldRenderer>
+    <template v-for="item in schema" :key="item.id">
+      <el-form-item :label="item.label">
+        <!-- @vue-expect-error -->
+        <FieldRenderer
+          :form="form"
+          v-model="form.fields[item.name].value"
+          :field="form.fields[item.name]"
+          :schema="item"
+        ></FieldRenderer>
+      </el-form-item>
+    </template>
 
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">Create</el-button>
-      <el-button>Cancel</el-button>
+      <el-button type="primary" @click="onSubmit">确定</el-button>
+      <el-button @click="onReset">重置</el-button>
     </el-form-item>
   </el-form>
 

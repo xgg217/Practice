@@ -1,5 +1,7 @@
 allowBuilds:
+  '@formily/vue': true
   '@parcel/watcher': true
+  vue-demi: false
 
 overrides:
   'vue': 'beta'

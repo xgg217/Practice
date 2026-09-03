@@ -5,6 +5,7 @@ const ROW: RouteRecordRaw = {
   name: "Vue3",
   meta: {
     title: "Vue3 学习",
+    icon: "Notebook",
   },
   redirect: {
     name: "NpmUtilsIndexView",
@@ -16,6 +17,7 @@ const ROW: RouteRecordRaw = {
       component: () => import("@/views/Vue3/IndexView.vue"),
       meta: {
         title: "首页",
+        icon: "Tickets",
       },
     },
     {

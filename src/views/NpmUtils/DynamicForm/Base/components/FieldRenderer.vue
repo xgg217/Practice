@@ -26,14 +26,7 @@ const onChagne = (val: string) => {
 </script>
 
 <template>
-  <el-form-item :key="field.id" :label="props.schema.label">
-    <component
-      :is="comp"
-      :row="schema"
-      v-model="model"
-      @onChange="(val: string) => onChagne(val)"
-    />
-  </el-form-item>
+  <component :is="comp" :row="schema" v-model="model" @onChange="(val: string) => onChagne(val)" />
 </template>
 
 <style scoped></style>
