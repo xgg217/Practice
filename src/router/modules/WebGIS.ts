@@ -84,6 +84,22 @@ const ROW: RouteRecordRaw = {
             title: "GeoJSON数据",
           },
         },
+        {
+          path: "index8",
+          name: "OpenLayersIndex8",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView8.vue"),
+          meta: {
+            title: "异步加载 GeoJSON数据",
+          },
+        },
+        {
+          path: "index9",
+          name: "OpenLayersIndex9",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView9.vue"),
+          meta: {
+            title: "组件方法事件",
+          },
+        },
       ],
     },
   ],

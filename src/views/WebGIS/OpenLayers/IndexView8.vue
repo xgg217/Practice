@@ -3,14 +3,14 @@ import { Map, View } from "ol";
 import { XYZ, Vector } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { GeoJSON } from "ol/format";
-import hangzhou from "./assets/hangzhou.json";
+import hangzhou from "./assets/hangzhou.json?url";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 
 const vectorSource = new Vector({
-  // url: hangzhou,
+  url: hangzhou,
   // url: "https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=330600_full",
-  features: new GeoJSON().readFeatures(hangzhou, {
+  format: new GeoJSON({
     dataProjection: "EPSG:4326", // 数据源是经纬度
     featureProjection: "EPSG:3857", // 地图是墨卡托
   }),
@@ -47,8 +47,12 @@ onMounted(() => {
     }),
   });
 
-  const extent = vectorSource.getExtent()!;
-  map.getView().fit(extent);
+  vectorSource.on("change", () => {
+    if (vectorSource.getState() === "ready") {
+      const extent = vectorSource.getExtent()!;
+      map.getView().fit(extent);
+    }
+  });
 });
 </script>
 
