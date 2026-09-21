@@ -100,6 +100,22 @@ const ROW: RouteRecordRaw = {
             title: "组件方法事件",
           },
         },
+        {
+          path: "index10",
+          name: "OpenLayersIndex10",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView10.vue"),
+          meta: {
+            title: "设置样式",
+          },
+        },
+        {
+          path: "index11",
+          name: "OpenLayersIndex11",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView11.vue"),
+          meta: {
+            title: "设置样式-动态",
+          },
+        },
       ],
     },
   ],
