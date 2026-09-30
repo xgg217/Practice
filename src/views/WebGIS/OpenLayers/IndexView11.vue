@@ -19,23 +19,28 @@ const vectorSource = new Vector({
 
 const vectorLayer = new VectorLayer({
   source: vectorSource,
-  style: new Style({
-    stroke: new Stroke({
-      color: "#FF0000",
-      width: 2,
-    }),
-    fill: new Fill({
-      // color: 'rgb(255, 255, 0, 0.5)',
-      color: "#FFFF0080",
-    }),
-    text: new Text({
-      font: "16px sans-serif",
-      fill: new Fill({
-        color: "black",
+
+  style: (feature) => {
+    const name = feature.get("name");
+
+    return new Style({
+      stroke: new Stroke({
+        color: "#FF0000",
+        width: 2,
       }),
-      text: "杭州",
-    }),
-  }),
+      fill: new Fill({
+        // color: 'rgb(255, 255, 0, 0.5)',
+        color: "#FFFF0080",
+      }),
+      text: new Text({
+        font: "16px sans-serif",
+        fill: new Fill({
+          color: "black",
+        }),
+        text: name,
+      }),
+    });
+  },
 });
 
 onMounted(() => {
