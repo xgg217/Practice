@@ -116,6 +116,14 @@ const ROW: RouteRecordRaw = {
             title: "设置样式-动态",
           },
         },
+        {
+          path: "index12",
+          name: "OpenLayersIndex12",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView12.vue"),
+          meta: {
+            title: "设置样式-动态背景颜色",
+          },
+        },
       ],
     },
   ],
