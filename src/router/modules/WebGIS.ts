@@ -124,6 +124,38 @@ const ROW: RouteRecordRaw = {
             title: "设置样式-动态背景颜色",
           },
         },
+        {
+          path: "index13",
+          name: "OpenLayersIndex13",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView13.vue"),
+          meta: {
+            title: "WKT 数据",
+          },
+        },
+        {
+          path: "index14",
+          name: "OpenLayersIndex14",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView14.vue"),
+          meta: {
+            title: "自定义矢量数据",
+          },
+        },
+        {
+          path: "index15",
+          name: "OpenLayersIndex15",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView15.vue"),
+          meta: {
+            title: "添加icon图标-自定义矢量数据",
+          },
+        },
+        {
+          path: "index16",
+          name: "OpenLayersIndex16",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView16.vue"),
+          meta: {
+            title: "添加icon图标-GeoJSON数据",
+          },
+        },
       ],
     },
   ],
