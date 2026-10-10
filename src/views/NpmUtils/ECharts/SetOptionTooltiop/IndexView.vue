@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import Cmp from "./components/cmp.vue";
+import Cmp from "./components/CCmp.vue";
 </script>
 
 <style scoped></style>

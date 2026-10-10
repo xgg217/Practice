@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { Map, View } from "ol";
+import { Map, View, Feature } from "ol";
 import { XYZ, Vector } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { Style, Icon } from "ol/style";
 import center from "./assets/center.svg";
 import { fromLonLat } from "ol/proj";
-import { Feature } from "ol";
 import { Point } from "ol/geom";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");

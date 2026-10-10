@@ -156,6 +156,14 @@ const ROW: RouteRecordRaw = {
             title: "添加icon图标-GeoJSON数据",
           },
         },
+        {
+          path: "index17",
+          name: "OpenLayersIndex16",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView17.vue"),
+          meta: {
+            title: "Overlay 叠加层",
+          },
+        },
       ],
     },
   ],

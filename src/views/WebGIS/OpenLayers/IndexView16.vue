@@ -46,6 +46,7 @@ function json2Geojson(json: TPoi[]) {
     };
     feature.properties = j;
     feature.geometry.coordinates = [j.lng, j.lat];
+    // @ts-expect-error 暂时不考虑类型问题
     result.features.push(feature);
   });
   return result;
