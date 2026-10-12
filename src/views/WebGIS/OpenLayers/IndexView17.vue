@@ -97,11 +97,11 @@ onMounted(() => {
     element: infoRef.value!,
     positioning: "bottom-center",
     // 地图边缘的时候，进行自动平移
-    autoPan: {
-      animation: {
-        duration: 250,
-      },
-    },
+    // autoPan: {
+    //   animation: {
+    //     duration: 250,
+    //   },
+    // },
   });
 
   const map = new Map({
@@ -133,35 +133,35 @@ onMounted(() => {
 
   console.log(infoRef.value);
 
-  // // 鼠标移入事件
-  // map.on("pointermove", function (e) {
-  //   // e.pixel 坐标
-  //   const feature = map.forEachFeatureAtPixel(e.pixel, function (feat) {
-  //     return feat instanceof Feature ? feat : null;
-  //   });
+  // 鼠标移入事件
+  map.on("pointermove", function (e) {
+    // e.pixel 坐标
+    const feature = map.forEachFeatureAtPixel(e.pixel, function (feat) {
+      return feat instanceof Feature ? feat : null;
+    });
 
-  //   console.log(feature);
+    console.log(feature);
 
-  //   if (feature) {
-  //     const name = feature.get("name");
-  //     console.log(name, e.coordinate, overlay);
+    if (feature) {
+      const name = feature.get("name");
+      console.log(name, e.coordinate, overlay);
 
-  //     infoName.value = name;
-  //     // e.coordinate 坐标点
-  //     overlay.setPosition(e.coordinate);
-  //     infoBool.value = true;
+      infoName.value = name;
+      // e.coordinate 坐标点
+      overlay.setPosition(e.coordinate);
+      infoBool.value = true;
 
-  //     // const name = feature.get("name");
-  //     // info.innerHTML = name;
-  //     // overlay.setPosition(e.coordinate);
-  //     // info.style.display = "block";
-  //   } else {
-  //     // overlay.setPosition(undefined);
-  //     // info.style.display = "none";
-  //     overlay.setPosition(undefined);
-  //     infoBool.value = false;
-  //   }
-  // });
+      // const name = feature.get("name");
+      // info.innerHTML = name;
+      // overlay.setPosition(e.coordinate);
+      // info.style.display = "block";
+    } else {
+      // overlay.setPosition(undefined);
+      // info.style.display = "none";
+      overlay.setPosition(undefined);
+      infoBool.value = false;
+    }
+  });
 });
 </script>
 
