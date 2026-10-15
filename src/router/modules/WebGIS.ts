@@ -158,10 +158,58 @@ const ROW: RouteRecordRaw = {
         },
         {
           path: "index17",
-          name: "OpenLayersIndex16",
+          name: "OpenLayersIndex17",
           component: () => import("@/views/WebGIS/OpenLayers/IndexView17.vue"),
           meta: {
             title: "Overlay 叠加层",
+          },
+        },
+        {
+          path: "index18",
+          name: "OpenLayersIndex18",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView18.vue"),
+          meta: {
+            title: "Link交互 改变URL",
+          },
+        },
+        {
+          path: "index19",
+          name: "OpenLayersIndex19",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView19.vue"),
+          meta: {
+            title: "DragAndDrop 交互 拖拽文件加载",
+          },
+        },
+        {
+          path: "index20",
+          name: "OpenLayersIndex20",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView20.vue"),
+          meta: {
+            title: "切换城市",
+          },
+        },
+        {
+          path: "index21",
+          name: "OpenLayersIndex21",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView21.vue"),
+          meta: {
+            title: "Translate 拖拽矢量要素的位置",
+          },
+        },
+        {
+          path: "index22",
+          name: "OpenLayersIndex22",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView22.vue"),
+          meta: {
+            title: "Modify 编辑矢量要素",
+          },
+        },
+        {
+          path: "index23",
+          name: "OpenLayersIndex23",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView23.vue"),
+          meta: {
+            title: "Draw 绘制",
           },
         },
       ],
