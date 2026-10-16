@@ -12,19 +12,30 @@ const routerArr = shallowRef<TRoute[]>([]);
 const activeMenu = computed(() => route.path);
 
 // 尽量让当前激活的选项滚动到中间
-const scrollToCenter = async () => {};
+const scrollToCenter = async () => {
+  await nextTick();
 
-onMounted(async () => {
+  setTimeout(() => {
+    const nav = navRef.value;
+    const activeItem = nav?.querySelector<HTMLElement>(".el-menu-item.is-active");
+
+    if (!nav || !activeItem) return;
+
+    const navRect = nav.getBoundingClientRect();
+    const itemRect = activeItem.getBoundingClientRect();
+
+    // 目标位置：激活项中心与可视区中心对齐
+    const targetTop =
+      nav.scrollTop + (itemRect.top - navRect.top) - (nav.clientHeight - itemRect.height) / 2;
+
+    nav.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+  }, 300);
+};
+
+onMounted(() => {
   routerArr.value = getAllMenuRoutes();
 
-  // await nextTick();
-  // setTimeout(() => {
-  //   const activeItem: HTMLElement | null = document.querySelector(".el-menu-item.is-active");
-
-  //   if (!activeItem || !scrollbarRef.value) return;
-
-  //   scrollbarRef.value.setScrollTop(activeItem.offsetTop);
-  // }, 500);
+  scrollToCenter();
 });
 </script>
 
@@ -49,7 +60,7 @@ onMounted(async () => {
 <style scoped>
 main.layout {
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: var(--view-height);
 }
 
