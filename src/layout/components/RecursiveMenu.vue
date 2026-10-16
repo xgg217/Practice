@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <template v-for="item of routerArr" :key="item.path">
     <!-- 无子菜单的项 -->
-    <el-tooltip :content="item.title" placement="right" v-if="item.children.length === 0">
+    <el-tooltip :content="item.title" placement="top" v-if="item.children.length === 0">
       <el-menu-item :index="item.path">
         <el-icon>
           <component v-if="item.icon" :is="item.icon" />

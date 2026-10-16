@@ -4,18 +4,33 @@ import RecursiveMenu from "./components/RecursiveMenu.vue";
 
 const route = useRoute();
 
+// const scrollbarRef = useTemplateRef<ScrollbarInstance>("scrollbarRef");
+const navRef = useTemplateRef<HTMLElement>("navRef");
+
 const routerArr = shallowRef<TRoute[]>([]);
 
 const activeMenu = computed(() => route.path);
 
-onMounted(() => {
+// 尽量让当前激活的选项滚动到中间
+const scrollToCenter = async () => {};
+
+onMounted(async () => {
   routerArr.value = getAllMenuRoutes();
+
+  // await nextTick();
+  // setTimeout(() => {
+  //   const activeItem: HTMLElement | null = document.querySelector(".el-menu-item.is-active");
+
+  //   if (!activeItem || !scrollbarRef.value) return;
+
+  //   scrollbarRef.value.setScrollTop(activeItem.offsetTop);
+  // }, 500);
 });
 </script>
 
 <template>
   <main class="layout">
-    <nav>
+    <nav ref="navRef">
       <el-menu :default-active="activeMenu" class="el-menu-vertical-demo" router>
         <RecursiveMenu :router-arr="routerArr" />
       </el-menu>
@@ -34,25 +49,25 @@ onMounted(() => {
 <style scoped>
 main.layout {
   display: flex;
-  /* align-items: stretch; */
+  overflow: hidden;
+  height: var(--view-height);
 }
 
 nav {
-  /* flex: 1; */
+  height: 99%;
+  min-height: 0;
   width: var(--nav);
-  height: var(--view-height);
-  overflow-y: scroll;
-  padding: 10px;
+  overflow: hidden;
   box-sizing: border-box;
+  overflow-y: scroll;
   /* border: 1px solid red; */
-  border-right: 1px solid #999;
 }
 
 aside {
   flex: 1;
-  border: 1px solid #000;
-  height: 100vh;
-  overflow-y: auto;
+  min-width: 0;
+  height: 100%; /* 撑满，不要 99vh */
+  /* border: 1px solid #000; */
   box-sizing: border-box;
 }
 </style>
