@@ -21,7 +21,6 @@ const vectorSource = new Vector({
     featureProjection: "EPSG:3857", // 地图是墨卡托
   }),
 });
-console.log(vectorSource);
 
 // const dragAndDrop = new DragAndDrop({
 //   source: vectorSource,

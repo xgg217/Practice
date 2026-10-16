@@ -3,7 +3,7 @@ import { Map, View } from "ol";
 import { XYZ, Vector } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { Style, Fill, Stroke, Text } from "ol/style";
-import { Draw } from "ol/interaction";
+// import { Draw } from "ol/interaction";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 let map: Map;

@@ -131,8 +131,6 @@ onMounted(() => {
     overlays: [overlay],
   });
 
-  console.log(infoRef.value);
-
   // 鼠标移入事件
   map.on("pointermove", function (e) {
     // e.pixel 坐标
@@ -140,11 +138,8 @@ onMounted(() => {
       return feat instanceof Feature ? feat : null;
     });
 
-    console.log(feature);
-
     if (feature) {
       const name = feature.get("name");
-      console.log(name, e.coordinate, overlay);
 
       infoName.value = name;
       // e.coordinate 坐标点

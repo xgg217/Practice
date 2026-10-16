@@ -31,9 +31,9 @@ onMounted(() => {
 
   // 单击 事件
   map.on("singleclick", (e) => {
-    console.log(e);
+    // console.log(e);
     // 获取墨卡托坐标
-    console.log(e.coordinate);
+    // console.log(e.coordinate);
   });
 });
 </script>
