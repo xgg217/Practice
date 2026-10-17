@@ -212,6 +212,14 @@ const ROW: RouteRecordRaw = {
             title: "Draw 绘制",
           },
         },
+        {
+          path: "index24",
+          name: "OpenLayersIndex24",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView24.vue"),
+          meta: {
+            title: "Draw 绘制-指定图形",
+          },
+        },
       ],
     },
   ],

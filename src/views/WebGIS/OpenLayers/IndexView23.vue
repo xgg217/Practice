@@ -2,8 +2,8 @@
 import { Map, View } from "ol";
 import { XYZ, Vector } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
-import { Style, Fill, Stroke, Text } from "ol/style";
-// import { Draw } from "ol/interaction";
+import { Style, Fill, Stroke, Text, Circle } from "ol/style";
+import { Draw } from "ol/interaction";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 let map: Map;
@@ -22,9 +22,10 @@ const vectorSource = new Vector({
   features: [],
 });
 
-// const modify = new Draw({
-//   source: vectorSource,
-// });
+const draw = new Draw({
+  type: "Point",
+  source: vectorSource,
+});
 
 const vectorLayer = new VectorLayer({
   source: vectorSource,
@@ -46,6 +47,12 @@ const vectorLayer = new VectorLayer({
           color: "black",
         }),
         text: name,
+      }),
+
+      image: new Circle({
+        radius: 7,
+        fill: new Fill({ color: "#FFFF00" }),
+        stroke: new Stroke({ color: "#FF0000", width: 2 }),
       }),
     });
   },
@@ -81,10 +88,10 @@ onMounted(() => {
   const extent = vectorSource.getExtent();
 
   if (extent) {
-    map.getView().fit(extent);
+    // map.getView().fit(extent);
   }
 
-  // map.addInteraction(modify);
+  map.addInteraction(draw);
 });
 </script>
 
