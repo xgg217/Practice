@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    过渡 定格动画
+    过渡 定格动画 鼠标移入到到图片中开始动画
 
     <div class="box1"></div>
   </div>
@@ -13,7 +13,7 @@
   width: 50px;
   height: 72px;
   border: 1px solid #000;
-  background-image: url(./01.jpg);
+  background-image: url("@/assets/CSS/Transition1.jpg");
   background-position-x: 0px;
 }
 .box1:hover {

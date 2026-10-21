@@ -220,6 +220,30 @@ const ROW: RouteRecordRaw = {
             title: "Draw 绘制-指定图形",
           },
         },
+        {
+          path: "index25",
+          name: "OpenLayersIndex25",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView25.vue"),
+          meta: {
+            title: "下载绘制的图形",
+          },
+        },
+        {
+          path: "index26",
+          name: "OpenLayersIndex26",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView26.vue"),
+          meta: {
+            title: "计算绘制的面积",
+          },
+        },
+        // {
+        //   path: "index27",
+        //   name: "OpenLayersIndex27",
+        //   component: () => import("@/views/WebGIS/OpenLayers/IndexView27.vue"),
+        //   meta: {
+        //     title: "计算绘制的面积",
+        //   },
+        // },
       ],
     },
   ],

@@ -70,10 +70,10 @@ main {
   font-style: italic;
 }
 
-.select {
+/* .select {
   background-color: var(--primary-color);
   color: var(--white);
-}
+} */
 
 .pointer {
   cursor: pointer;

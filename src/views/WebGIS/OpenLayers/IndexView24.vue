@@ -54,13 +54,22 @@ const vectorLayer = new VectorLayer({
   },
 });
 
-const { selectValue, onChangeSelect } = (() => {
+const { selectValue, onChangeSelect, onDel } = (() => {
   const selectValue = ref<Options["type"] | "">("");
 
   let draw: Draw;
 
+  const onDel = () => {
+    if (map) {
+      // 清空所有图形
+      vectorSource.clear();
+      selectValue.value = "";
+    }
+  };
+
   const onChangeSelect = (val: Options["type"]) => {
     if (draw) {
+      // 先删除 上一次的交互
       map.removeInteraction(draw);
     }
 
@@ -75,6 +84,7 @@ const { selectValue, onChangeSelect } = (() => {
   return {
     selectValue,
     onChangeSelect,
+    onDel,
   };
 })();
 
@@ -130,6 +140,8 @@ onMounted(() => {
         <el-option label="面" value="Polygon" />
         <el-option label="圆" value="Circle" />
       </el-select>
+
+      <el-button type="danger" @click="onDel">清除所有绘制</el-button>
     </div>
   </div>
 </template>
