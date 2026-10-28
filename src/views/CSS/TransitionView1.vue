@@ -13,7 +13,7 @@
   width: 50px;
   height: 72px;
   border: 1px solid #000;
-  background-image: url("@/assets/CSS/Transition1.jpg");
+  background-image: url("./images/Transition1.jpg");
   background-position-x: 0px;
 }
 .box1:hover {
