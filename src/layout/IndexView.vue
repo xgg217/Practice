@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getAllMenuRoutes, type TRoute } from "@/router/utils";
 import RecursiveMenu from "./components/RecursiveMenu.vue";
+import HeaderCmp from "./components/HeaderCmp/index.vue";
 
 const route = useRoute();
 
@@ -48,6 +49,9 @@ onMounted(() => {
     </nav>
 
     <aside>
+      <!-- 页眉 -->
+      <HeaderCmp />
+
       <RouterView v-slot="{ Component }">
         <!-- <Transition name="el-zoom-in-center" mode="out-in"> -->
         <component :is="Component" :key="$route.path" />
@@ -77,7 +81,7 @@ nav {
 aside {
   flex: 1;
   min-width: 0;
-  height: 100%; /* 撑满，不要 99vh */
+  height: 100%;
   /* border: 1px solid #000; */
   box-sizing: border-box;
 }
