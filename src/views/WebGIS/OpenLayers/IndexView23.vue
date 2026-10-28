@@ -4,6 +4,7 @@ import { XYZ, Vector } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { Style, Fill, Stroke, Text, Circle } from "ol/style";
 import { Draw } from "ol/interaction";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 let map: Map;
@@ -101,9 +102,6 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .warpp {
   position: relative;

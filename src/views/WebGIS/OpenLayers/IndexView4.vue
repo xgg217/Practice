@@ -5,6 +5,7 @@ import { XYZ } from "ol/source";
 import WebGLTileLayer from "ol/layer/WebGLTile";
 import { GeoTIFF } from "ol/source";
 import china from "./assets/china.tif?url";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 
@@ -49,9 +50,6 @@ onMounted(() => {
   <div ref="mapRef" class="map"></div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .map {
   width: 100%;

@@ -7,6 +7,7 @@ import hangzhou from "./assets/hangzhou.json";
 import nanjing from "./assets/nanjing.json";
 import { Style, Fill, Stroke, Text } from "ol/style";
 import type { FeatureCollection, Geometry } from "@/views/WebGIS/types/GeoJSON";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 let map: Map;
@@ -115,9 +116,6 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .warpp {
   position: relative;

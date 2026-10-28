@@ -7,6 +7,7 @@ import { Draw } from "ol/interaction";
 import type { Options } from "ol/interaction/Draw";
 import { fromCircle } from "ol/geom/Polygon";
 import { getArea, getLength } from "ol/sphere";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 let map: Map;
@@ -94,6 +95,7 @@ const { selectValue, onChangeSelect } = (() => {
         feature.set("area", (area / 1000000).toFixed(2) + " km²"); // 转为平方公里
         console.log(area);
       } else if (geom.getType() === "Circle") {
+        // @ts-expect-error 类型警告
         const polygon = fromCircle(geom, 64); // 转为多边形
         const area = getArea(polygon);
         feature.set("area", (area / 1000000).toFixed(2) + " km²"); // 转为平方公里
@@ -168,9 +170,6 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .warpp {
   position: relative;

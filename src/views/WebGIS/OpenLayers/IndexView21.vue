@@ -6,6 +6,7 @@ import { GeoJSON } from "ol/format";
 import hangzhou from "./assets/hangzhou.json";
 import { Style, Fill, Stroke, Text } from "ol/style";
 import { Translate } from "ol/interaction";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 let map: Map;
@@ -97,9 +98,6 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .warpp {
   position: relative;

@@ -7,6 +7,7 @@ import center from "./assets/center.svg";
 import { fromLonLat } from "ol/proj";
 import { Point } from "ol/geom";
 import { Link } from "ol/interaction";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 
@@ -67,9 +68,6 @@ onMounted(() => {
   <div ref="mapRef" class="map"></div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .map {
   width: 100%;

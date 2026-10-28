@@ -10,6 +10,7 @@ import { GeoJSON } from "ol/format";
 import { saveAs } from "file-saver";
 import type { Feature } from "@/views/WebGIS/types/GeoJSON";
 import { fromCircle } from "ol/geom/Polygon";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 let map: Map;
@@ -100,18 +101,22 @@ const { selectValue, onChangeSelect, onDel, onDow } = (() => {
     }
 
     const feature = features.map((f) => {
+      // @ts-expect-error 类型警告
       const geom = f.getGeometry();
 
       // 将圆转成多边形
       if (geom.getType() === "Circle") {
         // 转为多边形
         const polygon = fromCircle(geom, 64); // 64边近似圆
+        // @ts-expect-error 类型警告
         f = f.clone();
+        // @ts-expect-error 类型警告
         f.setGeometry(polygon);
       }
       return f;
     });
 
+    // @ts-expect-error 类型警告
     const geoJson = new GeoJSON().writeFeatures(feature, {
       dataProjection: "EPSG:4326", // 数据源是经纬度
       featureProjection: "EPSG:3857", // 地图是墨卡托
@@ -188,9 +193,6 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .warpp {
   position: relative;

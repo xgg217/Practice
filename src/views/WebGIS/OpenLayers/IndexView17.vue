@@ -8,6 +8,7 @@ import a from "./assets/a.png";
 import b from "./assets/b.png";
 import c from "./assets/c.png";
 import { GeoJSON } from "ol/format";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 const infoRef = useTemplateRef<InstanceType<typeof HTMLElement>>("infoRef");
@@ -165,9 +166,6 @@ onMounted(() => {
   <div ref="infoRef" class="info" v-show="infoBool">{{ infoName }}</div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .map {
   width: 100%;

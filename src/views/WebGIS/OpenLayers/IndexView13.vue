@@ -4,6 +4,7 @@ import { XYZ, Vector } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { Style, Fill, Stroke, Text } from "ol/style";
 import { WKT } from "ol/format";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 
@@ -80,9 +81,6 @@ onMounted(() => {
   <div ref="mapRef" class="map"></div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .map {
   width: 100%;

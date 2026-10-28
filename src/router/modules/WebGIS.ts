@@ -236,14 +236,14 @@ const ROW: RouteRecordRaw = {
             title: "计算绘制的面积",
           },
         },
-        // {
-        //   path: "index27",
-        //   name: "OpenLayersIndex27",
-        //   component: () => import("@/views/WebGIS/OpenLayers/IndexView27.vue"),
-        //   meta: {
-        //     title: "计算绘制的面积",
-        //   },
-        // },
+        {
+          path: "index27",
+          name: "OpenLayersIndex27",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView27.vue"),
+          meta: {
+            title: "control地图控件",
+          },
+        },
       ],
     },
   ],

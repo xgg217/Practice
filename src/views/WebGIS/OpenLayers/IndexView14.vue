@@ -6,6 +6,7 @@ import { Style, Fill, Stroke, Circle } from "ol/style";
 import { Feature } from "ol";
 import { Point, LineString } from "ol/geom";
 import { fromLonLat } from "ol/proj";
+import "ol/ol.css";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 
@@ -75,9 +76,6 @@ onMounted(() => {
   <div ref="mapRef" class="map"></div>
 </template>
 
-<style>
-@import "node_modules/ol/ol.css";
-</style>
 <style scoped>
 .map {
   width: 100%;
