@@ -295,36 +295,6 @@ const ROW: RouteRecordRaw = {
       ],
     },
     // #endregion 动态表单手写
-
-    // #region Formily 动态表单
-    {
-      path: "Formily",
-      name: "Formily",
-      // component: () => import("@/views/NpmUtils/DynamicForm/Formily/IndexView.vue"),
-      meta: {
-        title: "Formily 动态表单库",
-      },
-
-      children: [
-        {
-          path: "Formily1",
-          name: "Formily1",
-          component: () => import("@/views/NpmUtils/Formily/IndexView.vue"),
-          meta: {
-            title: "Formily 首页",
-          },
-        },
-        {
-          path: "Formily2",
-          name: "Formily2",
-          component: () => import("@/views/NpmUtils/Formily/IndexView2/IndexView.vue"),
-          meta: {
-            title: "Formily 2",
-          },
-        },
-      ],
-    },
-    // #endregion Formily 动态表单
   ],
 };
 
