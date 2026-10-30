@@ -244,6 +244,22 @@ const ROW: RouteRecordRaw = {
             title: "control地图控件",
           },
         },
+        {
+          path: "index28",
+          name: "OpenLayersIndex28",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView28.vue"),
+          meta: {
+            title: "control地图控件之鹰眼图",
+          },
+        },
+        {
+          path: "index29",
+          name: "OpenLayersIndex29",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView29.vue"),
+          meta: {
+            title: "map 更换底图",
+          },
+        },
       ],
     },
   ],

@@ -4,7 +4,7 @@ import { XYZ, Vector } from "ol/source";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { Style, Fill, Stroke, Text, Circle } from "ol/style";
 import "ol/ol.css";
-// import { defaults as defaultControls, ScaleLine, FullScreen, ZoomSlider } from "ol/control";
+import { defaults as defaultControls } from "ol/control";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 
@@ -77,6 +77,10 @@ onMounted(() => {
       center: [0, 0],
       // center: coordinate,
       zoom: 4,
+    }),
+    controls: defaultControls({
+      zoom: false, // 去除 左上角 缩放 按钮
+      rotate: false, // 去除 在旋转的时候 右上角出现的旋转按钮
     }),
   });
 });
