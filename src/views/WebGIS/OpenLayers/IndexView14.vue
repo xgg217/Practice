@@ -16,17 +16,20 @@ const coodLineString = [fromLonLat([120.22, 30.26]), fromLonLat([121.22, 31.26])
 // 点
 const coodPonit = fromLonLat([120.22, 30.26]);
 
+// 自定义矢量数据
+const vectorSource = new Vector({
+  features: [
+    new Feature({
+      geometry: new LineString(coodLineString),
+    }),
+    new Feature({
+      geometry: new Point(coodPonit),
+    }),
+  ],
+});
+
 const vectorLayer = new VectorLayer({
-  source: new Vector({
-    features: [
-      new Feature({
-        geometry: new LineString(coodLineString),
-      }),
-      new Feature({
-        geometry: new Point(coodPonit),
-      }),
-    ],
-  }),
+  source: vectorSource,
   style: new Style({
     stroke: new Stroke({
       color: "#FF0000",
@@ -44,7 +47,7 @@ const vectorLayer = new VectorLayer({
 });
 
 onMounted(() => {
-  new Map({
+  const map = new Map({
     target: mapRef.value!,
     layers: [
       new TileLayer({
@@ -69,6 +72,9 @@ onMounted(() => {
       zoom: 4,
     }),
   });
+
+  const extent = vectorSource.getExtent();
+  extent && map.getView().fit(extent);
 });
 </script>
 

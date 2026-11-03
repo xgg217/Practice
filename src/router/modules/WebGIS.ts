@@ -260,6 +260,14 @@ const ROW: RouteRecordRaw = {
             title: "map 更换底图",
           },
         },
+        {
+          path: "index30",
+          name: "OpenLayersIndex30",
+          component: () => import("@/views/WebGIS/OpenLayers/IndexView30.vue"),
+          meta: {
+            title: "添加动画效果",
+          },
+        },
       ],
     },
   ],

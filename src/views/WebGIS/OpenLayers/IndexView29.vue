@@ -1,55 +1,14 @@
 <script setup lang="ts">
 import { Map, View } from "ol";
-import { XYZ, Vector } from "ol/source";
-import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
-import { Style, Fill, Stroke, Text, Circle } from "ol/style";
+import { XYZ } from "ol/source";
+import { Tile as TileLayer } from "ol/layer";
 import "ol/ol.css";
-import { defaults as defaultControls, OverviewMap } from "ol/control";
-import { GeoJSON } from "ol/format";
-import { transformExtent } from "ol/proj";
 
 const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
-const extent = transformExtent([117, 26, 124, 32], "EPSG:4326", "EPSG:3857"); // 范围
+let map: Map;
+const mapClass = ref("");
 
-const vectorSource = new Vector({
-  url: "https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=330000_full",
-  format: new GeoJSON({
-    dataProjection: "EPSG:4326",
-    featureProjection: "EPSG:3857",
-  }),
-});
-
-const vectorLayer = new VectorLayer({
-  source: vectorSource,
-
-  style: (feature) => {
-    const name = feature.get("name");
-
-    return new Style({
-      stroke: new Stroke({
-        color: "#FF0000",
-        width: 2,
-      }),
-      fill: new Fill({
-        color: "#FFFF0080",
-      }),
-      text: new Text({
-        font: "16px sans-serif",
-        fill: new Fill({
-          color: "black",
-        }),
-        text: name,
-      }),
-
-      image: new Circle({
-        radius: 7,
-        fill: new Fill({ color: "#FFFF00" }),
-        stroke: new Stroke({ color: "#FF0000", width: 2 }),
-      }),
-    });
-  },
-});
-
+// 矢量底图 vec_w
 const baseVecLayer = new TileLayer({
   source: new XYZ({
     url:
@@ -58,6 +17,7 @@ const baseVecLayer = new TileLayer({
   }),
 });
 
+// 影像底图 img_w
 const baseImgLayer = new TileLayer({
   source: new XYZ({
     url:
@@ -66,6 +26,7 @@ const baseImgLayer = new TileLayer({
   }),
 });
 
+// 矢量标记 cva_w
 const tagCvaLayer = new TileLayer({
   source: new XYZ({
     url:
@@ -73,6 +34,8 @@ const tagCvaLayer = new TileLayer({
       import.meta.env.VITE_API_TIANDITU_MAP,
   }),
 });
+
+// 影像标记 cia_w
 const tagCiaLayer = new TileLayer({
   source: new XYZ({
     url:
@@ -81,55 +44,54 @@ const tagCiaLayer = new TileLayer({
   }),
 });
 
+const handleClick1 = () => {
+  if (map) {
+    // map.getLayers().setAt(0, baseVecLayer)
+    // map.getLayers().setAt(1, tagCvaLayer)
+    map.setLayers([baseVecLayer, tagCvaLayer]);
+    mapClass.value = "";
+  }
+};
+
+const handleClick2 = () => {
+  if (map) {
+    // map.getLayers().setAt(0, baseImgLayer)
+    // map.getLayers().setAt(1, tagCiaLayer)
+    map.setLayers([baseImgLayer, tagCiaLayer]);
+    mapClass.value = "";
+  }
+};
+
+const handleClick3 = () => {
+  if (map) {
+    // map.getLayers().setAt(0, baseVecLayer)
+    // map.getLayers().setAt(1, tagCvaLayer)
+    map.setLayers([baseVecLayer, tagCvaLayer]);
+    mapClass.value = "nightLayer";
+  }
+};
+
 onMounted(() => {
-  const map = new Map({
+  map = new Map({
     target: mapRef.value!,
-    layers: [
-      new TileLayer({
-        source: new XYZ({
-          url:
-            "http://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=vec&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=" +
-            import.meta.env.VITE_API_TIANDITU_MAP,
-        }),
-      }),
-      new TileLayer({
-        source: new XYZ({
-          url:
-            "http://t0.tianditu.gov.cn/cva_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=" +
-            import.meta.env.VITE_API_TIANDITU_MAP,
-        }),
-      }),
-      vectorLayer,
-    ],
+    layers: [baseVecLayer, tagCvaLayer],
     view: new View({
       center: [0, 0],
       // center: coordinate,
       zoom: 4,
-      extent,
     }),
-    controls: defaultControls().extend([
-      new OverviewMap({
-        layers: [vectorLayer], // 设置图层
-        collapsed: false, // 设置默认打开
-        view: new View({
-          extent,
-        }),
-      }),
-    ]),
-  });
-
-  vectorSource.on("change", () => {
-    if (vectorSource.getState() === "ready") {
-      const extent = vectorSource.getExtent();
-      extent && map.getView().fit(extent);
-    }
   });
 });
 </script>
 
 <template>
   <div class="warpp">
-    <div ref="mapRef" class="map"></div>
+    <div ref="mapRef" class="map" :class="mapClass"></div>
+    <div class="but">
+      <el-button type="primary" @click="handleClick1">矢量地图</el-button>
+      <el-button type="primary" @click="handleClick2">影像地图</el-button>
+      <el-button type="primary" @click="handleClick3">极夜黑地图</el-button>
+    </div>
   </div>
 </template>
 
@@ -145,12 +107,14 @@ onMounted(() => {
   height: 100vh;
 }
 
-::v-deep(.ol-overviewmap) {
-  left: auto;
-  right: 0.5em;
-  .ol-overviewmap-map {
-    width: 300px;
-    height: 300px;
-  }
+.but {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.nightLayer {
+  filter: grayscale(100%) invert(100%) sepia(15%) hue-rotate(180deg) saturate(1600%) brightness(70%)
+    contrast(90%);
 }
 </style>
