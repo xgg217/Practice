@@ -270,6 +270,31 @@ const ROW: RouteRecordRaw = {
         },
       ],
     },
+    {
+      path: "OpenLayers2",
+      meta: {
+        title: "模拟 浙江省土质检测",
+      },
+
+      children: [
+        {
+          path: "index",
+          name: "OpenLayersIndex",
+          component: () => import("@/views/WebGIS/OpenLayers2/IndexView/IndexView.vue"),
+          meta: {
+            title: "地图",
+          },
+        },
+        {
+          path: "index2",
+          name: "OpenLayersIndex2",
+          component: () => import("@/views/WebGIS/OpenLayers2/IndexView2/IndexView.vue"),
+          meta: {
+            title: "大屏",
+          },
+        },
+      ],
+    },
   ],
 };
 
