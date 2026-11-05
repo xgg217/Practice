@@ -72,11 +72,13 @@ export const restoreComponentStatus = (coms: Status[]) => {
     // console.log(com.status);
 
     for (const key in com.status) {
+      // @ts-expect-error 类型处理
       const name = com.status[key].name as EditComName;
       // console.log(name);
       // console.log(EDIT_COM_MAP[name]);
       // console.log(com.status[key]);
 
+      // @ts-expect-error 类型处理
       com.status[key].editCom = EDIT_COM_MAP[name];
     }
   });

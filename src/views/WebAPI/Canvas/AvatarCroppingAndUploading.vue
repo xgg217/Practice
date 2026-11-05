@@ -6,13 +6,13 @@ const TempImg = new URL("./images/解析.png", import.meta.url).href;
 
 // 1. 头像本地预览
 const handleChange = (e: Event) => {
-  // @ts-ignore
-  const file = e!.target.files[0] as File;
+  // @ts-expect-error 类型处理
+  const file = e.target.files[0] as File;
 
   const reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = (e: ProgressEvent) => {
-    // @ts-ignore
+    // @ts-expect-error 类型处理
     src.value = e.target.result;
   };
 };
@@ -50,12 +50,14 @@ const cut = () => {
     cutInfo.height,
   );
 
-  // canvas -> blob
-  canvasRef.value!.toBlob(blob => {
-    // blob -> File
-    const file = new File([blob!], "cut.png", {
-      type: "image/png",
-    });
+  // @ts-expect-error canvas -> blob
+  canvasRef.value!.toBlob((blob) => {
+    console.log(blob);
+
+    //  blob -> File
+    // const file = new File([blob!], "cut.png", {
+    //   type: "image/png",
+    // });
   });
 };
 </script>

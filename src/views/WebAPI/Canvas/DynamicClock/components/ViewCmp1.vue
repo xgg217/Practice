@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { R } from "./../consts";
+import { R } from "../consts";
 
 /**
  * 动态时钟需要实现的功能
@@ -10,16 +10,23 @@ import { R } from "./../consts";
  *    2.表针的角度变化
  */
 
-const canvasRef1 = useTemplateRef("canvasRef1")!;
-const context1 = ref<CanvasRenderingContext2D>();
-const canvasRef2 = useTemplateRef("canvasRef2")!;
-const context2 = ref<CanvasRenderingContext2D>();
+const canvasRef = useTemplateRef("canvasRef")!;
+const context = ref<CanvasRenderingContext2D>();
 
-let time = 0;
+// let time = 0;
 
-// 绘制静态部分
-const staticClock = () => {
-  const ctx = context1.value!;
+// 1. 表盘初始化
+const dialInit = () => {
+  const now = new Date();
+  const h = now.getHours() % 12;
+  const m = now.getMinutes();
+  const s = now.getSeconds();
+
+  const ctx = context.value!;
+
+  // 清空表盘
+  ctx.clearRect(-200, -200, 400, 400);
+
   // 绘制表盘
   {
     ctx.save();
@@ -83,19 +90,6 @@ const staticClock = () => {
     }
     ctx.restore();
   }
-};
-
-// 动态部分
-const moveClovk = () => {
-  const ctx = context2.value!;
-
-  const now = new Date();
-  const h = now.getHours() % 12;
-  const m = now.getMinutes();
-  const s = now.getSeconds();
-
-  // 清空表盘
-  ctx.clearRect(-200, -200, 400, 400);
 
   // 时针
   {
@@ -163,45 +157,27 @@ const moveClovk = () => {
 };
 
 const move = () => {
-  moveClovk();
+  dialInit();
   setTimeout(() => {
     move();
   }, 1000);
 };
 
 onMounted(() => {
-  context1.value = canvasRef1.value?.getContext("2d")!;
-  context2.value = canvasRef2.value?.getContext("2d")!;
+  context.value = canvasRef.value?.getContext("2d")!;
 
-  // 移动原点
-  context1.value.translate(200, 200);
-  context2.value.translate(200, 200);
-
-  staticClock();
+  // @ts-expect-error 移动原点
+  context.value.translate(200, 200);
   move();
 });
 </script>
 
 <template>
-  <div class="clock">
-    <canvas width="400" height="400" ref="canvasRef1"></canvas>
-    <canvas width="400" height="400" ref="canvasRef2"></canvas>
-  </div>
+  <canvas width="400" height="400" ref="canvasRef"></canvas>
 </template>
 
 <style scoped>
-.clock {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 400px;
-}
-
 canvas {
   border: 1px solid red;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 </style>

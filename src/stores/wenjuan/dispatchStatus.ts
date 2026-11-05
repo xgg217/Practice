@@ -30,6 +30,8 @@ export const dispatchStatus = (
       const { name, value } = row;
       // store.setTextStatus(status[name] as TextProps, value);
       changeEditorIsShowStatus(status as unknown as TypeStatus, value);
+
+      // @ts-expect-error 类型处理
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 
@@ -37,24 +39,32 @@ export const dispatchStatus = (
     "UPDATE:COMMENT_TYPE": (row: Events["UPDATE:COMMENT_TYPE"]) => {
       const { name, value } = row;
       changeEditorIsShowStatusCommentType(status as unknown as TypeStatus);
+
+      // @ts-expect-error 类型处理
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 
     // 更新标题
     "UPDATE:TITLE": (row: Events["UPDATE:TITLE"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setTextStatus(status[name] as TextProps, value);
     },
 
     // 更新描述
     "UPDATE:DESC": (row: Events["UPDATE:DESC"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setTextStatus(status[name] as TextProps, value);
     },
 
     // 选项 添加
     "ADD:OPTION": (row: Events["ADD:OPTION"]) => {
       const { name } = row;
+
+      // @ts-expect-error 类型处理
       store.addOption(status[name] as OptionsProps);
     },
 
@@ -62,6 +72,7 @@ export const dispatchStatus = (
     "DELETE:OPTION": (row: Events["DELETE:OPTION"]) => {
       const { name, value } = row;
 
+      // @ts-expect-error 类型处理
       const iBool = store.removeOption(status[name] as OptionsProps, value);
 
       if (!iBool) {
@@ -75,6 +86,8 @@ export const dispatchStatus = (
     "ADD:OPTION:PIC": (row: Events["ADD:OPTION:PIC"]) => {
       const { name } = row;
       // store.setTextStatus(status[name] as TextProps, value);
+
+      // @ts-expect-error 类型处理
       store.addOption(status[name] as OptionsProps);
     },
 
@@ -83,6 +96,8 @@ export const dispatchStatus = (
       const { name, value } = row;
       // store.setTextStatus(status[name] as TextProps, value);
       // store.addOption(status[name] as OptionsProps);
+
+      // @ts-expect-error 类型处理
       const iBool = store.removeOption(status[name] as OptionsProps, value);
       if (!iBool) {
         ElMessage.error("至少保留两个选项");
@@ -94,6 +109,8 @@ export const dispatchStatus = (
     // 选项-图片-删除图片
     "DELETE:PIC:URL": (row: Events["DELETE:PIC:URL"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setPicLinkByIndex(status[name] as OptionsProps, {
         link: "",
         index: value,
@@ -103,6 +120,8 @@ export const dispatchStatus = (
     // 选项-图片-更新图片链接
     "UPDATE:PIC:URL": (row: Events["UPDATE:PIC:URL"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setPicLinkByIndex(status[name] as OptionsProps, {
         link: value.link,
         index: value.index,
@@ -112,6 +131,8 @@ export const dispatchStatus = (
     // 选项-辅助文字-切换
     "UPDATE:OPTION:USE": (row: Events["UPDATE:OPTION:USE"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setUse(status[name] as OptionsProps, value);
     },
 
@@ -120,6 +141,8 @@ export const dispatchStatus = (
       const { name, value } = row;
 
       // store.setUse(status[name] as OptionsProps, value);
+
+      // @ts-expect-error 类型处理
       store.setPicLinkByIndex(status[name] as OptionsProps, {
         link: value.link,
         index: value.index,
@@ -129,6 +152,8 @@ export const dispatchStatus = (
     // 选项-日期类型-切换
     "UPDATE:OPTION:DATE_TIME": (row: Events["UPDATE:OPTION:DATE_TIME"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 
@@ -137,6 +162,8 @@ export const dispatchStatus = (
       const { name, value } = row;
       // store.setTextStatus(status[name] as TextProps, value);
       // store.setSize(status[name] as OptionsProps, value);
+
+      // @ts-expect-error 类型处理
       store.setPosition(status[name] as OptionsProps, value);
     },
 
@@ -144,6 +171,8 @@ export const dispatchStatus = (
     "UPDATE:TITLE_SIZE": (row: Events["UPDATE:TITLE_SIZE"]) => {
       const { name, value } = row;
       // store.setTextStatus(status[name] as TextProps, value);
+
+      // @ts-expect-error 类型处理
       store.setSize(status[name] as OptionsProps, value);
     },
 
@@ -151,6 +180,8 @@ export const dispatchStatus = (
     "UPDATE:DESC_SIZE": (row: Events["UPDATE:DESC_SIZE"]) => {
       const { name, value } = row;
       // store.setTextStatus(status[name] as TextProps, value);
+
+      // @ts-expect-error 类型处理
       store.setSize(status[name] as OptionsProps, value);
     },
 
@@ -159,6 +190,8 @@ export const dispatchStatus = (
       const { name, value } = row;
       // store.setTextStatus(status[name] as TextProps, value);
       // store.setSize(status[name] as OptionsProps, value);
+
+      // @ts-expect-error 类型处理
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 
@@ -167,35 +200,46 @@ export const dispatchStatus = (
       const { name, value } = row;
       // store.setTextStatus(status[name] as TextProps, value);
       // store.setSize(status[name] as OptionsProps, value);
+
+      // @ts-expect-error 类型处理
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 
     // 标题字体斜体
     "UPDATE:TITLE_ITALIC": (row: Events["UPDATE:TITLE_ITALIC"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 
     // 描述字体斜体
     "UPDATE:DESC_ITALIC": (row: Events["UPDATE:DESC_ITALIC"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setCurrentStatus(status[name] as OptionsProps, value);
     },
 
     // 更新 标题字体颜色
     "UPDATE:TITLE_COLOR": (row: Events["UPDATE:TITLE_COLOR"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setTextStatus(status[name] as TextProps, value);
     },
 
     // 更新 描述字体颜色
     "UPDATE:DESC_COLOR": (row: Events["UPDATE:DESC_COLOR"]) => {
       const { name, value } = row;
+
+      // @ts-expect-error 类型处理
       store.setTextStatus(status[name] as TextProps, value);
     },
   };
 
   if (Object.hasOwn(EVENT_OBJ, name)) {
+    // @ts-expect-error 类型处理
     EVENT_OBJ[name](row);
   } else {
     ElMessage.error("事件不存在");

@@ -22,6 +22,7 @@ const handleClickFeature = (e: MapBrowserEvent) => {
       layerFilter: (layer) => layer === layerObj.geometryLayer,
     },
   );
+  console.log(geometryFeature);
 
   // if (geometryFeature && nowGeometry.value === "清除") {
   //   geometryLayer.getSource()?.removeFeature(geometryFeature);

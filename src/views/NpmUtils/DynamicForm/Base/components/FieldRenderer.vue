@@ -21,6 +21,7 @@ const comp = computed(() => {
 });
 
 const onChagne = (val: string) => {
+  // @ts-expect-error 类型校验
   props.field.setValue(val);
 };
 </script>

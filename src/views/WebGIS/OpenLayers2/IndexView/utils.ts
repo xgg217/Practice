@@ -18,8 +18,8 @@ import {
   OverviewMap,
 } from "ol/control";
 
-const center = fromLonLat(ZJS_CENTER); // 中心点
-const extent = transformExtent(ZJS_EXTENT, "EPSG:4326", "EPSG:3857"); // 范围
+export const center = fromLonLat(ZJS_CENTER); // 中心点
+export const extent = transformExtent(ZJS_EXTENT, "EPSG:4326", "EPSG:3857"); // 范围
 
 // 数据源-样式
 export const styleObj = (() => {

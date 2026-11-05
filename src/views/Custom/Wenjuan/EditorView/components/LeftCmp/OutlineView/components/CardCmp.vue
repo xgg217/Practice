@@ -6,6 +6,14 @@ const props = defineProps<{
   row: ComponentStatus; // 组件
 }>();
 
+const indexVal = computed(() => {
+  if (Object.hasOwn(props.row, "index")) {
+    // @ts-expect-error 类型剔除
+    return row.index;
+  }
+  return "";
+});
+
 const emit = defineEmits<{
   click: []; // 点击事件
 }>();
@@ -20,8 +28,7 @@ const emit = defineEmits<{
     }"
   >
     <div class="item">
-      <!-- @vue-ignore 组件类型未知 -->
-      <p class="index">{{ props.row.index || "" }}</p>
+      <p class="index">{{ indexVal }}</p>
       <p class="title">{{ props.row.status.title.status }}</p>
     </div>
   </div>

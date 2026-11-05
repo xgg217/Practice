@@ -57,7 +57,7 @@ const animateRipple = () => {
 };
 
 onMounted(() => {
-  const map = new Map({
+  new Map({
     target: mapRef.value!,
     layers: [
       new TileLayer({

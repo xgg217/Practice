@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Cmp1 from "./components/Cmp1.vue";
-import Cmp2 from "./components/Cmp2.vue";
+import ViewCmp1 from "./components/ViewCmp1.vue";
+import ViewCmp2 from "./components/ViewCmp2.vue";
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import Cmp2 from "./components/Cmp2.vue";
         <span>优化前，每次都是全部重新绘制</span>
       </div>
     </template>
-    <Cmp1 />
+    <ViewCmp1 />
   </el-card>
 
   <el-card style="max-width: 500px">
@@ -22,7 +22,7 @@ import Cmp2 from "./components/Cmp2.vue";
         >
       </div>
     </template>
-    <Cmp2 />
+    <ViewCmp2 />
   </el-card>
 </template>
 
