@@ -12,6 +12,7 @@ const mapRef = useTemplateRef<InstanceType<typeof HTMLElement>>("mapRef");
 
 // 点
 const coodPonit = fromLonLat([120.22, 30.26]);
+const rippleProgress = ref(0);
 
 // 自定义矢量数据
 const vectorSource = new Vector({
@@ -24,21 +25,36 @@ const vectorSource = new Vector({
 
 const vectorLayer = new VectorLayer({
   source: vectorSource,
-  style: new Style({
-    stroke: new Stroke({
-      color: "#FF0000",
-      width: 2,
-    }),
-    fill: new Fill({
-      color: "#FFFF00",
-    }),
-    image: new Circle({
-      radius: 7,
-      fill: new Fill({ color: "#FFFF00" }),
-      stroke: new Stroke({ color: "#FF0000", width: 2 }),
-    }),
-  }),
+  style: () => {
+    const rippleRadius = 30 * rippleProgress.value;
+    const opacity = 1 - rippleProgress.value;
+
+    return new Style({
+      stroke: new Stroke({
+        color: "#FF0000",
+        width: 2,
+      }),
+      fill: new Fill({
+        color: "#FFFF00",
+      }),
+      image: new Circle({
+        radius: rippleRadius,
+        fill: new Fill({ color: "#FFFF00" }),
+        // stroke: new Stroke({ color: "#FF0000", width: 2 }),
+        stroke: new Stroke({ color: `rgba(255, 0, 0, ${opacity})`, width: 2 }),
+      }),
+    });
+  },
 });
+
+const animateRipple = () => {
+  rippleProgress.value += 0.01;
+  if (rippleProgress.value > 1) {
+    rippleProgress.value = 0;
+  }
+  vectorLayer.changed();
+  requestAnimationFrame(animateRipple);
+};
 
 onMounted(() => {
   const map = new Map({
@@ -67,8 +83,7 @@ onMounted(() => {
     }),
   });
 
-  // const extent = vectorSource.getExtent();
-  // extent && map.getView().fit(extent);
+  animateRipple();
 });
 </script>
 

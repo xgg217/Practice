@@ -24,7 +24,7 @@ const ROW: RouteRecordRaw = {
       // name: "openlayers",
       // component: () => import("@/views/WebGIS/OpenLayers/IndexView.vue"),
       meta: {
-        title: "OpenLayers 框架",
+        title: "OpenLayers 框架API",
       },
 
       children: [
