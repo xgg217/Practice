@@ -6,10 +6,10 @@ import jiance_on from "@/views/WebGIS/OpenLayers2/assets/jiance_on.png";
 import jiance_off from "@/views/WebGIS/OpenLayers2/assets/jiance_off.png";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { XYZ, Vector } from "ol/source";
-import { ZJS_GeoJSON_URL, ZJS_CENTER, ZJS_EXTENT } from "@/views/WebGIS/OpenLayers2/config";
+import { ZJS_GeoJSON_URL, TDT_VECURL, TDT_CVAURL } from "@/views/WebGIS/OpenLayers2/config";
 import { GeoJSON } from "ol/format";
 import type { Geometry, Point, Circle as GeomCircle } from "ol/geom";
-import { transformExtent, fromLonLat } from "ol/proj";
+
 import {
   defaults as defaultControls,
   ScaleLine,
@@ -18,37 +18,37 @@ import {
   OverviewMap,
 } from "ol/control";
 
-export const center = fromLonLat(ZJS_CENTER); // 中心点
-export const extent = transformExtent(ZJS_EXTENT, "EPSG:4326", "EPSG:3857"); // 范围
-
 // 数据源-样式
 export const styleObj = (() => {
   /**
-   * 初始化样式
+   * 城市图层样式
    */
-  const initCityVectorStyle = () =>
-    new Style({
-      stroke: new Stroke({
-        color: "#FF0000",
-        width: 2,
-        lineDash: [10, 10],
-      }),
-      fill: new Fill({
-        color: "rgba(255, 255, 255, 0)",
-      }),
-    });
+  const initCityVectorStyle = new Style({
+    stroke: new Stroke({
+      color: "#FF0000",
+      width: 2,
+      lineDash: [10, 10],
+    }),
+    fill: new Fill({
+      color: "rgba(255, 255, 255, 0)", // 透明白色
+      // color: "red",
+    }),
+  });
 
-  const activeCityVectorStyle = () =>
-    new Style({
-      stroke: new Stroke({
-        color: "#0000FF",
-        width: 2,
-        lineDash: [10, 10],
-      }),
-      fill: new Fill({
-        color: "rgba(255, 255, 0, 0.3)",
-      }),
-    });
+  /**
+   * 激活的样式
+   * @returns
+   */
+  const activeCityVectorStyle = new Style({
+    stroke: new Stroke({
+      color: "#0000FF",
+      width: 2,
+      lineDash: [10, 10],
+    }),
+    fill: new Fill({
+      color: "rgba(255, 255, 0, 0.3)",
+    }),
+  });
 
   const overviewVectorStyle = (feature: FeatureLike) => {
     return new Style({
@@ -117,25 +117,27 @@ export const styleObj = (() => {
 
 // 图层
 export const layerObj = (() => {
-  const tdt_vecUrl =
-    "https://t0.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=" +
-    import.meta.env.VITE_API_TIANDITU_MAP;
-  const tdt_cvaUrl =
-    "https://t0.tianditu.gov.cn/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk=" +
-    import.meta.env.VITE_API_TIANDITU_MAP;
-
+  /**
+   * 基础图层
+   */
   const baseVecLayer = new TileLayer({
     source: new XYZ({
-      url: tdt_vecUrl,
+      url: TDT_VECURL,
     }),
   });
 
+  /**
+   * 标记图层
+   */
   const tagCvaLayer = new TileLayer({
     source: new XYZ({
-      url: tdt_cvaUrl,
+      url: TDT_CVAURL,
     }),
   });
 
+  /**
+   * 浙江省城市图层 GeoJSON
+   */
   const cityLayer = new VectorLayer({
     source: new Vector({
       url: ZJS_GeoJSON_URL,
@@ -144,7 +146,7 @@ export const layerObj = (() => {
         featureProjection: "EPSG:3857",
       }),
     }),
-    style: styleObj.initCityVectorStyle(),
+    style: styleObj.initCityVectorStyle,
   });
 
   const overviewLayer = new VectorLayer({
