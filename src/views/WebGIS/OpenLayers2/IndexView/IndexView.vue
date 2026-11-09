@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { Map, View, MapBrowserEvent, Feature } from "ol";
 import "ol/ol.css";
-import { styleObj, layerObj, getControls } from "./utils";
+import { styleObj, layerObj, controlsObj, getAllCityFeatures, monitorGeoJSON } from "./utils";
 import { CENTER, EXTENT } from "@/views/WebGIS/OpenLayers2/config";
+import { apiGetAllMonitors } from "@/views/WebGIS/OpenLayers2/api";
 import SeachCmp from "./components/SeachCmp.vue";
+import { GeoJSON } from "ol/format";
+import type { Geometry } from "ol/geom";
+import { ElMessage } from "element-plus";
 
 const map = ref<Map>();
 const isDrawing = ref(false); // 是否在绘画
@@ -44,7 +48,7 @@ const handleClickFeature = (e: MapBrowserEvent) => {
   // }
 
   // 获取所有城市
-  const cityFeatures = layerObj.cityLayer.getSource()?.getFeatures() || [];
+  const cityFeatures = getAllCityFeatures();
   // 当前鼠标点击的位置
   const cityFeature = map.value.forEachFeatureAtPixel(
     e.pixel,
@@ -56,7 +60,6 @@ const handleClickFeature = (e: MapBrowserEvent) => {
     //   layerFilter: (layer) => layer === layerObj.cityLayer,
     // },
   );
-  console.log(cityFeature);
 
   if (cityFeature) {
     const props = cityFeature.getProperties();
@@ -89,6 +92,27 @@ const activeCityFeature = (features: Feature[], feature: Feature, city: string) 
   }
 };
 
+// 获取所有检测点
+const asyncApiGetAllMonitors = async () => {
+  try {
+    // 1. 获取检测点数据
+    const res = await apiGetAllMonitors();
+
+    // 2. 将获取到的数据转成 GeoJSON
+    const r = monitorGeoJSON(res);
+    const features = new GeoJSON().readFeatures(r, {
+      dataProjection: "EPSG:4326",
+      featureProjection: "EPSG:3857",
+    }) as Feature<Geometry>[];
+
+    // 3. 将要素添加到地图上
+    layerObj.monitorLayer.getSource()?.addFeatures(features);
+  } catch (err) {
+    console.error(err);
+    ElMessage.error("服务器请求错误");
+  }
+};
+
 onMounted(() => {
   const mapVal = new Map({
     target: mapRef.value!,
@@ -104,26 +128,30 @@ onMounted(() => {
       extent: EXTENT,
       zoom: 2,
     }),
-    controls: getControls(EXTENT),
+    controls: controlsObj,
   });
 
   // 在地图中单击
   mapVal.on("singleclick", handleClickFeature);
 
   map.value = mapVal;
+
+  // 获取检测点
+  asyncApiGetAllMonitors();
 });
 </script>
 
 <template>
   <div class="warpp">
-    <div ref="mapRef" class="map"></div>
-    <SeachCmp
-      class="seach"
-      :map="map"
-      v-model:now-city="nowCity"
-      v-model:is-drawing="isDrawing"
-      :activeCityFeature="activeCityFeature"
-    />
+    <div ref="mapRef" class="map">
+      <SeachCmp
+        class="seach"
+        :map="map"
+        v-model:now-city="nowCity"
+        v-model:is-drawing="isDrawing"
+        :activeCityFeature="activeCityFeature"
+      />
+    </div>
   </div>
 </template>
 
@@ -134,6 +162,7 @@ onMounted(() => {
   left: 0;
 }
 
+/* 地图 */
 .map {
   width: 100%;
   height: 100vh;
@@ -145,6 +174,7 @@ onMounted(() => {
   top: 50px;
   left: 50%;
   transform: translate(-50%, 50%);
+  z-index: 10;
 }
 
 /* 右下角鹰眼图 */

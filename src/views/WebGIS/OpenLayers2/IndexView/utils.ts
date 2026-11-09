@@ -6,7 +6,8 @@ import jiance_on from "@/views/WebGIS/OpenLayers2/assets/jiance_on.png";
 import jiance_off from "@/views/WebGIS/OpenLayers2/assets/jiance_off.png";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
 import { XYZ, Vector } from "ol/source";
-import { ZJS_GeoJSON_URL, TDT_VECURL, TDT_CVAURL } from "@/views/WebGIS/OpenLayers2/config";
+import { ZJS_GeoJSON_URL, TDT_VECURL, TDT_CVAURL, EXTENT } from "@/views/WebGIS/OpenLayers2/config";
+import type { TMonitors } from "@/views/WebGIS/OpenLayers2/types";
 import { GeoJSON } from "ol/format";
 import type { Geometry, Point, Circle as GeomCircle } from "ol/geom";
 
@@ -50,6 +51,7 @@ export const styleObj = (() => {
     }),
   });
 
+  //
   const overviewVectorStyle = (feature: FeatureLike) => {
     return new Style({
       stroke: new Stroke({
@@ -66,6 +68,11 @@ export const styleObj = (() => {
     });
   };
 
+  /**
+   * 检测点样式
+   * @param feature
+   * @returns
+   */
   const monitorVectorStyle = (feature: FeatureLike) => {
     const status = feature.get("status") ?? "on";
     return new Style({
@@ -149,6 +156,9 @@ export const layerObj = (() => {
     style: styleObj.initCityVectorStyle,
   });
 
+  /**
+   * 浙江省地图
+   */
   const overviewLayer = new VectorLayer({
     source: new Vector({
       url: ZJS_GeoJSON_URL,
@@ -160,6 +170,9 @@ export const layerObj = (() => {
     style: styleObj.overviewVectorStyle,
   });
 
+  /**
+   * 检测点
+   */
   const monitorLayer = new VectorLayer({
     source: new Vector<Feature<Geometry>>({
       features: [],
@@ -185,21 +198,51 @@ export const layerObj = (() => {
 })();
 
 /**
- * Controls 地图控件
- * @param extent
+ * 获取全部城市
  * @returns
  */
-export const getControls = (extent: Extent) => {
-  return defaultControls().extend([
-    new ScaleLine(),
-    new ZoomSlider(),
-    new FullScreen(),
-    new OverviewMap({
-      layers: [layerObj.overviewLayer],
-      collapsed: false,
-      view: new View({
-        extent,
-      }),
+export const getAllCityFeatures = () => {
+  return layerObj.cityLayer.getSource()?.getFeatures() || [];
+};
+
+/**
+ * Controls 地图控件
+ */
+export const controlsObj = defaultControls().extend([
+  new ScaleLine(),
+  new ZoomSlider(),
+  new FullScreen(),
+  new OverviewMap({
+    layers: [layerObj.overviewLayer],
+    collapsed: false,
+    view: new View({
+      extent: EXTENT,
     }),
-  ]);
+  }),
+]);
+
+/**
+ * json 数据转 GeoJSON格式
+ * @param arr
+ * @returns Feature<Geometry, { [x: string]: any; }>[]
+ */
+export const monitorGeoJSON = (arr: TMonitors[]) => {
+  const result = {
+    type: "FeatureCollection",
+    features: [],
+  } as GeoJSON.FeatureCollection;
+
+  arr.forEach((j) => {
+    const feature: GeoJSON.Feature = {
+      type: "Feature",
+      properties: { ...j },
+      geometry: {
+        type: "Point",
+        coordinates: [j.lng, j.lat] as [number, number],
+      },
+    };
+    result.features.push(feature);
+  });
+
+  return result;
 };

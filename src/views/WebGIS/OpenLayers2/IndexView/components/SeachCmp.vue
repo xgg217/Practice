@@ -2,7 +2,7 @@
 import type { Options } from "ol/interaction/Draw";
 import { Map, Feature } from "ol";
 import { Draw } from "ol/interaction";
-import { layerObj } from "./../utils";
+import { layerObj, getAllCityFeatures } from "./../utils";
 import { Vector } from "ol/source";
 import type { Geometry } from "ol/geom";
 import { getArea } from "ol/sphere";
@@ -13,29 +13,20 @@ const props = defineProps<{
   map?: Map;
   // 切换选中的城市
   activeCityFeature: (features: Feature[], feature: Feature, city: string) => void;
-  // isDrawing: false;
 }>();
-// const form = reactive({
-//   draw: "",
-// });
-// const emit = defineEmits<{}>();
 
-// 当前选中的城市
-const nowCity = defineModel<string>("nowCity");
+const activeIndex2 = ref("");
 // 当前是否正在绘制
 const isDrawing = defineModel<boolean>("isDrawing");
-
-const activeIndex2 = ref("1");
-const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
+// 当前选中的城市
+const nowCity = defineModel<string>("nowCity");
 
 // 选择城市
 const onCity = (name: string) => {
   nowCity.value = name;
 
   // 获取所有城市
-  const cityFeatures = layerObj.cityLayer.getSource()?.getFeatures() || [];
+  const cityFeatures = getAllCityFeatures();
   const cityFeature = cityFeatures.find((f) => f.get("name") === name);
   if (cityFeature) {
     // 切换
@@ -136,9 +127,8 @@ const { onChangeSelect, onDel } = (() => {
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
-    @select="handleSelect"
   >
-    <el-sub-menu index="1">
+    <el-sub-menu index="1" :teleported="false">
       <template #title>{{ nowCity || "选择城市" }}</template>
       <el-menu-item
         v-for="(item, index) of ZJS_CITYS"
@@ -149,7 +139,7 @@ const { onChangeSelect, onDel } = (() => {
       >
     </el-sub-menu>
 
-    <el-sub-menu index="2">
+    <el-sub-menu index="2" :teleported="false">
       <template #title>绘制图形</template>
       <el-menu-item index="2-1" @click="onChangeSelect('Polygon')">多边形</el-menu-item>
       <el-menu-item index="2-2" @click="onChangeSelect('Circle')">圆形</el-menu-item>
