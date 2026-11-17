@@ -34,6 +34,8 @@ const onCity = (name: string) => {
   }
 };
 
+// 检测点
+
 // 绘制图形
 const { onChangeSelect, onDel } = (() => {
   let draw: Draw;
@@ -119,42 +121,37 @@ const { onChangeSelect, onDel } = (() => {
 </script>
 
 <template>
-  <el-menu
-    :default-active="activeIndex2"
-    class="el-menu-demo"
-    mode="horizontal"
-    :ellipsis="false"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
-  >
-    <el-sub-menu index="1" :teleported="false">
-      <template #title>{{ nowCity || "选择城市" }}</template>
-      <el-menu-item
-        v-for="(item, index) of ZJS_CITYS"
-        :index="`1-${index + 1}`"
-        :key="item.name"
-        @click="onCity(item.name)"
-        >{{ item.name }}</el-menu-item
-      >
-    </el-sub-menu>
+  <div>
+    <el-menu
+      :default-active="activeIndex2"
+      class="el-menu-demo"
+      mode="horizontal"
+      :ellipsis="false"
+      background-color="#545c64"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+    >
+      <el-sub-menu index="1" :teleported="false">
+        <template #title>{{ nowCity || "选择城市" }}</template>
+        <el-menu-item
+          v-for="(item, index) of ZJS_CITYS"
+          :index="`1-${index + 1}`"
+          :key="item.name"
+          @click="onCity(item.name)"
+          >{{ item.name }}</el-menu-item
+        >
+      </el-sub-menu>
 
-    <el-sub-menu index="2" :teleported="false">
-      <template #title>绘制图形</template>
-      <el-menu-item index="2-1" @click="onChangeSelect('Polygon')">多边形</el-menu-item>
-      <el-menu-item index="2-2" @click="onChangeSelect('Circle')">圆形</el-menu-item>
-      <el-menu-item index="2-3" @click="onDel">清除</el-menu-item>
-    </el-sub-menu>
-  </el-menu>
-  <!-- <el-form label-width="5px" inline>
-    <el-form-item label="绘制图形">
-      <el-select v-model="form.draw" placeholder="Select" style="width: 240px">
-        <el-option label="多边形" value="Polygon" />
-        <el-option label="圆形" value="Circle" />
-        <el-option label="清除" value="Del" />
-      </el-select>
-    </el-form-item>
-  </el-form> -->
+      <el-menu-item index="2" :teleported="false">检测点</el-menu-item>
+
+      <el-sub-menu index="3" :teleported="false">
+        <template #title>绘制图形</template>
+        <el-menu-item index="3-1" @click="onChangeSelect('Polygon')">多边形</el-menu-item>
+        <el-menu-item index="3-2" @click="onChangeSelect('Circle')">圆形</el-menu-item>
+        <el-menu-item index="3-3" @click="onDel">清除</el-menu-item>
+      </el-sub-menu>
+    </el-menu>
+  </div>
 </template>
 
 <style scoped></style>

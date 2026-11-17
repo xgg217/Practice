@@ -8,6 +8,7 @@ import SeachCmp from "./components/SeachCmp.vue";
 import { GeoJSON } from "ol/format";
 import type { Geometry } from "ol/geom";
 import { ElMessage } from "element-plus";
+import MonitorCmp from "./components/MonitorCmp.vue";
 
 const map = ref<Map>();
 const isDrawing = ref(false); // 是否在绘画
@@ -144,6 +145,7 @@ onMounted(() => {
 <template>
   <div class="warpp">
     <div ref="mapRef" class="map">
+      <!-- 顶部操作栏 -->
       <SeachCmp
         class="seach"
         :map="map"
@@ -151,6 +153,9 @@ onMounted(() => {
         v-model:is-drawing="isDrawing"
         :activeCityFeature="activeCityFeature"
       />
+
+      <!-- 检测点 -->
+      <MonitorCmp />
     </div>
   </div>
 </template>
